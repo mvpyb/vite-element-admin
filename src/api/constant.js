@@ -9,13 +9,20 @@ export const GLOBAL_DATA = {
     'baseUrl' : '/api',
   },
   fat : {
-    'baseUrl' : 'https://webapi-fat.shadowcreator.com/100026',
+    // 'baseUrl' : 'https://webapi-fat.shadowcreator.com/100026',
+    // 'baseUrl' : 'https://webapps-fat.qulivr.com/test/',
+    'baseUrl' : '/api',
+    
   },
   uat : {
-    'baseUrl' : 'https://webapi-uat.shadowcreator.com/100026',
+    // 'baseUrl' : 'https://webapi-uat.shadowcreator.com/100026',
+    // 'baseUrl' : 'https://webapps-fat.qulivr.com/test/',
+    'baseUrl' : '/api',
   },
   pro : {
-    'baseUrl' : 'https://webapi.shadowcreator.com/100026',
+    // 'baseUrl' : 'https://webapi.shadowcreator.com/100026',
+    // 'baseUrl' : 'https://webapps-fat.qulivr.com/test/',
+    'baseUrl' : '/api',
   }
 }
 

@@ -70,6 +70,16 @@
       >
         快速登录
       </el-button>
+      
+      <el-button
+        :loading="loading"
+        type="text"
+        class="h40"
+        style="width:100%;"
+        @click.prevent="freeLogin"
+      >
+        免登录
+      </el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -92,8 +102,8 @@ export default defineComponent ({
     const formState = reactive({
       country : '86',
       captcha : '',
-      account : '灰是小灰灰的灰',
-      password : '95278888'
+      account : '',
+      password : ''
     })
     const rules = {
       account : [
@@ -144,26 +154,35 @@ export default defineComponent ({
       //   captchaId.value = ''
       // }
     }
+    
+    async function freeLogin() {
+      loading.value = true
+      try {
+        await store.dispatch( 'user/saveToken', {
+          token : 'token',
+        } )
+        router.push( '/' )
+      } catch ( e ) {
+    
+      } finally {
+        loading.value = false
+      }
+    }
   
     function loginHandle() {
       loading.value = true
       ruleForm.value.validate( async( valid ) => {
         if ( valid ) {
           try {
-            const loginParams = {
-              account : formState.account,
+            const params = {
+              username : formState.account,
               password : formState.password,
             }
             if ( showCaptcha.value ) {
-              loginParams.captchaId = captchaId.value
-              loginParams.captchaValue = formState.captcha
+              params.captchaId = captchaId.value
+              params.captchaValue = formState.captcha
             }
-            let { data } = await login({
-              username: 'userName',
-              password: 'passWord',
-              verify: 'verify'
-            })
-        
+            let { data } = await login( { params } )
             const { token } = data
             await store.dispatch( 'user/saveToken', {
               token,
@@ -196,6 +215,7 @@ export default defineComponent ({
       getQueryParams,
       updateImage,
       loginHandle,
+      freeLogin,
     }
   }
 })

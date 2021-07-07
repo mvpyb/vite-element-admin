@@ -59,9 +59,8 @@ const actions = {
             if ( !data || code !== 200 ) {
               reject( 'token登录失败' )
             }
-            // data.roles = ['admin']
             commit( 'SET_USER_INFOS', data )
-  
+            
             for ( const key in data ) {
               setCookie( `${COOKIE_PREFIX}${key}`, data[key] || '' )
             }

@@ -7,7 +7,7 @@ const loginInfo = ():any => {
     token: 'token'
   }
   return result
-};
+}
 
 const userInfo = ():any => {
   const result = {
@@ -22,7 +22,7 @@ const userInfo = ():any => {
 export default [
   {
     url: '/api/login',
-    type: 'post',
+    type: 'get',
     response: config => {
       // const { username } = config.body
       // const token = tokens[username]
@@ -35,7 +35,10 @@ export default [
       return {
         code: 200,
         message: 'success',
-        data: loginInfo()
+        data: {
+          token: 'token'
+        }
+        // data: loginInfo()
       }
     }
   },
@@ -66,13 +69,12 @@ export default [
   
   {
     url: "/api/logout",
-    method: "post",
+    method: "get",
     response: () => {
       return {
         code: 200,
         message: 'success'
-      };
+      }
     },
-  },
-  
-] as MockMethod[];
+  }
+] as MockMethod[]

@@ -3,7 +3,7 @@ import http from '/@/utils/request'
 
 export function login( data ) {
   return http.request( {
-    method: 'post',
+    method: 'get',
     url : '/login',
     data
   } )
@@ -20,7 +20,7 @@ export function getInfo( data ) {
 export function logout() {
   return http.request( {
     url: '/logout',
-    method: 'post'
+    method: 'get'
   })
 }
 

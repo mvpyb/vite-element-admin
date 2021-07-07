@@ -15,11 +15,10 @@ function pathResolve( dir ) {
 }
 
 export default ( { command, mode } ) => {
-  const root = process.cwd();
+  const root = process.cwd()
   const env = loadEnv(mode, root ) // https://www.jianshu.com/p/4973bd983e96
-  
   const port = env.port || 9527
-
+  let prodMock = true
   return {
     root,
     base,
@@ -123,7 +122,7 @@ export default ( { command, mode } ) => {
         watchFiles : true, // 监视文件夹中的文件更改。 并实时同步到请求结果
         supportTs: true,
         localEnabled: command === "serve", // 设置为 false 将禁用 mock 功能
-        prodEnabled: command !== "serve", // 设置打包是否启用 mock 功能
+        prodEnabled: command !== "serve" && prodMock, // 设置打包是否启用 mock 功能
         injectCode: `
           import { setupProdMockServer } from './mockProdServer';
           setupProdMockServer();
