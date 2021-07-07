@@ -1,32 +1,53 @@
-## 功能
 
-```
- vite-element-admin 基于 vite + element-plus + vue3.0 + vue router 4.0 + vuex 4.0 构建
+## 简介
 
-```
+Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+
+## 特性
+
+- **最新技术栈**：使用 Vue3/vite2 等前端前沿技术开发
+- **Mock 数据** 内置 Mock 数据方案
+- **权限** 内置完善的动态路由权限生成方案
+- **组件** 二次封装了多个常用的组件
+
+## 预览
+
+- [vite-element-admin]() - 完整版中文站点 -- 即将推出
+- [vite-element-admin-pages](https://github.com/mvpyb/vite-element-plus-admin) - 完整版 github 站点
+
+测试账号: 随便填
+测试密码: 随便填
+
+## 准备
+
+- [Vite](https://cn.vitejs.dev/) - vite 特性
+- [Vue3](https://v3.cn.vuejs.org/) - Vue3 基础语法
+- [Vue-Router-Next](https://next.router.vuejs.org/zh/index.html) - vue-router 4.x 文档
+- [Element-Plus-Vue](https://element-plus.gitee.io/#/zh-CN/component/installation) - Element UI组件
+- [Mock.js](https://github.com/nuysoft/Mock) - mockjs 基本语法
+
 
 ## 目录结构
 
 ```
-    ├── build                      // 构建相关  
     ├── mock                       // Mock相关  
     ├── src                        // 源代码
-    │   ├── api                    // 所有请求
-    │   ├── assets                 // 主题 字体等静态资源
+    │   ├── api                    // 请求相关文件
+    │       ├── constant.js        // 全局变量
+    │   ├── assets                 // 静态资源
     │   ├── components             // 全局公用组件
     │   ├── directive              // 全局指令
-    │   ├── icons                  // 项目所有 svg icons
+    │   ├── icons                  // svg资源
     │   ├── layout                 // layout
     │   ├── plugins                // plugins
     │   ├── router                 // 路由
     │   ├── store                  // 全局 store管理
     │   ├── styles                 // 全局样式
-    │   ├── utils                  // 工具栏函数
+    │   ├── utils                  // 工具函数
     │   ├── vendor                 // 公用vendor
     │   ├── views                  // 页面集合
     │   │      ├── login           // 登录
     │   ├── App.vue                // 入口页面
-    │   ├── global.js              // 一些全局变量
     │   ├── main.js                // 入口 加载组件 初始化等
     │   └── permission.js          // 权限管理
     ├── .gitignore                 // git 忽略项
@@ -35,15 +56,14 @@
     └── package.json               // package.json
 ```
 
-
-
 ## 开发
+
 ```bash
 # 克隆项目
-git clone git@gitlab.tech.shadowcreator.com:vue.js/vite-element-admin.git
+git clone https://github.com/mvpyb/vite-element-plus-admin.git
 
 # 进入项目目录
-cd vite-element-admin
+cd vite-element-plus-admin
 
 # 安装依赖
 npm install
@@ -59,5 +79,5 @@ npm run dev
 
 ```bash
 # 构建生产环境
-npm run build
+npm run build:pro
 ```
