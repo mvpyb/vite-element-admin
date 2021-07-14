@@ -29,7 +29,6 @@
       const generateIconCode = () => {
         return `<svg-icon icon-class="${symbol}" />`
       }
-      
       return {
         svgIcons, generateIconCode
       }
