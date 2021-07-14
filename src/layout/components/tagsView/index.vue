@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<!--<script>
+<script>
   import ScrollPane from './ScrollPane.vue'
   import path from 'path'
   import {
@@ -105,7 +105,7 @@
         nextTick( () => {
           const tags = tag.value
           console.log( 'tags', tags, Array.isArray( tags ) )
-          if ( !tags ) return false
+          if ( !tags && !Array.isArray( tags ) ) return false
           for (const item of tags) {
             if (item.to.path === route.path) {
               scrollPane.value.moveToTarget( item )
@@ -158,8 +158,8 @@
           const { fullPath } = view
           nextTick(() => {
             router.replace({
-              path: '/redirect' + fullPath
-              // path: fullPath
+              // path: '/redirect' + fullPath
+              path: fullPath
             })
           })
         })
@@ -194,7 +194,8 @@
           // you can adjust it according to your needs.
           if (view.name === 'Dashboard') {
             // to reload home page
-            router.replace({ path: '/redirect' + view.fullPath })
+            // router.replace({ path: '/redirect' + view.fullPath })
+            router.replace({ path: view.fullPath })
           } else {
             router.push('/')
           }
@@ -258,9 +259,9 @@
       }
     }
   }
-</script>-->
+</script>
 
-<script>
+<!--<script>
   import ScrollPane from './ScrollPane.vue'
   import path from 'path'
   
@@ -347,9 +348,8 @@
       moveToCurrentTag() {
         const tags = this.$refs.tag
         const isIterable = obj => obj != null && typeof obj[Symbol.iterator] === 'function'
-  
-        console.log( '1 test', isIterable('abc') )
-        console.log( '2 test', isIterable('tags') )
+        
+        console.log( '2 test', isIterable(tags ), tags )
         
         this.$nextTick(() => {
           if ( !tags ) return false
@@ -370,7 +370,8 @@
           const { fullPath } = view
           this.$nextTick(() => {
             this.$router.replace({
-              path: '/redirect' + fullPath
+              // path: '/redirect' + fullPath
+              path: fullPath
             })
           })
         })
@@ -405,7 +406,8 @@
           // you can adjust it according to your needs.
           if (view.name === 'Dashboard') {
             // to reload home page
-            this.$router.replace({ path: '/redirect' + view.fullPath })
+            // this.$router.replace({ path: '/redirect' + view.fullPath })
+            this.$router.replace({ path: view.fullPath })
           } else {
             this.$router.push('/')
           }
@@ -436,7 +438,7 @@
       }
     }
   }
-</script>
+</script>-->
 
 <style lang="scss" scoped>
   .tags-view-container {
