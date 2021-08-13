@@ -36,7 +36,8 @@ export function filterAsyncRoutes( routes, roles ) {
 
 const state = {
   routes : [],
-  addRoutes : []
+  addRoutes : [],
+  directivePermission : []
 }
 
 const mutations = {
@@ -44,6 +45,9 @@ const mutations = {
     state.addRoutes = routes
     state.routes = constantRoutes.concat( routes )
     // console.log( 'accessRoutes1  state.routes', state.routes, toRaw(state.routes) )
+  },
+  SET_DIRECTIVE_ROLE : ( state, roles ) => {
+    state.directivePermission = roles
   }
 }
 
@@ -59,6 +63,13 @@ const actions = {
       // const accessedRoutes = filterAsyncRoutes( asyncRoutes, roles )
       commit( 'SET_ROUTES', accessedRoutes )
       resolve( accessedRoutes )
+    } )
+  },
+  
+  setDirectivePermission( { commit }, roles ) {
+    return new Promise( resolve => {
+      commit( 'SET_DIRECTIVE_ROLE', roles )
+      resolve( roles )
     } )
   }
 }

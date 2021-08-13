@@ -1,0 +1,181 @@
+
+<template>
+  <div class="section-container drag-container">
+    <el-row :gutter="25">
+      <el-col :span="12">
+        <el-card>
+          <template #header>
+            <div class="card-header">
+              <span>拖拽</span>
+            </div>
+          </template>
+          <draggable
+              v-model="gridLists"
+              class="grid-container"
+              item-key="grid"
+              animation="300"
+              chosenClass="chosen"
+              forceFallback="true"
+          >
+            <template #item="{ element }">
+              <div :class="'item-' + element.id">
+                <el-avatar shape="square" :draggable="false" :size="100" :fit="element.fit" :src="element.url"></el-avatar>
+              </div>
+            </template>
+          </draggable>
+        </el-card>
+      </el-col>
+  
+      <el-col :span="12">
+        <el-card>
+          <template #header>
+            <div class="card-header">
+              <span>列表拖拽</span>
+            </div>
+          </template>
+          <!-- 单列拖拽 -->
+          <draggable
+              v-model="lists"
+              item-key="name"
+              chosen-class="chosen"
+              force-fallback="true"
+              animation="300"
+          >
+            <template #item="{ element }">
+              <div class="drag-list">ID:{{ element.id }}, name：{{ element.name }}</div>
+            </template>
+          </draggable>
+        </el-card>
+      </el-col>
+      
+      <el-col :span="24">
+        <el-card>
+          <template #header>
+            <div class="card-header">
+              <span>多列表相互拖拽</span>
+            </div>
+          </template>
+        </el-card>
+      </el-col>
+      
+      <el-col :span="12">
+        <el-card>
+          <div id="left" ref="sortGroupLeft" class="list-group">
+            <div class="list-group-item tinted" v-for="item in 6" :key="item" :class="{ 'filtered' : item === 2 }">Left Item {{item}}</div>
+          </div>
+        </el-card>
+      </el-col>
+  
+      <el-col :span="12">
+        <el-card>
+          <div id="right" ref="sortGroupRight" class="list-group">
+            <div class="list-group-item tinted" v-for="item in 6" :key="item" :class="{ 'filtered' : item === 4}" >Right Item {{item}}</div>
+          </div>
+        </el-card>
+      </el-col>
+      
+    </el-row>
+  </div>
+</template>
+
+<script>
+  import draggable from "vuedraggable/src/vuedraggable"
+  import { defineComponent, reactive, toRefs, onMounted, ref } from "vue"
+  
+  export default defineComponent ({
+    name : 'Drag',
+    components: { draggable },
+    setup() {
+      const gridLists = []
+      for( let i = 1; i < 10; i++ ) {
+        gridLists.push( {
+          id : i,
+          fit : 'fill',
+          url : 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+        } )
+      }
+      const myArray = reactive({
+        gridLists,
+        lists: [
+          { people: "cn", id: 1, name: "vue" },
+          { people: "cn", id: 2, name: "react" },
+          { people: "cn", id: 3, name: "angular" },
+          { people: "cn", id: 4, name: "jquery" }
+        ]
+      } )
+  
+      const sortGroupLeft = ref()
+      const sortGroupRight = ref()
+      
+      onMounted(() => {
+        new Sortable( sortGroupLeft.value, {
+          swap: true,
+          forceFallback: true,
+          chosenClass: "chosen",
+          swapClass: "highlight",
+          filter: '.filtered', // 'filtered' class is not draggable
+          group: 'shared',
+          animation: 300
+        } )
+  
+        new Sortable( sortGroupRight.value, {
+          swap: true,
+          forceFallback: true,
+          chosenClass: "chosen",
+          filter: '.filtered',
+          swapClass: "highlight",
+          group: 'shared',
+          animation: 300
+        } )
+      } )
+      
+      return {
+        ...toRefs(myArray),
+        sortGroupLeft,
+        sortGroupRight
+      }
+    },
+  })
+</script>
+
+<style lang="scss" scoped>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+  }
+  .drag-list {
+    font-size: 1.5em;
+    height: 77px;
+    text-align: center;
+    line-height: 85px;
+    border: 1px solid #e5e4e9;
+    cursor: move;
+  }
+  .chosen {
+    border: solid 2px #3089dc !important;
+  }
+  .list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  .list-group-item:first-child {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+  }
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+  }
+  .filtered {
+    background-color: #dc3545!important;
+    cursor: not-allowed;
+  }
+  
+</style>

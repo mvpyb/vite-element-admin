@@ -7,6 +7,7 @@ const getters = {
   cachedViews : state => state.tagsView.cachedViews,
   
   permission_routes : state => state.permission.routes,
+  directivePermission : state => state.permission.directivePermission,
   // errorLogs : state => state.errorLog.logs,
   
   // 用户信息

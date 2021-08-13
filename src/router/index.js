@@ -145,7 +145,164 @@ export const asyncRoutes = [
           // roles : ['admin'],
         },
       },
+      {
+        path: "3d",
+        name: "webGL",
+        component: () => import("/@/views/demo/webGL/index.vue"),
+        meta: {
+          title : '3d可视化',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+      {
+        path: "/map",
+        name: "Map",
+        component: () => import("/@/views/demo/map/index.vue"),
+        redirect: "/demo/map/baidu",
+        meta: {
+          title : '地图组件',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+        children : [
+          {
+            path: "/baidu",
+            name: "Baidu",
+            component: () => import("/@/views/demo/map/baidu.vue"),
+            meta: {
+              title : '百度地图',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+          {
+            path: "/gaode",
+            name: "Gaode",
+            component: () => import("/@/views/demo/map/gaode.vue"),
+            meta: {
+              title : '高德地图',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+          {
+            path: "/tencent",
+            name: "Tencent",
+            component: () => import("/@/views/demo/map/tencent.vue"),
+            meta: {
+              title : '腾讯地图',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+        ]
+      },
   
+      {
+        path: "drag",
+        name: "Drag",
+        component: () => import("/@/views/demo/drag/index.vue"),
+        meta: {
+          title : '拖拽',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+  
+      {
+        path: "directives",
+        name: "Directives",
+        component: () => import("/@/views/demo/directive/index.vue"),
+        meta: {
+          title : '常用指令',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+  
+      {
+        path: "/canvas",
+        name: "Canvas",
+        component: () => import("/@/views/demo/canvas/index.vue"),
+        redirect: "/demo/canvas/img",
+        meta: {
+          title : '图片组件',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+        children : [
+          // {
+          //   path: "/img",
+          //   name: "Img",
+          //   component: () => import("/@/views/demo/canvas/img.vue"),
+          //   meta: {
+          //     title : '图片组件',
+          //     icon: "office",
+          //     noCache : true,
+          //     // roles : ['admin'],
+          //   },
+          // },
+          {
+            path: "/fabric",
+            name: "Fabric",
+            component: () => import("/@/views/demo/canvas/fabric.vue"),
+            meta: {
+              title : '图片标注',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+        ]
+      },
+  
+      {
+        path: "/excel",
+        name: "Excel",
+        component: () => import("/@/views/demo/excel/index.vue"),
+        redirect: "/demo/excel/export",
+        meta: {
+          title : '表格',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+        children : [
+          {
+            path: "/export",
+            name: "ExcelExport",
+            component: () => import("/@/views/demo/excel/export-excel.vue"),
+            meta: {
+              title : '表格导出',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+        ]
+      },
+  
+      {
+        path: "zip",
+        name: "Zip",
+        component: () => import("/@/views/demo/zip/index.vue"),
+        meta: {
+          title : 'Zip',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+      
       {
         path: "https://www.baidu.com",
         meta: {
@@ -157,7 +314,53 @@ export const asyncRoutes = [
     ],
   },
   
-  // { path : '*', redirect : '/404', hidden : true }
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Layout,
+    redirect: "/admin/api",
+    meta: {
+      title : '超级管理员',
+      icon: "component",
+      noCache : true,
+      roles : ['admin'],
+    },
+    children: [
+      {
+        path: "group",
+        name: "Group",
+        component: () => import("/@/views/admin/group/index.vue"),
+        meta: {
+          title : '分组管理',
+          icon: "banner",
+          noCache : true,
+          roles : ['admin'],
+        },
+      },
+      {
+        path: "api",
+        name: "Api",
+        component: () => import("/@/views/admin/api/index.vue"),
+        meta: {
+          title : 'api管理',
+          icon: "banner",
+          noCache : true,
+          roles : ['admin'],
+        },
+      },
+      {
+        path: "menu",
+        name: "Menu",
+        component: () => import("/@/views/admin/menu/index.vue"),
+        meta: {
+          title : '导航管理',
+          icon: "banner",
+          noCache : true,
+          roles : ['admin'],
+        },
+      },
+    ],
+  },
   { path : '/:pathMatch(.*)', redirect : '/404', hidden : true }
 ]
 
