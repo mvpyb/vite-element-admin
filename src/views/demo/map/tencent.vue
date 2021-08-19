@@ -1,18 +1,23 @@
 
 <template>
-  <div class="section-container ">
-    <div class="info">腾讯地图</div>
-    <div id="container" ref="container"></div>
-  </div>
+  <page-layout title="腾讯地图" subtitle="腾讯地图的简单使用">
+    <template #body>
+      <div class="section-container ">
+        <div id="container" ref="container"></div>
+      </div>
+    </template>
+  </page-layout>
 </template>
 
 <script>
   // 文档 ： https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay
   import {ref, defineComponent, onMounted, nextTick} from "vue"
   import { tencentMap } from './utils'
+  import PageLayout from '/@/components/layout/index.vue'
 
   export default defineComponent ({
     name : 'Tencent',
+    components : { PageLayout },
     setup() {
       const container = ref()
       const ak = 'VBIBZ-VEA6U-RRXVP-4MSZS-WDNAS-YDFXM'

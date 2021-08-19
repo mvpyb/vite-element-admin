@@ -1,50 +1,57 @@
 <template>
-  <div class="app-container">
-    <div>
-      <el-input v-model="filename" placeholder="请输入导出的文件名" style="width:300px;" prefix-icon="el-icon-document" />
-      <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="el-icon-document" @click="handleDownload">
-        导出为 Zip
-      </el-button>
-  
-      <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
-        <el-table-column align="center" label="Id" width="95">
-          <template  #default="scope">
-            {{ scope.$index }}
-          </template>
-        </el-table-column>
-        <el-table-column label="Title">
-          <template  #default="scope">
-            {{ scope.row.title }}
-          </template>
-        </el-table-column>
-        <el-table-column label="Author" width="110" align="center">
-          <template  #default="scope">
-            <el-tag>{{ scope.row.author }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column label="Readings" width="115" align="center">
-          <template  #default="scope">
-            {{ scope.row.pageviews }}
-          </template>
-        </el-table-column>
-        <el-table-column align="center" label="Date" width="220">
-          <template  #default="scope">
-            <i class="el-icon-time" />
-            <span>{{ scope.row.timestamp}}</span>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
-  </div>
+  <page-layout title="zip" subtitle="zip组件的简单使用">
+    <template #body>
+      <div class="app-container">
+        <div>
+          <el-input v-model="filename" placeholder="请输入导出的文件名" style="width:300px;" prefix-icon="el-icon-document" />
+          <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="el-icon-document" @click="handleDownload">
+            导出为 Zip
+          </el-button>
+      
+          <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
+            <el-table-column align="center" label="Id" width="95">
+              <template  #default="scope">
+                {{ scope.$index }}
+              </template>
+            </el-table-column>
+            <el-table-column label="Title">
+              <template  #default="scope">
+                {{ scope.row.title }}
+              </template>
+            </el-table-column>
+            <el-table-column label="Author" width="110" align="center">
+              <template  #default="scope">
+                <el-tag>{{ scope.row.author }}</el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column label="Readings" width="115" align="center">
+              <template  #default="scope">
+                {{ scope.row.pageviews }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" label="Date" width="220">
+              <template  #default="scope">
+                <i class="el-icon-time" />
+                <span>{{ scope.row.timestamp}}</span>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </div>
+    </template>
+  </page-layout>
+ 
 </template>
 
 <script>
   import {ref, defineComponent, onMounted, onBeforeUnmount } from "vue"
   import { ElMessage } from 'element-plus'
   import { tableList } from "/@/api/demo"
+  import PageLayout from '/@/components/layout/index.vue'
   
   export default defineComponent ({
-    name : 'Fabric',
+    name : 'Zip',
+    components : { PageLayout },
     setup() {
       const filename = ref( '' )
       const fileType = ref( 'xlsx' )

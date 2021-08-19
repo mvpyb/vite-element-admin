@@ -1,18 +1,23 @@
 
 <template>
-  <div class="section-container ">
-    <div class="info">高德地图</div>
-    <div id="container" ref="container"></div>
-  </div>
+  <page-layout title="高德地图" subtitle="高德地图的简单使用">
+    <template #body>
+      <div class="section-container ">
+        <div id="container" ref="container"></div>
+      </div>
+    </template>
+  </page-layout>
 </template>
 
 <script>
   // 文档 ： https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay
-  import {ref, defineComponent } from "vue";
-  import AMapLoader from '@amap/amap-jsapi-loader';
+  import {ref, defineComponent } from "vue"
+  import AMapLoader from '@amap/amap-jsapi-loader'
+  import PageLayout from '/@/components/layout/index.vue'
 
   export default defineComponent ({
     name : 'Gaode',
+    components : { PageLayout },
     setup() {
       const container = ref()
       const ak = '5dc1bd09758a3d8eaafa4a8e5800e29c'

@@ -1,65 +1,70 @@
 <template>
-  <div class="app-container">
-    <div>
-      <div style="display:inline-block;">
-        <label class="radio-label" style="padding-left:0;">文件名: </label>
-        <el-input v-model="filename" placeholder="请输入导出的文件名" style="width:345px;" prefix-icon="el-icon-document" />
+  <page-layout title="表格" subtitle="表格的简单使用">
+    <template #body>
+      <div class="app-container">
+        <div>
+          <div style="display:inline-block;">
+            <label class="radio-label" style="padding-left:0;">文件名: </label>
+            <el-input v-model="filename" placeholder="请输入导出的文件名" style="width:345px;" prefix-icon="el-icon-document" />
+          </div>
+          <div style="display:inline-block;">
+            <label class="radio-label">导出类型: </label>
+            <el-select v-model="fileType" style="width:120px;">
+              <el-option
+                  v-for="item in options"
+                  :key="item"
+                  :label="item"
+                  :value="item"
+              />
+            </el-select>
+          </div>
+          <el-button :loading="downloadLoading" style="margin:0 0 20px 20px;" type="primary" icon="el-icon-document" @click="handleDownload">
+            导出
+          </el-button>
+      
+          <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
+            <el-table-column align="center" label="Id" width="95">
+              <template  #default="scope">
+                {{ scope.$index }}
+              </template>
+            </el-table-column>
+            <el-table-column label="Title">
+              <template  #default="scope">
+                {{ scope.row.title }}
+              </template>
+            </el-table-column>
+            <el-table-column label="Author" width="110" align="center">
+              <template  #default="scope">
+                <el-tag>{{ scope.row.author }}</el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column label="Readings" width="115" align="center">
+              <template  #default="scope">
+                {{ scope.row.pageviews }}
+              </template>
+            </el-table-column>
+            <el-table-column align="center" label="Date" width="220">
+              <template  #default="scope">
+                <i class="el-icon-time" />
+                <span>{{ scope.row.timestamp}}</span>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
       </div>
-      <div style="display:inline-block;">
-        <label class="radio-label">导出类型: </label>
-        <el-select v-model="fileType" style="width:120px;">
-          <el-option
-              v-for="item in options"
-              :key="item"
-              :label="item"
-              :value="item"
-          />
-        </el-select>
-      </div>
-      <el-button :loading="downloadLoading" style="margin:0 0 20px 20px;" type="primary" icon="el-icon-document" @click="handleDownload">
-        导出
-      </el-button>
-  
-      <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
-        <el-table-column align="center" label="Id" width="95">
-          <template  #default="scope">
-            {{ scope.$index }}
-          </template>
-        </el-table-column>
-        <el-table-column label="Title">
-          <template  #default="scope">
-            {{ scope.row.title }}
-          </template>
-        </el-table-column>
-        <el-table-column label="Author" width="110" align="center">
-          <template  #default="scope">
-            <el-tag>{{ scope.row.author }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column label="Readings" width="115" align="center">
-          <template  #default="scope">
-            {{ scope.row.pageviews }}
-          </template>
-        </el-table-column>
-        <el-table-column align="center" label="Date" width="220">
-          <template  #default="scope">
-            <i class="el-icon-time" />
-            <span>{{ scope.row.timestamp}}</span>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
-  </div>
+    </template>
+  </page-layout>
 </template>
 
 <script>
   import {ref, defineComponent, onMounted, onBeforeUnmount } from "vue"
   import { ElMessage } from 'element-plus'
   import { tableList } from "/@/api/demo"
-  
+  import PageLayout from '/@/components/layout/index.vue'
   
   export default defineComponent ({
-    name : 'Fabric',
+    name : 'ExportExcel',
+    components : { PageLayout },
     setup() {
       const filename = ref( '' )
       const fileType = ref( 'xlsx' )

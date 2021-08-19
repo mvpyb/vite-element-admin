@@ -14,5 +14,5 @@ export default defineComponent({
   components: {
     VueJsonPretty
   }
-});
+})
 </script>

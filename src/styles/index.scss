@@ -101,6 +101,33 @@ div:focus {
   }
 }
 
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-col {
+  overflow: hidden;
+  text-align: justify;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.ellipsis-col2 {
+  -webkit-line-clamp: 2;
+}
+
+.un-select {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+
 aside {
   background: #eef1f6;
   padding: 8px 24px;
@@ -193,4 +220,9 @@ aside {
 
 .multiselect--active {
   z-index: 1000 !important;
+}
+
+.link-item {
+  color : #1d8ce0;
+  cursor: pointer;
 }

@@ -1,16 +1,21 @@
 
 <template>
-  <div class="section-container ">
-    <div class="info">最新版GL地图命名空间为BMapGL, 可按住鼠标右键控制地图旋转、修改倾斜角度。</div>
-    <div id="container" ref="container"></div>
-  </div>
+  <page-layout title="百度地图" subtitle="百度地图的简单使用，最新版GL地图命名空间为BMapGL, 可按住鼠标右键控制地图旋转、修改倾斜角度。">
+    <template #body>
+      <div class="section-container ">
+        <div id="container" ref="container"></div>
+      </div>
+    </template>
+  </page-layout>
 </template>
 
 <script>
-  import {ref, defineComponent, onMounted, nextTick } from "vue";
+  import {ref, defineComponent, onMounted, nextTick } from "vue"
   import { baiduMap } from './utils'
+  import PageLayout from '/@/components/layout/index.vue'
   export default defineComponent ({
     name : 'Baidu',
+    components : { PageLayout },
     setup() {
       const container = ref()
       const ak = 'ov7zC5g8Ac0ScLPp1zG8TZDuiGfty9Hh'

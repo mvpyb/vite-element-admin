@@ -90,12 +90,38 @@ export const asyncRoutes = [
   },
   
   {
+    path: "/fun",
+    name: "Fun",
+    component: Layout,
+    redirect: "/fun/directives",
+    meta: {
+      title : '功能组件',
+      icon: "component",
+      noCache : true,
+      roles : ['admin'],
+    },
+    children: [
+      {
+        path: "directives",
+        name: "Directives",
+        component: () => import("/@/views/fun/directive/index.vue"),
+        meta: {
+          title : '常用指令',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+    ],
+  },
+  
+  {
     path: "/demo",
     name: "Demo",
     component: Layout,
     redirect: "/demo/editor",
     meta: {
-      title : 'DEMO',
+      title : '示例组件',
       icon: "component",
       noCache : true,
       roles : ['admin'],
@@ -203,7 +229,7 @@ export const asyncRoutes = [
           },
         ]
       },
-  
+      
       {
         path: "drag",
         name: "Drag",
@@ -215,19 +241,7 @@ export const asyncRoutes = [
           // roles : ['admin'],
         },
       },
-  
-      {
-        path: "directives",
-        name: "Directives",
-        component: () => import("/@/views/demo/directive/index.vue"),
-        meta: {
-          title : '常用指令',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-      },
-  
+      
       {
         path: "/canvas",
         name: "Canvas",
@@ -264,7 +278,7 @@ export const asyncRoutes = [
           },
         ]
       },
-  
+      
       {
         path: "/excel",
         name: "Excel",
@@ -290,7 +304,7 @@ export const asyncRoutes = [
           },
         ]
       },
-  
+      
       {
         path: "zip",
         name: "Zip",
@@ -314,53 +328,54 @@ export const asyncRoutes = [
     ],
   },
   
-  {
-    path: "/admin",
-    name: "Admin",
-    component: Layout,
-    redirect: "/admin/api",
-    meta: {
-      title : '超级管理员',
-      icon: "component",
-      noCache : true,
-      roles : ['admin'],
-    },
-    children: [
-      {
-        path: "group",
-        name: "Group",
-        component: () => import("/@/views/admin/group/index.vue"),
-        meta: {
-          title : '分组管理',
-          icon: "banner",
-          noCache : true,
-          roles : ['admin'],
-        },
-      },
-      {
-        path: "api",
-        name: "Api",
-        component: () => import("/@/views/admin/api/index.vue"),
-        meta: {
-          title : 'api管理',
-          icon: "banner",
-          noCache : true,
-          roles : ['admin'],
-        },
-      },
-      {
-        path: "menu",
-        name: "Menu",
-        component: () => import("/@/views/admin/menu/index.vue"),
-        meta: {
-          title : '导航管理',
-          icon: "banner",
-          noCache : true,
-          roles : ['admin'],
-        },
-      },
-    ],
-  },
+  // {
+  //   path: "/admin",
+  //   name: "Admin",
+  //   component: Layout,
+  //   redirect: "/admin/api",
+  //   meta: {
+  //     title : '超级管理员',
+  //     icon: "component",
+  //     noCache : true,
+  //     roles : ['admin'],
+  //   },
+  //   children: [
+  //     {
+  //       path: "group",
+  //       name: "Group",
+  //       component: () => import("/@/views/admin/group/index.vue"),
+  //       meta: {
+  //         title : '分组管理',
+  //         icon: "banner",
+  //         noCache : true,
+  //         roles : ['admin'],
+  //       },
+  //     },
+  //     {
+  //       path: "api",
+  //       name: "Api",
+  //       component: () => import("/@/views/admin/api/index.vue"),
+  //       meta: {
+  //         title : 'api管理',
+  //         icon: "banner",
+  //         noCache : true,
+  //         roles : ['admin'],
+  //       },
+  //     },
+  //     {
+  //       path: "menu",
+  //       name: "Menu",
+  //       component: () => import("/@/views/admin/menu/index.vue"),
+  //       meta: {
+  //         title : '导航管理',
+  //         icon: "banner",
+  //         noCache : true,
+  //         roles : ['admin'],
+  //       },
+  //     },
+  //   ],
+  // },
+    
   { path : '/:pathMatch(.*)', redirect : '/404', hidden : true }
 ]
 

@@ -1,29 +1,48 @@
 
 <template>
-  <div class="section-container">
-    <el-button type="primary" size="small" @click="loadFbx( 1 )">fbx - 兽人</el-button>
-    <el-button type="primary" size="small" @click="loadFbx( 2 )">fbx - 机器人</el-button>
-    
-    <el-button type="primary" size="small" @click="loadObj( 1 )">obj - 树</el-button>
-    <el-button type="primary" size="small" @click="loadObj( 2 )">obj - 人物</el-button>
-    <el-button type="primary" size="small" @click="loadObj( 3 )">obj - 雕塑</el-button>
-    
-    <el-button type="primary" size="small" @click="loadJSON( 1 )">json - 1</el-button>
-    
-    <div v-loading="loading" class="view-model-wrapper" element-loading-text="模型加载中...">
-      <div id="model-wrapper" ref="modelWrapper" />
-    </div>
-  </div>
+  <page-layout title="threeJs" :subtitle="subtitle">
+    <template #body>
+      <div class="section-container">
+        <el-descriptions title="基础模型使用" column="6">
+          <el-descriptions-item label="">
+            <el-button type="primary" size="small" @click="loadFbx( 1 )">fbx - 兽人</el-button>
+          </el-descriptions-item>
+          <el-descriptions-item label="">
+            <el-button type="primary" size="small" @click="loadFbx( 2 )">fbx - 机器人</el-button>
+          </el-descriptions-item>
+          <el-descriptions-item label="">
+            <el-button type="primary" size="small" @click="loadObj( 1 )">obj - 树</el-button>
+          </el-descriptions-item>
+          <el-descriptions-item label="">
+            <el-button type="primary" size="small" @click="loadObj( 2 )">obj - 人物</el-button>
+          </el-descriptions-item>
+          <el-descriptions-item label="">
+            <el-button type="primary" size="small" @click="loadObj( 3 )">obj - 雕塑</el-button>
+          </el-descriptions-item>
+          <el-descriptions-item label="">
+            <el-button type="primary" size="small" @click="loadJSON( 1 )">json - 1</el-button>
+          </el-descriptions-item>
+        </el-descriptions>
+        
+        <div v-loading="loading" class="view-model-wrapper" element-loading-text="模型加载中...">
+          <div id="model-wrapper" ref="modelWrapper" />
+        </div>
+      </div>
+    </template>
+  </page-layout>
 </template>
 
 <script>
-  import {ref, defineComponent, onMounted, reactive, onBeforeUnmount } from "vue";
+  import {ref, defineComponent, onMounted, reactive, onBeforeUnmount } from "vue"
   import ThreeHandle from './utils/threeHandle.js'
   import { WEBGL } from './utils/webgl'
+  import PageLayout from '/@/components/layout/index.vue'
 
   export default defineComponent ({
     name : 'Editor',
+    components : { PageLayout },
     setup() {
+      const subtitle = ref( `Three.js是基于原生WebGL封装运行的三维引擎，在所有WebGL引擎中，Three.js是国内文资料最多、使用最广泛的三维引擎。官方文档地址：<a href="https://threejs.org/">点我前往 https://threejs.org/</a> ` )
       const loading = ref( false )
       const modelWrapper = ref()
       const unSupport = ref( '' )
@@ -280,6 +299,7 @@
       // }
       
       return {
+        subtitle,
         loading,
         modelWrapper,
         loadFbxFn,
@@ -306,5 +326,12 @@
   }
   #model-wrapper{
     @extend .view-model-wrapper;
+  }
+
+  :deep .el-descriptions__body {
+    background: #F0F2F5;
+  }
+  .el-button {
+    width: 92px;
   }
 </style>

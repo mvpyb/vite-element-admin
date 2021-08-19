@@ -1,5 +1,4 @@
 <template>
-  <!-- 左侧bpmn元素选择器 -->
   <div class="node-panel">
     <div
       class="node-item"

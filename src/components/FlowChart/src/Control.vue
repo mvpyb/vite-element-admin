@@ -1,6 +1,5 @@
 <template>
   <div class="control-container">
-    <!-- 功能按钮 -->
     <ul>
       <li
         v-for="(item,key) in titleLists"

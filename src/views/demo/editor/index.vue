@@ -1,36 +1,33 @@
 
 <template>
-  <div class="section-container ">
-    <div class="body fix-width">
-      <tinymce :value="form.contents" :height="500" @input="getEditorContent" />
-<!--      <tinymce v-model="form.contents" @change="handleChange" />-->
-    </div>
-  </div>
+  <page-layout title="富文本编辑器 - tinymce" :subtitle="subtitle">
+    <template #body>
+      <div class="section-container fix-width">
+        <tinymce :value="form.contents" :height="500" @input="getEditorContent" />
+      </div>
+    </template>
+  </page-layout>
 </template>
 
 <script>
-  import { defineComponent, reactive } from "vue";
+  import { defineComponent, reactive, ref } from "vue";
   import Tinymce from '/@/components/Tinymce/index.vue'
+  import PageLayout from '/@/components/layout/index.vue'
   
   export default defineComponent ({
     name : 'Editor',
-    components : { Tinymce },
+    components : { PageLayout, Tinymce },
     setup() {
       const form = reactive( {
         contents : '初始内容填充'
       } )
+      const subtitle = ref( `TinyMCE是一款易用、且功能强大的所见即所得的富文本编辑器。同类程序有：UEditor、Kindeditor、Simditor、CKEditor、wangEditor、Suneditor、froala等等。官方文档地址：<a href="https://www.tiny.cloud/docs/">点我前往 https://www.tiny.cloud/docs/</a> ` )
       // 富文本更新内容
       const getEditorContent = ( info ) => {
         form.contents = info
-        console.log( info )
       }
-      // function handleChange( info ) {
-      //   form.contents = info
-      //   console.log( info );
-      // }
       return {
-        form, getEditorContent,
-        // value, handleChange
+        form, getEditorContent, subtitle
       }
     },
   })
