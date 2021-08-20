@@ -1,10 +1,109 @@
 
+const toString = Object.prototype.toString
+export function is(val, type) {
+  return toString.call(val) === `[object ${type}]`
+}
 /**
  * @param {string} path
  * @returns {Boolean}
  */
 export function isExternal(path) {
   return /^(https?:|mailto:|tel:)/.test(path)
+}
+
+
+/**
+ * @param {string} str
+ * @returns {Boolean}
+ */
+export function isString(str) {
+  if (typeof str === 'string' || str instanceof String) {
+    return true
+  }
+  return false
+}
+
+/**
+ * @param {Array} arg
+ * @returns {Boolean}
+ */
+export function isArray(arg) {
+  if (typeof Array.isArray === 'undefined') {
+    // return Object.prototype.toString.call(arg) === '[object Array]'
+    return is( arg, 'Array' )
+  }
+  return Array.isArray(arg)
+}
+
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isNumber(arg) {
+  return arg !== null && is(arg, "Number")
+}
+
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isObject(arg) {
+  return arg !== null && is(arg, "Object")
+}
+
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isEmpty( arg ) {
+  if (isArray( arg ) || isString(  arg )) {
+    return arg.length === 0
+  }
+  
+  if (arg instanceof Map || arg instanceof Set) {
+    return arg.size === 0
+  }
+  
+  if (isObject(arg)) {
+    return Object.keys(arg).length === 0
+  }
+  return false
+}
+
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isFunction( arg ) {
+  return typeof arg === "function"
+}
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isBoolean(arg) {
+  return is(arg, 'Boolean')
+}
+
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isRegExp(arg) {
+  return is(arg, "RegExp")
+}
+
+/**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isPromise( arg ) {
+  return (
+      is(arg, "Promise") &&
+      isObject(arg) &&
+      isFunction(arg.then) &&
+      isFunction(arg.catch)
+  );
 }
 
 /**
@@ -59,26 +158,4 @@ export function validAlphabets(str) {
 export function validEmail(email) {
   const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return reg.test(email)
-}
-
-/**
- * @param {string} str
- * @returns {Boolean}
- */
-export function isString(str) {
-  if (typeof str === 'string' || str instanceof String) {
-    return true
-  }
-  return false
-}
-
-/**
- * @param {Array} arg
- * @returns {Boolean}
- */
-export function isArray(arg) {
-  if (typeof Array.isArray === 'undefined') {
-    return Object.prototype.toString.call(arg) === '[object Array]'
-  }
-  return Array.isArray(arg)
 }

@@ -15,7 +15,14 @@
             </el-row>
           </el-tab-pane>
           <el-tab-pane label="数字动画" name="second">
-          
+            <CountTo
+                prefix="$"
+                :duration="2000"
+                :color="'green'"
+                :fontSize="'2.3em'"
+                :startVal="1"
+                :endVal="2000"
+            />
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -29,10 +36,11 @@
   import clipboard from '/@/directive/clipboard/clipboard'
   import PageLayout from '/@/components/layout/index.vue'
   import effects from "./utils"
+  import CountTo from "/@/components/CountTo/index.vue"
   
   export default defineComponent ({
     name : 'Animate',
-    components : { PageLayout },
+    components : { PageLayout, CountTo },
     directives : { copy: clipboard },
     setup() {
       const activeName = ref( 'second' )
