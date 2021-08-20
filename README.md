@@ -26,7 +26,6 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 - [Element-Plus-Vue](https://element-plus.gitee.io/#/zh-CN/component/installation) - Element UI组件
 - [Mock.js](https://github.com/nuysoft/Mock) - mockjs 基本语法
 
-
 ## 目录结构
 
 ```
