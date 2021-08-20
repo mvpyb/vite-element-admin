@@ -375,7 +375,7 @@ export const asyncRoutes = [
   //     },
   //   ],
   // },
-    
+  
   { path : '/:pathMatch(.*)', redirect : '/404', hidden : true }
 ]
 
