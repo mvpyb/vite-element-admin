@@ -60,7 +60,6 @@
   import {ref, defineComponent, reactive } from "vue"
   import PageLayout from '/@/components/layout/index.vue'
   
-  
   export default defineComponent ({
     name : 'Editor',
     components : { PageLayout },

@@ -14,6 +14,7 @@
     <template #body>
       <div class="section-container ">
         <el-row :gutter="25">
+  
           <el-col :span="12">
             <el-card>
               <template #header>

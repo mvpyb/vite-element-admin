@@ -112,6 +112,17 @@ export const asyncRoutes = [
           // roles : ['admin'],
         },
       },
+      {
+        path: "animate",
+        name: "Animate",
+        component: () => import("/@/views/fun/animate/index.vue"),
+        meta: {
+          title : '常用动画',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
     ],
   },
   
