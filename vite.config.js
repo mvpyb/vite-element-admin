@@ -118,7 +118,7 @@ export default ( { command, mode } ) => {
             resolveComponent: (name) => `vxe-table/es/${name}`,
             resolveStyle: (name) => `vxe-table/es/${name}/style.css`,
           },
-        ],
+        ]
       }),
       viteMockServe({
         mockPath: "mock",
@@ -131,7 +131,7 @@ export default ( { command, mode } ) => {
           setupProdMockServer();
         `,
         logger: false, // 是否在控制台显示请求日志
-      }),
+      })
     ],
-  };
-};
+  }
+}

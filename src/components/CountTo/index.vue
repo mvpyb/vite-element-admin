@@ -3,27 +3,32 @@
 </template>
 
 <script>
-  import {defineComponent, reactive, computed, watch, onMounted, unref, toRefs, ref } from "vue"
+  import { reactive, computed, watch, onMounted, unref, toRefs, ref } from "vue"
   import { isNumber } from '/@/utils/validate'
+  import { requestAnimationFrame, cancelAnimationFrame } from './requestAnimationFrame.js'
   
   export default {
     name: "CountTo",
     props: {
       startVal: {
-        type : Number,
-        default : 0
+        type: Number,
+        required: false,
+        default: 0
       },
       endVal: {
-        type : Number,
-        default : 2020
+        type: Number,
+        required: false,
+        default: 2017
       },
       duration: {
-        type : Number,
-        default : 1300
+        type: Number,
+        required: false,
+        default: 3000
       },
       autoplay: {
-        type : Boolean,
-        default : true
+        type: Boolean,
+        required: false,
+        default: true
       },
       decimals: {
         type: Number,
@@ -33,6 +38,7 @@
           return value >= 0
         }
       },
+  
       color: {
         type : String,
         default : ''
@@ -41,30 +47,36 @@
         type : String,
         default : ''
       },
+      
       decimal: {
-        type : String,
-        default : ''
+        type: String,
+        required: false,
+        default: '.'
       },
       separator: {
-        type : String,
-        default : ''
+        type: String,
+        required: false,
+        default: ','
       },
       prefix: {
-        type : String,
-        default : ''
+        type: String,
+        required: false,
+        default: ''
       },
       suffix: {
-        type : String,
-        default : ''
+        type: String,
+        required: false,
+        default: ''
       },
       useEasing: {
-        type : Boolean,
-        default : true
+        type: Boolean,
+        required: false,
+        default: true
       },
       easingFn: {
         type: Function,
         default(t, b, c, d) {
-          return (c * (-Math.pow(2, (-10 * t) / d) + 1) * 1024) / 1023 + b
+          return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
         }
       }
     },
@@ -203,7 +215,7 @@
         if (props.autoplay) {
           start();
         }
-        emit("mounted");
+        emit("mounted")
       })
 
       const styleObj = ref( {

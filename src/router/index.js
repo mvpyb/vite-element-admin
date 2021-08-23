@@ -240,6 +240,43 @@ export const asyncRoutes = [
           },
         ]
       },
+  
+      {
+        path: "/media",
+        name: "Media",
+        component: () => import("/@/views/demo/media/index.vue"),
+        redirect: "/demo/media/video",
+        meta: {
+          title : '音视频组件',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+        children : [
+          {
+            path: "/video",
+            name: "Video",
+            component: () => import("/@/views/demo/media/video.vue"),
+            meta: {
+              title : '视频组件',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+          {
+            path: "/audio",
+            name: "Audio",
+            component: () => import("/@/views/demo/media/audio.vue"),
+            meta: {
+              title : '音频组件',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          }
+        ]
+      },
       
       {
         path: "drag",
