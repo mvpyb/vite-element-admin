@@ -75,6 +75,8 @@
 <script>
   import {ref, defineComponent, onMounted, getCurrentInstance } from "vue"
   // import { ElMessage } from 'element-plus'
+  import * as ELEMENT from 'element-plus'
+  const { ElMessage } = ELEMENT
   import clipboard from '/@/directive/clipboard/clipboard'
   import PageLayout from '/@/components/layout/index.vue'
   import effects from "./utils"
@@ -98,7 +100,7 @@
         // _this.$forceUpdate()
       }
       function copySuccess() {
-        // ElMessage.success( '复制成功' )
+        ElMessage.success( '复制成功' )
       }
       return {
         animateList, copySuccess, activeName,

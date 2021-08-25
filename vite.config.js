@@ -54,7 +54,11 @@ export default ( { command, mode } ) => {
       //   'BMap'
       // ],
       rollupOptions : {
-        // external: ['BMap', 'ElMessage']
+        external: [
+          'BMap',
+          // 'ElMessage',
+          // resolve( './src/some-local-file-that-should-not-be-bundled.js' )
+        ]
       }
     },
   

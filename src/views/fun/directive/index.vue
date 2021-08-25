@@ -149,6 +149,9 @@
   import {ref, defineComponent, unref } from "vue"
   import {useStore} from "vuex"
   // import { ElMessage } from 'element-plus'
+  
+  import * as ELEMENT from 'element-plus'
+  const { ElMessage } = ELEMENT
   import clipboard from '/@/directive/clipboard/clipboard'
   import waves from '/@/directive/wave/waves'
   import longpress from '/@/directive/longpress'
@@ -159,7 +162,7 @@
   import PageLayout from '/@/components/layout/index.vue'
   
   export default defineComponent ({
-    name : 'Copy',
+    name : 'Directive',
     directives: {
       copy: clipboard,
       waves,
@@ -175,16 +178,16 @@
       const store = useStore()
       
       const clipboardSuccess = () => {
-        // ElMessage.success('复制成功')
+        ElMessage.success('复制成功')
       }
       const clipboardError = () => {
-        // ElMessage.error('复制失败')
+        ElMessage.error('复制失败')
       }
       const longPressClick = () => {
-        // ElMessage.error('你按疼我了...')
+        ElMessage.error('你按疼我了...')
       }
       const debounceClick = () => {
-        // ElMessage.warning('嗯，你说的都对。。。')
+        ElMessage.warning('嗯，你说的都对。。。')
       }
       
       const currentRole = ref( [] )

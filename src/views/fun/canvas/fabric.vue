@@ -50,6 +50,8 @@
 <script>
   import {ref, defineComponent, onMounted, onBeforeUnmount } from "vue"
   // import { ElMessage } from 'element-plus'
+  import * as ELEMENT from 'element-plus'
+  const { ElMessage } = ELEMENT
   import { Mark } from './utils'
   const markHandle = new Mark()
   import PageLayout from '/@/components/layout/index.vue'
@@ -82,7 +84,7 @@
       function removeActive() {
         const activeObject = canvas.value.getActiveObject()
         if ( !activeObject || !activeObject.name ) {
-          // ElMessage.warning( '请先选中一个有效元素' )
+          ElMessage.warning( '请先选中一个有效元素' )
           return false
         }
         markHandle.removeObj( activeObject )

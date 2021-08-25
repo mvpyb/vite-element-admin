@@ -9,6 +9,9 @@
 'use strict'
 import axios from 'axios'
 // import { ElMessage } from 'element-plus'
+import * as ELEMENT from 'element-plus'
+const { ElMessage } = ELEMENT
+
 import store from '/@/store'
 import router from '/@/router'
 import { getEnvs } from "./envs"
@@ -105,11 +108,11 @@ class HttpRequest {
     // 请求拦截
     instance.interceptors.request.use(config => {
       if ( !navigator.onLine ) {
-        // ElMessage( {
-        //   message : '请检查您的网络是否正常',
-        //   type : 'error',
-        //   duration : 3 * 1000
-        // } )
+        ElMessage( {
+          message : '请检查您的网络是否正常',
+          type : 'error',
+          duration : 3 * 1000
+        } )
         return Promise.reject( '请检查您的网络是否正常' )
       }
       // config.headers.token = getCookieByKey( TOKEN ) || ''
@@ -141,11 +144,11 @@ class HttpRequest {
           window.location.reload()
         }
         else if ( !isWhiteCode ) {
-          // ElMessage( {
-          //   message : message || 'Error',
-          //   type : 'error',
-          //   duration : 3 * 1000
-          // } )
+          ElMessage( {
+            message : message || 'Error',
+            type : 'error',
+            duration : 3 * 1000
+          } )
           return Promise.reject( message || 'Error' )
         } else {
           return result
@@ -156,11 +159,11 @@ class HttpRequest {
         error.message = that.checkStatus( error.response.status )
       }
       const isTimeout = error.message.includes( 'timeout' )
-      // ElMessage( {
-      //   message : isTimeout ? '网络请求超时' : ( error.message || '连接到服务器失败' ),
-      //   type : 'error',
-      //   duration : 2 * 1000
-      // } )
+      ElMessage( {
+        message : isTimeout ? '网络请求超时' : ( error.message || '连接到服务器失败' ),
+        type : 'error',
+        duration : 2 * 1000
+      } )
       return Promise.reject( error.message )
     })
   }
