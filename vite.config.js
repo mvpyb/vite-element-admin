@@ -50,9 +50,12 @@ export default ( { command, mode } ) => {
       sourcemap: false,
       brotliSize: false, // 启用/禁用 brotli 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建
       chunkSizeWarningLimit: 2000,  // 消除打包大小超过2000kb警告
-      rollupOptions : [
-          'BMap'
-      ]
+      // rollupOptions : [
+      //   'BMap'
+      // ],
+      rollupOptions : {
+        // external: ['BMap', 'ElMessage']
+      }
     },
   
     // 定义全局常量替换方式

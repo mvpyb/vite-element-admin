@@ -5,9 +5,11 @@ import 'normalize.css/normalize.css'
 // import '@/assets/fonts/fonts.css'
 
 import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
 import './styles/element-variables.scss'
 import "element-plus/packages/theme-chalk/src/base.scss";
-import 'element-plus/lib/theme-chalk/index.css'
+// import 'element-plus/lib/theme-chalk/index.css'
 
 import './styles/index.scss'
 import "./assets/iconfont/iconfont.js";
@@ -23,9 +25,9 @@ import { useSvgIcon } from "./icons";
 
 import './permission'
 
-import ElementLocale from "element-plus/lib/locale";
-import zhLocale from "element-plus/lib/locale/lang/zh-cn";
-ElementLocale.use(zhLocale);
+// import ElementLocale from "element-plus/lib/locale";
+// import zhLocale from "element-plus/lib/locale/lang/zh-cn";
+// ElementLocale.use(zhLocale);
 
 const app = createApp(App);
 useSvgIcon( app )

@@ -74,12 +74,13 @@
 
 <script>
   import {ref, defineComponent, onMounted, getCurrentInstance } from "vue"
-  import { ElMessage } from 'element-plus'
+  // import { ElMessage } from 'element-plus'
   import clipboard from '/@/directive/clipboard/clipboard'
   import PageLayout from '/@/components/layout/index.vue'
   import effects from "./utils"
   import CountTo from "/@/components/CountTo/index.vue"
   import PanelCard from "/@/components/PanelCard/index.vue"
+
   
   export default defineComponent ({
     name : 'Animate',
@@ -97,7 +98,7 @@
         // _this.$forceUpdate()
       }
       function copySuccess() {
-        ElMessage.success( '复制成功' )
+        // ElMessage.success( '复制成功' )
       }
       return {
         animateList, copySuccess, activeName,

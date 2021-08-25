@@ -1,7 +1,5 @@
 <template>
   <div class="dashboard-editor-container">
-    <el-button type="primary" @click="test">buttonCont</el-button>
-    
     <el-row :gutter="32">
       <el-col :xs="24" :sm="12" :lg="8">
         <div class="chart-wrapper">
@@ -54,17 +52,11 @@
       RaddarChart, PieChart, BarChart
     },
     setup() {
-      
       const openDepot = () => {
         // window.open("https://github.com/xiaoxian521/vue-pure-admin");
       }
-      
-      function test() {
-        testRequest()
-      }
-      
       return {
-        openDepot, test
+        openDepot
       }
     }
   };

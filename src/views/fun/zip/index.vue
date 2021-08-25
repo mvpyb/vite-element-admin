@@ -45,7 +45,7 @@
 
 <script>
   import {ref, defineComponent, onMounted, onBeforeUnmount } from "vue"
-  import { ElMessage } from 'element-plus'
+  // import { ElMessage } from 'element-plus'
   import { tableList } from "/@/api/demo"
   import PageLayout from '/@/components/layout/index.vue'
   
@@ -89,7 +89,7 @@
           list.value = data
         } catch (e) {
           list.value = []
-          ElMessage.error( '获取列表出错' )
+          // ElMessage.error( '获取列表出错' )
         } finally {
           listLoading.value = false
         }
