@@ -80,7 +80,6 @@
       // 回填初始密码
       function initPwd() {
         const initial = props.initial
-        console.log( 'initial', initial )
         if ( pureNum ) {
           if ( /^\d+$/.test( initial ) ) {
             fillPwd( initial )
@@ -144,7 +143,6 @@
       // 输完获取密码
       function getFullPwd() {
         fullPwd.value = pwdData.value.reduce( ( a, b ) => a + b.val, '' )
-        console.log( 'fullPwd', fullPwd.value )
         emit( 'getFullPwd', fullPwd.value )
       }
       

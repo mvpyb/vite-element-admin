@@ -123,6 +123,103 @@ export const asyncRoutes = [
           // roles : ['admin'],
         },
       },
+  
+      {
+        path: "3d",
+        name: "webGL",
+        component: () => import("/@/views/fun/webGL/index.vue"),
+        meta: {
+          title : '3d可视化',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+      {
+        path: "pwd",
+        name: "Pwd",
+        component: () => import("/@/views/fun/pwd/index.vue"),
+        meta: {
+          title : '密码相关组件',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
+      {
+        path: "/canvas",
+        name: "Canvas",
+        component: () => import("/@/views/fun/canvas/index.vue"),
+        redirect: "/demo/canvas/img",
+        meta: {
+          title : 'canvas组件',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+        children : [
+          {
+            path: "/fabric",
+            name: "Fabric",
+            component: () => import("/@/views/fun/canvas/fabric.vue"),
+            meta: {
+              title : 'canvas - fabric',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+        ]
+      },
+  
+      // {
+      //   path: "/img",
+      //   name: "Img",
+      //   component: () => import("/@/views/fun/img/index.vue"),
+      //   meta: {
+      //     title : '图片组件',
+      //     icon: "office",
+      //     noCache : true,
+      //     // roles : ['admin'],
+      //   },
+      // },
+      
+      {
+        path: "/excel",
+        name: "Excel",
+        component: () => import("/@/views/fun/excel/index.vue"),
+        redirect: "/demo/excel/export",
+        meta: {
+          title : '表格',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+        children : [
+          {
+            path: "/export",
+            name: "ExcelExport",
+            component: () => import("/@/views/fun/excel/export-excel.vue"),
+            meta: {
+              title : '表格导出',
+              icon: "office",
+              noCache : true,
+              // roles : ['admin'],
+            },
+          },
+        ]
+      },
+      {
+        path: "zip",
+        name: "Zip",
+        component: () => import("/@/views/fun/zip/index.vue"),
+        meta: {
+          title : 'Zip',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
+      },
     ],
   },
   
@@ -182,17 +279,7 @@ export const asyncRoutes = [
           // roles : ['admin'],
         },
       },
-      {
-        path: "3d",
-        name: "webGL",
-        component: () => import("/@/views/demo/webGL/index.vue"),
-        meta: {
-          title : '3d可视化',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-      },
+      
       {
         path: "/map",
         name: "Map",
@@ -277,18 +364,6 @@ export const asyncRoutes = [
           // }
         ]
       },
-  
-      {
-        path: "pwd",
-        name: "Pwd",
-        component: () => import("/@/views/demo/pwd/index.vue"),
-        meta: {
-          title : '密码相关组件',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-      },
       
       {
         path: "drag",
@@ -302,80 +377,7 @@ export const asyncRoutes = [
         },
       },
       
-      {
-        path: "/canvas",
-        name: "Canvas",
-        component: () => import("/@/views/demo/canvas/index.vue"),
-        redirect: "/demo/canvas/img",
-        meta: {
-          title : '图片组件',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-        children : [
-          // {
-          //   path: "/img",
-          //   name: "Img",
-          //   component: () => import("/@/views/demo/canvas/img.vue"),
-          //   meta: {
-          //     title : '图片组件',
-          //     icon: "office",
-          //     noCache : true,
-          //     // roles : ['admin'],
-          //   },
-          // },
-          {
-            path: "/fabric",
-            name: "Fabric",
-            component: () => import("/@/views/demo/canvas/fabric.vue"),
-            meta: {
-              title : '图片标注',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          },
-        ]
-      },
-      
-      {
-        path: "/excel",
-        name: "Excel",
-        component: () => import("/@/views/demo/excel/index.vue"),
-        redirect: "/demo/excel/export",
-        meta: {
-          title : '表格',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-        children : [
-          {
-            path: "/export",
-            name: "ExcelExport",
-            component: () => import("/@/views/demo/excel/export-excel.vue"),
-            meta: {
-              title : '表格导出',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          },
-        ]
-      },
-      
-      {
-        path: "zip",
-        name: "Zip",
-        component: () => import("/@/views/demo/zip/index.vue"),
-        meta: {
-          title : 'Zip',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-      },
+     
       
       {
         path: "https://www.baidu.com",
