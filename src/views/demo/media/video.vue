@@ -1,9 +1,16 @@
 
 <template>
-  <page-layout title="百度地图" subtitle="百度地图的简单使用，最新版GL地图命名空间为BMapGL, 可按住鼠标右键控制地图旋转、修改倾斜角度。">
+  <page-layout title="视频组件" subtitle="视频组件的简单使用">
     <template #body>
-      <div class="section-container ">
-        <div id="container" ref="container"></div>
+      <div class="section-container">
+        <el-divider content-position="left">XGPlayer : 西瓜视频播放器</el-divider>
+        <div class="description"> 更多配置请参考：https://v2.h5player.bytedance.com/config/ </div>
+        <div id="xgContainer" class="container--video"></div>
+        
+        <el-divider content-position="left">Chimee</el-divider>
+        <div class="description"> 更多配置请参考：http://chimee.org/docs/start.html </div>
+        <div id="chimee" class="container--video"></div>
+   
       </div>
     </template>
   </page-layout>
@@ -11,53 +18,72 @@
 
 <script>
   import {ref, defineComponent, onMounted, nextTick } from "vue"
-  import { baiduMap } from './utils'
   import PageLayout from '/@/components/layout/index.vue'
+  import Player from 'xgplayer'
+
+  const videoURL = 'http://s2.pstatp.com/cdn/expire-1-M/byted-player-videos/1.0.0/xgplayer-demo.mp4'
+
+  import chimee from "chimee"
+  import chimeePluginControlbar from "chimee-plugin-controlbar"
+  chimee.install(chimeePluginControlbar)
+  
   export default defineComponent ({
-    name : 'Baidu',
+    name : 'Video',
     components : { PageLayout },
     setup() {
-      const container = ref()
-      const ak = 'ov7zC5g8Ac0ScLPp1zG8TZDuiGfty9Hh'
+      function initXG() {
+        const player = new Player({
+          id: 'xgContainer',
+          poster: "https://s2.pstatp.com/cdn/expire-1-M/byted-player-videos/1.0.0/poster.jpg",
+          url: videoURL,
+    
+          width: 600,
+          height: 337.5,
+          fluid: true,
+          fitVideoSize: 'auto',
+          volume: 0.6, // 0 - 1
+          autoplay: false,
+          loop: true,
+          videoInit: true, // 初始化显示视频首帧 !important 与 autoplay 不可同时为true
+          playbackRate: [0.5, 0.75, 1, 1.5, 2], //传入倍速可选数组
+          lastPlayTime: 20, //视频起播时间（单位：秒）
+          lastPlayTimeHideDelay: 5, //提示文字展示时长（单位：秒）
+          rotateFullscreen: true, //样式横屏全屏
+        } )
+      }
+  
+      function initChimee() {
+        const player = new chimee({
+          wrapper: document.getElementById("chimee"), // video dom容器
+          // wrapper: '#chimee',  // video dom容器
+          src: videoURL,
+          isLive:false,
+          controls: true
+        })
+      }
       
       onMounted( () => {
         nextTick(() => {
-          baiduMap( ak )
-              .then( () => {
-                let map = new BMap.Map( container.value )
-                // let map = new BMap.Map( 'container' )
-                
-                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11)
-                
-                //添加地图类型控件
-                map.addControl(new BMap.MapTypeControl({
-                  mapTypes:[
-                    BMAP_NORMAL_MAP,
-                    BMAP_HYBRID_MAP
-                  ]}))
-                
-                map.setCurrentCity("北京") // 设置地图显示的城市 此项是必须设置的
-                map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
-              })
-              .catch( err => {
-                console.log( 'err', err )
-              } )
+          initXG()
+          initChimee()
         } )
       } )
       return {
-        container,
+        initXG,
+        initChimee
       };
     },
   })
 </script>
 
 <style lang="scss" scoped>
-  .info {
-    height: 30px;
-    line-height: 30px;
+  .container--video {
+    flex: auto;
   }
-  #container {
-    width: 100vw;
-    height: calc( 100vh - 120px );
+  .description {
+    margin: 15px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
   }
 </style>

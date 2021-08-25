@@ -264,18 +264,30 @@ export const asyncRoutes = [
               // roles : ['admin'],
             },
           },
-          {
-            path: "/audio",
-            name: "Audio",
-            component: () => import("/@/views/demo/media/audio.vue"),
-            meta: {
-              title : '音频组件',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          }
+          // {
+          //   path: "/audio",
+          //   name: "Audio",
+          //   component: () => import("/@/views/demo/media/audio.vue"),
+          //   meta: {
+          //     title : '音频组件',
+          //     icon: "office",
+          //     noCache : true,
+          //     // roles : ['admin'],
+          //   },
+          // }
         ]
+      },
+  
+      {
+        path: "pwd",
+        name: "Pwd",
+        component: () => import("/@/views/demo/pwd/index.vue"),
+        meta: {
+          title : '密码相关组件',
+          icon: "office",
+          noCache : true,
+          // roles : ['admin'],
+        },
       },
       
       {

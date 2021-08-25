@@ -10,35 +10,35 @@
 </template>
 
 <script>
-import { pathToRegexp } from "path-to-regexp";
-import { ref, defineComponent, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { pathToRegexp } from "path-to-regexp"
+import { ref, defineComponent, watch } from "vue"
+import { useRoute, useRouter } from "vue-router"
 
 export default defineComponent({
   name: "BreadCrumb",
   setup() {
-    const levelList = ref([]);
-    const route = useRoute();
-    const router = useRouter();
+    const levelList = ref([])
+    const route = useRoute()
+    const router = useRouter()
 
     const isDashboard = (route) => {
-      const name = route && route.name;
+      const name = route && route.name
       if (!name) {
-        return false;
+        return false
       }
-      return name.trim().toLocaleLowerCase() === "Dashboard".toLocaleLowerCase();
+      return name.trim().toLocaleLowerCase() === "Dashboard".toLocaleLowerCase()
     };
 
     const getBreadcrumb = () => {
-      let matched = route.matched.filter(item => item.meta && item.meta.title);
-      const first = matched[0];
+      let matched = route.matched.filter(item => item.meta && item.meta.title)
+      const first = matched[0]
       if (!isDashboard(first)) {
-        matched = [ { path: "/", meta: { title: "首页" } } ].concat(matched);
+        matched = [ { path: "/", meta: { title: "首页" } } ].concat(matched)
       }
       levelList.value = matched.filter(
         item => item.meta && item.meta.title && item.meta.breadcrumb !== false
-      );
-    };
+      )
+    }
   
     const pathCompile = (path) => {
       // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
@@ -48,15 +48,15 @@ export default defineComponent({
     }
 
     const handleLink = (item) => {
-      const { redirect, path } = item;
+      const { redirect, path } = item
       if (redirect) {
-        router.push(redirect.toString());
-        return;
+        router.push(redirect.toString())
+        return
       }
-      router.push( pathCompile( path ) );
-    };
+      router.push( pathCompile( path ) )
+    }
 
-    getBreadcrumb();
+    getBreadcrumb()
 
     watch(
       () => route.path,
@@ -66,7 +66,7 @@ export default defineComponent({
         // }
         getBreadcrumb()
       }
-    );
+    )
 
     return {
       getBreadcrumb,
