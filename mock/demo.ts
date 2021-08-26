@@ -33,7 +33,7 @@ const list = ():any => {
 
 export default [
   {
-    url: '/demo/tableList',
+    url: '/api/demo/tableList',
     method: 'get',
     response: () => {
       return {
@@ -43,4 +43,5 @@ export default [
       }
     }
   },
+  
 ] as MockMethod[]

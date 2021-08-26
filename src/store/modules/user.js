@@ -5,7 +5,7 @@ import router, { resetRouter } from '/@/router'
 
 const state = {
   token: getCookieByKey( 'token' ),
-  name: '招财',
+  name: '灰是小灰灰的灰',
   avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
   introduction: '',
   roles: []
@@ -55,6 +55,7 @@ const actions = {
     return new Promise( ( resolve, reject ) => {
       getInfo( payload )
           .then( response => {
+            console.log( 'getInfo', response )
             const { data, code } = response
             if ( !data || code !== 200 ) {
               reject( 'token登录失败' )
@@ -68,6 +69,7 @@ const actions = {
             resolve( data )
           } )
           .catch( error => {
+            console.log( 'getInfo error', error )
             reject( error )
             commit( 'CLEAR_USER_INFOS' )
             clearAllCookies()
