@@ -5,6 +5,8 @@ const base = './'
 import { resolve } from 'path'
 import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import VitePluginElementPlus from 'vite-plugin-element-plus'
+
 import { viteMockServe } from "vite-plugin-mock" // https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
 import vueJsx from "@vitejs/plugin-vue-jsx" // https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
 import styleImport from "vite-plugin-style-import" // https://github.com/anncwb/vite-plugin-style-import/blob/HEAD/README.zh_CN.md
@@ -25,7 +27,7 @@ export default ( { command, mode } ) => {
     resolve: {
       alias : {
         '/@' : pathResolve( 'src' ),
-        "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
+        // "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js",
       }
     },
     server : {
@@ -138,7 +140,13 @@ export default ( { command, mode } ) => {
           setupProdMockServer();
         `,
         logger: false, // 是否在控制台显示请求日志
-      })
+      }),
+  
+      VitePluginElementPlus({
+        // 如果你需要使用 [component name].scss 源文件，你需要把下面的注释取消掉。
+        // 对于所有的 API 你可以参考 https://github.com/element-plus/vite-plugin-element-plus 的文档注释
+        useSource: true
+      }),
     ],
   }
 }

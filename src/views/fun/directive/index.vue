@@ -149,9 +149,11 @@
   import {ref, defineComponent, unref } from "vue"
   import {useStore} from "vuex"
   // import { ElMessage } from 'element-plus'
+  import { ElMessage } from 'element-plus/lib'
+  // import { ElMessage } from 'element-plus/es'
   
-  import * as ELEMENT from 'element-plus'
-  const { ElMessage } = ELEMENT
+  // import * as ELEMENT from 'element-plus'
+  // const { ElMessage } = ELEMENT
   import clipboard from '/@/directive/clipboard/clipboard'
   import waves from '/@/directive/wave/waves'
   import longpress from '/@/directive/longpress'
