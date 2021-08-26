@@ -1,6 +1,7 @@
 import { createProdMockServer } from "vite-plugin-mock/es/createProdMockServer"
 import userMock from "../mock/user"
-export const mockModules = [ ...userMock ]
+import demoMock from "../mock/demo"
+export const mockModules = [ ...userMock, ...demoMock ]
 
 export function setupProdMockServer() {
   createProdMockServer(mockModules)
