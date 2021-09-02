@@ -10,11 +10,9 @@ export const constantRoutes = [
     path: '/redirect',
     component: Layout,
     hidden: true,
-    name : 'Redirect',
     children: [
       {
         path: '/redirect/:path(.*)',
-        name : 'RedirectC',
         component: () => import('/@/views/redirect/index.vue')
       }
     ]

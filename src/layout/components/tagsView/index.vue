@@ -33,7 +33,6 @@
 </template>
 
 <script>
-  import ScrollPane from './ScrollPane.vue'
   import path from 'path'
   import {
     ref,
@@ -51,7 +50,6 @@
   
   export default {
     name : 'TagsView',
-    components: { ScrollPane },
     setup() {
       const store = useStore()
       const router = useRouter()
@@ -78,32 +76,6 @@
       const set = reactive({
         visitedViews: computed(() => {
           const result = store.state.tagsView.visitedViews
-          
-          // const test = []
-          // for( let i = 0; i< 20;i++ ) {
-          //   test.push( {
-          //     activeClass: undefined,
-          //     ariaCurrentValue: "page",
-          //     custom: false,
-          //     exactActiveClass: undefined,
-          //     replace: false,
-          //     fullPath: "/fun/directives_",
-          //     path: "/fun/directives_" + i,
-          //     title: "title_" + i,
-          //     query: {
-          //       id : i
-          //     },
-          //     to : {
-          //       fullPath: "/fun/directives_" + i,
-          //       path: "/fun/directives_" + i,
-          //     }
-          //   } )
-          // }
-          // return test
-  
-         setTimeout( () => {
-           ctx.$forceUpdate()
-         }, 1000 )
           return result
         }),
         routes: computed(() => {
@@ -232,8 +204,7 @@
           const { fullPath } = view
           nextTick(() => {
             router.replace({
-              // path: '/redirect' + fullPath
-              path: fullPath
+              path: '/redirect' + fullPath
             })
           })
         })
@@ -264,12 +235,8 @@
         if (latestView) {
           router.push(latestView.fullPath)
         } else {
-          // now the default is to redirect to the home page if there is no tags-view,
-          // you can adjust it according to your needs.
           if (view.name === 'Dashboard') {
-            // to reload home page
-            // router.replace({ path: '/redirect' + view.fullPath })
-            router.replace({ path: view.fullPath })
+            router.replace({ path: '/redirect' + view.fullPath })
           } else {
             router.push('/')
           }

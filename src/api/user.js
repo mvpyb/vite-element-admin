@@ -10,7 +10,6 @@ export function login( data ) {
 }
 
 export function getInfo( data ) {
-  console.log( 'getInfo' )
   return http.request( {
     method : 'get',
     url : '/getUserInfo',

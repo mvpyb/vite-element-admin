@@ -92,7 +92,6 @@
     // inheritAttrs: false,
     emits: ['change', 'update:modelValue', 'input'],
     setup(props, ctx ) {
-      console.log( 'ctx', ctx )
       const { emit, attrs } = ctx
       
       const hasChange = ref( false )
