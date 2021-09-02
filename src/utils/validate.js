@@ -107,6 +107,17 @@ export function isPromise( arg ) {
 }
 
 /**
+ * @param {Object} arg
+ * @returns {Boolean}
+ */
+export function isIterable( arg ) {
+  return arg != null && typeof arg[Symbol.iterator] === 'function';
+  // const isIterable = arg => arg != null && typeof arg[Symbol.iterator] === 'function';
+  // return isIterable( arg )
+  
+}
+
+/**
  * @param {string} str
  * @returns {Boolean}
  */

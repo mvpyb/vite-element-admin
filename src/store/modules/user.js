@@ -55,7 +55,6 @@ const actions = {
     return new Promise( ( resolve, reject ) => {
       getInfo( payload )
           .then( response => {
-            console.log( 'getInfo', response )
             const { data, code } = response
             if ( !data || code !== 200 ) {
               reject( 'token登录失败' )
@@ -69,7 +68,6 @@ const actions = {
             resolve( data )
           } )
           .catch( error => {
-            console.log( 'getInfo error', error )
             reject( error )
             commit( 'CLEAR_USER_INFOS' )
             clearAllCookies()

@@ -123,7 +123,7 @@ export const asyncRoutes = [
           // roles : ['admin'],
         },
       },
-  
+      
       {
         path: "3d",
         name: "webGL",
@@ -171,7 +171,7 @@ export const asyncRoutes = [
           },
         ]
       },
-  
+      
       // {
       //   path: "/img",
       //   name: "Img",
@@ -327,7 +327,7 @@ export const asyncRoutes = [
           },
         ]
       },
-  
+      
       {
         path: "/media",
         name: "Media",
@@ -377,7 +377,7 @@ export const asyncRoutes = [
         },
       },
       
-     
+      
       
       {
         path: "https://www.baidu.com",
