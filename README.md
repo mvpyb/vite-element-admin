@@ -19,6 +19,14 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 测试账号: 随便填
 测试密码: 随便填
 
+<p align="center">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/904e4a82/646a9f0c.png">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/396f79db/a7447eae.png">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/6aa197d5/45f8bae5.png">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/796a7772/4596b63f.png">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/01b3a971/e5bd6978.png">
+</p>
+
 ## 准备
 
 - [Vite](https://cn.vitejs.dev/) - vite 特性
