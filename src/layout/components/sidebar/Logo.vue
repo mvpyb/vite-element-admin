@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import settings from "/@/settings";
+import { defineComponent } from "vue"
+import settings from "/@/settings"
 export default defineComponent({
   name: 'SidebarLogo',
   props: {

@@ -1,6 +1,6 @@
 import defaultSettings from '/@/settings'
 
-const title = defaultSettings.title || 'vite-element-plus-admin'
+const title = defaultSettings.title || 'vite-admin'
 
 export default function getPageTitle( pageTitle ) {
   if ( pageTitle ) {

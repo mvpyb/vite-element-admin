@@ -18,7 +18,7 @@
       endVal: {
         type: Number,
         required: false,
-        default: 2017
+        default: 2021
       },
       duration: {
         type: Number,
@@ -95,7 +95,7 @@
         color: null,
         fontSize: "16px"
       })
-
+      
       const getCountDown = computed(() => {
         return props.startVal > props.endVal
       })

@@ -1,6 +1,6 @@
 
 const settings = {
-  title : 'vite-element-plus-admin',
+  title : 'vite-admin',
 
   /**
    * @type {boolean} true | false

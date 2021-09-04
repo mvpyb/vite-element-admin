@@ -2,9 +2,72 @@
   "id": "2633233",
   "name": "vite-plus",
   "font_family": "iconfont",
-  "css_prefix_text": "icon-",
+  "css_prefix_text": "Yu-icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "677356",
+      "name": "产品",
+      "font_class": "chanpin",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "681020",
+      "name": "立方体",
+      "font_class": "lifangti",
+      "unicode": "e72d",
+      "unicode_decimal": 59181
+    },
+    {
+      "icon_id": "1037698",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "1256459",
+      "name": "个人信息 ",
+      "font_class": "gerenxinxi",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5321529",
+      "name": "实名认证",
+      "font_class": "shimingrenzheng",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "9535709",
+      "name": "产品",
+      "font_class": "chanpin1",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "16483276",
+      "name": "产品",
+      "font_class": "icon_xinyong_xianxing_jijin-129",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "18042480",
+      "name": "价格标签",
+      "font_class": "jiagebiaoqian",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "21129437",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
     {
       "icon_id": "6677523",
       "name": "全屏",

@@ -4,7 +4,7 @@
 
 <script>
   import * as echarts from 'echarts'
-  import { ref, nextTick, onMounted, onBeforeUnmount } from "vue";
+  import { ref, nextTick, onMounted, onBeforeUnmount } from "vue"
   
 export default {
   props: {

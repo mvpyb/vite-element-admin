@@ -15,7 +15,7 @@
     <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template #title>
         <i v-if="onlyOneChild.meta.icon.includes('el-icon')" :class="onlyOneChild.meta.icon|| (item.meta && item.meta.icon)" />
-        <svg-icon v-else :icon-class="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"/>
+        <svg-icon v-else :icon-class="item.meta && item.meta.icon"/>
         <span>{{item.meta.title }}</span>
       </template>
       <sidebar-item

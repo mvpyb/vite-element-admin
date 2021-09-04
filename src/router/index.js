@@ -1,7 +1,6 @@
 
 // https://next.router.vuejs.org/zh/guide/advanced/dynamic-routing.html
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
-// import * as VueRouter  from 'vue-router';
 
 import Layout from "/@/layout/index.vue";
 
@@ -29,40 +28,14 @@ export const constantRoutes = [
       roles : ['admin'],
     },
   },
-  
-  // {
-  //   path: "/fat",
-  //   name: "Fat",
-  //   hidden : true,
-  //   component: () => import("/@/views/login/index.vue"),
-  //   meta: {
-  //     title : '登录fat',
-  //     icon: "el-icon-s-home",
-  //     noCache : true,
-  //     roles : ['admin'],
-  //   },
-  // },
-  // {
-  //   path: "/uat",
-  //   name: "Uat",
-  //   hidden : true,
-  //   component: () => import("/@/views/login/index.vue"),
-  //   meta: {
-  //     title : '登录uat',
-  //     icon: "el-icon-s-home",
-  //     noCache : true,
-  //     roles : ['admin'],
-  //   },
-  // },
-  
   {
     path: '/404',
-    component: () => import('/@/views/error-page/404.vue'),
+    component: () => import('/@/views/page/error-page/404.vue'),
     hidden: true
   },
   {
     path: '/401',
-    component: () => import('/@/views/error-page/401.vue'),
+    component: () => import('/@/views/page/error-page/401.vue'),
     hidden: true,
   },
 ]
@@ -78,8 +51,8 @@ export const asyncRoutes = [
         name: "Dashboard",
         component: () => import("/@/views/dashboard/index.vue"),
         meta: {
-          title : '欢迎页',
-          icon: "dashboard",
+          title : 'Dashboard',
+          icon: "home",
           noCache : true,
           roles : ['admin'],
         },
@@ -94,7 +67,7 @@ export const asyncRoutes = [
     redirect: "/fun/directives",
     meta: {
       title : '功能组件',
-      icon: "component",
+      icon: "fun",
       noCache : true,
       roles : ['admin'],
     },
@@ -105,9 +78,9 @@ export const asyncRoutes = [
         component: () => import("/@/views/fun/directive/index.vue"),
         meta: {
           title : '常用指令',
-          icon: "office",
+          icon: "dunpai",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
       {
@@ -116,21 +89,20 @@ export const asyncRoutes = [
         component: () => import("/@/views/fun/animate/index.vue"),
         meta: {
           title : '常用动画',
-          icon: "office",
+          icon: "animate",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
-      
       {
         path: "3d",
         name: "webGL",
         component: () => import("/@/views/fun/webGL/index.vue"),
         meta: {
-          title : '3d可视化',
-          icon: "office",
+          title : 'ThreeJs',
+          icon: "webGl",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
       {
@@ -139,9 +111,9 @@ export const asyncRoutes = [
         component: () => import("/@/views/fun/pwd/index.vue"),
         meta: {
           title : '密码相关组件',
-          icon: "office",
+          icon: "pwd",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
       {
@@ -151,9 +123,9 @@ export const asyncRoutes = [
         redirect: "/demo/canvas/img",
         meta: {
           title : 'canvas组件',
-          icon: "office",
+          icon: "fun",
           noCache : true,
-          // roles : ['admin'],
+          
         },
         children : [
           {
@@ -161,10 +133,10 @@ export const asyncRoutes = [
             name: "Fabric",
             component: () => import("/@/views/fun/canvas/fabric.vue"),
             meta: {
-              title : 'canvas - fabric',
-              icon: "office",
+              title : 'FabricJs',
+              icon: "img",
               noCache : true,
-              // roles : ['admin'],
+              
             },
           },
         ]
@@ -178,7 +150,7 @@ export const asyncRoutes = [
       //     title : '图片组件',
       //     icon: "office",
       //     noCache : true,
-      //     // roles : ['admin'],
+      //
       //   },
       // },
       
@@ -191,7 +163,7 @@ export const asyncRoutes = [
           title : '表格',
           icon: "office",
           noCache : true,
-          // roles : ['admin'],
+          
         },
         children : [
           {
@@ -200,9 +172,9 @@ export const asyncRoutes = [
             component: () => import("/@/views/fun/excel/export-excel.vue"),
             meta: {
               title : '表格导出',
-              icon: "office",
+              icon: "excel",
               noCache : true,
-              // roles : ['admin'],
+              
             },
           },
         ]
@@ -213,9 +185,9 @@ export const asyncRoutes = [
         component: () => import("/@/views/fun/zip/index.vue"),
         meta: {
           title : 'Zip',
-          icon: "office",
+          icon: "zip",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
     ],
@@ -228,7 +200,7 @@ export const asyncRoutes = [
     redirect: "/demo/editor",
     meta: {
       title : '示例组件',
-      icon: "component",
+      icon: "example",
       noCache : true,
       roles : ['admin'],
     },
@@ -239,9 +211,9 @@ export const asyncRoutes = [
         component: () => import("/@/views/demo/editor/index.vue"),
         meta: {
           title : '富文本编辑器',
-          icon: "banner",
+          icon: "editor",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
       {
@@ -250,20 +222,9 @@ export const asyncRoutes = [
         component: () => import("/@/views/demo/form/index.vue"),
         meta: {
           title : '表单',
-          icon: "carousel",
+          icon: "form",
           noCache : true,
-          // roles : ['admin'],
-        },
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: () => import("/@/views/demo/icons/index.vue"),
-        meta: {
-          title : 'icons',
-          icon: "banner",
-          noCache : true,
-          // roles : ['admin'],
+          
         },
       },
       {
@@ -272,120 +233,173 @@ export const asyncRoutes = [
         component: () => import("/@/views/demo/flow-chart/index.vue"),
         meta: {
           title : '流程图',
-          icon: "office",
+          icon: "flowchat",
           noCache : true,
-          // roles : ['admin'],
+          
         },
       },
-      
-      {
-        path: "/map",
-        name: "Map",
-        component: () => import("/@/views/demo/map/index.vue"),
-        redirect: "/demo/map/baidu",
-        meta: {
-          title : '地图组件',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-        children : [
-          {
-            path: "/baidu",
-            name: "Baidu",
-            component: () => import("/@/views/demo/map/baidu.vue"),
-            meta: {
-              title : '百度地图',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          },
-          {
-            path: "/gaode",
-            name: "Gaode",
-            component: () => import("/@/views/demo/map/gaode.vue"),
-            meta: {
-              title : '高德地图',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          },
-          {
-            path: "/tencent",
-            name: "Tencent",
-            component: () => import("/@/views/demo/map/tencent.vue"),
-            meta: {
-              title : '腾讯地图',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          },
-        ]
-      },
-      
-      {
-        path: "/media",
-        name: "Media",
-        component: () => import("/@/views/demo/media/index.vue"),
-        redirect: "/demo/media/video",
-        meta: {
-          title : '音视频组件',
-          icon: "office",
-          noCache : true,
-          // roles : ['admin'],
-        },
-        children : [
-          {
-            path: "/video",
-            name: "Video",
-            component: () => import("/@/views/demo/media/video.vue"),
-            meta: {
-              title : '视频组件',
-              icon: "office",
-              noCache : true,
-              // roles : ['admin'],
-            },
-          },
-          // {
-          //   path: "/audio",
-          //   name: "Audio",
-          //   component: () => import("/@/views/demo/media/audio.vue"),
-          //   meta: {
-          //     title : '音频组件',
-          //     icon: "office",
-          //     noCache : true,
-          //     // roles : ['admin'],
-          //   },
-          // }
-        ]
-      },
-      
       {
         path: "drag",
         name: "Drag",
         component: () => import("/@/views/demo/drag/index.vue"),
         meta: {
           title : '拖拽',
-          icon: "office",
+          icon: "drag",
           noCache : true,
-          // roles : ['admin'],
+          
+        },
+      }
+    ],
+  },
+  
+  {
+    path: "/page",
+    name: "Page",
+    component: Layout,
+    redirect: "/demo/map/baidu",
+    meta: {
+      title : '页面',
+      icon: "shop",
+    },
+    children : [
+      {
+        path: "/user",
+        name: "User",
+        component: () => import("/@/views/page/user/index.vue"),
+        meta: {
+          title : '个人中心',
+          icon: "user",
+          noCache : true,
         },
       },
-      
-      
-      
+  
       {
-        path: "https://www.baidu.com",
+        path: "404",
+        name: "Page404",
+        component: () => import('/@/views/page/error-page/404.vue'),
         meta: {
-          title : '外链',
+          title : '404',
+          icon: "404",
           noCache : true,
-          icon : 'links'
+        },
+      },
+      {
+        path: "401",
+        name: "Page401",
+        component: () => import('/@/views/page/error-page/401.vue'),
+        meta: {
+          title : '401',
+          icon: "401",
+          noCache : true,
+        },
+      },
+    ]
+  },
+  
+  {
+    path: "/map",
+    name: "Map",
+    component: Layout,
+    redirect: "/demo/map/baidu",
+    meta: {
+      title : '地图',
+      icon: "map",
+    },
+    children : [
+      {
+        path: "/baidu",
+        name: "Baidu",
+        component: () => import("/@/views/demo/map/baidu.vue"),
+        meta: {
+          title : '百度地图',
+          icon: "",
+          noCache : true,
+        },
+      },
+      {
+        path: "/gaode",
+        name: "Gaode",
+        component: () => import("/@/views/demo/map/gaode.vue"),
+        meta: {
+          title : '高德地图',
+          icon: "",
+          noCache : true,
+        },
+      },
+      {
+        path: "/tencent",
+        name: "Tencent",
+        component: () => import("/@/views/demo/map/tencent.vue"),
+        meta: {
+          title : '腾讯地图',
+          icon: "",
+          noCache : true
+        },
+      },
+    ]
+  },
+  
+  {
+    path: "/media",
+    name: "Media",
+    component: Layout,
+    redirect: "/demo/media/video",
+    meta: {
+      title : '音视频',
+      icon: "video",
+      noCache : true,
+    },
+    children : [
+      {
+        path: "/video",
+        name: "Video",
+        component: () => import("/@/views/demo/media/video.vue"),
+        meta: {
+          title : '视频',
+          icon: "video",
+          noCache : true,
+          
+        },
+      },
+    ]
+  },
+  
+  {
+    path: "/icon",
+    name: "Icons",
+    component: Layout,
+    redirect: "/icon",
+    meta: {
+      title : 'Icon',
+      icon: "example",
+      roles : ['admin'],
+    },
+    children: [
+      {
+        path: "",
+        name: "Icons",
+        component: () => import("/@/views/demo/icons/index.vue"),
+        meta: {
+          title : 'icons',
+          icon: "icon",
         },
       },
     ],
+  },
+  
+  {
+    path: '/external-link',
+    name: "ExternalLink",
+    component: Layout,
+    children: [
+      {
+        path: "https://github.com/mvpyb/vite-element-plus-admin",
+        meta: {
+          title : '外链',
+          icon : 'links'
+        },
+      },
+    ]
   },
   
   // {
@@ -440,9 +454,6 @@ export const asyncRoutes = [
 ]
 
 const createRouters = createRouter({
-  // "history": createWebHistory()
-  // "hash": createWebHashHistory()
-  // "abstract": createMemoryHistory()
   history: createWebHashHistory( '/' ), // base 当成参数传递了
   routes: constantRoutes.concat( asyncRoutes ),
   scrollBehavior : () => ( { left : 0, top : 0 } ), //  return 期望滚动到哪个的位置

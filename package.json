@@ -40,6 +40,7 @@
     "mockjs": "^1.1.0",
     "normalize.css": "7.0.0",
     "nprogress": "^0.2.0",
+    "ol": "^6.6.1",
     "path": "^0.12.7",
     "path-to-regexp": "^6.2.0",
     "pdfjs-dist": "^2.9.359",

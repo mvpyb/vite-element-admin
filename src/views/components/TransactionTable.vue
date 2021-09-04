@@ -5,7 +5,11 @@
       tooltip-effect="dark"
       style="width: 100%"
   >
-    <el-table-column type="selection" width="55"></el-table-column>
+<!--    <el-table-column type="selection" width="55"></el-table-column>-->
+  
+    <el-table-column label="Date">
+      <template #default="scope">{{ scope.row.date }}</template>
+    </el-table-column>
     
     <el-table-column label="Order_No" min-width="100">
       <template #default="scope">
@@ -13,10 +17,10 @@
       </template>
     </el-table-column>
     
-    <el-table-column label="状态" width="100" align="center">
+    <el-table-column label="Status" width="100" align="center">
       <template #default="scope">
         <el-tag :type="scope.row.statusStr">
-          {{ scope.row.statusStr }}
+          {{ scope.row.status }}
         </el-tag>
       </template>
     </el-table-column>
@@ -27,13 +31,9 @@
       </template>
     </el-table-column>
     
-    <el-table-column prop="name" label="姓名"></el-table-column>
+    <el-table-column prop="name" label="Name"></el-table-column>
     
-    <el-table-column prop="address" label="地址" show-overflow-tooltip></el-table-column>
-    
-    <el-table-column label="日期">
-      <template #default="scope">{{ scope.row.date }}</template>
-    </el-table-column>
+    <el-table-column prop="address" label="Address" show-overflow-tooltip></el-table-column>
     
   </el-table>
 
@@ -57,8 +57,9 @@ export default {
     const set = reactive({
       newList: computed(() => {
         const statusMap = {
-          success: 'success',
-          pending: 'danger'
+          Completed: 'success',
+          Pending: 'warning',
+          Cancelled: 'danger',
         }
         if ( list.value && list.value.length > 0 ) {
           list.value = list.value.map( item => {
@@ -84,7 +85,7 @@ export default {
         {
           date: '2017-05-13',
           name: '招财',
-          status: 'success',
+          status: 'Completed',
           price: '9527',
           order_no: '123456789123456789',
           address: '上海市浦东新区洲海路 920 弄'
@@ -92,7 +93,7 @@ export default {
         {
           date: '2018-05-23',
           name: '进宝',
-          status: 'pending',
+          status: 'Pending',
           price: '6666',
           order_no: '123456789123456781',
           address: '上海市浦东新区洲海路 920 弄'
@@ -100,7 +101,7 @@ export default {
         {
           date: '2019-05-12',
           name: '张三',
-          status: 'pending',
+          status: 'Cancelled',
           price: '8888',
           order_no: '89897898562554545',
           address: '上海市浦东新区洲海路 920 弄'
@@ -108,7 +109,7 @@ export default {
         {
           date: '2020-05-14',
           name: '李四',
-          status: 'pending',
+          status: 'Cancelled',
           price: '9528',
           order_no: '56125578785125',
           address: '上海市浦东新区洲海路 920 弄'
@@ -116,11 +117,27 @@ export default {
         {
           date: '2021-05-22',
           name: '王五',
-          status: 'pending',
+          status: 'Cancelled',
           price: '0',
           order_no: '32659898775888',
           address: '上海市浦东新区洲海路 920 弄'
-        }
+        },
+        {
+          date: '2021-05-22',
+          name: '王六',
+          status: 'Cancelled',
+          price: '0',
+          order_no: '32659898775888',
+          address: '上海市浦东新区洲海路 920 弄'
+        },
+        {
+          date: '2021-05-22',
+          name: '王七',
+          status: 'Cancelled',
+          price: '0',
+          order_no: '32659898775888',
+          address: '上海市浦东新区洲海路 920 弄'
+        },
       ]
     }
     

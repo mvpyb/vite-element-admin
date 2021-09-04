@@ -22,6 +22,14 @@
         <span>Vite</span>
         <el-progress :percentage="60" />
       </div>
+      <div class="progress-item">
+        <span>Vuex</span>
+        <el-progress :percentage="90" />
+      </div>
+      <div class="progress-item">
+        <span>Vue Router</span>
+        <el-progress :percentage="88" />
+      </div>
     </div>
   </el-card>
 </template>

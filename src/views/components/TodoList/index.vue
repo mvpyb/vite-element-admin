@@ -1,10 +1,8 @@
 <template>
   <section class="todoapp">
-    <!-- header -->
     <header class="header">
       <input class="new-todo" autocomplete="off" placeholder="Todo List" @keyup.enter="addTodo">
     </header>
-    <!-- main section -->
     <section v-show="todos.length" class="main">
       <input id="toggle-all" :checked="allChecked" class="toggle-all" type="checkbox" @change="toggleAll({ done: !allChecked })">
       <label for="toggle-all" />
@@ -19,23 +17,16 @@
         />
       </ul>
     </section>
-    <!-- footer -->
     <footer v-show="todos.length" class="footer">
       <span class="todo-count">
         <strong>{{ remaining }}</strong>
         {{ newPluralize }} left
       </span>
       <ul class="filters">
-       <!-- <li v-for="(val, key) in filters" :key="key">
-          <a :class="{ selected: visibility === key }" @click.prevent="visibility = key">{{ key | capitalize }}</a>
-        </li>-->
         <li v-for="(val, key) in newCapitalize" :key="key">
           <a :class="{ selected: visibility === key }" @click.prevent="visibility = key">{{ val.keys }}</a>
         </li>
       </ul>
-      <!-- <button class="clear-completed" v-show="todos.length > remaining" @click="clearCompleted">
-        Clear completed
-      </button> -->
     </footer>
   </section>
 </template>
@@ -43,22 +34,12 @@
 <script>
 import {
   ref,
-  unref,
   reactive,
   computed,
-  toRefs,
-  watch,
-  nextTick,
-  watchEffect,
-  onMounted,
-  onBeforeMount,
-  onBeforeUnmount
-} from "vue";
+  toRefs
+} from "vue"
 import Todo from './Todo.vue'
-import {useStore} from "vuex";
-import {useRoute, useRouter} from "vue-router";
-import {useEventListener} from "@vueuse/core";
-import { localStorageHandle } from "/@/utils/storages.js";
+import { localStorageHandle } from "/@/utils/storages.js"
 
 const TODO_LIST_KEY = 'todos'
 const defaultTodo = [
@@ -68,7 +49,9 @@ const defaultTodo = [
   { text: 'element-plus-vite-admin', done: true },
   { text: 'vite', done: true },
   { text: 'vue', done: true },
-  { text: 'react', done: true },
+  { text: 'Vuex', done: true },
+  { text: 'Vue Router', done: true },
+  { text: 'React', done: true },
   { text: 'element-plus', done: true },
 ] ;
 

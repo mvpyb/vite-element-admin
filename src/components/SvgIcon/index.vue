@@ -7,7 +7,7 @@
 
 <script >
 import { isExternal } from '/@/utils/validate'
-import {computed, reactive, toRefs} from "vue";
+import {computed, reactive, toRefs} from "vue"
 
 export default {
   name : 'SvgIcon',

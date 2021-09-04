@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import {ref, defineComponent, onMounted, nextTick } from "vue"
+  import { defineComponent, onMounted, nextTick } from "vue"
   import PageLayout from '/@/components/layout/index.vue'
   import Player from 'xgplayer'
 

@@ -1,36 +1,60 @@
 <template>
   <div class="dashboard-editor-container">
-    <el-row :gutter="32">
-      <el-col :xs="24" :sm="12" :lg="8">
+    
+    <el-row :gutter="20">
+      <el-col :xs="12" :sm="12" :lg="6" v-for="item in cardList" :key="item.id">
+        <yu-card :end="item.end" :duration="item.duration" :title="item.title" :prefix="item.prefix" >
+          <template #icon>
+            <i class="fr" :calss="item.badge.icon"></i>
+          </template>
+          <template #badge>
+            <span class="badge" :class="item.badge.className">{{item.badge.txt}}</span>
+          </template>
+          <template #info>{{item.info}}</template>
+        </yu-card>
+      </el-col>
+    </el-row>
+    
+    <el-row :gutter="20" class="chats-container">
+      <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
           <raddar-chart />
         </div>
       </el-col>
-      <el-col :xs="24" :sm="12" :lg="8">
+      <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
           <pie-chart />
         </div>
       </el-col>
-      <el-col :xs="24" :sm="12" :lg="8">
+      <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
           <bar-chart class-name="test" />
         </div>
       </el-col>
     </el-row>
-    
-    <el-row :gutter="8">
-      <el-col
-          :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
+  
+    <el-row :gutter="20" class="table-list">
+      <el-col :span="16">
         <transaction-table />
       </el-col>
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
-        <todo-list />
-      </el-col>
-      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
-        <box-card />
+      <el-col :span="8" style="">
+        <yu-street-map />
       </el-col>
     </el-row>
   
+  
+    <el-row :gutter="20" class="user-info">
+      <el-col :span="12">
+        <yu-weather />
+      </el-col>
+      <el-col :span="6">
+        <todo-list />
+      </el-col>
+      <el-col :span="6">
+        <box-card />
+      </el-col>
+    </el-row>
+    
   </div>
 </template>
 
@@ -38,25 +62,81 @@
   import RaddarChart from '../components/RaddarChart.vue'
   import PieChart from '../components/PieChart.vue'
   import BarChart from '../components/BarChart.vue'
-
   import TodoList from '../components/TodoList/index.vue'
   import BoxCard from '../components/BoxCard.vue'
   import TransactionTable from '../components/TransactionTable.vue'
-  
-  import { testRequest } from '/@/api/user'
+  import YuCard from "../components/YuCard/index.vue"
+  import YuWeather from "../components/YuWeather/index.vue"
+  import YuStreetMap from "/@/components/YuStreetMap/index.vue"
+  import { ref } from "vue"
   
   export default {
     name: "Dashboard",
     components: {
       TodoList, BoxCard, TransactionTable,
-      RaddarChart, PieChart, BarChart
+      RaddarChart, PieChart, BarChart, YuCard, YuStreetMap, YuWeather
     },
     setup() {
       const openDepot = () => {
         // window.open("https://github.com/xiaoxian521/vue-pure-admin");
       }
+      
+      const cardList = ref( [
+        {
+          id : 1,
+          end : 6666,
+          duration : 3000,
+          title : 'Order',
+          icon : 'Yu-icon-lifangti',
+          badge : {
+            className : 'bg-info',
+            txt : '+56%'
+          },
+          info : 'From previous period'
+        },
+        {
+          id : 2,
+          end : 95270,
+          duration : 3000,
+          prefix :"￥",
+          title : 'Income',
+          icon : 'Yu-icon-lifangti',
+          badge : {
+            className : 'bg-danger',
+            txt : '+78%'
+          },
+          info : 'From previous period'
+        },
+        {
+          id : 3,
+          end : 666,
+          duration : 1000,
+          prefix :"￥",
+          title : 'Average Price',
+          icon : 'Yu-icon-lifangti',
+          badge : {
+            className : 'bg-warning',
+            txt : '-5.2%'
+          },
+          info : 'From previous period'
+        },
+        {
+          id : 4,
+          end : 9527,
+          duration : 3000,
+          title : 'Product Sold',
+          icon : 'Yu-icon-lifangti',
+          badge : {
+            className : 'bg-info',
+            txt : '+22%'
+          },
+          info : 'From previous period'
+        }
+      ] )
+      
       return {
-        openDepot
+        cardList,
+        openDepot,
       }
     }
   };
@@ -68,35 +148,35 @@
     background-color: rgb(240, 242, 245);
     position: relative;
     
-    .top-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 120px;
-      background: #fff;
-      padding: 20px;
-      border-bottom: 0.5px solid rgba($color: #ccc, $alpha: 0.3);
-      .left-mark {
-        display: flex;
-        align-items: center;
-        img {
-          display: block;
-          width: 72px;
-          height: 72px;
-          border-radius: 50%;
-          margin-right: 10px;
-          cursor: pointer;
+    /* 卡片组件 */
+    .chats-container {
+      /*margin-bottom: 20px;*/
+      .chart-wrapper {
+        border-radius: 5px;
+        background: #fff;
+        padding : 20px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        box-shadow: 0 -3px 31px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 2%);
+        &:hover {
+          transition: all 0.3s;
+          transform: translateY(-6px);
         }
       }
     }
-    .box-card {
-      width: 80vw;
-      margin: 10px auto;
-      position: relative;
-      #brokenLine {
-        width: 100%;
-        height: 50vh;
+    
+    /**/
+    .table-list {
+      height: 476px;
+      .el-col {
+        padding-right:8px;
+        margin-bottom:30px;
       }
+    }
+    
+    .user-info {
+      height: 560px;
+      margin: 20px 0;
     }
   }
 </style>

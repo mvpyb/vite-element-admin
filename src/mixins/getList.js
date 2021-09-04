@@ -1,5 +1,5 @@
 // import { getDict } from '@/utils/dictionary'
-import { ref, reactive } from "vue";
+import { ref, reactive } from "vue"
 
 export default function ( props ) {
   const page = ref(1);

@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 // import Cookies from 'js-cookie'
 import 'normalize.css/normalize.css'
-// import './assets/iconfonts/iconfont.css'
-// import '@/assets/fonts/fonts.css'
+import '/@/assets/iconfont/iconfont.css'
+// import '/@/assets/fonts/fonts.css'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
