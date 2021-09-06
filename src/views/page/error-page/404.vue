@@ -20,24 +20,15 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import img_404 from "/@/assets/404_images/404.png"
 import img_404_cloud from "/@/assets/404_images/404_cloud.png"
 import { computed } from "vue"
 
-export default {
-  name: 'Page404',
-  setup() {
-    const message = computed(() => {
-      return "您访问的页面丢失了...";
-    })
-    return {
-      message,
-      img_404,
-      img_404_cloud,
-    }
-  }
-}
+const message = computed(() => {
+  return "您访问的页面丢失了...";
+})
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,1 +1,0 @@
-import{_ as a}from"./index.934aafbc.js";import{c as s,w as t,a as o,o as c,p as e,g as d}from"./vendor.e2133354.js";const n=t();e("data-v-dc2c8a2a");const i=o("div",{class:"section-container drag-container"},null,-1);d();const r={expose:[],setup:t=>(t,o)=>(c(),s(a,{title:"个人中心",subtitle:"即将推出..."},{body:n((()=>[i])),_:1})),__scopeId:"data-v-dc2c8a2a"};export default r;

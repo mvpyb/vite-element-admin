@@ -1,5 +1,5 @@
 <template>
-  <page-layout title="自定义指令" subtitle="非常实用的Vue自定义指令">
+  <yu-layout title="自定义指令" subtitle="非常实用的Vue自定义指令">
     
     <template #head>
       <ul style="padding-left: 15px;">
@@ -143,7 +143,7 @@
         </el-row>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
@@ -162,7 +162,7 @@
   import waterMarker from '/@/directive/waterMarker'
   import draggable from '/@/directive/draggable'
   import permission from '/@/directive/permission'
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Directive',
@@ -175,7 +175,7 @@
       draggable,
       permission,
     },
-    components : { PageLayout },
+    components : { YuLayout },
     setup() {
       const valueRef = ref('')
       const store = useStore()

@@ -2,7 +2,7 @@
   <div class="icons-container">
     <el-tabs type="border-card">
       <el-tab-pane label="Icons">
-        <div v-for="item in svgIcons" :key="item" >
+        <div v-for="item in svgIcons" :key="item" v-clipboard:copy="handleClipboard( item )" v-clipboard:success="clipboardSuccess">
           <el-tooltip class="item" effect="dark" content="Top Left 提示文字" placement="top">
             <template #content>{{item}}</template>
             <div class="icon-item">
@@ -16,24 +16,22 @@
   </div>
 </template>
 
-<script>
-  import {ref, defineComponent} from "vue"
+<script setup>
+  import {ref} from "vue"
   import svgs from './svg-icons.js'
-  import SvgIcon from '/@/components/SvgIcon/index.vue'
+  // import { ElMessage } from 'element-plus'
+  import * as ELEMENT from 'element-plus'
+  const { ElMessage } = ELEMENT
+  import clipboard from '/@/directive/clipboard/clipboard'
+
+  const svgIcons = ref(svgs)
   
-  export default defineComponent ({
-    name : 'Icons',
-    components : { SvgIcon },
-    setup() {
-      const svgIcons = ref(svgs)
-      const generateIconCode = () => {
-        return `<svg-icon icon-class="${symbol}" />`
-      }
-      return {
-        svgIcons, generateIconCode
-      }
-    }
-  })
+  const handleClipboard = ( text ) => {
+    return `<svg-icon icon-class="${text}" />`
+  }
+  const clipboardSuccess = ( text ) => {
+    ElMessage.success( '复制成功' )
+  }
 </script>
 
 <style lang="scss" scoped>

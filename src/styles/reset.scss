@@ -1,0 +1,93 @@
+
+
+body, dd, dl, figure, form, h1, h2, h3, h4, h5, h6, ol, p, pre, ul {
+  margin: 0
+}
+
+
+:after, :before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+ol, ul {
+  padding: 0;
+  list-style: none
+}
+
+main {
+  display: block
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: 400
+}
+
+a {
+  text-decoration: none;
+  color: #333
+}
+
+img {
+  vertical-align: top
+}
+
+button, input, select, textarea {
+  vertical-align: middle;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #a1a1a1
+}
+
+button, img, select, textarea {
+  border: 0
+}
+
+textarea {
+  resize: none;
+  overflow: auto
+}
+
+.clearFix {
+  zoom: 1
+}
+
+.clearFix:after {
+  content: "";
+  display: block;
+  clear: both
+}
+
+i {
+  font-style: normal
+}
+
+body {
+  font-size: 12px;
+  font-family: 'PingFang', 'PingFangMedium', "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+  background: #fff
+}
+
+body, html {
+  width: 100%;
+  height: 100%
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}

@@ -30,39 +30,26 @@
   </div>
 </template>
 
-<script>
+<script setup>
   import img_err from "/@/assets/401_images/401.gif"
   import { ref } from "vue"
   import { useRouter, useRoute } from "vue-router"
-  
-  export default {
-    name: 'Page401',
-    setup() {
-      const router = useRouter()
-      const route = useRoute()
-      
-      const errGif = ref( img_err + '?' + new Date() )
-      const ewizardClap = ref( 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646' )
-      const dialogVisible = ref( false )
-      
-      function showImg() {
-        dialogVisible.value = true
-      }
-  
-      function back() {
-        if ( route.query.noGoBack ) {
-          router.push( { path: '/' } )
-        } else {
-          router.go(-1)
-        }
-      }
-      return {
-        errGif,
-        ewizardClap,
-        dialogVisible,
-        showImg,
-        back,
-      }
+  const router = useRouter()
+  const route = useRoute()
+
+  const errGif = ref( img_err + '?' + new Date() )
+  const ewizardClap = ref( 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646' )
+  const dialogVisible = ref( false )
+
+  function showImg() {
+    dialogVisible.value = true
+  }
+
+  function back() {
+    if ( route.query.noGoBack ) {
+      router.push( { path: '/' } )
+    } else {
+      router.go(-1)
     }
   }
 </script>

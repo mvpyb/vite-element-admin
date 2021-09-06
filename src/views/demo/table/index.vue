@@ -1,6 +1,6 @@
 
 <template>
-  <page-layout title="table组件" subtitle="table组件的简单使用">
+  <yu-layout title="table组件" subtitle="table组件的简单使用">
     <template #body>
       <div class="section-container ">
         <el-form :model="formState" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -53,16 +53,16 @@
         </el-form>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
   import {ref, defineComponent, reactive } from "vue"
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Editor',
-    components : { PageLayout },
+    components : { YuLayout },
     setup() {
       const ruleForm = ref()
       const formState = reactive({

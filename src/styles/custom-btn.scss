@@ -1,0 +1,76 @@
+@import './variables.scss';
+
+
+@mixin colorBtn($color, $hoverColor, $activeColor) {
+  background: $color;
+  width : 100px;
+  color:$white;
+  &.el-button--default{
+    background: $color;
+    color:$white;
+  }
+  &:hover {
+    background: $hoverColor;
+    color:$white;
+    &:before,
+    &:after {
+      color:$white;
+      background: transparent;
+    }
+  }
+  &:active {
+    color:$white;
+    background: $activeColor;
+    &:before,
+    &:after {
+      color:$white;
+      background: transparent;
+    }
+  }
+  &.is-disabled{
+    &.el-button--default{
+      background: $color;
+      color:$white;
+    }
+    &:hover {
+      background: $hoverColor;
+      color:$white;
+      &:before,
+      &:after {
+        color:$white;
+        background: transparent;
+      }
+    }
+    &:active {
+      color:$white;
+      background: $activeColor;
+      &:before,
+      &:after {
+        color:$white;
+        background: transparent;
+      }
+    }
+  }
+  border: none;
+}
+
+.purple-btn {
+  @include colorBtn($yuBtnPurpleDefault, $yuBtnPurpleHover, $yuBtnPurpleActive);
+}
+
+.yellow-btn {
+  @include colorBtn($yuBtnYellowDefault, $yuBtnYellowHover, $yuBtnYellowActive);
+}
+
+.green-btn {
+  @include colorBtn($yuBtnGreenDefault, $yuBtnGreenHover, $yuBtnGreenActive);
+}
+
+.blue-btn {
+  @include colorBtn($yuBtnBlueDefault, $yuBtnBlueHover, $yuBtnBlueActive);
+}
+
+.danger-btn {
+  @include colorBtn($yuBtnDangerDefault, $yuBtnDangerHover, $yuBtnDangerActive);
+}
+

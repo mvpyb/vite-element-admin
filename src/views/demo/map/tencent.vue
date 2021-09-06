@@ -1,50 +1,40 @@
 
 <template>
-  <page-layout title="腾讯地图" subtitle="腾讯地图的简单使用">
+  <yu-layout title="腾讯地图" subtitle="腾讯地图的简单使用">
     <template #body>
       <div class="section-container ">
         <div id="container" ref="container"></div>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
-<script>
+<script setup>
   // 文档 ： https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay
   import {ref, defineComponent, onMounted, nextTick} from "vue"
   import { tencentMap } from './utils'
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
 
-  export default defineComponent ({
-    name : 'Tencent',
-    components : { PageLayout },
-    setup() {
-      const container = ref()
-      const ak = 'VBIBZ-VEA6U-RRXVP-4MSZS-WDNAS-YDFXM'
-      
-      onMounted( () => {
-        nextTick(() => {
-          tencentMap( ak )
-              .then( () => {
-                const center = new TMap.LatLng(39.984104, 116.307503);
-                const map = new TMap.Map( container.value, {
-                  rotation: 20,
-                  pitch:30,
-                  zoom:12,
-                  center: center
-                } )
-              })
-              .catch( err => {
-                console.log( 'err', err )
-              } )
-        } )
-      } )
-      
-      return {
-        container,
-      };
-    },
-  })
+  const container = ref()
+  const ak = 'VBIBZ-VEA6U-RRXVP-4MSZS-WDNAS-YDFXM'
+
+  onMounted( () => {
+    nextTick(() => {
+      tencentMap( ak )
+          .then( () => {
+            const center = new TMap.LatLng(39.984104, 116.307503);
+            const map = new TMap.Map( container.value, {
+              rotation: 20,
+              pitch:30,
+              zoom:12,
+              center: center
+            } )
+          })
+          .catch( err => {
+            console.log( 'err', err )
+          } )
+    } )
+  } )
 </script>
 
 <style lang="scss" scoped>

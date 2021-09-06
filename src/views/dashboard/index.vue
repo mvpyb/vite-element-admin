@@ -58,7 +58,7 @@
   </div>
 </template>
 
-<script>
+<!--<script>
   import RaddarChart from '../components/RaddarChart.vue'
   import PieChart from '../components/PieChart.vue'
   import BarChart from '../components/BarChart.vue'
@@ -67,7 +67,7 @@
   import TransactionTable from '../components/TransactionTable.vue'
   import YuCard from "../components/YuCard/index.vue"
   import YuWeather from "../components/YuWeather/index.vue"
-  import YuStreetMap from "/@/components/YuStreetMap/index.vue"
+  import YuStreetMap from "/@/components/YuStreetMap"
   import { ref } from "vue"
   
   export default {
@@ -139,8 +139,80 @@
         openDepot,
       }
     }
-  };
+  }
+</script>-->
+
+<script setup>
+  
+  import RaddarChart from '../components/RaddarChart.vue'
+  import PieChart from '../components/PieChart.vue'
+  import BarChart from '../components/BarChart.vue'
+  import TodoList from '../components/TodoList/index.vue'
+  import BoxCard from '../components/BoxCard.vue'
+  import TransactionTable from '../components/TransactionTable.vue'
+  import YuCard from "../components/YuCard/index.vue"
+  import YuWeather from "../components/YuWeather/index.vue"
+  import YuStreetMap from "/@/components/YuStreetMap"
+  import { ref } from "vue"
+
+  const openDepot = () => {
+    // window.open("https://github.com/xiaoxian521/vue-pure-admin");
+  }
+
+  const cardList = ref( [
+    {
+      id : 1,
+      end : 6666,
+      duration : 3000,
+      title : 'Order',
+      icon : 'Yu-icon-lifangti',
+      badge : {
+        className : 'bg-info',
+        txt : '+56%'
+      },
+      info : 'From previous period'
+    },
+    {
+      id : 2,
+      end : 95270,
+      duration : 3000,
+      prefix :"￥",
+      title : 'Income',
+      icon : 'Yu-icon-lifangti',
+      badge : {
+        className : 'bg-danger',
+        txt : '+78%'
+      },
+      info : 'From previous period'
+    },
+    {
+      id : 3,
+      end : 666,
+      duration : 1000,
+      prefix :"￥",
+      title : 'Average Price',
+      icon : 'Yu-icon-lifangti',
+      badge : {
+        className : 'bg-warning',
+        txt : '-5.2%'
+      },
+      info : 'From previous period'
+    },
+    {
+      id : 4,
+      end : 9527,
+      duration : 3000,
+      title : 'Product Sold',
+      icon : 'Yu-icon-lifangti',
+      badge : {
+        className : 'bg-info',
+        txt : '+22%'
+      },
+      info : 'From previous period'
+    }
+  ] )
 </script>
+
 
 <style lang="scss" scoped>
   .dashboard-editor-container {

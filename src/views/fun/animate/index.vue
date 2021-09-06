@@ -1,5 +1,5 @@
 <template>
-  <page-layout
+  <yu-layout
       title="动画组件的简单使用"
       subtitle="非常实用的Vue动画组件(本页面所用css 均来自于 ： https://emilkowalski.github.io/css-effects-snippets/)">
     <template #body>
@@ -19,7 +19,7 @@
               <el-row :gutter="40" class="panel-group">
                 <el-col :span="8" class="card-panel-col">
                   默认：
-                  <CountTo
+                  <yu-count-to
                       :duration="2000"
                       :start-val="1"
                       :end-val="9527"
@@ -27,7 +27,7 @@
                 </el-col>
                 <el-col :span="8" class="card-panel-col">
                   示例一：
-                  <CountTo
+                  <yu-count-to
                       prefix="￥"
                       :duration="2000"
                       :color="'#f4516c'"
@@ -38,7 +38,7 @@
                 </el-col>
                 <el-col :span="8" class="card-panel-col">
                   示例二：
-                  <CountTo
+                  <yu-count-to
                       suffix="-test"
                       :duration="2000"
                       :color="'red'"
@@ -50,17 +50,17 @@
               </el-row>
               <el-row :gutter="40" class="panel-group">
                 <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-                  <panel-card icon="application" :start="0" :end="9527" :duration="2600" message="App Nums" @handleClick="handleClick" />
+                  <yu-panel-card icon="application" :start="0" :end="9527" :duration="2600" message="App Nums" @handleClick="handleClick" />
                 </el-col>
                 <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-                  <panel-card icon="money" :start="0" :end="9527000" :duration="4000" type="money" message="Revenue" />
+                  <yu-panel-card icon="money" :start="0" :end="9527000" :duration="4000" type="money" message="Revenue" />
                 </el-col>
     
                 <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-                  <panel-card icon="peoples" :start="0" :end="81212" :duration="3000" type="message" message="User Nums" />
+                  <yu-panel-card icon="peoples" :start="0" :end="81212" :duration="3000" type="message" message="User Nums" />
                 </el-col>
                 <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-                  <panel-card icon="shopping" :start="0" :end="13600" :duration="3600" type="shopping" message="Product Nums" />
+                  <yu-panel-card icon="shopping" :start="0" :end="13600" :duration="3600" type="shopping" message="Product Nums" />
                 </el-col>
               </el-row>
             </div>
@@ -69,7 +69,7 @@
         </el-tabs>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
@@ -78,15 +78,15 @@
   import * as ELEMENT from 'element-plus'
   const { ElMessage } = ELEMENT
   import clipboard from '/@/directive/clipboard/clipboard'
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   import effects from "./utils"
-  import CountTo from "/@/components/CountTo/index.vue"
-  import PanelCard from "/@/components/PanelCard/index.vue"
+  import YuCountTo from "/@/components/YuCountTo"
+  import YuPanelCard from "/@/components/YuPanelCard"
 
   
   export default defineComponent ({
     name : 'Animate',
-    components : { PageLayout, CountTo, PanelCard },
+    components : { YuLayout, YuCountTo, YuPanelCard },
     directives : { copy: clipboard },
     setup() {
       const { ctx: _this } = getCurrentInstance()

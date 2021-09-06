@@ -2,9 +2,10 @@
 @import './variables.scss';
 @import './mixin.scss';
 @import './transition.scss';
+@import './reset.scss';
 @import './element-ui.scss';
 @import './sidebar.scss';
-@import './btn.scss';
+@import './custom-btn.scss';
 
 body {
   height: 100%;
@@ -27,35 +28,18 @@ html {
   height: 100%;
 }
 
+.no-padding {
+  padding: 0px !important;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-.no-padding {
-  padding: 0px !important;
-}
-
 .padding-content {
   padding: 4px 0;
-}
-
-a:focus,
-a:active {
-  outline: none;
-}
-
-a,
-a:focus,
-a:hover {
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-}
-
-div:focus {
-  outline: none;
 }
 
 .fr {

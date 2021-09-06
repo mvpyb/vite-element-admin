@@ -1,11 +1,11 @@
 <template>
   <div class="navbar clearfix">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <yu-ham-burger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
   
-    <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
+    <yu-bread-crumb id="breadcrumb-container" class="breadcrumb-container" />
   
     <div class="right-menu">
-      <screen-full v-show="device !== 'mobile'" />
+      <yu-screen-full v-show="device !== 'mobile'" />
   
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
@@ -27,23 +27,23 @@
 </template>
 
 <script>
-import { ref, defineComponent, onMounted, reactive, computed, toRefs } from "vue"
+import { defineComponent, onMounted, reactive, computed, toRefs } from "vue"
 import {useStore} from "vuex"
 import { useRouter, useRoute } from "vue-router"
 import { sessionStorageHandle } from "/@/utils/storages"
 import { emitter } from "/@/utils/mitt"
 import { isMobile } from "/@/utils/device"
 import favicon from "/favicon.ico"
-import Hamburger from "/@/components/HamBurger/index.vue"
-import Breadcrumb from "/@/components/Breadcrumb/index.vue"
-import ScreenFull from "/@/components/ScreenFull/index.vue"
+import YuHamBurger from "/@/components/YuHamBurger"
+import YuBreadCrumb from "/@/components/YuBreadCrumb"
+import YuScreenFull from "/@/components/YuScreenFull"
 
 export default defineComponent({
   name: "Navbar",
   components: {
-    Breadcrumb,
-    Hamburger,
-    ScreenFull
+    YuBreadCrumb,
+    YuHamBurger,
+    YuScreenFull
   },
   setup() {
     const store = useStore()

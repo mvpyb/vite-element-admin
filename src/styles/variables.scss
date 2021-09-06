@@ -21,6 +21,38 @@ $subMenuHover:#001528;
 
 $sideBarWidth: 210px;
 
+// custom btn color
+$white: #fff;
+$yuBtnPurpleDefault: #B260EA;
+$yuBtnPurpleHover: #b46fea;
+$yuBtnPurpleActive: #aa48ea;
+$yuBtnPurpleDisabled: #cb8dea;
+$yuBtnPurpleBorderColor: transparent;
+
+$yuBtnYellowDefault: #FF9E01;
+$yuBtnYellowHover: #ffc20b;
+$yuBtnYellowActive: #ff8d0a;
+$yuBtnYellowDisabled: #fffb05;
+$yuBtnYellowBorderColor: transparent;
+
+$yuBtnGreenDefault: #60CBB0;
+$yuBtnGreenHover: #73cbb3;
+$yuBtnGreenActive: #32cbad;
+$yuBtnGreenDisabled: #8acbb8;
+$yuBtnGreenBorderColor: transparent;
+
+$yuBtnBlueDefault: #01C4E2;
+$yuBtnBlueHover: #42d3e2;
+$yuBtnBlueActive: #0db2e2;
+$yuBtnBlueDisabled: #6dd9e2;
+$yuBtnBlueBorderColor: transparent;
+
+$yuBtnDangerDefault: #FB6363;
+$yuBtnDangerHover: #fb8c89;
+$yuBtnDangerActive: #fb4d47;
+$yuBtnDangerDisabled: #fbb6b6;
+$yuBtnDangerBorderColor: transparent;
+
 :export {
   menuText: $menuText;
   menuActiveText: $menuActiveText;

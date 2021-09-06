@@ -1,54 +1,47 @@
 
 <template>
-  <page-layout title="百度地图" subtitle="百度地图的简单使用，最新版GL地图命名空间为BMapGL, 可按住鼠标右键控制地图旋转、修改倾斜角度。">
+  <yu-layout title="百度地图" subtitle="百度地图的简单使用，最新版GL地图命名空间为BMapGL, 可按住鼠标右键控制地图旋转、修改倾斜角度。">
     <template #body>
       <div class="section-container ">
         <div id="container" ref="container"></div>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
-<script>
+<script setup>
   import {ref, defineComponent, onMounted, nextTick } from "vue"
   import { baiduMap } from './utils'
-  import PageLayout from '/@/components/layout/index.vue'
-  export default defineComponent ({
-    name : 'Baidu',
-    components : { PageLayout },
-    setup() {
-      const container = ref()
-      const ak = 'ov7zC5g8Ac0ScLPp1zG8TZDuiGfty9Hh'
-      
-      onMounted( () => {
-        nextTick(() => {
-          baiduMap( ak )
-              .then( () => {
-                let map = new BMap.Map( container.value )
-                // let map = new BMap.Map( 'container' )
-                
-                map.centerAndZoom(new BMap.Point(116.404, 39.915), 11)
-                
-                //添加地图类型控件
-                map.addControl(new BMap.MapTypeControl({
-                  mapTypes:[
-                    BMAP_NORMAL_MAP,
-                    BMAP_HYBRID_MAP
-                  ]}))
-                
-                map.setCurrentCity("北京") // 设置地图显示的城市 此项是必须设置的
-                map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
-              })
-              .catch( err => {
-                console.log( 'err', err )
-              } )
-        } )
-      } )
-      return {
-        container,
-      };
-    },
-  })
+  import YuLayout from '/@/components/YuLayout'
+
+  const container = ref()
+  const ak = 'ov7zC5g8Ac0ScLPp1zG8TZDuiGfty9Hh'
+
+  onMounted( () => {
+    nextTick(() => {
+      baiduMap( ak )
+          .then( () => {
+            let map = new BMap.Map( container.value )
+            // let map = new BMap.Map( 'container' )
+          
+            map.centerAndZoom(new BMap.Point(116.404, 39.915), 11)
+          
+            //添加地图类型控件
+            map.addControl(new BMap.MapTypeControl({
+              mapTypes:[
+                BMAP_NORMAL_MAP,
+                BMAP_HYBRID_MAP
+              ]}))
+          
+            map.setCurrentCity("北京") // 设置地图显示的城市 此项是必须设置的
+            map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
+          })
+          .catch( err => {
+            console.log( 'err', err )
+          } )
+    } )
+  } )
+  
 </script>
 
 <style lang="scss" scoped>

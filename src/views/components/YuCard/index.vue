@@ -7,7 +7,7 @@
       <div class="text-white">
         <h6 class="text-uppercase text-white">{{title}}</h6>
         <h2 class="text-white">
-          <count-to :start-val="start" :end-val="end" :duration="duration" :prefix="prefix" class="card-panel-num" />
+          <yu-count-to :start-val="start" :end-val="end" :duration="duration" :prefix="prefix" class="card-panel-num" />
         </h2>
         <div class="badge-box">
           <slot name="badge"></slot>
@@ -22,7 +22,7 @@
 
 <script setup>
 import { defineProps, useSlots, useAttrs  } from "vue"
-import CountTo from "/@/components/CountTo/index.vue"
+import YuCountTo from "/@/components/YuCountTo"
 const slots = useSlots()
 const attrs = useAttrs()
 const props = defineProps({

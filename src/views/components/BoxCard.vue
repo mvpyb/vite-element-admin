@@ -4,7 +4,7 @@
       <img src="https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png">
     </div>
     <div style="position:relative;">
-      <pan-thumb :image="avatar" class="panThumb" />
+      <yu-thumb :image="avatar" class="yuThumb" />
       <mallki class-name="mallki-text" text="vue-element-admin" />
       <div style="padding-top:35px;" class="progress-item">
         <span>Vue</span>
@@ -42,12 +42,12 @@
     toRefs,
   } from "vue";
   import { useStore } from "vuex";
-  import PanThumb from '/@/components/PanThumb/index.vue'
+  import YuThumb from '/@/components/YuThumb'
   import Mallki from '/@/components/TextHoverEffect/index.vue'
   
   export default {
     name : 'TodoList',
-    components: { PanThumb, Mallki },
+    components: { YuThumb, Mallki },
     setup() {
       const store = useStore()
 
@@ -107,7 +107,7 @@
       font-size: 20px;
       font-weight: bold;
     }
-    .panThumb {
+    .yuThumb {
       z-index: 100;
       height: 70px!important;
       width: 70px!important;

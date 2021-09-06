@@ -1,22 +1,22 @@
 
 <template>
-  <page-layout title="富文本编辑器 - tinymce" :subtitle="subtitle">
+  <yu-layout title="富文本编辑器 - tinymce" :subtitle="subtitle">
     <template #body>
       <div class="section-container fix-width">
-        <tinymce :value="form.contents" :height="500" @input="getEditorContent" />
+        <yu-tinymce :value="form.contents" :height="500" @input="getEditorContent" />
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
   import { defineComponent, reactive, ref } from "vue";
-  import Tinymce from '/@/components/Tinymce/index.vue'
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuTinymce from '/@/components/YuTinymce'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Editor',
-    components : { PageLayout, Tinymce },
+    components : { YuLayout, YuTinymce },
     setup() {
       const form = reactive( {
         contents : '初始内容填充'

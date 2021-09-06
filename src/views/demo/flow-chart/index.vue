@@ -1,5 +1,5 @@
 <template>
-  <page-layout title="流程图示例" subtitle="简单流程图示例">
+  <yu-layout title="流程图示例" subtitle="简单流程图示例">
     <template #body>
       <div class="logic-flow-view">
         <!-- 辅助工具栏 -->
@@ -14,7 +14,7 @@
         </el-dialog>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script >
@@ -23,14 +23,14 @@ import LogicFlow from "@logicflow/core"
 import { Snapshot, BpmnElement, Menu } from "@logicflow/extension"
 import "@logicflow/core/dist/style/index.css"
 import "@logicflow/extension/lib/style/index.css"
-import { Control, NodePanel, DataDialog } from "/@/components/FlowChart"
-import {toTurboData, toLogicflowData} from "/@/components/FlowChart/src/adpterForTurbo"
-import { BpmnNode } from "/@/components/FlowChart/src/config"
+import { Control, NodePanel, DataDialog } from "/@/components/YuFlowChart"
+import {toTurboData, toLogicflowData} from "/@/components/YuFlowChart/src/adpterForTurbo"
+import { BpmnNode } from "/@/components/YuFlowChart/src/config"
 import demoData from "./dataTurbo.json"
-import PageLayout from '/@/components/layout/index.vue'
+import YuLayout from '/@/components/YuLayout'
 
 export default {
-  components: { NodePanel, Control, DataDialog, PageLayout },
+  components: { NodePanel, Control, DataDialog, YuLayout },
   setup() {
     let lf = ref(null)
     let graphData = ref(null)

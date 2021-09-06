@@ -1,6 +1,6 @@
 
 <template>
-  <page-layout title="canvas神器 - fabric" :subtitle="subtitle">
+  <yu-layout title="canvas神器 - fabric" :subtitle="subtitle">
     <template #head>
       <ul style="padding-left: 15px;">
         <li>在Canvas上创建、填充图形（包括图片、文字、规则图形和复杂路径组成图形）。</li>
@@ -14,7 +14,7 @@
     
     <template #body>
       <div class="section-container">
-        <el-descriptions title="canvas 基础应用，选择元素后按 delete| backspace 可以删除" column="3">
+        <el-descriptions title="canvas 基础应用，选择元素后按 delete| backspace 可以删除" :column="3">
           <el-descriptions-item label="">
             <el-button type="primary" size="mini" @click="drawRect">添加矩形</el-button>
           </el-descriptions-item>
@@ -44,7 +44,7 @@
   
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
@@ -54,11 +54,11 @@
   const { ElMessage } = ELEMENT
   import { Mark } from './utils'
   const markHandle = new Mark()
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Fabric',
-    components : { PageLayout },
+    components : { YuLayout },
     setup() {
       const canvas = ref( null )
       const subtitle = ref( `Fabric.js是一个可以简化Canvas程序编写的库。 Fabric.js为Canvas提供所缺少的对象模型, svg parser, 交互和一整套其他不可或缺的工具。官方文档地址：<a href="http://fabricjs.com/">点我前往 http://fabricjs.com/</a> ` )

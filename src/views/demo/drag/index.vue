@@ -1,6 +1,6 @@
 
 <template>
-  <page-layout title="拖拽排序" subtitle="拖拽排序的简单使用">
+  <yu-layout title="拖拽排序" subtitle="拖拽排序的简单使用">
     <template #head>
       <ul style="padding-left: 15px;">
         <li>
@@ -92,17 +92,17 @@
         </el-row>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
   import draggable from "vuedraggable/src/vuedraggable"
   import { defineComponent, reactive, toRefs, onMounted, ref } from "vue"
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Drag',
-    components: { draggable, PageLayout },
+    components: { draggable, YuLayout },
     setup() {
       const gridLists = []
       for( let i = 1; i < 10; i++ ) {

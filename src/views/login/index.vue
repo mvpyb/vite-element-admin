@@ -16,46 +16,35 @@
         </div>
       </div>
     </div>
-    <copyright />
+    <yu-copyright />
   </div>
 </template>
 
-<script>
-  import { ref, defineComponent, onBeforeMount } from "vue"
+<script setup>
+  import { ref, onBeforeMount } from "vue"
   import { isMobile } from '/@/utils/device'
   import Logo from './components/logo.vue'
-  import Copyright from '/@/components/copyright/index.vue'
+  import YuCopyright from "/@/components/YuCopyright"
   import WeChatLogin from './components/weChatLogin.vue'
   import LoginPwd from './components/loginPwd.vue'
-  
-  export default defineComponent ({
-    name : 'AccountLogin',
-    components : { Logo, Copyright, WeChatLogin, LoginPwd },
-    setup() {
-      let isShowWX = ref( true )
-      
-      const getQueryParams = ( query ) => {
-        let str = ''
-        if ( query ) {
-          for ( const key in query ) {
-            if ( query[key] ) {
-              str = str ? `${str}&${key}=${query[key]}` : `${key}=${query[key]}`
-            }
-          }
+
+  let isShowWX = ref( true )
+
+  const getQueryParams = ( query ) => {
+    let str = ''
+    if ( query ) {
+      for ( const key in query ) {
+        if ( query[key] ) {
+          str = str ? `${str}&${key}=${query[key]}` : `${key}=${query[key]}`
         }
-        return str
       }
-  
-      onBeforeMount(() => {
-        isShowWX.value = !isMobile()
-        getQueryParams()
-      });
-      
-      return {
-        isShowWX,
-        getQueryParams
-      };
-    },
+    }
+    return str
+  }
+
+  onBeforeMount(() => {
+    isShowWX.value = !isMobile()
+    getQueryParams()
   })
 </script>
 

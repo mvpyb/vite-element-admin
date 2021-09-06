@@ -1,6 +1,6 @@
 
 <template>
-  <page-layout title="表单示例" subtitle="element plus 表单基础使用示例">
+  <yu-layout title="表单示例" subtitle="element plus 表单基础使用示例">
     <template #body>
       <div class="section-container ">
         <el-form :model="formState" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
@@ -53,18 +53,17 @@
         </el-form>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
   
 </template>
 
 <script>
-  import {ref, defineComponent, onMounted, onBeforeMount, unref, watch, reactive, computed, toRefs} from "vue"
-  import Tinymce from '/@/components/Tinymce/index.vue'
-  import PageLayout from '/@/components/layout/index.vue'
+  import {ref, defineComponent, reactive} from "vue"
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Editor',
-    components : { PageLayout, Tinymce },
+    components : { YuLayout },
     setup() {
       const ruleForm = ref()
   

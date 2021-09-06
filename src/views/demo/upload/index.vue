@@ -1,6 +1,6 @@
 
 <template>
-  <page-layout title="上传组件" subtitle="上传组件的简单使用，包括Element Plus 原生upload 组件、大文件上传组件">
+  <yu-layout title="上传组件" subtitle="上传组件的简单使用，包括Element Plus 原生upload 组件、大文件上传组件">
     <template #body>
       <div class="section-container ">
         <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -11,17 +11,17 @@
         </el-tabs>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
   
 </template>
 
 <script>
   import {ref, defineComponent, onMounted, onBeforeMount, unref, watch, reactive, computed, toRefs} from "vue"
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'Upload',
-    components : { PageLayout },
+    components : { YuLayout },
     setup() {
       const ruleForm = ref()
       const activeName = ref( 'base' )

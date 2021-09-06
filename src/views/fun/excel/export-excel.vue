@@ -1,5 +1,5 @@
 <template>
-  <page-layout title="表格" subtitle="表格的简单使用">
+  <yu-layout title="表格" subtitle="表格的简单使用">
     <template #body>
       <div class="app-container">
         <div>
@@ -53,7 +53,7 @@
         </div>
       </div>
     </template>
-  </page-layout>
+  </yu-layout>
 </template>
 
 <script>
@@ -62,11 +62,11 @@
   import * as ELEMENT from 'element-plus'
   const { ElMessage } = ELEMENT
   import { tableList } from "/@/api/demo"
-  import PageLayout from '/@/components/layout/index.vue'
+  import YuLayout from '/@/components/YuLayout'
   
   export default defineComponent ({
     name : 'ExportExcel',
-    components : { PageLayout },
+    components : { YuLayout },
     setup() {
       const filename = ref( '' )
       const fileType = ref( 'xlsx' )
