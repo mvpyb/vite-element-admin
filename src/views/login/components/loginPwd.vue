@@ -246,16 +246,4 @@ export default defineComponent ({
       box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);
     }
   }
-  /*inp 前缀*/
-  :deep .el-input-group__prepend {
-    padding: 0;
-    text-align: center;
-    width: 40px;
-    background: #D9D9D9;
-    .icons {
-      color: #fff;
-      width: 16px;
-      height: 16px;
-    }
-  }
 </style>

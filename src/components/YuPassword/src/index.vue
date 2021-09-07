@@ -111,7 +111,6 @@
       // 获取当前聚焦索引
       const currentIndex = computed( () => {
         const index = pwdData.value.findIndex( item => item.val === '' )
-       
         // console.log( 'currentIndex index', index )
         let cIndex = index > -1 ? index : 5
         // console.log( 'currentIndex cIndex', cIndex )
