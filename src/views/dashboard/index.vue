@@ -1,11 +1,10 @@
 <template>
   <div class="dashboard-editor-container">
-    
     <el-row :gutter="20">
       <el-col :xs="12" :sm="12" :lg="6" v-for="item in cardList" :key="item.id">
         <yu-card :end="item.end" :duration="item.duration" :title="item.title" :prefix="item.prefix" >
           <template #icon>
-            <i class="fr" :calss="item.badge.icon"></i>
+            <i class="fr" :class="item.icon"></i>
           </template>
           <template #badge>
             <span class="badge" :class="item.badge.className">{{item.badge.txt}}</span>
@@ -41,8 +40,7 @@
         <yu-street-map />
       </el-col>
     </el-row>
-  
-  
+    
     <el-row :gutter="20" class="user-info">
       <el-col :span="12">
         <yu-weather />
@@ -143,7 +141,6 @@
 </script>-->
 
 <script setup>
-  
   import RaddarChart from '../components/RaddarChart.vue'
   import PieChart from '../components/PieChart.vue'
   import BarChart from '../components/BarChart.vue'
@@ -154,7 +151,6 @@
   import YuWeather from "../components/YuWeather/index.vue"
   import YuStreetMap from "/@/components/YuStreetMap"
   import { ref } from "vue"
-
   const openDepot = () => {
     // window.open("https://github.com/xiaoxian521/vue-pure-admin");
   }
@@ -165,7 +161,7 @@
       end : 6666,
       duration : 3000,
       title : 'Order',
-      icon : 'Yu-icon-lifangti',
+      icon : 'yu-icon-lifangti',
       badge : {
         className : 'bg-info',
         txt : '+56%'
@@ -178,7 +174,7 @@
       duration : 3000,
       prefix :"￥",
       title : 'Income',
-      icon : 'Yu-icon-lifangti',
+      icon : 'yu-icon-chanpin1',
       badge : {
         className : 'bg-danger',
         txt : '+78%'
@@ -191,7 +187,7 @@
       duration : 1000,
       prefix :"￥",
       title : 'Average Price',
-      icon : 'Yu-icon-lifangti',
+      icon : 'yu-icon-jiagebiaoqian',
       badge : {
         className : 'bg-warning',
         txt : '-5.2%'
@@ -203,7 +199,7 @@
       end : 9527,
       duration : 3000,
       title : 'Product Sold',
-      icon : 'Yu-icon-lifangti',
+      icon : 'yu-icon-icon_xinyong_xianxing_jijin-129',
       badge : {
         className : 'bg-info',
         txt : '+22%'

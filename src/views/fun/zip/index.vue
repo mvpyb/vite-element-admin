@@ -2,122 +2,40 @@
   <yu-layout title="zip" subtitle="zip组件的简单使用">
     <template #body>
       <div class="app-container">
-        <div>
-          <el-input v-model="filename" placeholder="请输入导出的文件名" style="width:300px;" prefix-icon="el-icon-document" />
-          <el-button :loading="downloadLoading" style="margin-bottom:20px;" type="primary" icon="el-icon-document" @click="handleDownload">
-            导出为 Zip
-          </el-button>
-      
-          <el-table v-loading="listLoading" :data="list" element-loading-text="Loading..." border fit highlight-current-row>
-            <el-table-column align="center" label="Id" width="95">
-              <template  #default="scope">
-                {{ scope.$index }}
-              </template>
-            </el-table-column>
-            <el-table-column label="Title">
-              <template  #default="scope">
-                {{ scope.row.title }}
-              </template>
-            </el-table-column>
-            <el-table-column label="Author" width="110" align="center">
-              <template  #default="scope">
-                <el-tag>{{ scope.row.author }}</el-tag>
-              </template>
-            </el-table-column>
-            <el-table-column label="Readings" width="115" align="center">
-              <template  #default="scope">
-                {{ scope.row.pageviews }}
-              </template>
-            </el-table-column>
-            <el-table-column align="center" label="Date" width="220">
-              <template  #default="scope">
-                <i class="el-icon-time" />
-                <span>{{ scope.row.timestamp}}</span>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
+        <el-tabs v-model="activeName">
+          <el-tab-pane label="zip导出" name="export">
+            <div>
+              <zip />
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="本地zip解压" name="unzip">
+            <div>
+              <local />
+            </div>
+          </el-tab-pane>
+          <el-tab-pane label="远程zip解压" name="remote">
+            <remote />
+          </el-tab-pane>
+        </el-tabs>
       </div>
     </template>
   </yu-layout>
  
 </template>
 
-<script>
-  import {ref, defineComponent, onMounted, onBeforeUnmount } from "vue"
-  // import { ElMessage } from 'element-plus'
-  import * as ELEMENT from 'element-plus'
-  const { ElMessage } = ELEMENT
-  import { tableList } from "/@/api/demo"
+<script setup>
+  import {ref } from "vue"
+  import zip from './zip.vue'
+  import local from './local.vue'
+  import remote from './remote.vue'
   import YuLayout from '/@/components/YuLayout'
   
-  export default defineComponent ({
-    name : 'Zip',
-    components : { YuLayout },
-    setup() {
-      const filename = ref( '' )
-      const fileType = ref( 'xlsx' )
-      const options = ref( ['xlsx', 'csv', 'txt'] )
-      const downloadLoading = ref( false )
-      const listLoading = ref( false )
-      const list = ref([])
-      
-      function formatJson(filterVal, jsonData) {
-        return jsonData.map(v => filterVal.map(j => {
-          if (j === 'timestamp') {
-            return parseTime(v[j])
-          } else {
-            return v[j]
-          }
-        }))
-      }
-      
-      function handleDownload() {
-        downloadLoading.value = true
-        import('/@/vendor/Export2Zip').then(zip => {
-          const tHeader = ['Id', 'Title', 'Author', 'Readings', 'Date']
-          const filterVal = ['id', 'title', 'author', 'pageviews', 'display_time']
-          const tbList = list.value
-          const data = formatJson(filterVal, tbList)
-          zip.export_txt_to_zip(tHeader, data, filename.value, filename.value )
-          downloadLoading.value = false
-        })
-      }
-      
-      async function getList() {
-        listLoading.value = true
-        try {
-          let { data } = await tableList( {} )
-          list.value = data
-        } catch (e) {
-          list.value = []
-          ElMessage.error( '获取列表出错' )
-        } finally {
-          listLoading.value = false
-        }
-      }
-     
-      onMounted( async() => {
-        await getList()
-      } )
-      onBeforeUnmount( () => {
-      
-      } )
-      
-      return {
-        filename, fileType,  options, downloadLoading, list, listLoading,
-        handleDownload,
-      }
-    },
-  })
+  const activeName = ref( 'export' )
 </script>
 
 
 <style>
-.radio-label {
-  font-size: 14px;
-  color: #606266;
-  line-height: 40px;
-  padding: 0 12px 0 30px;
-}
+  .fileInp {
+    display: none;
+  }
 </style>

@@ -2,9 +2,37 @@
   "id": "2633233",
   "name": "vite-plus",
   "font_family": "iconfont",
-  "css_prefix_text": "Yu-icon-",
+  "css_prefix_text": "yu-icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "22530129",
+      "name": "仪表盘",
+      "font_class": "yibiaopan",
+      "unicode": "e799",
+      "unicode_decimal": 59289
+    },
+    {
+      "icon_id": "1986971",
+      "name": "开发示例",
+      "font_class": "kaifashili",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "20266203",
+      "name": "朋友圈",
+      "font_class": "pengyouquan",
+      "unicode": "e6dd",
+      "unicode_decimal": 59101
+    },
+    {
+      "icon_id": "23513655",
+      "name": "功能",
+      "font_class": "gongneng",
+      "unicode": "e875",
+      "unicode_decimal": 59509
+    },
     {
       "icon_id": "677356",
       "name": "产品",

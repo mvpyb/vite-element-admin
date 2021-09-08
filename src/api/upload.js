@@ -8,3 +8,11 @@ export function uploadImage( data ) {
     data
   } )
 }
+
+export function downSourcesWithBlob( data ) {
+  return http.request( {
+    url : '/down/blob',
+    method : 'post',
+    data
+  } )
+}

@@ -6,7 +6,7 @@
       </div>
       <div class="text-white">
         <h6 class="text-uppercase text-white">{{title}}</h6>
-        <h2 class="text-white">
+        <h2 class="text-white mb24">
           <yu-count-to :start-val="start" :end-val="end" :duration="duration" :prefix="prefix" class="card-panel-num" />
         </h2>
         <div class="badge-box">
@@ -93,6 +93,16 @@ const props = defineProps({
       }
       .text-uppercase {
         font-size: 16px;
+        margin-bottom: 16px;
+      }
+      .mb24 {
+        margin-bottom: 24px;
+        height: 28px;
+        line-height: 28px;
+        :deep .card-panel-num {
+          font-size: 14px;
+          display: inline-block;
+        }
       }
       .badge-box {
         display: inline-block;

@@ -1,75 +1,99 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2633233 */
-  src: url('iconfont.woff2?t=1630741215711') format('woff2'),
-       url('iconfont.woff?t=1630741215711') format('woff'),
-       url('iconfont.ttf?t=1630741215711') format('truetype');
+  src: url('iconfont.woff2?t=1631099356238') format('woff2'),
+       url('iconfont.woff?t=1631099356238') format('woff'),
+       url('iconfont.ttf?t=1631099356238') format('truetype');
 }
 
-.Yu-icon-chanpin:before {
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.yu-icon-yibiaopan:before {
+  content: "\e799";
+}
+
+.yu-icon-kaifashili:before {
+  content: "\e61c";
+}
+
+.yu-icon-pengyouquan:before {
+  content: "\e6dd";
+}
+
+.yu-icon-gongneng:before {
+  content: "\e875";
+}
+
+.yu-icon-chanpin:before {
   content: "\e60a";
 }
 
-.Yu-icon-lifangti:before {
+.yu-icon-lifangti:before {
   content: "\e72d";
 }
 
-.Yu-icon-youxiang:before {
+.yu-icon-youxiang:before {
   content: "\e623";
 }
 
-.Yu-icon-gerenxinxi:before {
+.yu-icon-gerenxinxi:before {
   content: "\e603";
 }
 
-.Yu-icon-shimingrenzheng:before {
+.yu-icon-shimingrenzheng:before {
   content: "\e65c";
 }
 
-.Yu-icon-chanpin1:before {
+.yu-icon-chanpin1:before {
   content: "\e62c";
 }
 
-.Yu-icon-icon_xinyong_xianxing_jijin-129:before {
+.yu-icon-icon_xinyong_xianxing_jijin-129:before {
   content: "\e647";
 }
 
-.Yu-icon-jiagebiaoqian:before {
+.yu-icon-jiagebiaoqian:before {
   content: "\e625";
 }
 
-.Yu-icon-shouji:before {
+.yu-icon-shouji:before {
   content: "\e605";
 }
 
-.Yu-icon-quanping:before {
+.yu-icon-quanping:before {
   content: "\e604";
 }
 
-.Yu-icon-weixin:before {
+.yu-icon-weixin:before {
   content: "\e7e5";
 }
 
-.Yu-icon-02:before {
+.yu-icon-02:before {
   content: "\e64a";
 }
 
-.Yu-icon-zujian:before {
+.yu-icon-zujian:before {
   content: "\e730";
 }
 
-.Yu-icon-shouye:before {
+.yu-icon-shouye:before {
   content: "\e614";
 }
 
-.Yu-icon-zhengque:before {
+.yu-icon-zhengque:before {
   content: "\e88c";
 }
 
-.Yu-icon-dianyuan:before {
+.yu-icon-dianyuan:before {
   content: "\e68a";
 }
 
-.Yu-icon-guanbi:before {
+.yu-icon-guanbi:before {
   content: "\e61a";
 }
 
