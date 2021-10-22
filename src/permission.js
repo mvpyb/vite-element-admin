@@ -7,9 +7,7 @@ import getPageTitle from '/@/utils/get-page-title'
 
 NProgress.configure( { showSpinner : false } )
 
-const whiteList = [
-  '/login',
-]
+const whiteList = ['/login']
 router.beforeEach( async( to, from, next ) => {
   NProgress.start()
   document.title = getPageTitle( to.meta.title )
@@ -25,8 +23,11 @@ router.beforeEach( async( to, from, next ) => {
       } else {
         try {
           const { roles } = await store.dispatch( 'user/loginByToken', {} )
-          const accessRoutes = await store.dispatch( 'permission/generateRoutes', roles )
-          accessRoutes.forEach( item => {
+          const accessRoutes = await store.dispatch(
+            'permission/generateRoutes',
+            roles
+          )
+          accessRoutes.forEach( ( item ) => {
             router.addRoute( item )
           } )
           next( { ...to, replace : true } )

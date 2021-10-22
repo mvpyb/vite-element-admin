@@ -9,7 +9,11 @@ node_modules
 dist
 /public
 /docs
+package.json
 .husky
 .local
 /bin
 Dockerfile
+iconfont.js
+/*
+

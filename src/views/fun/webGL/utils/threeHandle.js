@@ -1,27 +1,24 @@
-// import { message } from '@/components/DonMessage'
-// import store from '@/store'
+
 import * as THREE from 'three'
 import Stats from 'three/examples/jsm/libs/stats.module.js'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
-import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader';
+import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader'
 
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
 import { TGALoader } from 'three/examples/jsm/loaders/TGALoader.js'
 
-import { LoadingManager } from 'three/src/loaders/LoadingManager';
+import { LoadingManager } from 'three/src/loaders/LoadingManager'
 
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 
-import {
-  ObjectLoader,
-  Mesh,
-  MeshPhongMaterial,
-} from 'three'
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader'
+
+// import { ObjectLoader, Mesh, MeshPhongMaterial } from 'three'
+import { ObjectLoader } from 'three'
 
 // const OrbitControls = require( 'three-orbit-controls' )( THREE )
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 class ThreeHandle {
   constructor() {
@@ -36,7 +33,7 @@ class ThreeHandle {
 
     this.mixer = null
     this.Stats = null
-    
+
     this.manager = null
     this.crossOrigin = 'anonymous'
     this.requestHeader = {}
@@ -52,22 +49,20 @@ class ThreeHandle {
 
     this.width = width || 500
     this.height = height || 500
-    // 初始化相机
+
     this.camera = await this.setCamera()
-    // 渲染 会在body里面生成一个canvas标签,
+
     this.renderer = await this.setRenderer()
     this.renderer.setClearColor( 'rgb(92,92,92)', 1.0 )
-    
-    // 初始化控制器 TODO
+
     this.controls = await this.setControls()
     container.appendChild( this.renderer.domElement )
-  
+
     await this.setStats( container )
     await this.setClock()
-    
-    // 添加窗口监听事件（resize-onresize即窗口或框架被重新调整大小）
+
     window.addEventListener( 'resize', this.onWindowResize, false )
-    
+
     return {
       scene : this.scene,
       light : this.light,
@@ -75,7 +70,7 @@ class ThreeHandle {
       renderer : this.renderer,
       controls : this.controls,
       stats : this.stats,
-      clock : this.clock,
+      clock : this.clock
     }
   }
 
@@ -86,7 +81,6 @@ class ThreeHandle {
   }
 
   setLgiht() {
-    // 从正上方（不是位置）照射过来的平行光，0.45的强度
     const light = new THREE.DirectionalLight( 0xdfebff, 0.45 )
     light.position.set( 50, 200, 100 )
     light.position.multiplyScalar( 0.3 )
@@ -94,9 +88,14 @@ class ThreeHandle {
   }
 
   setCamera() {
-    const camera = new THREE.PerspectiveCamera( this.fov, this.width / this.height, this.near, this.far )
+    const camera = new THREE.PerspectiveCamera(
+      this.fov,
+      this.width / this.height,
+      this.near,
+      this.far
+    )
     camera.position.set( 10, 90, 65 )
-    // camera.position.set( 0, 0, 400 )
+
     camera.up.set( 0, 1, 0 )
     camera.lookAt( this.scene.position )
     return camera
@@ -116,23 +115,21 @@ class ThreeHandle {
   setControls() {
     const controls = new OrbitControls( this.camera, this.renderer.domElement )
     controls.target.set( 0, 0, 0 )
-    // 设置相机距离原点的最远距离
+
     controls.minDistance = 20
-    // 设置相机距离原点的最远距离
+
     controls.maxDistance = 100000
     controls.maxPolarAngle = Math.PI / 3
     controls.update()
-    // // 如果使用animate方法时，将此函数删除
-    // // controls.addEventListener( 'change', render )
-    // // 使动画循环使用时阻尼或自转 意思是否有惯性
+
     controls.enableDamping = true
-    // 动态阻尼系数 就是鼠标拖拽旋转灵敏度
+
     controls.dampingFactor = 0.25
-    // 是否可以缩放
+
     controls.enableZoom = true
-    // 是否自动旋转
+
     controls.autoRotate = false
-    // 是否开启右键拖拽
+
     controls.enablePan = true
 
     return controls
@@ -145,12 +142,10 @@ class ThreeHandle {
     this.stats.domElement.style.top = '5px'
     this.stats.domElement.style.display = 'none'
     container.appendChild( this.stats.dom )
-    // store.dispatch( 'threes/setStats', this.stats )
   }
 
   setClock() {
     this.clock = new THREE.Clock()
-    // store.dispatch( 'threes/setClock', this.clock )
   }
 
   onWindowResize() {
@@ -158,17 +153,17 @@ class ThreeHandle {
     this.camera.updateProjectionMatrix()
     this.renderer.setSize( this.width, this.height )
   }
-  
+
   render() {
     this.renderer.render( this.scene, this.camera )
   }
-  
+
   fbxAnimate() {
     const delta = this.clock.getDelta()
     if ( this.mixer ) this.mixer.update( delta )
     this.stats.update()
   }
-  
+
   // 线条绘制立方体
   //    v6----- v5
   //   /|      /|
@@ -183,7 +178,11 @@ class ThreeHandle {
     const geometryBox = await this.box( width, height, depth )
     const lineSegments = await new THREE.LineSegments(
       geometryBox,
-      await new THREE.LineDashedMaterial( { color : 0xffaa00, dashSize : 3, gapSize : 1 } )
+      await new THREE.LineDashedMaterial( {
+        color : 0xffaa00,
+        dashSize : 3,
+        gapSize : 1
+      } )
     )
     await lineSegments.computeLineDistances()
     await objects.push( lineSegments )
@@ -194,43 +193,94 @@ class ThreeHandle {
   async box( width, height, depth ) {
     const geometry = await new THREE.BufferGeometry()
     const position = [
-      -width, -height, -depth,
-      -width, height, -depth,
+      -width,
+      -height,
+      -depth,
+      -width,
+      height,
+      -depth,
 
-      -width, height, -depth,
-      width, height, -depth,
+      -width,
+      height,
+      -depth,
+      width,
+      height,
+      -depth,
 
-      width, height, -depth,
-      width, -height, -depth,
+      width,
+      height,
+      -depth,
+      width,
+      -height,
+      -depth,
 
-      width, -height, -depth,
-      -width, -height, -depth,
+      width,
+      -height,
+      -depth,
+      -width,
+      -height,
+      -depth,
 
-      -width, -height, depth,
-      -width, height, depth,
+      -width,
+      -height,
+      depth,
+      -width,
+      height,
+      depth,
 
-      -width, height, depth,
-      width, height, depth,
+      -width,
+      height,
+      depth,
+      width,
+      height,
+      depth,
 
-      width, height, depth,
-      width, -height, depth,
+      width,
+      height,
+      depth,
+      width,
+      -height,
+      depth,
 
-      width, -height, depth,
-      -width, -height, depth,
+      width,
+      -height,
+      depth,
+      -width,
+      -height,
+      depth,
 
-      -width, -height, -depth,
-      -width, -height, depth,
+      -width,
+      -height,
+      -depth,
+      -width,
+      -height,
+      depth,
 
-      -width, height, -depth,
-      -width, height, depth,
+      -width,
+      height,
+      -depth,
+      -width,
+      height,
+      depth,
 
-      width, height, -depth,
-      width, height, depth,
+      width,
+      height,
+      -depth,
+      width,
+      height,
+      depth,
 
-      width, -height, -depth,
-      width, -height, depth
+      width,
+      -height,
+      -depth,
+      width,
+      -height,
+      depth
     ]
-    geometry.setAttribute( 'position', await new THREE.Float32BufferAttribute( position, 3 ) )
+    geometry.setAttribute(
+      'position',
+      await new THREE.Float32BufferAttribute( position, 3 )
+    )
     return geometry
   }
 
@@ -239,7 +289,12 @@ class ThreeHandle {
     this.camera.lookAt( this.scene.position )
   }
 
-  setGridHelper( size = 224, divisions = 50, color1 = 0x303030, color2 = 0x303030 ) {
+  setGridHelper(
+    size = 224,
+    divisions = 50,
+    color1 = 0x303030,
+    color2 = 0x303030
+  ) {
     const gridHelper = new THREE.GridHelper( size, divisions, color1, color2 )
     return gridHelper
   }
@@ -248,20 +303,8 @@ class ThreeHandle {
     this.mixer = new THREE.AnimationMixer( object )
     const len = object.animations.length // 动画的数量
     if ( len > 0 ) {
-      const action = this.mixer.clipAction( object.animations[ 0 ] )
+      const action = this.mixer.clipAction( object.animations[0] )
       action.play()
-
-      // const actions = [] // 所有的动画数组 https://blog.csdn.net/qq_30100043/article/details/80087471
-      // for ( let i = 0; i < len; i++ ) {
-      //   actions[i] = this.mixer.clipAction( object.animations[i] )
-      // }
-      // for ( var j = 0; j < actions.length; j++ ) {
-      //   if ( j === i ) {
-      //     actions[j].play()
-      //   } else {
-      //     actions[j].stop()
-      //   }
-      // }
     }
     return this.mixer
   }
@@ -270,20 +313,21 @@ class ThreeHandle {
     const loader = new FBXLoader( this.manager )
     loader.setCrossOrigin( this.crossOrigin )
     loader.setRequestHeader( this.requestHeader )
-    
+
     const that = this
-    loader.load( baseUrl, object => {
-      fn && fn( object )
-    }, that.onProgress, that.onError )
+    loader.load(
+      baseUrl,
+      ( object ) => {
+        fn && fn( object )
+      },
+      that.onProgress,
+      that.onError
+    )
   }
 
   // fbx模型加载贴图
   loadImage( url ) {
     const loader = new THREE.TextureLoader()
-    // const loader = new THREE.TextureLoader( this.manager )
-    // loader.setCrossOrigin( this.crossOrigin )
-    // loader.setRequestHeader( this.requestHeader )
-    
     const texturePlante = loader.load( url )
     const material = new THREE.MeshPhongMaterial( {
       map : texturePlante
@@ -294,16 +338,29 @@ class ThreeHandle {
   loadObj( baseUrl, objUrl, materials, fn ) {
     const loader = new OBJLoader( this.manager )
     loader.setRequestHeader( this.requestHeader )
-    
+
     const that = this
     if ( materials ) {
-      loader.setMaterials( materials ).setPath( baseUrl ).load( objUrl, object => {
-        fn && fn( object )
-      }, that.onProgress, that.onError )
+      loader
+        .setMaterials( materials )
+        .setPath( baseUrl )
+        .load(
+          objUrl,
+          ( object ) => {
+            fn && fn( object )
+          },
+          that.onProgress,
+          that.onError
+        )
     } else {
-      loader.setPath( baseUrl ).load( objUrl, object => {
-        fn && fn( object )
-      }, that.onProgress, that.onError )
+      loader.setPath( baseUrl ).load(
+        objUrl,
+        ( object ) => {
+          fn && fn( object )
+        },
+        that.onProgress,
+        that.onError
+      )
     }
   }
 
@@ -311,75 +368,132 @@ class ThreeHandle {
     const loader = new MTLLoader( this.manager )
     loader.setCrossOrigin( this.crossOrigin )
     loader.setRequestHeader( this.requestHeader )
-    
+
     const that = this
-    loader.setPath( baseUrl ).load( mtlUrl, async( materials ) => {
-      materials.preload()
-      fn && fn( materials )
-    }, that.onProgress, that.onError )
+    loader.setPath( baseUrl ).load(
+      mtlUrl,
+      async( materials ) => {
+        materials.preload()
+        fn && fn( materials )
+      },
+      that.onProgress,
+      that.onError
+    )
   }
-  
+
   loadJSON( baseUrl, fn ) {
     const that = this
-    const loader = new ObjectLoader();
-    loader.setCrossOrigin(that.crossOrigin);
-    loader.setRequestHeader(that.requestHeader);
-    
-    loader.load( baseUrl, object  => {
-      fn && fn( object )
-    }, that.onProgress, that.onError )
+    const loader = new ObjectLoader()
+    loader.setCrossOrigin( that.crossOrigin )
+    loader.setRequestHeader( that.requestHeader )
+
+    loader.load(
+      baseUrl,
+      ( object ) => {
+        fn && fn( object )
+      },
+      that.onProgress,
+      that.onError
+    )
   }
-  
+
   loadStl( baseUrl, fn ) {
     const that = this
-    const loader = new STLLoader();
-    
-    loader.load( baseUrl, geometry => {
-      const material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
-      const object = new THREE.Mesh( geometry, material );
-      fn && fn( object )
-    }, that.onProgress, that.onError )
+    const loader = new STLLoader()
+
+    loader.load(
+      baseUrl,
+      ( geometry ) => {
+        const material = new THREE.MeshPhongMaterial( {
+          color : 0xff5533,
+          specular : 0x111111,
+          shininess : 200
+        } )
+        const object = new THREE.Mesh( geometry, material )
+        fn && fn( object )
+      },
+      that.onProgress,
+      that.onError
+    )
   }
-  
+
+  loadPly( baseUrl, fn ) {
+    const that = this
+    const loader = new PLYLoader()
+
+    loader.load(
+      baseUrl,
+      ( geometry ) => {
+        // console.log( 'loadPly', geometry )
+
+        geometry.computeVertexNormals()
+        const loadGeometry = geometry.clone()
+
+        var material = new THREE.MeshStandardMaterial( {
+          color : 0x7fff00,
+          flatShading : true
+        } )
+        var mesh = new THREE.Mesh( loadGeometry, material )
+        mesh.translateZ( 5 )
+        mesh.translateY( 2 )
+        // scene.add(mesh);
+
+        // eslint-disable-next-line no-unused-vars
+        const mateial = new THREE.PointsMaterial( {
+          color : 0xffffff,
+          size : 0.05,
+          opacity : 0.5,
+          transparent : true,
+          blending : THREE.AdditiveBlending
+          // map: generateSprite()
+        } )
+
+        fn && fn( mesh )
+      },
+      that.onProgress,
+      that.onError
+    )
+  }
+
   // https://threejs.org/docs/index.html?q=LoadingManager#api/en/loaders/managers/LoadingManager
   loadManager( type = 'dds' ) {
     let reg
     let loader
-    
+
+    // eslint-disable-next-line default-case
     switch ( type ) {
-      case 'dds' :
+      case 'dds':
         reg = /\.dds$/i
         loader = new DDSLoader()
         break
-      case 'tga' :
+      case 'tga':
         reg = /\.tga$/i
         loader = new TGALoader()
         break
     }
     this.manager = new LoadingManager()
-    this.manager.addHandler(reg, loader )
+    this.manager.addHandler( reg, loader )
   }
-  
-  // 事件销毁
+
   async distoryEvent() {
     window.removeEventListener( 'resize', this.onWindowResize, false )
   }
-  // 清除场景
+
   async clearScene() {
     const that = this
-    const groups = this.scene.children.filter( item => item.type == 'Group' )
-    const LineSegments = this.scene.children.filter( item => item.type == 'LineSegments' )
+    const groups = this.scene.children.filter( ( item ) => item.type == 'Group' )
+    const LineSegments = this.scene.children.filter(
+      ( item ) => item.type == 'LineSegments'
+    )
     that.getGroup( groups )
     that.getGroup( LineSegments )
   }
 
-  // 删除group，释放内存
   getGroup( groups ) {
     const that = this
     if ( groups.length > 0 ) {
       for ( let i = 0; i < groups.length; i++ ) {
         const currObj = groups[i]
-        // 判断类型
         if ( currObj instanceof THREE.Scene ) {
           const children = currObj.children
           for ( let j = 0; j < children.length; j++ ) {
@@ -393,20 +507,18 @@ class ThreeHandle {
     }
   }
 
-  // 删除group，释放内存
   deleteGroup( group ) {
     if ( !group ) return
-    // 删除掉所有的模型组内的mesh
     group.traverse( function( item ) {
       if ( item instanceof THREE.Mesh ) {
-        item.geometry.dispose() // 删除几何体
-        item.material.dispose() // 删除材质
+        item.geometry.dispose()
+        item.material.dispose()
       }
     } )
   }
 
   onProgress( xhr ) {
-    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    console.log( ( xhr.loaded / xhr.total ) * 100 + '% loaded' )
     if ( xhr.lengthComputable ) {
       // const percentComplete = xhr.loaded / xhr.total * 100
       // console.log( Math.round( percentComplete, 2 ) + '% downloaded' )
@@ -425,7 +537,9 @@ class ThreeHandle {
     const length = boxSize.length()
     const boxCenter = box.getCenter( new THREE.Vector3() )
     return {
-      boxSize, length, boxCenter
+      boxSize,
+      length,
+      boxCenter
     }
   }
 
@@ -433,12 +547,15 @@ class ThreeHandle {
     const boxHelper = new THREE.BoxHelper( obj )
     boxHelper.geometry.computeBoundingBox()
     const box = boxHelper.geometry.boundingBox
-    const maxDiameter = Math.max( ( box.max.x - box.min.x ), ( box.max.y - box.min.y ), ( box.max.z - box.min.z ) )
+    const maxDiameter = Math.max(
+      box.max.x - box.min.x,
+      box.max.y - box.min.y,
+      box.max.z - box.min.z
+    )
     const size = this.camera.position.z / maxDiameter
     return size
   }
 
-  // 设置模型到适dao合观察容的大小
   setScaleToFitSize( obj ) {
     const scaleValue = this.getFitScaleValue( obj )
     obj.scale.set( scaleValue, scaleValue, scaleValue )

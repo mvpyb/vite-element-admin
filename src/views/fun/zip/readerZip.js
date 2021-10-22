@@ -1,4 +1,3 @@
-
 import JSZip from 'jszip'
 import { downSourcesWithBlob } from '/@/api/upload'
 
@@ -30,9 +29,7 @@ class ReaderZip {
         files : zipReader.files,
         size : response.size
       }
-    } catch ( e ) {
-
-    }
+    } catch ( e ) {}
   }
 
   async readBase64( zipReader, zipEntry ) {

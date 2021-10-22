@@ -1,17 +1,16 @@
-
 class sessionStorageProxy {
-  constructor(storageModel) {
-    this.storage = storageModel;
+  constructor( storageModel ) {
+    this.storage = storageModel
   }
-  set(key, value) {
+  set( key, value ) {
     const storage = this.storage
     if ( key ) {
       const data = JSON.stringify( value )
       storage.setItem( key, data )
     }
   }
-  
-  get(key) {
+
+  get( key ) {
     const storage = this.storage
     if ( key ) {
       let data = storage.getItem( key )
@@ -25,8 +24,8 @@ class sessionStorageProxy {
       return null
     }
   }
-  
-  remove(key, isAll = false) {
+
+  remove( key, isAll = false ) {
     const storage = this.storage
     if ( key ) {
       if ( isAll ) {
@@ -36,18 +35,21 @@ class sessionStorageProxy {
       }
     }
   }
-  
+
   clear() {
-    this.storage.clear();
+    this.storage.clear()
   }
 }
 
 class localStorageProxy extends sessionStorageProxy {
-  constructor(localStorage) {
-    super(localStorage);
+  // eslint-disable-next-line no-useless-constructor
+  constructor( localStorage ) {
+    super( localStorage )
   }
 }
 
-export const sessionStorageHandle = new sessionStorageProxy(sessionStorage);
+// eslint-disable-next-line new-cap
+export const sessionStorageHandle = new sessionStorageProxy( sessionStorage )
 
-export const localStorageHandle = new localStorageProxy(localStorage);
+// eslint-disable-next-line new-cap
+export const localStorageHandle = new localStorageProxy( localStorage )

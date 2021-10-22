@@ -1,4 +1,3 @@
-
 // 获取当前env环境名称
 export function getEnvs() {
   const env = process.env.NODE_ENV

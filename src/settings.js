@@ -1,4 +1,3 @@
-
 const settings = {
   title : 'vite-admin',
 

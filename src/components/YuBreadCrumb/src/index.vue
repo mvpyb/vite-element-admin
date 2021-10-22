@@ -2,7 +2,11 @@
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group appear name="breadcrumb">
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-        <span v-if="item.redirect === 'noRedirect' || index == levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>
+        <span
+          v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+          class="no-redirect"
+          >{{ item.meta.title }}</span
+        >
         <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
       </el-breadcrumb-item>
     </transition-group>
@@ -10,46 +14,51 @@
 </template>
 
 <script>
-import { pathToRegexp, compile } from "path-to-regexp"
-import { ref, defineComponent, watch } from "vue"
-import { useRoute, useRouter } from "vue-router"
+// import { pathToRegexp, compile } from 'path-to-regexp'
+import { compile } from 'path-to-regexp'
+import { ref, defineComponent, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
-export default defineComponent({
-  name: "YuBreadCrumb",
+export default defineComponent( {
+  name : 'YuBreadCrumb',
   setup() {
-    const levelList = ref([])
+    const levelList = ref( [] )
     const route = useRoute()
     const router = useRouter()
 
-    const isDashboard = (route) => {
+    const isDashboard = ( route ) => {
       const name = route && route.name
-      if (!name) {
+      if ( !name ) {
         return false
       }
-      return name.trim().toLocaleLowerCase() === "Dashboard".toLocaleLowerCase()
-    };
-
-    const getBreadcrumb = () => {
-      let matched = route.matched.filter(item => item.meta && item.meta.title)
-      const first = matched[0]
-      if (!isDashboard(first)) {
-        matched = [ { path: "/", meta: { title: "首页" } } ].concat(matched)
-      }
-      levelList.value = matched.filter(
-        item => item.meta && item.meta.title && item.meta.breadcrumb !== false
+      return (
+        name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
       )
     }
-  
-    const pathCompile = (path) => {
-      const { params } = route
-      const toPath = compile(path)
-      return toPath(params)
+
+    const getBreadcrumb = () => {
+      let matched = route.matched.filter(
+        ( item ) => item.meta && item.meta.title
+      )
+      const first = matched[0]
+      if ( !isDashboard( first ) ) {
+        matched = [{ path : '/', meta : { title : '首页' }}].concat( matched )
+      }
+      levelList.value = matched.filter(
+        ( item ) => item.meta && item.meta.title && item.meta.breadcrumb !== false
+      )
     }
 
-    const handleLink = (item) => {
+    const pathCompile = ( path ) => {
+      const { params } = route
+      const toPath = compile( path )
+      return toPath( params )
+    }
+
+    const handleLink = ( item ) => {
       const { redirect, path } = item
-      if (redirect) {
-        router.push(redirect.toString())
+      if ( redirect ) {
+        router.push( redirect.toString() )
         return
       }
       router.push( pathCompile( path ) )
@@ -71,13 +80,13 @@ export default defineComponent({
       getBreadcrumb,
       pathCompile,
       handleLink,
-      levelList,
-    };
+      levelList
+    }
   }
-});
+} )
 </script>
 
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;
   font-size: 14px;

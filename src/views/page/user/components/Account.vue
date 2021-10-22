@@ -13,29 +13,21 @@
 </template>
 
 <script>
-  import { defineProps, useSlots, useAttrs  } from "vue"
 
-  const slots = useSlots()
-  const attrs = useAttrs()
-  const props = defineProps({
-    user: {
-      type: Object,
-      default: () => {
-        return {
-          name: '',
-          email: ''
-        }
+defineProps( {
+  user : {
+    type : Object,
+    default : () => {
+      return {
+        name : '',
+        email : ''
       }
     }
-  })
-  
-  const submit = () => {
-    console.log( 11 )
-    // this.$message({
-    //   message: 'User information has been updated successfully',
-    //   type: 'success',
-    //   duration: 5 * 1000
-    // })
   }
-  
+} )
+
+// eslint-disable-next-line no-unused-vars
+const submit = () => {
+  console.log( 11 )
+}
 </script>

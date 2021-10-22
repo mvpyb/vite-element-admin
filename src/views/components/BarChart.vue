@@ -1,100 +1,113 @@
 <template>
-  <div :class="className" :style="{height:height,width:width}" ref="container" />
+  <div
+    :class="className"
+    :style="{ height: height, width: width }"
+    ref="container"
+  />
 </template>
 
 <script>
-  import * as echarts from 'echarts'
-  import { ref , nextTick, onMounted, onBeforeUnmount } from "vue";
+import * as echarts from 'echarts'
+import { ref, nextTick, onMounted, onBeforeUnmount } from 'vue'
 
 const animationDuration = 6000
 
 export default {
-  props: {
-    className: {
-      type: String,
-      default: 'chart'
+  props : {
+    className : {
+      type : String,
+      default : 'chart'
     },
-    width: {
-      type: String,
-      default: '100%'
+    width : {
+      type : String,
+      default : '100%'
     },
-    height: {
-      type: String,
-      default: '300px'
+    height : {
+      type : String,
+      default : '300px'
     }
   },
-  
-  setup () {
-    let chart = ref(null);
-    let container = ref(null);
-    
+
+  setup() {
+    const chart = ref( null )
+    const container = ref( null )
+
     const initChart = () => {
-      chart.value = echarts.init( container.value );
-      chart.value.setOption({
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      chart.value = echarts.init( container.value )
+      chart.value.setOption( {
+        tooltip : {
+          trigger : 'axis',
+          axisPointer : {
+            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
           }
         },
-        grid: {
-          top: 10,
-          left: '2%',
-          right: '2%',
-          bottom: '3%',
-          containLabel: true
+        grid : {
+          top : 10,
+          left : '2%',
+          right : '2%',
+          bottom : '3%',
+          containLabel : true
         },
-        xAxis: [{
-          type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          axisTick: {
-            alignWithLabel: true
+        xAxis : [
+          {
+            type : 'category',
+            data : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick : {
+              alignWithLabel : true
+            }
           }
-        }],
-        yAxis: [{
-          type: 'value',
-          axisTick: {
-            show: false
+        ],
+        yAxis : [
+          {
+            type : 'value',
+            axisTick : {
+              show : false
+            }
           }
-        }],
-        series: [{
-          name: 'pageA',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [79, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageB',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [80, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageC',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [30, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }]
-      })
+        ],
+        series : [
+          {
+            name : 'pageA',
+            type : 'bar',
+            stack : 'vistors',
+            barWidth : '60%',
+            data : [79, 52, 200, 334, 390, 330, 220],
+            animationDuration
+          },
+          {
+            name : 'pageB',
+            type : 'bar',
+            stack : 'vistors',
+            barWidth : '60%',
+            data : [80, 52, 200, 334, 390, 330, 220],
+            animationDuration
+          },
+          {
+            name : 'pageC',
+            type : 'bar',
+            stack : 'vistors',
+            barWidth : '60%',
+            data : [30, 52, 200, 334, 390, 330, 220],
+            animationDuration
+          }
+        ]
+      } )
     }
-    
+
     onMounted( () => {
-      nextTick(() => {
+      nextTick( () => {
         initChart()
-      });
+      } )
     } )
     onBeforeUnmount( () => {
-      if (!chart.value) {
+      if ( !chart.value ) {
         return
       }
       chart.value.dispose()
       chart.value = null
     } )
-    
+
     return {
       container,
       initChart

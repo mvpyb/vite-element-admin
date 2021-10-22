@@ -1,1 +1,0 @@
-import{j as e,u as r,M as t,$ as a}from"./vendor.de15a04e.js";const s={setup(){const a=e(),s=r();return t((()=>{const{params:e,query:r}=s,{path:t}=e;a.replace({path:"/"+t,query:r})})),{}},render:function(){return a()}};export default s;

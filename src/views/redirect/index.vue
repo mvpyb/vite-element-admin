@@ -1,16 +1,16 @@
 <script>
-import { h, onBeforeMount } from "vue"
-import { useRoute, useRouter } from "vue-router"
+import { h, onBeforeMount } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
-    onBeforeMount(() => {
+    onBeforeMount( () => {
       const { params, query } = route
       const { path } = params
-      router.replace({ path: '/' + path, query })
-    })
+      router.replace( { path : '/' + path, query } )
+    } )
     return {}
   },
   // created() {
@@ -18,7 +18,7 @@ export default {
   //   const { path } = params
   //   this.$router.replace({ path: '/' + path, query })
   // },
-  render: function() {
+  render : function() {
     return h()
   }
 }

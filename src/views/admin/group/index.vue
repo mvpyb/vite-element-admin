@@ -5,7 +5,7 @@
     <div class="button-box clearflex">
       <el-button size="mini" type="primary" icon="el-icon-plus" @click="addMenu('0')">新增根菜单</el-button>
     </div>
-    
+
     &lt;!&ndash; 由于此处菜单跟左侧列表一一对应所以不需要分页 limit默认999 &ndash;&gt;
     <el-table :data="tableData" border row-key="ID" stripe v-loading="loading">
       <el-table-column label="id" width="60" prop="id" align="center" />
@@ -33,7 +33,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <el-dialog :before-close="handleClose" :title="dialogTitle" v-model="dialogFormVisible">
       <el-form
           ref="menuForm"
@@ -51,7 +51,7 @@
               filterable
           />
         </el-form-item>
-  
+
         <el-form-item label="分组名称:" prop="name" label-width="100px" >
           <el-input
               name="name"
@@ -64,16 +64,16 @@
               @change="changeName"
           />
         </el-form-item>
-        
+
       </el-form>
-  
+
       <template #footer>
         <div class="dialog-footer">
           <el-button @click="closeDialog">取 消</el-button>
           <el-button type="primary" @click="enterDialog">确 定</el-button>
         </div>
       </template>
-      
+
     </el-dialog>
   </div>
 </template>
@@ -84,14 +84,14 @@
   import { getGroupList } from '/@/api/group'
   import {ref, defineComponent, onMounted, onBeforeMount, unref, watch, reactive, computed, toRefs} from "vue"
   import { ElMessageBox } from 'element-plus'
-  
+
   const menuOpt = [
     {
       id: 0,
       name: '根分组'
     }
   ]
-  
+
   const menuOpt1 = [
     {
       id: 'zhinan',
@@ -146,8 +146,7 @@
       children: []
     }
   ]
-  
-  
+
   export default defineComponent ({
     name : 'Group',
     setup() {
@@ -155,16 +154,16 @@
       const total = ref(10);
       const limit = ref(10);
       const tableData = ref([]);
-  
+
       const loading = ref(false)
       const menuForm = ref()
       const dialogFormVisible = ref(false)
       const dialogTitle = ref('新增菜单')
       const dialogType = ref('create')
-      
+
       const menuOption = ref(menuOpt)
       const isEdit = ref(false)
-      
+
       const form = ref({
         id: 0,
         pid: '',
@@ -175,7 +174,7 @@
           { required: true, message: '请输入分组名称', trigger: 'blur' }
         ],
       }
-  
+
       onBeforeMount( async () => {
         await getTableData()
       } )
@@ -200,7 +199,7 @@
             limit.value = rData.limit
           }
         } catch (e) {
-        
+
         } finally {
           loading.value = false
         }
@@ -222,14 +221,14 @@
         setOptions()
         dialogFormVisible.value = true
       }
-  
+
       function setOptions() {
         menuOption.value = menuOpt
         setMenuOptions(tableData.value, menuOption.value, false)
       }
       function setMenuOptions(menuData, optionsData, disabled) {
         if(!menuData) return
-    
+
         menuData.map(item => {
           if (item.children && item.children.length) {
             const option = {
@@ -254,7 +253,7 @@
           }
         })
       }
-  
+
       function addParameter(form) {
         if (!form.parameters) {
           form.parameters = []
@@ -271,7 +270,7 @@
       function changeName() {
         form.value.path = form.value.name
       }
-     
+
       function handleClose(done) {
         initForm()
         done()
@@ -369,27 +368,27 @@
           }
         })
       }
-      
+
       return {
         page,
         total,
         limit,
         tableData,
-  
+
         menuForm,
         loading,
-        
+
         dialogFormVisible,
         dialogTitle,
         menuOption,
         dialogType,
         form,
         rules,
-  
+
         getTableData,
         showAddMenu,
         editMenu,
-        
+
         addParameter,
         deleteParameter,
         changeName,
@@ -401,8 +400,7 @@
         initForm,
         closeDialog,
         enterDialog,
-      
-        
+
       }
     }
   })

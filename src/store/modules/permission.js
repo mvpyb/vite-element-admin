@@ -1,6 +1,5 @@
-
 import { asyncRoutes, constantRoutes } from '/@/router'
-import { toRaw } from '@vue/reactivity'
+// import { toRaw } from '@vue/reactivity'
 
 /**
  * 使用meta.role来确定当前用户是否有权
@@ -9,7 +8,7 @@ import { toRaw } from '@vue/reactivity'
  */
 function hasPermission( roles, route ) {
   if ( route.meta && route.meta.roles ) {
-    return roles.some( role => route.meta.roles.includes( role ) )
+    return roles.some( ( role ) => route.meta.roles.includes( role ) )
   } else {
     return true
   }
@@ -22,7 +21,7 @@ function hasPermission( roles, route ) {
  */
 export function filterAsyncRoutes( routes, roles ) {
   const res = []
-  routes.forEach( route => {
+  routes.forEach( ( route ) => {
     const tmp = { ...route }
     if ( hasPermission( roles, tmp ) ) {
       if ( tmp.children ) {
@@ -53,21 +52,21 @@ const mutations = {
 
 const actions = {
   generateRoutes( { commit }, roles ) {
-    return new Promise( resolve => {
+    return new Promise( ( resolve ) => {
       let accessedRoutes
-      if (roles.includes('admin')) {
+      if ( roles.includes( 'admin' ) ) {
         accessedRoutes = asyncRoutes || []
       } else {
-        accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
+        accessedRoutes = filterAsyncRoutes( asyncRoutes, roles )
       }
       // const accessedRoutes = filterAsyncRoutes( asyncRoutes, roles )
       commit( 'SET_ROUTES', accessedRoutes )
       resolve( accessedRoutes )
     } )
   },
-  
+
   setDirectivePermission( { commit }, roles ) {
-    return new Promise( resolve => {
+    return new Promise( ( resolve ) => {
       commit( 'SET_DIRECTIVE_ROLE', roles )
       resolve( roles )
     } )

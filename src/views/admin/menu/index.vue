@@ -5,7 +5,7 @@
     <div class="button-box clearflex">
       <el-button size="mini" type="primary" icon="el-icon-plus" @click="addMenu('0')">新增根菜单</el-button>
     </div>
-    
+
     &lt;!&ndash; 由于此处菜单跟左侧列表一一对应所以不需要分页 pageSize默认999 &ndash;&gt;
     <el-table :data="tableData" border row-key="ID" stripe>
       <el-table-column label="ID" min-width="100" prop="ID" />
@@ -53,7 +53,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     &lt;!&ndash; <el-dialog :before-close="handleClose" :title="dialogTitle" :visible.sync="dialogFormVisible">
        <el-form
            ref="menuForm"
@@ -184,19 +184,19 @@
   // https://www.imooc.com/article/303667
   import {updateBaseMenu, getMenuList, addBaseMenu, deleteBaseMenu, getBaseMenuById} from '/@/api/menu'
   import getList from '/@/mixins/getList'
-  
+
   // import icon from '@/view/superAdmin/menu/icon'
-  
+
   import {ref, defineComponent, onMounted, onBeforeMount, unref, watch, reactive, computed, toRefs} from "vue"
   import { ElMessageBox } from 'element-plus'
-  
+
   const menuOpt = [
     {
       ID: '0',
       title: '根菜单'
     }
   ]
-  
+
   export default defineComponent ({
     name : 'Group',
     // components : { SvgIcon },
@@ -206,7 +206,7 @@
       const pageSize = ref(10);
       const tableData = ref([]);
       const searchInfo = ref({});
-      
+
       const menuForm = ref()
       const checkFlag = ref(false)
       const listApi = ref(getMenuList)
@@ -215,7 +215,7 @@
       const menuOption = ref(menuOpt)
       const isEdit = ref(false)
       const test = ref('')
-      
+
       const form = ref({
         ID: 0,
         path: '',
@@ -241,16 +241,16 @@
           { required: true, message: '请输入菜单展示名称', trigger: 'blur' }
         ]
       }
-      
+
       // const { getListData, page, total, tableData } = getList( {
       //   listApi: getMenuList
       // } );
-      
+
       onBeforeMount( async () => {
         // pageSize.value = 999
         // await getTableData()
       } )
-      
+
       async function getTableData(page = page.value, pageSize = pageSize.value) {
         const table = await getMenuList({ page, pageSize, ...searchInfo })
         if (table.code === 0) {
@@ -260,7 +260,7 @@
           pageSize.value = table.data.pageSize
         }
       }
-      
+
       function addParameter(form) {
         if (!form.parameters) {
           form.parameters = []
@@ -288,7 +288,7 @@
       }
       function setMenuOptions(menuData, optionsData, disabled) {
         if(!menuData) return
-        
+
         menuData.map(item => {
           if (item.children && item.children.length) {
             const option = {
@@ -428,16 +428,16 @@
         setOptions()
         dialogFormVisible.value = true
       }
-      
+
       return {
         page,
         total,
         pageSize,
         tableData,
         searchInfo,
-        
+
         menuForm,
-        
+
         checkFlag,
         listApi,
         dialogFormVisible,
@@ -447,14 +447,14 @@
         test,
         form,
         rules,
-        
+
         addParameter,
         deleteParameter,
         changeName,
         setOptions,
         setMenuOptions,
         handleClose,
-        
+
         load,
         deleteMenu,
         initForm,
@@ -466,7 +466,7 @@
       }
     }
   })
-  
+
   // export default {
   //   name: 'Menus',
   //   components: {

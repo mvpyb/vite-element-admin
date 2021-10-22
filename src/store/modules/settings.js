@@ -4,7 +4,7 @@ import defaultSettings from '/@/settings'
 const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
 
 const state = {
-  title: defaultSettings.title,
+  title : defaultSettings.title,
   fixedHeader : fixedHeader,
   // theme : variables.theme,
   showSettings : showSettings,
@@ -14,6 +14,7 @@ const state = {
 
 const mutations = {
   CHANGE_SETTING : ( state, { key, value } ) => {
+    // eslint-disable-next-line no-prototype-builtins
     if ( state.hasOwnProperty( key ) ) {
       state[key] = value
     }
@@ -32,4 +33,3 @@ export default {
   mutations,
   actions
 }
-

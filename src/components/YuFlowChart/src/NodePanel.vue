@@ -7,40 +7,43 @@
       @mousedown="nodeDragNode(item)"
     >
       <div class="node-item-icon" :class="item.class">
-        <div v-if="item.type === 'user' || item.type === 'time'" class="shape"></div>
+        <div
+          v-if="item.type === 'user' || item.type === 'time'"
+          class="shape"
+        ></div>
       </div>
-      <span class="node-label">{{item.text}}</span>
+      <span class="node-label">{{ item.text }}</span>
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, unref } from "vue"
-export default defineComponent({
-  name: "NodePanel",
-  props: {
-    lf: Object,
-    nodeList: Array
+import { defineComponent, ref, unref } from 'vue'
+export default defineComponent( {
+  name : 'NodePanel',
+  props : {
+    lf : Object,
+    nodeList : Array
   },
-  setup(props) {
-    let node = ref({
-      type: "rect",
-      property: {
-        a: "efrwe",
-        b: "wewe"
+  setup( props ) {
+    const node = ref( {
+      type : 'rect',
+      property : {
+        a : 'efrwe',
+        b : 'wewe'
       }
-    })
-    let properties = ref({
-      a: "efrwe",
-      b: "wewe"
-    })
+    } )
+    const properties = ref( {
+      a : 'efrwe',
+      b : 'wewe'
+    } )
 
-    const nodeDragNode = item => {
-      props.lf.dnd.startDrag({
-        type: item.type,
-        properties: unref(properties)
-      })
-    };
+    const nodeDragNode = ( item ) => {
+      props.lf.dnd.startDrag( {
+        type : item.type,
+        properties : unref( properties )
+      } )
+    }
 
     return {
       node,
@@ -48,9 +51,8 @@ export default defineComponent({
       nodeDragNode
     }
   }
-});
+} )
 </script>
-
 
 <style scoped>
 .node-panel {

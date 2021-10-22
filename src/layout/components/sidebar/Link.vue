@@ -5,48 +5,48 @@
 </template>
 
 <script>
-  import { isExternal } from '/@/utils/validate'
-  import { computed, defineComponent, reactive, unref, toRefs } from "vue"
-  
-  export default defineComponent( {
-    name: "Link",
-    props: {
-      to: {
-        type: String,
-        required: true
-      }
-    },
-    setup(props) {
-      const set = reactive({
-        isOuterLink: computed(() => {
-          return isExternal( props.to )
-        }),
-        type: computed(() => {
-          if ( unref( set.isOuterLink ) ) {
-            return 'a'
-          }
-          return 'router-link'
-        }),
-      })
+import { isExternal } from '/@/utils/validate'
+import { computed, defineComponent, reactive, unref, toRefs } from 'vue'
 
-      const linkProps = (to) => {
+export default defineComponent( {
+  name : 'Link',
+  props : {
+    to : {
+      type : String,
+      required : true
+    }
+  },
+  setup( props ) {
+    const set = reactive( {
+      isOuterLink : computed( () => {
+        return isExternal( props.to )
+      } ),
+      type : computed( () => {
         if ( unref( set.isOuterLink ) ) {
-          return {
-            href: to,
-            target: '_blank',
-            rel: 'noopener'
-          }
+          return 'a'
         }
+        return 'router-link'
+      } )
+    } )
+
+    const linkProps = ( to ) => {
+      if ( unref( set.isOuterLink ) ) {
         return {
-          to: to
+          href : to,
+          target : '_blank',
+          rel : 'noopener'
         }
       }
-
       return {
-        type: "router-link",
-        ...toRefs(set),
-        linkProps,
+        to : to
       }
     }
-  })
+
+    return {
+      type : 'router-link',
+      ...toRefs( set ),
+      linkProps
+    }
+  }
+} )
 </script>

@@ -2,18 +2,20 @@
   <div class="control-container">
     <ul>
       <li
-        v-for="(item,key) in titleLists"
+        v-for="(item, key) in titleLists"
         :key="key"
         :title="item.text"
-        :style="{background: focusIndex === key ? '#ccc' : ''}"
+        :style="{ background: focusIndex === key ? '#ccc' : '' }"
         @mouseenter.prevent="onEnter(key)"
         @mouseleave.prevent="focusIndex = -1"
       >
         <button
           :ref="'controlButton' + key"
           :disabled="item.disabled"
-          :style="{cursor: item.disabled === false ? 'pointer' : 'not-allowed'}"
-          @click="onControl(item,key)"
+          :style="{
+            cursor: item.disabled === false ? 'pointer' : 'not-allowed',
+          }"
+          @click="onControl(item, key)"
         >
           <span :class="'iconfont ' + item.icon"></span>
           <p>{{ item.text }}</p>
@@ -23,108 +25,99 @@
   </div>
 </template>
 
-<script >
-import { defineComponent, ref, unref, onMounted, onUnmounted } from "vue"
-import { templateRef } from "@vueuse/core"
+<script>
+import { defineComponent, ref, unref, onMounted } from 'vue'
+import { templateRef } from '@vueuse/core'
 
-export default defineComponent({
-  name: "Control",
-  props: {
-    lf: Object,
-    catTurboData: Boolean
+export default defineComponent( {
+  name : 'Control',
+  props : {
+    lf : Object,
+    catTurboData : Boolean
   },
-  emits: ["catData"],
-  setup(props, { emit }) {
-    const controlButton3 = templateRef(
-      "controlButton3",
-      null
-    );
-    const controlButton4 = templateRef(
-      "controlButton4",
-      null
-    );
+  emits : ['catData'],
+  setup( props, { emit } ) {
+    const controlButton3 = templateRef( 'controlButton3', null )
+    const controlButton4 = templateRef( 'controlButton4', null )
 
-    let focusIndex = ref(-1);
-    let titleLists = ref([
+    const focusIndex = ref( -1 )
+    const titleLists = ref( [
       {
-        icon: "icon-zoom-out-hs",
-        text: "缩小",
-        disabled: false
+        icon : 'icon-zoom-out-hs',
+        text : '缩小',
+        disabled : false
       },
       {
-        icon: "icon-enlarge-hs",
-        text: "放大",
-        disabled: false
+        icon : 'icon-enlarge-hs',
+        text : '放大',
+        disabled : false
       },
       {
-        icon: "icon-full-screen-hs",
-        text: "适应",
-        disabled: false
+        icon : 'icon-full-screen-hs',
+        text : '适应',
+        disabled : false
       },
       {
-        icon: "icon-previous-hs",
-        text: "上一步",
-        disabled: true
+        icon : 'icon-previous-hs',
+        text : '上一步',
+        disabled : true
       },
       {
-        icon: "icon-next-step-hs",
-        text: "下一步",
-        disabled: true
+        icon : 'icon-next-step-hs',
+        text : '下一步',
+        disabled : true
       },
       {
-        icon: "icon-download-hs",
-        text: "下载图片",
-        disabled: false
+        icon : 'icon-download-hs',
+        text : '下载图片',
+        disabled : false
       },
       {
-        icon: "icon-watch-hs",
-        text: "查看数据",
-        disabled: false
+        icon : 'icon-watch-hs',
+        text : '查看数据',
+        disabled : false
       }
-    ]);
+    ] )
 
-    const onControl = (item, key) => {
-      ["zoom", "zoom", "resetZoom", "undo", "redo", "getSnapshot"].forEach(
-        (v, i) => {
-          let domControl = props.lf;
-          if (key === 1) {
-            domControl.zoom(true);
+    const onControl = ( item, key ) => {
+      ['zoom', 'zoom', 'resetZoom', 'undo', 'redo', 'getSnapshot'].forEach(
+        ( v, i ) => {
+          const domControl = props.lf
+          if ( key === 1 ) {
+            domControl.zoom( true )
           }
-          if (key === 6) {
-            emit("catData");
+          if ( key === 6 ) {
+            emit( 'catData' )
           }
-          if (key === i) {
-            domControl[v]();
+          if ( key === i ) {
+            domControl[v]()
           }
         }
-      );
-    };
+      )
+    }
 
-    const onEnter = key => {
-      focusIndex.value = key;
-    };
+    const onEnter = ( key ) => {
+      focusIndex.value = key
+    }
 
-    onMounted(() => {
-      props.lf.on("history:change", ({ data: { undoAble, redoAble } }) => {
-        unref(titleLists)[3].disabled = unref(
-          controlButton3
-        ).disabled = !undoAble;
-        unref(titleLists)[4].disabled = unref(
-          controlButton4
-        ).disabled = !redoAble;
-      });
-    });
+    onMounted( () => {
+      props.lf.on( 'history:change', ( { data : { undoAble, redoAble }} ) => {
+        unref( titleLists )[3].disabled = unref( controlButton3 ).disabled =
+          !undoAble
+        unref( titleLists )[4].disabled = unref( controlButton4 ).disabled =
+          !redoAble
+      } )
+    } )
 
     return {
       focusIndex,
       titleLists,
       onControl,
       onEnter
-    };
+    }
   }
-});
+} )
 </script>
-
 
 <style scoped>
 @import "./assets/iconfont/iconfont.css";

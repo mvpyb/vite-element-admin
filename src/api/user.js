@@ -1,9 +1,8 @@
-
 import http from '/@/utils/request'
 
 export function login( data ) {
   return http.request( {
-    method: 'get',
+    method : 'get',
     url : '/login',
     data
   } )
@@ -19,15 +18,14 @@ export function getInfo( data ) {
 
 export function logout() {
   return http.request( {
-    url: '/logout',
-    method: 'get'
-  })
+    url : '/logout',
+    method : 'get'
+  } )
 }
-
 
 export function testRequest() {
   return http.request( {
-    url: '/test',
-    method: 'get'
-  })
+    url : '/test',
+    method : 'get'
+  } )
 }

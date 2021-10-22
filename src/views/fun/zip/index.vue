@@ -20,22 +20,15 @@
       </div>
     </template>
   </yu-layout>
- 
 </template>
 
 <script setup>
-  import {ref } from "vue"
-  import zip from './zip.vue'
-  import local from './local.vue'
-  import remote from './remote.vue'
-  import YuLayout from '/@/components/YuLayout'
-  
-  const activeName = ref( 'export' )
+import { ref } from 'vue'
+import zip from './zip.vue'
+import local from './local.vue'
+import remote from './remote.vue'
+import YuLayout from '/@/components/YuLayout'
+
+// const activeName = ref( 'export' )
+const activeName = ref( 'unzip' )
 </script>
-
-
-<style>
-  .fileInp {
-    display: none;
-  }
-</style>

@@ -1,4 +1,3 @@
-
 <template>
   <div class="section-container login-container syNormal un-select">
     <div class="body fix-width w380">
@@ -8,8 +7,7 @@
       </div>
       <div class="main">
         <login-pwd />
-        <div class="foot-link clearfix" style="margin-top: 10px;">
-        </div>
+        <div class="foot-link clearfix" style="margin-top: 10px"></div>
         <div v-if="isShowWX" class="foot-link syRegular">
           <el-divider content-position="center">其他方式登录</el-divider>
           <we-chat-login />
@@ -21,33 +19,33 @@
 </template>
 
 <script setup>
-  import { ref, onBeforeMount } from "vue"
-  import { isMobile } from '/@/utils/device'
-  import Logo from './components/logo.vue'
-  import YuCopyright from "/@/components/YuCopyright"
-  import WeChatLogin from './components/weChatLogin.vue'
-  import LoginPwd from './components/loginPwd.vue'
+import { ref, onBeforeMount } from 'vue'
+import { isMobile } from '/@/utils/device'
+import Logo from './components/logo.vue'
+import YuCopyright from '/@/components/YuCopyright'
+import WeChatLogin from './components/weChatLogin.vue'
+import LoginPwd from './components/loginPwd.vue'
 
-  let isShowWX = ref( true )
+const isShowWX = ref( true )
 
-  const getQueryParams = ( query ) => {
-    let str = ''
-    if ( query ) {
-      for ( const key in query ) {
-        if ( query[key] ) {
-          str = str ? `${str}&${key}=${query[key]}` : `${key}=${query[key]}`
-        }
+const getQueryParams = ( query ) => {
+  let str = ''
+  if ( query ) {
+    for ( const key in query ) {
+      if ( query[key] ) {
+        str = str ? `${str}&${key}=${query[key]}` : `${key}=${query[key]}`
       }
     }
-    return str
   }
+  return str
+}
 
-  onBeforeMount(() => {
-    isShowWX.value = !isMobile()
-    getQueryParams()
-  })
+onBeforeMount( () => {
+  isShowWX.value = !isMobile()
+  getQueryParams()
+} )
 </script>
 
 <style lang="scss" scoped>
-  @import "./logins.scss";
+@import "./logins.scss";
 </style>

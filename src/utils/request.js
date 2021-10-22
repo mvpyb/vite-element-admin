@@ -14,9 +14,14 @@ const { ElMessage } = ELEMENT
 
 import store from '/@/store'
 import router from '/@/router'
-import { getEnvs } from "./envs"
+import { getEnvs } from './envs'
 import { getCookieByKey } from '/@/utils/cookies'
-import { TOKEN, WHITE_CODE_LIST, LOGIN_ERROR_CODE, GLOBAL_DATA } from '/@/api/constant'
+import {
+  TOKEN,
+  WHITE_CODE_LIST,
+  LOGIN_ERROR_CODE,
+  GLOBAL_DATA
+} from '/@/api/constant'
 // import qs from 'qs'
 
 class HttpRequest {
@@ -26,25 +31,25 @@ class HttpRequest {
     this.withCredentials = false
     this.timeout = 10000
   }
-  
+
   getBaseUrl() {
     const { envStr } = getEnvs()
     // const baseUrlStr = envStr === 'dev' ? import.meta.env.VITE_APP_API_BASE_URL : GLOBAL_DATA[envStr]['baseUrl']
     return GLOBAL_DATA[envStr]['baseUrl']
   }
-  
+
   getConfig() {
     const config = {
-      baseURL: this.baseUrl,
+      baseURL : this.baseUrl,
       timeout : this.timeout,
       withCredentials : this.withCredentials,
-      headers: {
-        'Content-Type' : 'application/json;charset=UTF-8',
+      headers : {
+        'Content-Type' : 'application/json;charset=UTF-8'
       }
     }
     return config
   }
-  
+
   getParams( payload ) {
     const { method, data } = payload
     if ( ['post', 'put', 'patch', 'delete'].indexOf( method ) >= 0 ) {
@@ -55,7 +60,7 @@ class HttpRequest {
     }
     return payload
   }
-  
+
   checkStatus( status ) {
     let errMessage = ''
     switch ( status ) {
@@ -100,74 +105,83 @@ class HttpRequest {
     }
     return errMessage
   }
-  
+
   // 拦截处理
   setInterceptors( instance ) {
     const that = this
-    
-    // 请求拦截
-    instance.interceptors.request.use(config => {
-      if ( !navigator.onLine ) {
-        ElMessage( {
-          message : '请检查您的网络是否正常',
-          type : 'error',
-          duration : 3 * 1000
-        } )
-        return Promise.reject( '请检查您的网络是否正常' )
-      }
-      // config.headers.token = getCookieByKey( TOKEN ) || ''
-      config.headers.common['token'] = getCookieByKey( TOKEN ) || ''
-      // config.data = qs.stringify(config.data)
-      
-      return config
-    }, (error) => {
-      return Promise.reject(error)
-    })
-    
-    //响应拦截
-    instance.interceptors.response.use(res => {
-      const result = res.data
-      const type = Object.prototype.toString.call( result )
-      // 如果是文件流 直接返回
-      if ( type === '[object Blob]' || type === '[object ArrayBuffer]' ) {
-        return result
-      } else {
-        const { code, message } = result
-        const isErrorToken = LOGIN_ERROR_CODE.find( item => item.code == code )
-        const isWhiteCode = WHITE_CODE_LIST.find( item => item.code == code )
 
-        if ( isErrorToken ) {
-          // token已过期 跳转到登录
-      
-          store.dispatch( 'user/logout' )
-          router.push(`/login`)
-          window.location.reload()
-        }
-        else if ( !isWhiteCode ) {
+    // 请求拦截
+    instance.interceptors.request.use(
+      ( config ) => {
+        if ( !navigator.onLine ) {
           ElMessage( {
-            message : message || 'Error',
+            message : '请检查您的网络是否正常',
             type : 'error',
             duration : 3 * 1000
           } )
-          return Promise.reject( message || 'Error' )
-        } else {
-          return result
+          return Promise.reject( '请检查您的网络是否正常' )
         }
+        // config.headers.token = getCookieByKey( TOKEN ) || ''
+        config.headers.common['token'] = getCookieByKey( TOKEN ) || ''
+        // config.data = qs.stringify(config.data)
+
+        return config
+      },
+      ( error ) => {
+        return Promise.reject( error )
       }
-    }, (error) => {
-      if ( error && error.response ) {
-        error.message = that.checkStatus( error.response.status )
+    )
+
+    // 响应拦截
+    instance.interceptors.response.use(
+      ( res ) => {
+        const result = res.data
+        const type = Object.prototype.toString.call( result )
+        // 如果是文件流 直接返回
+        if ( type === '[object Blob]' || type === '[object ArrayBuffer]' ) {
+          return result
+        } else {
+          const { code, message } = result
+          const isErrorToken = LOGIN_ERROR_CODE.find(
+            ( item ) => item.code == code
+          )
+          const isWhiteCode = WHITE_CODE_LIST.find( ( item ) => item.code == code )
+
+          if ( isErrorToken ) {
+            // token已过期 跳转到登录
+
+            store.dispatch( 'user/logout' )
+            router.push( `/login` )
+            window.location.reload()
+          } else if ( !isWhiteCode ) {
+            ElMessage( {
+              message : message || 'Error',
+              type : 'error',
+              duration : 3 * 1000
+            } )
+            return Promise.reject( message || 'Error' )
+          } else {
+            return result
+          }
+        }
+      },
+      ( error ) => {
+        if ( error && error.response ) {
+          error.message = that.checkStatus( error.response.status )
+        }
+        const isTimeout = error.message.includes( 'timeout' )
+        ElMessage( {
+          message : isTimeout
+            ? '网络请求超时'
+            : error.message || '连接到服务器失败',
+          type : 'error',
+          duration : 2 * 1000
+        } )
+        return Promise.reject( error.message )
       }
-      const isTimeout = error.message.includes( 'timeout' )
-      ElMessage( {
-        message : isTimeout ? '网络请求超时' : ( error.message || '连接到服务器失败' ),
-        type : 'error',
-        duration : 2 * 1000
-      } )
-      return Promise.reject( error.message )
-    })
+    )
   }
-  
+
   request( options ) {
     const instance = axios.create()
     const baseOpt = this.getConfig()
@@ -179,4 +193,3 @@ class HttpRequest {
 
 const http = new HttpRequest()
 export default http
-
