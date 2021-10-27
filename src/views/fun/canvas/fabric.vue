@@ -178,7 +178,7 @@ export default defineComponent( {
 </script>
 
 <style lang="scss" scoped>
-:deep .el-descriptions__body {
+:deep( .el-descriptions__body) {
   background: #f0f2f5;
 }
 .el-button {

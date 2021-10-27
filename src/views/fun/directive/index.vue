@@ -286,7 +286,7 @@ export default defineComponent( {
   margin: 10px 0;
 }
 
-:deep .el-col {
+:deep( .el-col) {
   margin-bottom: 10px;
 }
 </style>

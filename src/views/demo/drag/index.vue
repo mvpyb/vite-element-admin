@@ -229,7 +229,7 @@ export default defineComponent( {
   cursor: not-allowed;
 }
 
-:deep .el-col {
+:deep( .el-col) {
   margin-bottom: 15px;
 }
 </style>

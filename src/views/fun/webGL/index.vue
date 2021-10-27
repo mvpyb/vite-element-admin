@@ -341,7 +341,7 @@ const loadJSON = async( type = 1 ) => {
   @extend .view-model-wrapper;
 }
 
-:deep .el-descriptions__body {
+:deep( .el-descriptions__body) {
   background: #f0f2f5;
 }
 .el-button {

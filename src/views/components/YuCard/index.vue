@@ -103,7 +103,7 @@ defineProps( {
       margin-bottom: 24px;
       height: 28px;
       line-height: 28px;
-      :deep .card-panel-num {
+      :deep( .card-panel-num ) {
         font-size: 14px;
         display: inline-block;
       }
