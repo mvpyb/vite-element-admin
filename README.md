@@ -12,7 +12,7 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 
 ## 预览
 
-- [没有梯子的可移步码云](http://simmon_page.gitee.io/vite-element-plus-admin/) - 完整版预览 （ gitee ）
+- [没有梯子的可移步码云](http://simmon_page.gitee.io/vite-element-plus-admin/dist/) - 完整版预览 （ gitee ）
 - [vite-element-admin](https://mvpyb.github.io/vite-element-plus-admin/dist/) - 完整版预览 ( github )
 - [github](https://github.com/mvpyb/vite-element-plus-admin) - 完整版github站点
 - [码云](https://gitee.com/simmon_page/vite-element-plus-admin) - 完整版码云站点
