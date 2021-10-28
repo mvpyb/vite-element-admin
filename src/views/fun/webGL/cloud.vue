@@ -11,12 +11,14 @@
           <el-tab-pane label="lion_takanawa_laz" name="lion_takanawa_laz" />
         </el-tabs>
         
-        <potree
-            :baseUrl="baseUrl"
-            :entryFile="entryFile"
-            :name="name"
-            :activeAttributeName="activeAttributeName"
-        />
+        <div class="potree-container">
+          <potree
+              :baseUrl="baseUrl"
+              :entryFile="entryFile"
+              :name="name"
+              :activeAttributeName="activeAttributeName"
+          />
+        </div>
 
       </div>
     </template>
@@ -65,6 +67,9 @@ function formatBaseUrl( url ) {
 <style lang="scss" scoped>
 .section-container {
   width: 100%;
-  height: calc(100vh - 84px);
+  .potree-container {
+    width: 100%;
+    height: 500px;
+  }
 }
 </style>
