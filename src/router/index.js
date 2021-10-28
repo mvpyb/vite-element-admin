@@ -471,7 +471,8 @@ export const asyncRoutes = [
 ]
 
 const createRouters = createRouter( {
-  history : createWebHashHistory( '/' ), // base 当成参数传递了
+  // history : createWebHashHistory( '/' ), // base 当成参数传递了
+  history : createWebHashHistory( './' ), // base 当成参数传递了
   routes : constantRoutes.concat( asyncRoutes ),
   scrollBehavior : () => ( { left : 0, top : 0 } ) //  return 期望滚动到哪个的位置
 } )
