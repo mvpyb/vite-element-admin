@@ -40,17 +40,15 @@ const subtitle = ref(
 
 const { envStr : env } = getEnvs()
 
-const pro = '/vite-element-plus-admin'
+const pro = '/vite-element-plus-admin/dist'
 const baseUrl = ref( '/static/potree/data/transmission_case/' )
 const name = ref( 'transmission_case' )
-
 const entryFile = ref( 'cloud.js' )
 const activeAttributeName = ref( 'rgba' )
 
 if ( env != 'dev' ) {
   baseUrl.value = pro + baseUrl.value
 }
-console.log( 'env', env, baseUrl.value )
 
 function handleClick( tab ){
   baseUrl.value = '/static/potree/data/' + tab.paneName + '/'
@@ -58,7 +56,6 @@ function handleClick( tab ){
     baseUrl.value = pro + baseUrl.value
   }
   name.value = tab.paneName
-  console.log( 'handleClick', env, baseUrl.value )
 }
 
 </script>
