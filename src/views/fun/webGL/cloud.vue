@@ -38,7 +38,7 @@ const subtitle = ref(
   PotreeConverter 点击这里：<a href="https://github.com/potree/PotreeConverter">前往</a>
 ` )
 
-const env = getEnvs()
+const { envStr : env } = getEnvs()
 
 const pro = '/vite-element-plus-admin'
 const baseUrl = ref( '/static/potree/data/transmission_case/' )
