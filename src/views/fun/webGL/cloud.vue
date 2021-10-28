@@ -38,24 +38,26 @@ const subtitle = ref(
   PotreeConverter 点击这里：<a href="https://github.com/potree/PotreeConverter">前往</a>
 ` )
 
-const { envStr : env } = getEnvs()
-
-const pro = '/vite-element-plus-admin/dist'
 const baseUrl = ref( '/static/potree/data/transmission_case/' )
 const name = ref( 'transmission_case' )
 const entryFile = ref( 'cloud.js' )
 const activeAttributeName = ref( 'rgba' )
 
-if ( env != 'dev' ) {
-  baseUrl.value = pro + baseUrl.value
-}
+baseUrl.value = formatBaseUrl( baseUrl.value )
 
 function handleClick( tab ){
-  baseUrl.value = '/static/potree/data/' + tab.paneName + '/'
-  if ( env != 'dev' ) {
-    baseUrl.value = pro + baseUrl.value
-  }
+  const url = '/static/potree/data/' + tab.paneName + '/'
+  baseUrl.value = formatBaseUrl( url )
   name.value = tab.paneName
+}
+
+function formatBaseUrl( url ) {
+  const { envStr : env } = getEnvs()
+  const pro = '/vite-element-plus-admin/dist'
+  if ( env != 'dev' ) {
+    return pro + url
+  }
+  return url
 }
 
 </script>

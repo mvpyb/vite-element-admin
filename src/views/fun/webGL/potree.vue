@@ -53,11 +53,17 @@ function initPotree( el ) {
   Potree.loadPointCloud( url, name, e => {
     const scene = viewer.scene
     const pointcloud = e.pointcloud
+    // pointcloud.applyMatrix((new THREE.Matrix4).set(1, 0, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 1))
     
     const material = pointcloud.material
     material.activeAttributeName = props.activeAttributeName // matcap position-cartesian
     material.minSize = 1
     material.pointSizeType = Potree.PointSizeType.FIXED
+  
+    // viewer.scene.view.setView(
+    //   [0, 4, 0],
+    //   [0, 0, 0],
+    // )
     
     scene.addPointCloud( pointcloud )
   } )
