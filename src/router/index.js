@@ -105,6 +105,16 @@ export const asyncRoutes = [
         }
       },
       {
+        path : 'cloud',
+        name : 'Cloud',
+        component : () => import( '/@/views/fun/webGL/cloud.vue' ),
+        meta : {
+          title : '点云渲染',
+          icon : 'webGl',
+          noCache : true
+        }
+      },
+      {
         path : 'pwd',
         name : 'Pwd',
         component : () => import( '/@/views/fun/pwd/index.vue' ),
