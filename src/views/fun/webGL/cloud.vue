@@ -37,8 +37,8 @@ const subtitle = ref(
   PotreeConverter 点击这里：<a href="https://github.com/potree/PotreeConverter">前往</a>
 ` )
 
-const baseUrl = ref( '/static/potree/data/test2/' )
-const name = ref( 'test2' )
+const baseUrl = ref( '/static/potree/data/transmission_case/' )
+const name = ref( 'transmission_case' )
 
 const entryFile = ref( 'cloud.js' )
 const activeAttributeName = ref( 'rgba' )
