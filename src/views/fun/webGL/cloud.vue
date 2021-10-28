@@ -47,14 +47,14 @@ const name = ref( 'transmission_case' )
 const entryFile = ref( 'cloud.js' )
 const activeAttributeName = ref( 'rgba' )
 
-if ( env == 'dev' ) {
+if ( env != 'dev' ) {
   baseUrl.value = pro + baseUrl.value
 }
 console.log( 'env', env, baseUrl.value )
 
 function handleClick( tab ){
   baseUrl.value = '/static/potree/data/' + tab.paneName + '/'
-  if ( env == 'dev' ) {
+  if ( env != 'dev' ) {
     baseUrl.value = pro + baseUrl.value
   }
   name.value = tab.paneName
