@@ -2,23 +2,6 @@ import Cookies from 'js-cookie'
 import { getEnvs } from '/@/utils/system'
 const envStr = getEnvs()
 
-export function getDomain() {
-  let domain
-  const host = window.location.host
-  if ( host.indexOf( 'shadowcreator.com' ) >= 0 ) {
-    domain = 'shadowcreator.com'
-  } else if ( host.indexOf( 'qulivr.com' ) >= 0 ) {
-    domain = 'qulivr.com'
-  } else if ( host.indexOf( 'movisionxr.com' ) >= 0 ) {
-    domain = 'movisionxr.com'
-  } else {
-    domain = window.location.hostname
-  }
-  return {
-    domain
-  }
-}
-
 let cookiePreFix
 if ( envStr === 'dev' ) {
   cookiePreFix = 'fat_'
@@ -29,10 +12,13 @@ if ( envStr === 'dev' ) {
 } else {
   cookiePreFix = ''
 }
-const hostStr = getDomain().domain
+
+const { hostname } = window.location
+const reg = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/;
+
 const cookieParams = {
   path : '/',
-  domain : hostStr
+  domain : hostname
 }
 export function getAllCookies() {
   var cookies = document.cookie.split( /;\s/g )
@@ -60,7 +46,7 @@ export function setCookie( key, value, params ) {
       ? {
         expires : 7,
         path : '/',
-        domain : hostStr || undefined
+        domain : hostname || undefined
         // Secure : true,
         // SameSite : 'none',
       }
