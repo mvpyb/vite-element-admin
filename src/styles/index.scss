@@ -91,7 +91,6 @@ html {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .ellipsis-col {
   overflow: hidden;
   text-align: justify;
@@ -123,11 +122,11 @@ aside {
   color: #2c3e50;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   a {
     color: #337ab7;
     cursor: pointer;
-    
+
     &:hover {
       color: rgb(32, 160, 255);
     }
@@ -161,16 +160,16 @@ aside {
   padding-right: 20px;
   transition: 600ms ease position;
   background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
-  
+
   .subtitle {
     font-size: 20px;
     color: #fff;
   }
-  
+
   &.draft {
     background: #d0d0d0;
   }
-  
+
   &.deleted {
     background: #d0d0d0;
   }
@@ -180,7 +179,7 @@ aside {
 .link-type:focus {
   color: #337ab7;
   cursor: pointer;
-  
+
   &:hover {
     color: rgb(32, 160, 255);
   }
@@ -188,7 +187,7 @@ aside {
 
 .filter-container {
   padding-bottom: 10px;
-  
+
   .filter-item {
     display: inline-block;
     vertical-align: middle;
