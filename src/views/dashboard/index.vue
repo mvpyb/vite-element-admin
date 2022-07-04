@@ -2,76 +2,75 @@
   <div class="dashboard-editor-container">
     <el-row :gutter="20">
       <el-col :xs="12" :sm="12" :lg="6" v-for="item in cardList" :key="item.id">
-        <yu-card
-          :end="item.end"
-          :duration="item.duration"
-          :title="item.title"
-          :prefix="item.prefix"
+        <YuCard
+            :end="item.end"
+            :duration="item.duration"
+            :title="item.title"
+            :prefix="item.prefix"
         >
           <template #icon>
             <i class="fr" :class="item.icon"></i>
           </template>
           <template #badge>
-            <span class="badge" :class="item.badge.className">{{
-              item.badge.txt
-            }}</span>
+            <span class="badge" :class="item.badge.className">{{item.badge.txt}}</span>
           </template>
           <template #info>{{ item.info }}</template>
-        </yu-card>
+        </YuCard>
       </el-col>
     </el-row>
 
     <el-row :gutter="20" class="chats-container">
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <raddar-chart />
+          <RaddarChart />
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <pie-chart />
+          <PieChart />
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
-          <bar-chart class-name="test" />
+          <BarChart class-name="test" />
         </div>
       </el-col>
     </el-row>
 
     <el-row :gutter="20" class="table-list">
       <el-col :span="16">
-        <transaction-table />
+        <TransactionTable />
       </el-col>
       <el-col :span="8" style="">
-        <yu-street-map />
+        <YuStreetMap />
       </el-col>
     </el-row>
 
     <el-row :gutter="20" class="user-info">
       <el-col :span="12">
-        <yu-weather />
+        <YuWeather />
       </el-col>
       <el-col :span="6">
-        <todo-list />
+        <TodoList />
       </el-col>
       <el-col :span="6">
-        <box-card />
+        <BoxCard />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script setup>
-import RaddarChart from '../components/RaddarChart.vue'
-import PieChart from '../components/PieChart.vue'
-import BarChart from '../components/BarChart.vue'
-import TodoList from '../components/TodoList/index.vue'
-import BoxCard from '../components/BoxCard.vue'
-import TransactionTable from '../components/TransactionTable.vue'
-import YuCard from '../components/YuCard/index.vue'
-import YuWeather from '../components/YuWeather/index.vue'
+import YuCard from './components/Card/index.vue'
+import RaddarChart from './components/RaddarChart.vue'
+import PieChart from './components/PieChart.vue'
+import BarChart from './components/BarChart.vue'
+import TransactionTable from './components/TransactionTable.vue'
 import YuStreetMap from '/@/components/YuStreetMap'
+import YuWeather from './components/YuWeather'
+import TodoList from './components/TodoList/index.vue'
+import BoxCard from './components/BoxCard'
+
 import { ref } from 'vue'
 
 const cardList = ref( [
@@ -129,37 +128,37 @@ const cardList = ref( [
 </script>
 
 <style lang="scss" scoped>
-.dashboard-editor-container {
-  padding: 32px;
-  background-color: rgb(240, 242, 245);
-  position: relative;
+  .dashboard-editor-container {
+    padding: 32px;
+    background-color: rgb(240, 242, 245);
+    position: relative;
 
-  .chats-container {
-    .chart-wrapper {
-      border-radius: 5px;
-      background: #fff;
-      padding: 20px;
-      box-sizing: border-box;
-      margin-bottom: 20px;
-      box-shadow: 0 -3px 31px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 2%);
-      &:hover {
-        transition: all 0.3s;
-        transform: translateY(-6px);
+    .chats-container {
+      .chart-wrapper {
+        border-radius: 5px;
+        background: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        box-shadow: 0 -3px 31px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 2%);
+        &:hover {
+          transition: all 0.3s;
+          transform: translateY(-6px);
+        }
       }
     }
-  }
 
-  .table-list {
-    height: 476px;
-    .el-col {
-      padding-right: 8px;
-      margin-bottom: 30px;
+    .table-list {
+      height: 476px;
+      .el-col {
+        padding-right: 8px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .user-info {
+      height: 560px;
+      margin: 20px 0;
     }
   }
-
-  .user-info {
-    height: 560px;
-    margin: 20px 0;
-  }
-}
 </style>

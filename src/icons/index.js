@@ -2,5 +2,5 @@
 import SvgIcon from '/@/components/YuSvgIcon'
 
 export function useSvgIcon( app ) {
-  app.component( 'svg-icon', SvgIcon )
+  app.component( 'SvgIcon', SvgIcon )
 }

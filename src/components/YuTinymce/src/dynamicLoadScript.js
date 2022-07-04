@@ -10,7 +10,7 @@ const dynamicLoadScript = ( src, callback ) => {
 
   if ( !existingScript ) {
     const script = document.createElement( 'script' )
-    script.src = src
+    script.src = src // src url for the third-party library being loaded.
     script.id = src
     document.body.appendChild( script )
     callbacks.push( cb )
@@ -44,7 +44,7 @@ const dynamicLoadScript = ( src, callback ) => {
 
   function ieOnEnd( script ) {
     script.onreadystatechange = function() {
-      if ( this.readyState !== 'complete' && this.readyState !== 'loaded' ) { return }
+      if ( this.readyState !== 'complete' && this.readyState !== 'loaded' ) return
       this.onreadystatechange = null
       for ( const cb of callbacks ) {
         cb( null, script ) // there is no way to catch loading errors in IE8

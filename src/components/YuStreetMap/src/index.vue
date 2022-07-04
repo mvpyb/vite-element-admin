@@ -1,26 +1,16 @@
 <template>
-  <div id="map" class="map"></div>
+  <div id="map" class="map" />
 </template>
 
 <script setup>
 import { onMounted } from 'vue'
 import 'ol/ol.css'
 import Map from 'ol/Map'
-// import OSM from "ol/source/OSM"
-// import TileLayer from "ol/layer/Tile"
 import View from 'ol/View'
-
 import GeoJSON from 'ol/format/GeoJSON'
 import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style'
 import { OSM, Vector as VectorSource } from 'ol/source'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
-
-// import XYZ from 'ol/source/XYZ'
-// import {
-//   DragRotateAndZoom,
-//   defaults as defaultInteractions,
-// } from 'ol/interaction'
-// import {FullScreen, defaults as defaultControls} from 'ol/control'
 
 // doc      : https://openlayers.org/en/latest/doc/quickstart.html
 // examples : https://openlayers.org/en/latest/examples/
@@ -49,8 +39,8 @@ const style = new Style( {
   } )
 } )
 const vectorLayer = new VectorLayer( {
-  source : source,
-  style : style
+  source,
+  style
 } )
 const view = new View( {
   center : [0, 0],
@@ -59,6 +49,7 @@ const view = new View( {
 
 // 初始化地图
 function initMap() {
+  // eslint-disable-next-line no-new
   new Map( {
     target : 'map',
     layers : [
@@ -89,11 +80,5 @@ onMounted( () => {
   width: 100%;
   height: 100%;
   min-height: 300px;
-}
-.test {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9999;
 }
 </style>

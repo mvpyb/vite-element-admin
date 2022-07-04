@@ -1,4 +1,10 @@
 
+// 单词首字母转大写
+export function toUpperCaseWord( val ) {
+  if ( !val ) return ''
+  return val.toLowerCase().replace( /( |^)[a-z]/g, ( L ) => L.toUpperCase() )
+}
+
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time
@@ -16,8 +22,12 @@ export function parseTime( time, cFormat ) {
   } else {
     if ( ( typeof time === 'string' ) ) {
       if ( ( /^[0-9]+$/.test( time ) ) ) {
+        // support "1548221490638"
         time = parseInt( time )
       } else {
+        // support safari
+        // https://stackoverflow.com/questions/4310953/invalid-date-in-safari
+        // eslint-disable-next-line prefer-regex-literals
         time = time.replace( new RegExp( /-/gm ), '/' )
       }
     }
@@ -38,51 +48,52 @@ export function parseTime( time, cFormat ) {
   }
   const time_str = format.replace( /{([ymdhisa])+}/g, ( result, key ) => {
     const value = formatObj[key]
-    if ( key === 'a' ) { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    // Note: getDay() returns 0 on Sunday
+    if ( key === 'a' ) { return ['日', '一', '二', '三', '四', '五', '六'][value] }
     return value.toString().padStart( 2, '0' )
   } )
   return time_str
 }
 
 /**
- * @param {string} url
- * @returns {Object}
+ * @param {number} time
+ * @param {string} option
+ * @returns {string}
  */
-export function getQueryObject( url ) {
-  url = url == null ? window.location.href : url
-  const search = url.substring( url.lastIndexOf( '?' ) + 1 )
-  const obj = {}
-  const reg = /([^?&=]+)=([^?&=]*)/g
-  search.replace( reg, ( rs, $1, $2 ) => {
-    const name = decodeURIComponent( $1 )
-    let val = decodeURIComponent( $2 )
-    val = String( val )
-    obj[name] = val
-    return rs
-  } )
-  return obj
-}
+export function formatTime( time, option ) {
+  if ( ( '' + time ).length === 10 ) {
+    time = parseInt( time ) * 1000
+  } else {
+    time = +time
+  }
+  const d = new Date( time )
+  const now = Date.now()
 
-/**
- * Merges two objects, giving the last one precedence
- * @param {Object} target
- * @param {(Object|Array)} source
- * @returns {Object}
- */
-export function objectMerge( target, source ) {
-  if ( typeof target !== 'object' ) {
-    target = {}
+  const diff = ( now - d ) / 1000
+
+  if ( diff < 30 ) {
+    return '刚刚'
+  } else if ( diff < 3600 ) {
+    // less 1 hour
+    return Math.ceil( diff / 60 ) + '分钟前'
+  } else if ( diff < 3600 * 24 ) {
+    return Math.ceil( diff / 3600 ) + '小时前'
+  } else if ( diff < 3600 * 24 * 2 ) {
+    return '1天前'
   }
-  if ( Array.isArray( source ) ) {
-    return source.slice()
+  if ( option ) {
+    return parseTime( time, option )
+  } else {
+    return (
+      d.getMonth() +
+      1 +
+      '月' +
+      d.getDate() +
+      '日' +
+      d.getHours() +
+      '时' +
+      d.getMinutes() +
+      '分'
+    )
   }
-  Object.keys( source ).forEach( property => {
-    const sourceProperty = source[property]
-    if ( typeof sourceProperty === 'object' ) {
-      target[property] = objectMerge( target[property], sourceProperty )
-    } else {
-      target[property] = sourceProperty
-    }
-  } )
-  return target
 }

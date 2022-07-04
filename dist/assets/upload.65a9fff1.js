@@ -1,1 +1,0 @@
-import{h as t}from"./index.d42c3bed.js";function e(e){return t.request({url:"/upload/image",method:"post",data:e})}function o(e){return t.request({url:"/down/blob",method:"post",data:e})}export{o as d,e as u};

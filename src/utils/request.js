@@ -8,34 +8,32 @@
  */
 'use strict'
 import axios from 'axios'
-// import { ElMessage } from 'element-plus'
-import * as ELEMENT from 'element-plus'
-const { ElMessage } = ELEMENT
-
-import store from '/@/store'
-import router from '/@/router'
+import { ElMessage } from 'element-plus'
 import { getEnvs } from './envs'
-import { getCookieByKey } from '/@/utils/cookies'
+import cookies from '/@/utils/cookies'
+import router from '/@/router'
+import { useUserStore } from '/@/store'
+
 import {
   TOKEN,
   WHITE_CODE_LIST,
   LOGIN_ERROR_CODE,
   GLOBAL_DATA
-} from '/@/api/constant'
-// import qs from 'qs'
+} from '/@/config/constant'
+import qs from 'qs'
 
 class HttpRequest {
   // #baseUrl
   constructor() {
     this.baseUrl = this.getBaseUrl()
     this.withCredentials = false
-    this.timeout = 10000
+    this.timeout = 60 * 60 * 24 * 1000
   }
 
   getBaseUrl() {
     const { envStr } = getEnvs()
-    // const baseUrlStr = envStr === 'dev' ? import.meta.env.VITE_APP_API_BASE_URL : GLOBAL_DATA[envStr]['baseUrl']
-    return GLOBAL_DATA[envStr]['baseUrl']
+    const baseUrlStr = envStr === 'dev' ? import.meta.env.VITE_PROXY_DOMAIN : GLOBAL_DATA[envStr].baseUrl
+    return baseUrlStr
   }
 
   getConfig() {
@@ -101,7 +99,7 @@ class HttpRequest {
         errMessage = 'http版本不支持该请求'
         break
       default:
-        errMessage = `连接错误`
+        errMessage = '连接错误'
     }
     return errMessage
   }
@@ -111,75 +109,69 @@ class HttpRequest {
     const that = this
 
     // 请求拦截
-    instance.interceptors.request.use(
-      ( config ) => {
-        if ( !navigator.onLine ) {
+    instance.interceptors.request.use( config => {
+      if ( !navigator.onLine ) {
+        ElMessage( {
+          message : '请检查您的网络是否正常',
+          type : 'error',
+          duration : 3 * 1000
+        } )
+        return Promise.reject( new Error( '请检查您的网络是否正常' ) )
+      }
+      config.headers.common.token = cookies.get( TOKEN )
+      config.data = qs.stringify( config.data )
+
+      return config
+    }, ( error ) => {
+      return Promise.reject( new Error( error ) )
+    } )
+
+    // 响应拦截
+    instance.interceptors.response.use( res => {
+      const result = res.data
+      const type = Object.prototype.toString.call( result )
+
+      // const $config = res.config
+
+      // 如果是文件流 直接返回
+      if ( type === '[object Blob]' || type === '[object ArrayBuffer]' ) {
+        return result
+      } else {
+        const { code, message } = result
+        const isErrorToken = LOGIN_ERROR_CODE.find( item => item.code == code )
+        const isWhiteCode = WHITE_CODE_LIST.find( item => item.code == code )
+
+        const userStore = useUserStore()
+
+        if ( isErrorToken ) {
+          userStore.LOGIN_OUT()
+          router.push( '/login' )
+          window.location.reload()
+        } else if ( !isWhiteCode ) {
           ElMessage( {
-            message : '请检查您的网络是否正常',
+            message : message || 'Error',
             type : 'error',
             duration : 3 * 1000
           } )
-          return Promise.reject( '请检查您的网络是否正常' )
-        }
-        // config.headers.token = getCookieByKey( TOKEN ) || ''
-        config.headers.common['token'] = getCookieByKey( TOKEN ) || ''
-        // config.data = qs.stringify(config.data)
-
-        return config
-      },
-      ( error ) => {
-        return Promise.reject( error )
-      }
-    )
-
-    // 响应拦截
-    instance.interceptors.response.use(
-      ( res ) => {
-        const result = res.data
-        const type = Object.prototype.toString.call( result )
-        // 如果是文件流 直接返回
-        if ( type === '[object Blob]' || type === '[object ArrayBuffer]' ) {
-          return result
+          return Promise.reject( new Error( message || 'Error' ) )
         } else {
-          const { code, message } = result
-          const isErrorToken = LOGIN_ERROR_CODE.find(
-            ( item ) => item.code == code
-          )
-          const isWhiteCode = WHITE_CODE_LIST.find( ( item ) => item.code == code )
-
-          if ( isErrorToken ) {
-            // token已过期 跳转到登录
-
-            store.dispatch( 'user/logout' )
-            router.push( `/login` )
-            window.location.reload()
-          } else if ( !isWhiteCode ) {
-            ElMessage( {
-              message : message || 'Error',
-              type : 'error',
-              duration : 3 * 1000
-            } )
-            return Promise.reject( message || 'Error' )
-          } else {
-            return result
-          }
+          return result
         }
-      },
-      ( error ) => {
-        if ( error && error.response ) {
-          error.message = that.checkStatus( error.response.status )
-        }
-        const isTimeout = error.message.includes( 'timeout' )
-        ElMessage( {
-          message : isTimeout
-            ? '网络请求超时'
-            : error.message || '连接到服务器失败',
-          type : 'error',
-          duration : 2 * 1000
-        } )
-        return Promise.reject( error.message )
       }
-    )
+
+      return result
+    }, ( error ) => {
+      if ( error && error.response ) {
+        error.message = that.checkStatus( error.response.status )
+      }
+      const isTimeout = error.message.includes( 'timeout' )
+      ElMessage( {
+        message : isTimeout ? '网络请求超时' : ( error.message || '连接到服务器失败' ),
+        type : 'error',
+        duration : 2 * 1000
+      } )
+      return Promise.reject( new Error( error.message ) )
+    } )
   }
 
   request( options ) {

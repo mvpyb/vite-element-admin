@@ -1,8 +1,11 @@
-import store from '/@/store'
+
+import { usePermissionStore } from '/@/store'
+
 const permission = {
   mounted : function( el, binding ) {
+    const permissionStore = usePermissionStore()
     const { value } = binding
-    const roleData = store && store.getters.directivePermission
+    const roleData = permissionStore.directivePermission
     if ( value && value instanceof Array ) {
       if ( value.length > 0 ) {
         const permissionRoles = value

@@ -1,68 +1,71 @@
 import Cookies from 'js-cookie'
-import { getEnvs } from '/@/utils/system'
-const envStr = getEnvs()
-
-let cookiePreFix
-if ( envStr === 'dev' ) {
-  cookiePreFix = 'fat_'
-} else if ( envStr === 'fat' ) {
-  cookiePreFix = 'fat_'
-} else if ( envStr === 'uat' ) {
-  cookiePreFix = 'uat_'
-} else {
-  cookiePreFix = ''
-}
-
+import { getEnvs } from '/@/utils/envs'
 const { hostname } = window.location
-const reg = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/;
 
-const cookieParams = {
-  path : '/',
-  domain : hostname
-}
-export function getAllCookies() {
-  var cookies = document.cookie.split( /;\s/g )
-  var cookieObj = {}
-  cookies.forEach( function( item ) {
-    var key = item.split( '=' )[0]
-    cookieObj[key] = item.split( '=' )[1]
-  } )
-  return cookieObj
-}
-
-export function getCookieByKey( key, off ) {
-  let keyStr = ''
-  if ( !off ) {
-    keyStr = cookiePreFix + '' + key
-  } else {
-    keyStr = key
+class CookieProxy {
+  constructor() {
+    this.prefix = this.getPrefix()
+    this.baseParams = {
+      expires : 7,
+      path : '/',
+      domain : hostname || undefined
+      // Secure : true,
+      // SameSite : 'none',
+    }
   }
-  return Cookies.get( keyStr )
-}
-// setUserInfos
-export function setCookie( key, value, params ) {
-  params =
-    params === undefined
-      ? {
-        expires : 7,
-        path : '/',
-        domain : hostname || undefined
-        // Secure : true,
-        // SameSite : 'none',
-      }
-      : params
-  const keyStr = cookiePreFix + '' + key
-  return Cookies.set( keyStr, value, params )
-}
 
-export function removeCookieByKey( key, off = false ) {
-  const keyStr = off ? key : cookiePreFix + '' + key
-  return Cookies.remove( keyStr, cookieParams )
-}
+  // TODO : 此处也是按照我司开发习惯添加的，主要是为了区分 fat uat pro 三个环境的cookie，可以根据自己需要修改或删除
+  getPrefix() {
+    const { envStr } = getEnvs()
+    let cookiePreFix
+    if ( envStr === 'dev' ) {
+      cookiePreFix = 'fat_'
+    } else if ( envStr === 'fat' ) {
+      cookiePreFix = 'fat_'
+    } else if ( envStr === 'uat' ) {
+      cookiePreFix = 'uat_'
+    } else {
+      cookiePreFix = ''
+    }
+    return cookiePreFix
+  }
 
-export function clearAllCookies() {
-  var keys = Object.keys( getAllCookies() )
-  keys.forEach( ( key ) => {
-    removeCookieByKey( key, true )
-  } )
+  getAll() {
+    const cookies = document.cookie.split( /;\s/g )
+    const cookieObj = {}
+    cookies.forEach( ( item ) => {
+      const key = item.split( '=' )[0]
+      cookieObj[key] = item.split( '=' )[1]
+    } )
+    return cookieObj
+  }
+
+  clearAll() {
+    const keys = Object.keys( this.getAll() )
+    keys.forEach( ( key ) => {
+      this.remove( key, false )
+    } )
+  }
+
+  get( key, hasPrefix = true ) {
+    const keyStr = hasPrefix ? this.prefix + '' + key : key
+    return Cookies.get( keyStr )
+  }
+
+  set( key, value, params ) {
+    const options = params === undefined ? this.baseParams : params
+    const keyStr = this.prefix + '' + key
+    return Cookies.set( keyStr, value, options )
+  }
+
+  remove( key, hasPrefix = true ) {
+    const keyStr = !hasPrefix ? key : this.prefix + '' + key
+    return Cookies.remove( keyStr, {
+      path : '/',
+      domain : hostname
+    } )
+  }
 }
+const cookies = new CookieProxy()
+
+export default cookies

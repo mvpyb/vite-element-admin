@@ -1,60 +1,52 @@
-import Cookies from 'js-cookie'
-// import { localStorageHandle } from "/@/utils/storages";
-// import { store } from "/@/store";
 
-const state = {
-  sidebar : {
-    opened : Cookies.get( 'sidebarStatus' )
-      ? !!+Cookies.get( 'sidebarStatus' )
-      : true,
-    withoutAnimation : false
-  },
-  device : 'desktop',
-  size : Cookies.get( 'size' ) || 'medium'
-}
+import { defineStore } from 'pinia'
+import store from '/@/store'
+import cookies from '/@/utils/cookies'
 
-const mutations = {
-  TOGGLE_SIDEBAR : ( state ) => {
-    state.sidebar.opened = !state.sidebar.opened
-    state.sidebar.withoutAnimation = false
-    if ( state.sidebar.opened ) {
-      Cookies.set( 'sidebarStatus', 1 )
-    } else {
-      Cookies.set( 'sidebarStatus', 0 )
+const useAppStore = defineStore( {
+  id : 'app',
+  state : () => {
+    return {
+      sidebar : {
+        opened : cookies.get( 'sidebarStatus' ) ? !!+cookies.get( 'sidebarStatus' ) : true,
+        withoutAnimation : false
+      },
+      device : 'desktop',
+      size : cookies.get( 'size' ) || 'default',
+      lang : cookies.get( 'lang' ) || 'zh'
     }
   },
-  CLOSE_SIDEBAR : ( state, withoutAnimation ) => {
-    Cookies.set( 'sidebarStatus', 0 )
-    state.sidebar.opened = false
-    state.sidebar.withoutAnimation = withoutAnimation
-  },
-  TOGGLE_DEVICE : ( state, device ) => {
-    state.device = device
-  },
-  SET_SIZE : ( state, size ) => {
-    state.size = size
-    Cookies.set( 'size', size )
+  actions : {
+    TOGGLE_SIDEBAR() {
+      this.sidebar.opened = !this.sidebar.opened
+      this.sidebar.withoutAnimation = false
+      if ( this.sidebar.opened ) {
+        cookies.set( 'sidebarStatus', 1 )
+      } else {
+        cookies.set( 'sidebarStatus', 0 )
+      }
+    },
+    CLOSE_SIDEBAR( withoutAnimation ) {
+      cookies.set( 'sidebarStatus', 0 )
+      this.sidebar.opened = false
+      this.sidebar.withoutAnimation = withoutAnimation
+    },
+    TOGGLE_DEVICE( device ) {
+      this.device = device
+    },
+    SET_SIZE( size ) {
+      this.size = size
+      cookies.set( 'size', size )
+    },
+    SET_LANG( lang ) {
+      this.lang = lang
+      cookies.set( 'lang', lang )
+    }
   }
+} )
+
+export function useAppStoreHook() {
+  return useAppStore( store )
 }
 
-const actions = {
-  toggleSideBar( { commit } ) {
-    commit( 'TOGGLE_SIDEBAR' )
-  },
-  closeSideBar( { commit }, { withoutAnimation } ) {
-    commit( 'CLOSE_SIDEBAR', withoutAnimation )
-  },
-  toggleDevice( { commit }, device ) {
-    commit( 'TOGGLE_DEVICE', device )
-  },
-  setSize( { commit }, size ) {
-    commit( 'SET_SIZE', size )
-  }
-}
-
-export default {
-  namespaced : true,
-  state,
-  mutations,
-  actions
-}
+export default useAppStore

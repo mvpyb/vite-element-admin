@@ -1,0 +1,74 @@
+
+/****************** 第三方自定义字体文件***********************/
+
+/*@font-face{*/
+/*  font-family: 'syBold';*/
+/*  src: url('SourceHanSansCN-Bold.otf');*/
+/*}*/
+/*@font-face{*/
+/*  font-family: 'syExLight';*/
+/*  src: url('SourceHanSansCN-ExtraLight.otf');*/
+/*}*/
+/*@font-face{*/
+/*  font-family: 'syHeavy';*/
+/*  src: url('SourceHanSansCN-Heavy.otf');*/
+/*}*/
+/*@font-face{*/
+/*  font-family: 'syLight';*/
+/*  src: url('SourceHanSansCN-Light.otf');*/
+/*}*/
+/*@font-face{*/
+/*  font-family: 'syMedium';*/
+/*  src: url('SourceHanSansCN-Medium.otf');*/
+/*}*/
+/*@font-face{*/
+/*  font-family: 'syNormal';*/
+/*  src: url('SourceHanSansCN-Normal.otf');*/
+/*}*/
+/*@font-face{*/
+/*  font-family: 'syRegular';*/
+/*  src: url('SourceHanSansCN-Regular.otf');*/
+/*}*/
+
+/*.syBold {*/
+/*  font-family: "syBold" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.syExLight {*/
+/*  font-family: "syExLight" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.syHeavy {*/
+/*  font-family: "syHeavy" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.syLight {*/
+/*  font-family: "syLight" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.syMedium {*/
+/*  font-family: "syMedium" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.syNormal {*/
+/*  font-family: "syNormal" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+/*.syRegular {*/
+/*  font-family: "syRegular" !important;*/
+/*  font-style: normal;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/

@@ -1,4 +1,14 @@
+
 import http from '/@/utils/request'
+
+// 用户列表
+export function UserList( data ) {
+  return http.request( {
+    method : 'post',
+    url : '/v1/user/list',
+    data
+  } )
+}
 
 export function login( data ) {
   return http.request( {

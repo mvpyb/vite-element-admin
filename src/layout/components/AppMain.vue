@@ -1,34 +1,63 @@
 <template>
   <section class="app-main">
-    <router-view :key="key" v-slot="{ Component }">
-      <transition appear name="fade" mode="out-in">
-        <keep-alive>
-          <component :is="Component" />
-        </keep-alive>
-      </transition>
+    <router-view>
+      <template #default="{ Component }">
+        <el-scrollbar :height="height">
+          <transition
+            appear
+            name="fade-transform"
+            mode="out-in"
+          >
+            <keep-alive :include="cachedViews">
+              <component
+                :is="Component"
+                :key=" key "
+              />
+            </keep-alive>
+          </transition>
+        </el-scrollbar>
+      </template>
     </router-view>
   </section>
 </template>
 
-<script>
-import { computed, defineComponent } from 'vue'
+<script setup>
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
-export default defineComponent( {
-  name : 'AppMain',
-  setup() {
-    const route = useRoute()
-    const store = useStore()
-    const key = computed( () => route.path )
-    const cachedViews = computed( () => store.state.tagsView.cachedViews )
-    return { key, cachedViews }
+import { useTagsViewStore } from '/@/store'
+
+const route = useRoute()
+const tagsViewStore = useTagsViewStore()
+
+const key = computed( () => route.path )
+const cachedViews = computed( () => tagsViewStore.cachedViews )
+
+const props = defineProps( {
+  needTagsView : {
+    type : Boolean,
+    required : true,
+    default : false
   }
+} )
+
+const height = ref( 'calc( 100vh - 84px)' )
+watch(
+  () => props.needTagsView,
+  () => {
+    height.value = props.needTagsView ? 'calc( 100vh - 84px )' : 'calc( 100vh - 50px )'
+  },
+  {
+    immediate : true
+  }
+)
+
+defineOptions( {
+  name : 'AppMain'
 } )
 </script>
 
 <style lang="scss" scoped>
 .app-main {
-  /* 50= navbar  50  */
   min-height: calc(100vh - 50px);
   width: 100%;
   position: relative;

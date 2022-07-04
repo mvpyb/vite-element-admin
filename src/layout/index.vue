@@ -1,197 +1,180 @@
 <template>
-  <div :class="classObject" class="app-wrapper">
+  <div
+    :class="set.classObject"
+    class="app-wrapper"
+  >
+    <!-- 侧导航的背景遮罩 -->
     <div
-      v-if="device === 'mobile' && sidebar.opened"
+      v-if="set.device === 'mobile' && set.sidebar.opened"
       class="drawer-bg"
-      @click="handleClickOutside(false)"
+      @click="handleClickOutside( false )"
     />
-    <sidebar class="sidebar-container" v-if="!containerHiddenSideBar" />
-    <div :class="{ hasTagsView: needTagsView }" class="main-container">
-      <div :class="{ 'fixed-header': fixedHeader }">
-        <navbar />
-        <tags-view v-if="needTagsView" />
+
+    <SideBar class="sidebar-container" />
+
+    <div :class="{ hasTagsView: set.needTagsView }" class="main-container">
+      <div :class="{ 'fixed-header': set.fixedHeader }">
+        <NavBar />
+        <TagsView v-if="set.needTagsView" />
       </div>
-      <app-main />
+      <AppMain :need-tags-view="set.needTagsView" />
+
+      <Settings />
     </div>
   </div>
 </template>
 
-<script>
-import { Navbar, Sidebar, AppMain, TagsView } from './components'
+<script setup>
 import {
   ref,
   unref,
   reactive,
   computed,
-  toRefs,
   watch,
   watchEffect,
   onMounted,
   onBeforeMount
 } from 'vue'
-import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
 
+import { NavBar, AppMain, SideBar, TagsView, Settings } from './components'
 import { toggleClass } from '/@/utils/operate'
-const hiddenMainContainer = 'hidden-main-container'
 import { useEventListener } from '@vueuse/core'
 
-export default {
-  name : 'Layout',
-  components : { Navbar, Sidebar, AppMain, TagsView },
-  setup() {
-    const store = useStore()
-    const route = useRoute()
-    const WIDTH = ref( 992 )
-    const containerHiddenSideBar = ref( false )
+import { useRoute } from 'vue-router'
+import { useAppStore, useSettingsStore } from '/@/store'
 
-    const set = reactive( {
-      sidebar : computed( () => {
-        return store.getters.sidebar
-      } ),
+const appStore = useAppStore()
+const settingsStore = useSettingsStore()
 
-      device : computed( () => {
-        return store.getters.device
-      } ),
+const hiddenMainContainer = 'hidden-main-container'
 
-      fixedHeader : computed( () => {
-        return store.getters.fixedHeader
-      } ),
-
-      needTagsView : computed( () => {
-        return store.state.settings.tagsView
-      } ),
-
-      classObject : computed( () => {
-        return {
-          hideSidebar : !set.sidebar.opened,
-          openSidebar : set.sidebar.opened,
-          withoutAnimation : set.sidebar.withoutAnimation,
-          mobile : set.device === 'mobile'
-        }
-      } )
-    } )
-
-    const handleClickOutside = ( params ) => {
-      store.dispatch( 'app/closeSideBar', { withoutAnimation : params } )
+const set = reactive( {
+  sidebar : computed( () => {
+    return appStore.sidebar
+  } ),
+  device : computed( () => {
+    return appStore.device
+  } ),
+  showSettings : computed( () => {
+    return settingsStore.showSettings
+  } ),
+  needTagsView : computed( () => {
+    return settingsStore.tagsView
+  } ),
+  fixedHeader : computed( () => {
+    return settingsStore.fixedHeader
+  } ),
+  classObject : computed( () => {
+    const obj = {
+      hideSidebar : !set.sidebar.opened,
+      openSidebar : !!set.sidebar.opened,
+      withoutAnimation : set.sidebar.withoutAnimation,
+      mobile : set.device === 'mobile'
     }
+    return obj
+  } )
+} )
 
-    watchEffect( () => {
-      if ( set.device === 'mobile' && !set.sidebar.opened ) {
-        handleClickOutside( false )
-      }
-    } )
+const handleClickOutside = ( params ) => {
+  appStore.CLOSE_SIDEBAR( { withoutAnimation : params } )
+}
 
-    watch(
-      route,
-      async() => {
-        if ( set.device === 'mobile' && set.sidebar.opened ) {
-          store.dispatch( 'app/closeSideBar', { withoutAnimation : false } )
-        }
-      },
-      { immediate : true }
-    )
+const route = useRoute()
+const WIDTH = ref( 992 )
+const containerHiddenSideBar = ref( false )
 
-    const $_isMobile = () => {
-      const rect = document.body.getBoundingClientRect()
-      return rect.width - 1 < WIDTH.value
+watchEffect( () => {
+  if ( set.device === 'mobile' && !set.sidebar.opened ) {
+    handleClickOutside( false )
+  }
+} )
+
+watch(
+  route,
+  async() => {
+    if ( set.device === 'mobile' && set.sidebar.opened ) {
+      handleClickOutside( false )
     }
+  },
+  { immediate : true }
+)
 
-    const $_resizeHandler = () => {
-      if ( !document.hidden ) {
-        const isMobile = $_isMobile()
-        store.dispatch( 'app/toggleDevice', isMobile ? 'mobile' : 'desktop' )
-        if ( isMobile ) {
-          handleClickOutside( true )
-        }
-      }
-    }
+const $_isMobile = () => {
+  const rect = document.body.getBoundingClientRect()
+  return rect.width - 1 < WIDTH.value
+}
 
-    function onFullScreen() {
-      if ( unref( containerHiddenSideBar ) ) {
-        containerHiddenSideBar.value = false
-        toggleClass(
-          false,
-          hiddenMainContainer,
-          document.querySelector( '.main-container' )
-        )
-      } else {
-        containerHiddenSideBar.value = true
-        toggleClass(
-          true,
-          hiddenMainContainer,
-          document.querySelector( '.main-container' )
-        )
-      }
-    }
-
-    onMounted( () => {
-      const isMobile = $_isMobile()
-      if ( isMobile ) {
-        store.dispatch( 'app/toggleDevice', 'mobile' )
-        handleClickOutside( true )
-      }
-      toggleClass(
-        unref( containerHiddenSideBar ),
-        hiddenMainContainer,
-        document.querySelector( '.main-container' )
-      )
-    } )
-
-    onBeforeMount( () => {
-      useEventListener( 'resize', $_resizeHandler )
-    } )
-
-    return {
-      ...toRefs( set ),
-      handleClickOutside,
-      containerHiddenSideBar,
-      onFullScreen
+const $_resizeHandler = () => {
+  if ( !document.hidden ) {
+    const isMobile = $_isMobile()
+    const currentDevice = isMobile ? 'mobile' : 'desktop'
+    appStore.TOGGLE_DEVICE( currentDevice )
+    if ( isMobile ) {
+      handleClickOutside( true )
     }
   }
 }
+
+onMounted( () => {
+  const isMobile = $_isMobile()
+  if ( isMobile ) {
+    appStore.TOGGLE_DEVICE( 'mobile' )
+    handleClickOutside( true )
+  }
+  toggleClass(
+    unref( containerHiddenSideBar ),
+    hiddenMainContainer,
+    document.querySelector( '.main-container' )
+  )
+} )
+
+onBeforeMount( () => {
+  useEventListener( 'resize', $_resizeHandler )
+} )
+
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/mixin.scss";
-@import "../styles/variables.scss";
+  @import "../styles/mixin.scss";
+  @import "../styles/variables.module.scss";
 
-.app-wrapper {
-  @include clearfix;
-  position: relative;
-  height: 100%;
-  width: 100%;
+  .app-wrapper {
+    @include clearFix;
+    position: relative;
+    height: 100%;
+    width: 100%;
 
-  &.mobile.openSidebar {
+    &.mobile.openSidebar {
+      position: fixed;
+      top: 0;
+    }
+  }
+
+  .drawer-bg {
+    background: #000;
+    opacity: 0.3;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+  }
+
+  .fixed-header {
     position: fixed;
     top: 0;
+    right: 0;
+    z-index: 9;
+    width: calc(100% - #{$sideBarWidth});
+    transition: width 0.28s;
   }
-}
 
-.drawer-bg {
-  background: #000;
-  opacity: 0.3;
-  width: 100%;
-  top: 0;
-  height: 100%;
-  position: absolute;
-  z-index: 999;
-}
+  .hideSidebar .fixed-header {
+    width: calc(100% - 54px)
+  }
 
-.fixed-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
-  transition: width 0.28s;
-}
+  .mobile .fixed-header {
+    width: 100%;
+  }
 
-.hideSidebar .fixed-header {
-  width: calc(100% - 54px);
-}
-
-.mobile .fixed-header {
-  width: 100%;
-}
 </style>

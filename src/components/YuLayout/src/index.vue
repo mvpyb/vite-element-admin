@@ -6,13 +6,13 @@
         class="header-desc ellipsis-col ellipsis-col2"
         v-html="subtitle"
       ></div>
-      <slot name="head"></slot>
+      <slot name="head" />
     </div>
     <div class="body">
-      <slot name="body"></slot>
+      <slot name="body" />
     </div>
     <div class="footer">
-      <slot name="foot"></slot>
+      <slot name="foot" />
     </div>
   </div>
 </template>

@@ -7,10 +7,10 @@ let cancelAnimationFrame
 const isServer = typeof window === 'undefined'
 if ( isServer ) {
   requestAnimationFrame = function() {
-    return
+
   }
   cancelAnimationFrame = function() {
-    return
+
   }
 } else {
   requestAnimationFrame = window.requestAnimationFrame
@@ -37,6 +37,7 @@ if ( isServer ) {
       // 为了使setTimteout的尽可能的接近每秒60帧的效果
       const timeToCall = Math.max( 0, 16 - ( currTime - lastTime ) )
       const id = window.setTimeout( () => {
+        // eslint-disable-next-line n/no-callback-literal
         callback( currTime + timeToCall )
       }, timeToCall )
       lastTime = currTime + timeToCall

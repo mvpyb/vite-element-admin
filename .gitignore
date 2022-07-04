@@ -1,12 +1,13 @@
-
 .DS_Store
 node_modules/
-# dist/
+dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 **/*.log
-test.md
+**/*.test.js
+**/*.test.json
+**/*.test.vue
 
 tests/**/coverage/
 tests/e2e/reports

@@ -1,25 +1,23 @@
-<script>
-import { h, onBeforeMount } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 
-export default {
-  setup() {
-    const router = useRouter()
-    const route = useRoute()
-    onBeforeMount( () => {
-      const { params, query } = route
-      const { path } = params
-      router.replace( { path : '/' + path, query } )
-    } )
-    return {}
-  },
-  // created() {
-  //   const { params, query } = this.$route
-  //   const { path } = params
-  //   this.$router.replace({ path: '/' + path, query })
-  // },
-  render : function() {
-    return h()
-  }
-}
+<template>
+  <div />
+</template>
+
+<script setup>
+import { unref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const { currentRoute, replace } = useRouter()
+const { params, query } = unref( currentRoute )
+const { path } = params
+const _path = Array.isArray( path ) ? path.join( '/' ) : path
+
+replace( {
+  path : '/' + _path,
+  query
+} )
+
+defineOptions( {
+  name : 'Redirect'
+} )
 </script>

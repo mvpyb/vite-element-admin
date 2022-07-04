@@ -4,54 +4,54 @@
     :style="styleExternalIcon"
     class="svg-external-icon svg-icon"
   />
-  <svg v-else :class="svgClass" aria-hidden="true">
+  <svg
+    v-else
+    :class="svgClass"
+    aria-hidden="true"
+  >
     <use :xlink:href="iconName" />
   </svg>
 </template>
 
-<script>
-import { isExternal } from '/@/utils/validate'
-import { computed, reactive, toRefs } from 'vue'
+<script setup>
+import { isExternal as isExternalLink } from '/@/utils/validate'
+import { computed } from 'vue'
 
-export default {
-  name : 'YuSvgIcon',
-  props : {
-    iconClass : {
-      type : String,
-      required : true
-    },
-    className : {
-      type : String,
-      default : ''
-    }
+const props = defineProps( {
+  iconClass : {
+    type : String,
+    required : true
   },
-  setup( props, ctx ) {
-    const set = reactive( {
-      isExternal : computed( () => {
-        return isExternal( props.iconClass )
-      } ),
-      iconName : computed( () => {
-        return `#icon-${props.iconClass}`
-      } ),
-      svgClass : computed( () => {
-        if ( props.className ) {
-          return 'svg-icon ' + props.className
-        } else {
-          return 'svg-icon'
-        }
-      } ),
-      styleExternalIcon : computed( () => {
-        return {
-          mask : `url(${props.iconClass}) no-repeat 50% 50%`,
-          '-webkit-mask' : `url(${props.iconClass}) no-repeat 50% 50%`
-        }
-      } )
-    } )
-    return {
-      ...toRefs( set )
-    }
+  className : {
+    type : String,
+    default : ''
   }
-}
+} )
+
+const isExternal = computed( () => {
+  return isExternalLink( props.iconClass )
+} )
+const iconName = computed( () => {
+  return `#icon-${props.iconClass}`
+} )
+const svgClass = computed( () => {
+  if ( props.className ) {
+    return 'svg-icon ' + props.className
+  } else {
+    return 'svg-icon'
+  }
+} )
+const styleExternalIcon = computed( () => {
+  return {
+    mask : `url(${props.iconClass}) no-repeat 50% 50%`,
+    '-webkit-mask' : `url(${props.iconClass}) no-repeat 50% 50%`
+  }
+} )
+
+defineOptions( {
+  name : 'YuSvgIcon'
+} )
+
 </script>
 
 <style scoped>
@@ -60,6 +60,7 @@ export default {
   height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
+  display: inline-block;
   overflow: hidden;
 }
 

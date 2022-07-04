@@ -1,46 +1,48 @@
+
 import { createApp } from 'vue'
-// import Cookies from 'js-cookie'
-import 'normalize.css/normalize.css'
-import '/@/assets/iconfont/iconfont.css'
-// import '/@/assets/fonts/fonts.css'
-
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-
-import './styles/element-variables.scss'
-import 'element-plus/packages/theme-chalk/src/base.scss'
-// import 'element-plus/lib/theme-chalk/index.css'
-
-import './styles/index.scss'
-import './assets/iconfont/iconfont.js'
-import './assets/iconfont/iconfont.css'
-
-import 'v-contextmenu/dist/themes/default.css'
-
 import App from './App.vue'
-import router from './router/index'
-import store from './store/index'
-
+import router from './router'
+import { registerStore } from '/@/store'
 import { useSvgIcon } from './icons'
-
+import ElementPlus from 'element-plus'
 import './permission'
 
+import 'animate.css'
+// 导入公共样式
+import './styles/index.scss'
+// 第三方自定义字体文件
+import './assets/fonts/index.css'
+
+import 'tailwindcss/tailwind.css'
+import 'element-plus/dist/index.css'
+
+// 导入字体图标
+import './assets/iconfont/iconfont.css'
+// 全局事件总成
+import globalEmitter from '/@/utils/mitt'
 // 自定义指令
 import registerDirective from '/@/directive'
-
-// import ElementLocale from "element-plus/lib/locale"
-// import zhLocale from "element-plus/lib/locale/lang/zh-cn"
-// ElementLocale.use(zhLocale);
+// 国际化
+import { setupI18n } from '/@/locale'
+// 注册所有element icons
+import { setupElementIcons } from '/@/plugins/elementIcons'
+import { useTable } from '/@/plugins/vxeTable'
 
 const app = createApp( App )
-useSvgIcon( app )
 
-const getServerConfig = async() => {
-  app.use( router ).use( store ).use( ElementPlus )
-
-  await registerDirective( app )
+const initApp = async() => {
+  app.use( router )
+  useSvgIcon( app )
+  registerStore( app )
+  registerDirective( app )
   await router.isReady()
-  app.mount( '#root', false )
-}
 
-getServerConfig()
+  setupI18n( app )
+  setupElementIcons( app )
+
+  app.use( globalEmitter )
+  app.use( ElementPlus )
+  app.use( useTable )
+  app.mount( '#app' )
+}
+initApp()

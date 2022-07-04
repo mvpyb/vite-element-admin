@@ -7,31 +7,29 @@
     </div>
     <span>
       <i>copyright</i>
-      <svg-icon icon-class="copyright" class="icon" />
+      <svg-icon
+        icon-class="copyright"
+        class="icon"
+      />
       <i>{{ currentYear }} 沪ICP备XXXXXXXX号</i>
     </span>
     <span style="margin-top: 5px"> XXXXXXXXX </span>
   </div>
 </template>
 
-<script>
+<script setup>
 import SvgIcon from '/@/components/YuSvgIcon'
 import { ref, onBeforeMount } from 'vue'
-export default {
-  name : 'YuCopyright',
-  components : { SvgIcon },
-  setup() {
-    const currentYear = ref( 2021 )
-    onBeforeMount( () => {
-      const year = new Date().getFullYear()
-      currentYear.value = isNaN( year ) && !isNaN( Date.parse( year ) ) ? year : 2021
-    } )
 
-    return {
-      currentYear
-    }
-  }
-}
+const currentYear = ref( 2021 )
+onBeforeMount( () => {
+  currentYear.value = new Date().getFullYear()
+} )
+
+defineOptions( {
+  name : 'YuCopyright'
+} )
+
 </script>
 
 <style lang="scss" scoped>
