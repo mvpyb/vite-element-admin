@@ -13,10 +13,10 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 
 ## 预览
 
-- [没有梯子的可移步码云](https://simmon_page.gitee.io/vite-element-plus-admin/dist/) - 完整版预览 （ gitee ）
-- [vite-element-admin](https://mvpyb.github.io/vite-element-plus-admin/dist/) - 完整版预览 ( github )
-- [github](https://github.com/mvpyb/vite-element-plus-admin) - 完整版github站点
-- [码云](https://gitee.com/simmon_page/vite-element-plus-admin) - 完整版码云站点
+- [没有梯子的可移步码云](https://simmon_page.gitee.io/vite-element-admin/dist/) - 完整版预览 （ gitee ）
+- [vite-element-admin](https://mvpyb.github.io/vite-element-admin/dist/) - 完整版预览 ( github )
+- [github](https://github.com/mvpyb/vite-element-admin) - 完整版github站点
+- [码云](https://gitee.com/simmon_page/vite-element-admin) - 完整版码云站点
 
 
 
@@ -76,7 +76,7 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 
 ```bash
 # 克隆项目
-git clone https://github.com/mvpyb/vite-element-plus-admin.git
+git clone https://github.com/mvpyb/vite-element-admin.git
 
 # 进入项目目录
 cd vite-element-plus-admin
