@@ -1,9 +1,5 @@
-
 <template>
-  <component
-    :is=" set.type "
-    v-bind="linkProps( props.to )"
-  >
+  <component :is="set.type" v-bind="linkProps(props.to)">
     <slot />
   </component>
 </template>
@@ -31,7 +27,7 @@ const set = reactive( {
   } )
 } )
 
-const linkProps = ( to ) => {
+const linkProps = to => {
   if ( unref( set.isOuterLink ) ) {
     return {
       href : to,

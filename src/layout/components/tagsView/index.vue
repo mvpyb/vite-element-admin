@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="tags-view-container"
-    class="tags-view-container"
-  >
+  <div id="tags-view-container" class="tags-view-container">
     <el-scrollbar
       ref="scrollPaneEl"
       wrap-class="tags-view-wrapper"
@@ -12,8 +9,8 @@
     >
       <!--      :tagRefList="tagRefList" -->
       <router-link
-        v-for="( tag, index ) in set.visitedViews"
-        :ref=" el => setTagRef( index, el ) "
+        v-for="(tag, index) in set.visitedViews"
+        :ref="el => setTagRef(index, el)"
         :key="tag.path"
         :class="isActive(tag) ? 'active un-select' : 'un-select'"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
@@ -22,26 +19,13 @@
         @contextmenu.prevent="openMenu(tag, $event)"
       >
         {{ tag.title }}
-        <span
-          v-if="!isAffix(tag)"
-          class="el-icon-close"
-          @click.prevent.stop="closeSelectedTag(tag)"
-        />
+        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
       </router-link>
     </el-scrollbar>
 
-    <ul
-      v-show="visible"
-      :style="{ left: left + 'px', top: top + 'px' }"
-      class="contextmenu"
-    >
+    <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
       <li @click="refreshSelectedTag(selectedTag)">刷新</li>
-      <li
-        v-if="!isAffix( selectedTag )"
-        @click="closeSelectedTag( selectedTag )"
-      >
-        关闭
-      </li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
       <li @click="closeOthersTags">关闭其他</li>
       <li @click="closeAllTags(selectedTag)">关闭全部</li>
     </ul>
@@ -95,7 +79,7 @@ const set = reactive( {
 
 watch(
   () => visible.value,
-  ( value ) => {
+  value => {
     if ( value ) {
       document.body.addEventListener( 'click', closeMenu )
     } else {
@@ -152,25 +136,19 @@ function moveToTarget( currentTag ) {
   if ( firstTag === currentTag ) {
     $scrollWrapper.scrollLeft = 0
   } else if ( lastTag === currentTag ) {
-    $scrollWrapper.scrollLeft =
-        $scrollWrapper.scrollWidth - $containerWidth
+    $scrollWrapper.scrollLeft = $scrollWrapper.scrollWidth - $containerWidth
   } else {
-    const currentIndex = tagList.findIndex( ( item ) => item === currentTag )
+    const currentIndex = tagList.findIndex( item => item === currentTag )
     const prevTag = tagList[currentIndex - 1]
     const nextTag = tagList[currentIndex + 1]
 
     // the tag's offsetLeft after of nextTag
-    const afterNextTagOffsetLeft =
-        nextTag.$el.offsetLeft + nextTag.$el.offsetWidth + tagAndTagSpacing
+    const afterNextTagOffsetLeft = nextTag.$el.offsetLeft + nextTag.$el.offsetWidth + tagAndTagSpacing
 
     // the tag's offsetLeft before of prevTag
-    const beforePrevTagOffsetLeft =
-        prevTag.$el.offsetLeft - tagAndTagSpacing
+    const beforePrevTagOffsetLeft = prevTag.$el.offsetLeft - tagAndTagSpacing
 
-    if (
-      afterNextTagOffsetLeft >
-        $scrollWrapper.scrollLeft + $containerWidth
-    ) {
+    if ( afterNextTagOffsetLeft > $scrollWrapper.scrollLeft + $containerWidth ) {
       $scrollWrapper.scrollLeft = afterNextTagOffsetLeft - $containerWidth
     } else if ( beforePrevTagOffsetLeft < $scrollWrapper.scrollLeft ) {
       $scrollWrapper.scrollLeft = beforePrevTagOffsetLeft
@@ -189,7 +167,7 @@ function initTags() {
 
 function filterAffixTags( routes, basePath = '/' ) {
   let tags = []
-  routes.forEach( ( route ) => {
+  routes.forEach( route => {
     if ( route.meta && route.meta.affix ) {
       const tagPath = path.resolve( basePath, route.path )
       tags.push( {
@@ -243,7 +221,7 @@ async function closeOthersTags() {
 
 async function closeAllTags( view ) {
   const { visitedViews } = await tagsViewStore.DEL_ALL_VIEWS()
-  if ( affixTags.value.some( ( item ) => item.path === view.path ) ) {
+  if ( affixTags.value.some( item => item.path === view.path ) ) {
     return
   }
   toLastView( visitedViews, view )

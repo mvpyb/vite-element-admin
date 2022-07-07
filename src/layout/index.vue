@@ -1,40 +1,28 @@
 <template>
-  <div
-    :class="set.classObject"
-    class="app-wrapper"
-  >
-    <!-- 侧导航的背景遮罩 -->
-    <div
-      v-if="set.device === 'mobile' && set.sidebar.opened"
-      class="drawer-bg"
-      @click="handleClickOutside( false )"
-    />
+  <div :class="set.classObject" class="app-wrapper">
+    <div class="layout-section" :class="set.layoutMod + '-layout'">
+      <div
+        v-if="set.device === 'mobile' && set.sidebar.opened && set.layoutMod === 'vertical'"
+        class="drawer-bg"
+        @click="handleClickOutside(false)"
+      />
 
-    <SideBar class="sidebar-container" />
+      <SideBar class="sidebar-container vertical" v-if="set.layoutMod === 'vertical'" />
 
-    <div :class="{ hasTagsView: set.needTagsView }" class="main-container">
-      <div :class="{ 'fixed-header': set.fixedHeader }">
-        <NavBar />
-        <TagsView v-if="set.needTagsView" />
+      <div class="main-container" :class="{ hasTagsView: set.needTagsView }">
+        <div :class="{ 'fixed-header': set.fixedHeader }">
+          <NavBar :class="set.layoutMod === 'vertical' ? '' : 'sidebar-container horizontal'" />
+          <TagsView v-if="set.needTagsView" />
+        </div>
+        <AppMain :need-tags-view="set.needTagsView" />
+        <Settings />
       </div>
-      <AppMain :need-tags-view="set.needTagsView" />
-
-      <Settings />
     </div>
   </div>
 </template>
 
 <script setup>
-import {
-  ref,
-  unref,
-  reactive,
-  computed,
-  watch,
-  watchEffect,
-  onMounted,
-  onBeforeMount
-} from 'vue'
+import { ref, unref, reactive, computed, watch, watchEffect, onMounted, onBeforeMount } from 'vue'
 
 import { NavBar, AppMain, SideBar, TagsView, Settings } from './components'
 import { toggleClass } from '/@/utils/operate'
@@ -72,10 +60,13 @@ const set = reactive( {
       mobile : set.device === 'mobile'
     }
     return obj
+  } ),
+  layoutMod : computed( () => {
+    return settingsStore.layoutMod
   } )
 } )
 
-const handleClickOutside = ( params ) => {
+const handleClickOutside = params => {
   appStore.CLOSE_SIDEBAR( { withoutAnimation : params } )
 }
 
@@ -121,60 +112,71 @@ onMounted( () => {
     appStore.TOGGLE_DEVICE( 'mobile' )
     handleClickOutside( true )
   }
-  toggleClass(
-    unref( containerHiddenSideBar ),
-    hiddenMainContainer,
-    document.querySelector( '.main-container' )
-  )
+  toggleClass( unref( containerHiddenSideBar ), hiddenMainContainer, document.querySelector( '.main-container' ) )
 } )
 
 onBeforeMount( () => {
   useEventListener( 'resize', $_resizeHandler )
 } )
-
 </script>
 
 <style lang="scss" scoped>
-  @import "../styles/mixin.scss";
-  @import "../styles/variables.module.scss";
+@import "../styles/mixin.scss";
+@import "../styles/variables.module.scss";
 
-  .app-wrapper {
-    @include clearFix;
-    position: relative;
-    height: 100%;
-    width: 100%;
+.app-wrapper {
+  @include clearFix;
+  position: relative;
+  height: 100%;
+  width: 100%;
 
-    &.mobile.openSidebar {
-      position: fixed;
-      top: 0;
-    }
-  }
-
-  .drawer-bg {
-    background: #000;
-    opacity: 0.3;
-    width: 100%;
-    top: 0;
-    height: 100%;
-    position: absolute;
-    z-index: 999;
-  }
-
-  .fixed-header {
+  &.mobile.openSidebar {
     position: fixed;
     top: 0;
-    right: 0;
-    z-index: 9;
-    width: calc(100% - #{$sideBarWidth});
-    transition: width 0.28s;
   }
+}
 
-  .hideSidebar .fixed-header {
-    width: calc(100% - 54px)
-  }
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
 
-  .mobile .fixed-header {
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+  transition: width 0.28s;
+  &.main-container {
     width: 100%;
   }
+}
 
+.hideSidebar {
+  .fixed-header {
+    width: calc(100% - 54px);
+  }
+  .horizontal-layout .fixed-header {
+    width: 100%;
+  }
+}
+.horizontal-layout .fixed-header,
+.mobile .fixed-header {
+  width: 100%;
+}
+
+.layout-section {
+  &.vertical-layout {
+  }
+  &.horizontal-layout {
+    width: 100%;
+    position: relative;
+  }
+}
 </style>

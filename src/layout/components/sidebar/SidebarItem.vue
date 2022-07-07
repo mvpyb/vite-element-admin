@@ -1,53 +1,45 @@
-
 <template>
- <div v-if="!props.item.hidden">
-  <template
+  <div v-if="!props.item.hidden">
+    <template
       v-if="
-      hasOneShowingChild( props.item.children, props.item ) &&
-        ( !onlyOneChild.children || onlyOneChild.noShowingChildren )
-        && !props.item.alwaysShow
-    "
-  >
-   <AppLink
-       v-if="onlyOneChild.meta"
-       :to="resolvePath( onlyOneChild.path )"
-   >
-    <el-menu-item
-        :index="resolvePath( onlyOneChild.path )"
-        :class="{ 'submenu-title-noDropdown': !props.isNest }"
+        hasOneShowingChild(props.item.children, props.item) &&
+        (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
+        !props.item.alwaysShow
+      "
     >
-     <svg-icon
-         v-if="onlyOneChild.meta.icon||( props.item.meta && props.item.meta.icon)"
-         :icon-class="onlyOneChild.meta.icon||( props.item.meta && props.item.meta.icon)" />
-     <template #title>
-      <span> {{ onlyOneChild.meta.title }} </span>
-     </template>
-    </el-menu-item>
-   </AppLink>
-  </template>
+      <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !props.isNest }">
+          <svg-icon
+            class-name="menu-icons"
+            v-if="onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)"
+            :icon-class="onlyOneChild.meta.icon || (props.item.meta && props.item.meta.icon)"
+          />
+          <template #title>
+            <span> {{ onlyOneChild.meta.title }} </span>
+          </template>
+        </el-menu-item>
+      </AppLink>
+    </template>
 
-  <el-sub-menu
-      v-else
-      ref="subMenu"
-      :index="resolvePath( props.item.path )"
-  >
-   <template #title>
-    <svg-icon
-        v-if="props.item.meta && props.item.meta.icon"
-        :icon-class="props.item.meta && props.item.meta.icon"
-    />
-    <span> {{ props.item.meta.title }} </span>
-   </template>
-   <SidebarItem
-       v-for="child in props.item.children"
-       :key="child.path"
-       :is-nest="true"
-       :item="child"
-       :base-path="resolvePath( child.path )"
-       class="nest-menu"
-   />
-  </el-sub-menu>
- </div>
+    <el-sub-menu v-else ref="subMenu" popper-class="sub-menu-test" :index="resolvePath(props.item.path)">
+      <template #title>
+        <svg-icon
+          class-name="menu-icons"
+          v-if="props.item.meta && props.item.meta.icon"
+          :icon-class="props.item.meta && props.item.meta.icon"
+        />
+        <span> {{ props.item.meta.title }} </span>
+      </template>
+      <SidebarItem
+        v-for="child in props.item.children"
+        :key="child.path"
+        :is-nest="true"
+        :item="child"
+        :base-path="resolvePath(child.path)"
+        class="nest-menu"
+      />
+    </el-sub-menu>
+  </div>
 </template>
 
 <script setup>
@@ -76,7 +68,7 @@ const onlyOneChild = ref( null )
 const subMenu = ref( null )
 
 function hasOneShowingChild( children = [], parent ) {
-  const showingChildren = children.filter( ( item ) => {
+  const showingChildren = children.filter( item => {
     if ( item.hidden ) {
       return false
     } else {
@@ -94,7 +86,7 @@ function hasOneShowingChild( children = [], parent ) {
   return false
 }
 
-const resolvePath = ( routePath ) => {
+const resolvePath = routePath => {
   if ( isExternal( routePath ) ) {
     return routePath
   }
