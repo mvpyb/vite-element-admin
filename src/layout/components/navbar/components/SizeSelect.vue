@@ -1,21 +1,14 @@
-
 <template>
-  <el-dropdown
-    trigger="click"
-    @command="handleSetSize"
-  >
+  <el-dropdown trigger="click" @command="handleSetSize">
     <div>
-      <svg-icon
-        class-name="size-icon"
-        icon-class="size"
-      />
+      <svg-icon class-name="size-icon" icon-class="size" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item
           v-for="item of sizeOptions"
           :key="item.value"
-          :disabled="size===item.value"
+          :disabled="size === item.value"
           :command="item.value"
         >
           {{ item.label }}
@@ -45,7 +38,7 @@ const size = computed( () => {
   return appStore.size
 } )
 
-const handleSetSize = ( val ) => {
+const handleSetSize = val => {
   appStore.SET_SIZE( val )
   refreshView()
   ElMessage( {
@@ -68,9 +61,6 @@ const refreshView = () => {
 defineOptions( {
   name : 'SizeSelect'
 } )
-
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
