@@ -8,6 +8,7 @@ yarn-error.log*
 **/*.test.js
 **/*.test.json
 **/*.test.vue
+**/*.test.md
 
 tests/**/coverage/
 tests/e2e/reports
