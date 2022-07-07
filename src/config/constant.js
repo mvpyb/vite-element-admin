@@ -1,4 +1,3 @@
-
 export const WX_APPID = 'appid'
 export const COOKIE_PREFIX = 'vite_'
 export const TOKEN = `${COOKIE_PREFIX}_token`
