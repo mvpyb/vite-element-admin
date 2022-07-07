@@ -96,12 +96,7 @@ export function isRegExp( arg ) {
  * @returns {Boolean}
  */
 export function isPromise( arg ) {
-  return (
-    is( arg, 'Promise' ) &&
-    isObject( arg ) &&
-    isFunction( arg.then ) &&
-    isFunction( arg.catch )
-  )
+  return is( arg, 'Promise' ) && isObject( arg ) && isFunction( arg.then ) && isFunction( arg.catch )
 }
 
 /**
@@ -121,6 +116,21 @@ export function isIterable( arg ) {
 export function validUsername( str ) {
   const valid_map = ['admin', 'editor']
   return valid_map.indexOf( str.trim() ) >= 0
+}
+/**
+ * @param {string} str
+ * @returns {Boolean}
+ */
+export function validPhone( str ) {
+  var pass = false
+  var val = str.trim()
+  // if ( !/^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|16[0-9]|14[0-9])[0-9]{8}$/i.test( val ) ) {
+  if ( !/^(0|86|17951)?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9])[0-9]{8}$/i.test( val ) ) {
+    pass = false
+  } else {
+    pass = true
+  }
+  return pass
 }
 
 /**
@@ -168,4 +178,14 @@ export function validEmail( email ) {
   const reg =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return reg.test( email )
+}
+
+/**
+ * @param {string} ID
+ * @returns {Boolean}
+ */
+export function validID( str ) {
+  const reg =
+    /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/
+  return reg.test( str )
 }

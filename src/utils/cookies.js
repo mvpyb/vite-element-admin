@@ -31,18 +31,12 @@ class CookieProxy {
   }
 
   getAll() {
-    const cookies = document.cookie.split( /;\s/g )
-    const cookieObj = {}
-    cookies.forEach( ( item ) => {
-      const key = item.split( '=' )[0]
-      cookieObj[key] = item.split( '=' )[1]
-    } )
-    return cookieObj
+    return Cookies.get()
   }
 
   clearAll() {
     const keys = Object.keys( this.getAll() )
-    keys.forEach( ( key ) => {
+    keys.forEach( key => {
       this.remove( key, false )
     } )
   }

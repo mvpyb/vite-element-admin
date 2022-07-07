@@ -1,42 +1,17 @@
-
 <template>
   <div class="animate-section">
     <el-divider content-position="left">mo.js </el-divider>
     <span> See More : https://mojs.github.io/tutorials/getting-started.html#setup-mo-js-in-your-project </span>
     <span> See More : https://blog.csdn.net/qq_22841387/article/details/122930324 </span>
 
-    <el-button
-      type="primary"
-      size="default"
-      @click="startMo"
-    >
-      start
-    </el-button>
-    <div
-      ref="heart"
-      class="heart"
-    />
-    <div
-      ref="logo"
-      class="logo"
-    />
+    <el-button type="primary" size="default" @click="startMo"> start </el-button>
+    <div ref="heart" class="heart" />
+    <div ref="logo" class="logo" />
 
-    <div
-      id="js-black-bg"
-      class="background black-background"
-    />
-    <div
-      id="js-green-bg"
-      class="background green-background"
-    />
-    <div
-      id="js-pink-bg"
-      class="background pink-background"
-    >
-      <div
-        id="js-logo"
-        class="pink-background__logo"
-      />
+    <div id="js-black-bg" class="background black-background" />
+    <div id="js-green-bg" class="background green-background" />
+    <div id="js-pink-bg" class="background pink-background">
+      <div id="js-logo" class="pink-background__logo" />
     </div>
   </div>
 </template>
@@ -435,25 +410,23 @@ const startMo = () => {
 
   // mo1()
 }
-
 </script>
 
 <style lang="scss" scoped>
-  .animate-section {
-    position: relative;
-    width: 100%;
-    height: 500px;
-  }
-  .logo {
-    position:     absolute;
-    left:         50%;
-    top:          50%;
-    height:       25px;
-    width:        120px;
-    z-index:      2;
-    margin-left: -60px;
-    margin-top:  -32px;
-    transform-origin: 50% 0;;
-  }
-
+.animate-section {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 25px;
+  width: 120px;
+  z-index: 2;
+  margin-left: -60px;
+  margin-top: -32px;
+  transform-origin: 50% 0;
+}
 </style>

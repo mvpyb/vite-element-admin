@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="props.className"
-    :style="{ height: props.height, width: props.width }"
-    ref="container"
-  />
+  <div :class="props.className" :style="{ height: props.height, width: props.width }" ref="container" />
 </template>
 
 <script setup>
@@ -108,5 +104,4 @@ onBeforeUnmount( () => {
 defineOptions( {
   name : 'BarChart'
 } )
-
 </script>

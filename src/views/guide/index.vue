@@ -2,13 +2,16 @@
   <YuLayout title="新手引导">
     <template #head>
       引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能特点。该平台是基于
-      <el-link type="primary" href="https://github.com/kamranahmedse/driver.js" target="_blank" :underline="false">driver.js</el-link>
+      <el-link type="primary"
+href="https://github.com/kamranahmedse/driver.js"
+target="_blank"
+:underline="false"
+        >driver.js</el-link
+      >
     </template>
     <template #body>
       <div class="section-container">
-        <el-button :icon="QuestionFilled" type="primary" @click.prevent.stop="guide">
-          开启引导
-        </el-button>
+        <el-button :icon="QuestionFilled" type="primary" @click.prevent.stop="guide"> 开启引导 </el-button>
       </div>
     </template>
   </YuLayout>

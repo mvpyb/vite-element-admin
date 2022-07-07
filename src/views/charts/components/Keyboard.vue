@@ -1,5 +1,5 @@
 <template>
-    <div :id="props.id" :class="props.className" :style="{height: props.height,width:props.width}" ref="el" />
+  <div :id="props.id" :class="props.className" :style="{ height: props.height, width: props.width }" ref="el" />
 </template>
 
 <script setup>
@@ -147,10 +147,10 @@ const initChart = () => {
   } )
 }
 
-const $_resizeHandler = ( e ) => {
+const $_resizeHandler = e => {
   chart.value && chart.value.resize()
 }
-const $_sidebarResizeHandler = ( e ) => {
+const $_sidebarResizeHandler = e => {
   if ( e.propertyName === 'width' ) {
     $_resizeHandler()
   }
@@ -165,7 +165,7 @@ onMounted( () => {
   // 监听resize
   useResizeObserver(
     document.body,
-    useDebounceFn( ( entries ) => {
+    useDebounceFn( entries => {
       $_resizeHandler()
     }, 100 )
   )
@@ -182,5 +182,4 @@ onBeforeUnmount( () => {
 defineOptions( {
   name : 'Keyboard'
 } )
-
 </script>

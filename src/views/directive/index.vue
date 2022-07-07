@@ -1,4 +1,3 @@
-
 <template>
   <yu-layout title="自定义指令" subtitle="非常实用的Vue自定义指令">
     <template #body>
@@ -52,9 +51,7 @@
                 </div>
               </template>
               <div class="h50">
-                <el-button type="primary" v-longpress="longPressClick">
-                  长按我1s以上
-                </el-button>
+                <el-button type="primary" v-longpress="longPressClick"> 长按我1s以上 </el-button>
               </div>
             </el-card>
           </el-col>
@@ -66,9 +63,7 @@
                 </div>
               </template>
               <div class="h50">
-                <el-button type="primary" v-dobounce="debounceClick">
-                  点我看看
-                </el-button>
+                <el-button type="primary" v-dobounce="debounceClick"> 点我看看 </el-button>
               </div>
             </el-card>
           </el-col>
@@ -111,43 +106,20 @@
                 </div>
               </template>
 
-              <el-button
-                style="margin: 10px 0"
-                type="primary"
-                @click="togglePermission"
-                size="small"
-              >
+              <el-button style="margin: 10px 0" type="primary" @click="togglePermission" size="small">
                 切换权限
               </el-button>
 
               <div :key="currentRoleIndex">
-                <el-tag class="permission-sourceCode" type="info">
-                  当前权限 ：{{ currentRole.join("_") }}
-                </el-tag>
+                <el-tag class="permission-sourceCode" type="info"> 当前权限 ：{{ currentRole.join("_") }} </el-tag>
                 <div class="item">
-                  <el-button
-                    type="success"
-                    size="small"
-                    v-permission="['admin']"
-                  >
-                    有权限 admin
-                  </el-button>
+                  <el-button type="success" size="small" v-permission="['admin']"> 有权限 admin </el-button>
                 </div>
                 <div class="item">
-                  <el-button
-                    type="warning"
-                    size="small"
-                    v-permission="['editor']"
-                  >
-                    有权限 editor
-                  </el-button>
+                  <el-button type="warning" size="small" v-permission="['editor']"> 有权限 editor </el-button>
                 </div>
                 <div class="item">
-                  <el-button
-                    type="danger"
-                    size="small"
-                    v-permission="['admin', 'editor']"
-                  >
+                  <el-button type="danger" size="small" v-permission="['admin', 'editor']">
                     有权限 admin + editor</el-button
                   >
                 </div>
@@ -210,7 +182,6 @@ const togglePermission = async() => {
 defineOptions( {
   name : 'Directive'
 } )
-
 </script>
 
 <style lang="scss" scoped>
@@ -235,7 +206,7 @@ defineOptions( {
   margin: 10px 0;
 }
 
-:deep( .el-col) {
+:deep(.el-col) {
   margin-bottom: 10px;
 }
 </style>

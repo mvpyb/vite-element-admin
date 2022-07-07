@@ -1,4 +1,3 @@
-
 import defaultSettings from '/@/settings'
 const title = defaultSettings.title || 'Vite Element Admin'
 

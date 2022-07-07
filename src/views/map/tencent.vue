@@ -1,11 +1,13 @@
 <template>
-  <yu-layout title="腾讯地图" >
+  <yu-layout title="腾讯地图">
     <template #head>
       <el-link
-          type="primary"
-          href="https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay"
-          target="_blank"
-          :underline="false">点我查看更多</el-link>
+        type="primary"
+        href="https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay"
+        target="_blank"
+        :underline="false"
+        >点我查看更多</el-link
+      >
     </template>
     <template #body>
       <div class="section-container">
@@ -36,7 +38,7 @@ onMounted( () => {
           center
         } )
       } )
-      .catch( ( err ) => {
+      .catch( err => {
         console.log( 'err', err )
       } )
   } )

@@ -1,4 +1,3 @@
-
 class StorageProxy {
   constructor( storageModel ) {
     this.storage = storageModel

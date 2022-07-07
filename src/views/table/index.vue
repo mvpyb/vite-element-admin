@@ -1,23 +1,20 @@
-
 <template>
   <yu-layout title="vxe-table">
     <template #head>
-      更强大的table组件，解决复杂的表格业务，提高开发效率以及渲染性能。vxe-table 利用虚拟滚动，仅渲染用户可视的部分，其他部分不渲染，这对于表格的性能有比较大的提升
-      <el-link
-          type="primary"
-          href="https://vxetable.cn/#/table/start/install"
-          target="_blank"
-:underline="false">点我查看更多</el-link>
+      更强大的table组件，解决复杂的表格业务，提高开发效率以及渲染性能。vxe-table
+      利用虚拟滚动，仅渲染用户可视的部分，其他部分不渲染，这对于表格的性能有比较大的提升
+      <el-link type="primary"
+href="https://vxetable.cn/#/table/start/install"
+target="_blank"
+:underline="false"
+        >点我查看更多</el-link
+      >
     </template>
 
     <template #body>
       <div>
         <vxe-button status="primary" v-wave content="主要颜色" />
-        <vxe-table
-            border
-            :column-config="{resizable: true}"
-            :tree-config="{transform: true}"
-            :data="tableData">
+        <vxe-table border :column-config="{ resizable: true }" :tree-config="{ transform: true }" :data="tableData">
           <vxe-column field="name" title="Name" tree-node></vxe-column>
           <vxe-column type="expand" title="Details" width="80">
             <template #content="{ row }">
@@ -43,9 +40,7 @@
         </vxe-table>
       </div>
     </template>
-
   </yu-layout>
-
 </template>
 
 <script setup>
@@ -75,9 +70,6 @@ const tableData = ref( [
 defineOptions( {
   name : 'Table'
 } )
-
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

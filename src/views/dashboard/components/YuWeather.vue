@@ -86,7 +86,6 @@
 </template>
 
 <script setup>
-
 defineOptions( {
   name : 'YuWeather'
 } )

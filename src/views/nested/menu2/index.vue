@@ -1,13 +1,11 @@
-
 <template>
   <div>
-    nested <br/>
-    menu2 <br/>
+    nested <br />
+    menu2 <br />
   </div>
 </template>
 
-<script setup >
-
+<script setup>
 defineOptions( {
   name : 'Menu2'
 } )

@@ -3,10 +3,12 @@
     <template #head>
       百度地图的简单使用，最新版GL地图命名空间为BMapGL, 可按住鼠标右键控制地图旋转、修改倾斜角度。
       <el-link
-          type="primary"
-          href="https://lbsyun.baidu.com/index.php?title=jspopularGL"
-          target="_blank"
-:underline="false">点我查看更多</el-link>
+        type="primary"
+        href="https://lbsyun.baidu.com/index.php?title=jspopularGL"
+        target="_blank"
+        :underline="false"
+        >点我查看更多</el-link
+      >
     </template>
     <template #body>
       <div class="section-container">
@@ -37,7 +39,6 @@ onMounted( () => {
         map.addControl(
           // eslint-disable-next-line no-undef
           new BMap.MapTypeControl( {
-
             // eslint-disable-next-line no-undef
             mapTypes : [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP]
           } )
@@ -46,7 +47,7 @@ onMounted( () => {
         map.setCurrentCity( '北京' )
         map.enableScrollWheelZoom( true )
       } )
-      .catch( ( err ) => {
+      .catch( err => {
         console.log( 'err', err )
       } )
   } )

@@ -1,4 +1,3 @@
-
 import { head, toArray } from 'lodash-unified'
 import mitt from 'mitt'
 

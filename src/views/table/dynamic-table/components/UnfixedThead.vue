@@ -2,15 +2,9 @@
   <div class="app-container">
     <div class="filter-container">
       <el-checkbox-group v-model="formThead">
-        <el-checkbox label="apple">
-          apple
-        </el-checkbox>
-        <el-checkbox label="banana">
-          banana
-        </el-checkbox>
-        <el-checkbox label="orange">
-          orange
-        </el-checkbox>
+        <el-checkbox label="apple"> apple </el-checkbox>
+        <el-checkbox label="banana"> banana </el-checkbox>
+        <el-checkbox label="orange"> orange </el-checkbox>
       </el-checkbox-group>
     </div>
 
@@ -28,7 +22,7 @@
     <el-divider content-position="left">Vxe Table</el-divider>
 
     <vxe-table :key="key" round border :data="tableData">
-      <vxe-column field="name" title="fruitName" width="180"  />
+      <vxe-column field="name" title="fruitName" width="180" />
       <vxe-column v-for="fruit in formThead" :key="fruit" :field="fruit" :title="fruit" />
     </vxe-table>
   </div>
@@ -61,5 +55,4 @@ watch( formThead, () => {
 defineOptions( {
   name : 'UnfixedThead'
 } )
-
 </script>

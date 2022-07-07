@@ -1,8 +1,5 @@
-
 <template>
-  <div class="media-container">
-
-  </div>
+  <div class="media-container"></div>
 </template>
 
 <script setup>
@@ -14,8 +11,6 @@ defineOptions( {
 </script>
 
 <style lang="scss" scoped>
-  .media-container {
-
-  }
-
+.media-container {
+}
 </style>

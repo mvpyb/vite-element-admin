@@ -1,12 +1,5 @@
 <template>
-  <el-form
-    ref="ruleForm"
-    :model="formState"
-    :rules="rules"
-    label-width="0"
-    status-icon
-    class="login-ruleForm"
-  >
+  <el-form ref="ruleForm" :model="formState" :rules="rules" label-width="0" status-icon class="login-ruleForm">
     <el-form-item prop="account">
       <el-input
         ref="account"
@@ -39,10 +32,7 @@
       />
     </el-form-item>
 
-    <el-form-item
-      v-if="showCaptcha"
-      prop="captcha"
-    >
+    <el-form-item v-if="showCaptcha" prop="captcha">
       <div style="position: relative">
         <div class="code-inp">
           <el-input
@@ -60,11 +50,7 @@
           />
         </div>
         <div class="code">
-          <img
-            :src="captchaImg"
-            alt=""
-            @click="updateImage"
-          >
+          <img :src="captchaImg" alt="" @click="updateImage" />
         </div>
       </div>
     </el-form-item>
@@ -86,7 +72,7 @@
         :underline="false"
         :loading="loading"
         class=""
-        style="width: 100%;margin: 15px;"
+        style="width: 100%; margin: 15px"
         @click.prevent="freeLogin"
       >
         免登录
@@ -173,7 +159,7 @@ async function freeLogin() {
 
 function loginHandle() {
   loading.value = true
-  ruleForm.value.validate( async( valid ) => {
+  ruleForm.value.validate( async valid => {
     if ( valid ) {
       try {
         const params = {
@@ -205,26 +191,26 @@ defineOptions( {
 </script>
 
 <style lang="scss" scoped>
-  .code-inp {
-    width: calc(100% - 125px);
+.code-inp {
+  width: calc(100% - 125px);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.code {
+  display: inline-block;
+  height: 40px;
+  width: 110px;
+  cursor: pointer;
+  vertical-align: middle;
+  img {
     display: inline-block;
-    vertical-align: middle;
-    margin-right: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
   }
-  .code {
-    display: inline-block;
-    height: 40px;
-    width: 110px;
-    cursor: pointer;
-    vertical-align: middle;
-    img {
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      border-radius: 4px;
-    }
-    &:hover {
-      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
-    }
+  &:hover {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
   }
+}
 </style>

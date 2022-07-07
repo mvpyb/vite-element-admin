@@ -25,10 +25,7 @@ export function getEnvs() {
 
 export function initUrl() {
   const { envStr } = getEnvs()
-  const baseUrlStr =
-    envStr === 'dev'
-      ? env.VITE_APP_API_BASE_URL
-      : GLOBAL_DATA[envStr].baseUrl
+  const baseUrlStr = envStr === 'dev' ? env.VITE_APP_API_BASE_URL : GLOBAL_DATA[envStr].baseUrl
   return {
     baseUrlStr
   }

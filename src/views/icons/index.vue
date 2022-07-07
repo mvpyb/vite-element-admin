@@ -1,20 +1,14 @@
 <template>
   <div class="icons-container">
-
     <el-tabs type="border-card">
       <el-tab-pane label="Svg Icons">
         <div
-            v-for="item in svgIcons"
-            :key="item"
-            v-clipboard:copy="handleClipboard(item)"
-            v-clipboard:success="clipboardSuccess"
+          v-for="item in svgIcons"
+          :key="item"
+          v-clipboard:copy="handleClipboard(item)"
+          v-clipboard:success="clipboardSuccess"
         >
-          <el-tooltip
-              class="item"
-              effect="dark"
-              content="Top Left 提示文字"
-              placement="top"
-          >
+          <el-tooltip class="item" effect="dark" content="Top Left 提示文字" placement="top">
             <template #content>{{ item }}</template>
             <div class="icon-item">
               <svg-icon :icon-class="item" class-name="disabled" />
@@ -26,17 +20,13 @@
 
       <el-tab-pane label="Element Icons">
         <div
-            v-for="component in ElementIcons"
-            :key="component.name"
-            :ref="component.name"
-            v-clipboard:copy="handleClipboardE( component )"
-            v-clipboard:success="clipboardSuccess"
+          v-for="component in ElementIcons"
+          :key="component.name"
+          :ref="component.name"
+          v-clipboard:copy="handleClipboardE(component)"
+          v-clipboard:success="clipboardSuccess"
         >
-          <el-tooltip
-              class="item"
-              effect="dark"
-              placement="top"
-          >
+          <el-tooltip class="item" effect="dark" placement="top">
             <template #content>{{ component.name }}</template>
             <div class="icon-item">
               <ElIcon :size="30">
@@ -50,20 +40,16 @@
 
       <el-tab-pane label="Vxe Icons">
         <div
-            v-for="icon in vxeIcons"
-            :key="icon.icon"
-            :ref="icon.icon"
-            v-clipboard:copy="handleClipboardV( icon )"
-            v-clipboard:success="clipboardSuccess"
+          v-for="icon in vxeIcons"
+          :key="icon.icon"
+          :ref="icon.icon"
+          v-clipboard:copy="handleClipboardV(icon)"
+          v-clipboard:success="clipboardSuccess"
         >
-          <el-tooltip
-              class="item"
-              effect="dark"
-              placement="top"
-          >
+          <el-tooltip class="item" effect="dark" placement="top">
             <template #content>{{ icon.icon }}</template>
             <div class="icon-item">
-              <i :class=" 'vxe-icon--' + icon.icon"></i>
+              <i :class="'vxe-icon--' + icon.icon"></i>
               <span>{{ icon.icon }}</span>
             </div>
           </el-tooltip>
@@ -195,13 +181,13 @@ const vxeIcons = ref( [
 
 const svgIcons = ref( svgs )
 
-const handleClipboard = ( text ) => {
+const handleClipboard = text => {
   return `<svg-icon icon-class="${text}" />`
 }
-const handleClipboardE = ( text ) => {
+const handleClipboardE = text => {
   return `<el-icon > <${text.name}/> </el-icon>`
 }
-const handleClipboardV = ( text ) => {
+const handleClipboardV = text => {
   return `<i class="vxe-icon--${text.icon}" />`
 }
 const clipboardSuccess = ( text, e ) => {
@@ -227,11 +213,12 @@ defineOptions( {
     font-size: 30px;
     color: #24292e;
     cursor: pointer;
-    &:hover{
-      background: rgba(0,0,0,0.2);
+    &:hover {
+      background: rgba(0, 0, 0, 0.2);
     }
 
-    [class*="vxe-icon--"], [class^=vxe-icon--] {
+    [class*="vxe-icon--"],
+    [class^="vxe-icon--"] {
       color: #606266;
       border-color: #606266;
     }

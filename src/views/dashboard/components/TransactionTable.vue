@@ -1,11 +1,5 @@
 <template>
-  <el-table
-    ref="multipleTable"
-    :data="set.newList"
-    tooltip-effect="dark"
-    style="width: 100%"
-  >
-
+  <el-table ref="multipleTable" :data="set.newList" tooltip-effect="dark" style="width: 100%">
     <el-table-column label="Date">
       <template #default="scope">{{ scope.row.date }}</template>
     </el-table-column>
@@ -30,11 +24,7 @@
 
     <el-table-column prop="name" label="Name"></el-table-column>
 
-    <el-table-column
-      prop="address"
-      label="Address"
-      show-overflow-tooltip
-    />
+    <el-table-column prop="address" label="Address" show-overflow-tooltip />
   </el-table>
 </template>
 
@@ -53,7 +43,7 @@ const set = reactive( {
     }
     if ( list.value && list.value.length > 0 ) {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      list.value = list.value.map( ( item ) => {
+      list.value = list.value.map( item => {
         return {
           ...item,
           orderNoStr : item.order_no.substring( 0, 30 ),
@@ -136,5 +126,4 @@ const fetchData = () => {
 defineOptions( {
   name : 'TransactionTable'
 } )
-
 </script>

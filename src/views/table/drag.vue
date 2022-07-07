@@ -1,20 +1,18 @@
-
 <template>
   <yu-layout title="拖拽表格">
     <template #body>
       <div class="section-container">
-
         <el-divider content-position="left">Element Plus Table</el-divider>
 
         <el-table
-            ref="dragTable"
-            v-loading="listLoading"
-            :data="list"
-            row-key="id"
-            border
-            fit
-            highlight-current-row
-            style="width: 100%"
+          ref="dragTable"
+          v-loading="listLoading"
+          :data="list"
+          row-key="id"
+          border
+          fit
+          highlight-current-row
+          style="width: 100%"
         >
           <el-table-column align="center" label="ID" width="65">
             <template #default="{ row }">
@@ -24,7 +22,7 @@
 
           <el-table-column width="180px" align="center" label="Date">
             <template #default="{ row }">
-              <span>{{ parseTime( row.timestamp, '{y}-{m}-{d} {h}:{i}' ) }}</span>
+              <span>{{ parseTime(row.timestamp, "{y}-{m}-{d} {h}:{i}") }}</span>
             </template>
           </el-table-column>
 
@@ -54,7 +52,7 @@
 
           <el-table-column class-name="status-col" label="Status" width="110">
             <template #default="{ row }">
-              <el-tag :type="statusFilter(row.status)" >{{ row.status }}</el-tag>
+              <el-tag :type="statusFilter(row.status)">{{ row.status }}</el-tag>
             </template>
           </el-table-column>
 
@@ -66,25 +64,18 @@
         </el-table>
 
         <el-divider content-position="left">Vxe Table</el-divider>
-        <vxe-table
-            round
-            border
-            :data="list"
-            :loading="listLoading"
-            ref="dragVxeTable"
-            style="width: 100%"
-        >
-          <vxe-column align="center" field="id" title="ID" width="65"  />
+        <vxe-table round border :data="list" :loading="listLoading" ref="dragVxeTable" style="width: 100%">
+          <vxe-column align="center" field="id" title="ID" width="65" />
 
-          <vxe-column align="center" field="timestamp" title="Date" width="180"  >
+          <vxe-column align="center" field="timestamp" title="Date" width="180">
             <template #default="{ row }">
-              <span>{{ parseTime( row.timestamp, '{y}-{m}-{d} {h}:{i}' ) }}</span>
+              <span>{{ parseTime(row.timestamp, "{y}-{m}-{d} {h}:{i}") }}</span>
             </template>
           </vxe-column>
 
-          <vxe-column align="center" field="title" title="Title" min-width="300px"  />
+          <vxe-column align="center" field="title" title="Title" min-width="300px" />
 
-          <vxe-column align="left" field="author" title="Author" width="110px"  />
+          <vxe-column align="left" field="author" title="Author" width="110px" />
 
           <vxe-column align="center" field="importance" width="100px" title="Importance">
             <template #default="{ row }">
@@ -100,7 +91,7 @@
 
           <vxe-column class-name="status-col" title="Status" width="110">
             <template #default="{ row }">
-              <el-tag :type="statusFilter(row.status)" >{{ row.status }}</el-tag>
+              <el-tag :type="statusFilter(row.status)">{{ row.status }}</el-tag>
             </template>
           </vxe-column>
 
@@ -109,15 +100,10 @@
               <svg-icon class="drag-handler" icon-class="drag" />
             </template>
           </vxe-column>
-
         </vxe-table>
 
-        <div class="show-d">
-          <el-tag>The default order :</el-tag> {{ oldList }}
-        </div>
-        <div class="show-d">
-          <el-tag>The after dragging order :</el-tag> {{ newList }}
-        </div>
+        <div class="show-d"><el-tag>The default order :</el-tag> {{ oldList }}</div>
+        <div class="show-d"><el-tag>The after dragging order :</el-tag> {{ newList }}</div>
       </div>
     </template>
   </yu-layout>
@@ -158,7 +144,7 @@ const getList = async() => {
   } )
 }
 
-const statusFilter = ( status ) => {
+const statusFilter = status => {
   const statusMap = {
     published : 'success',
     draft : 'info',
@@ -169,7 +155,9 @@ const statusFilter = ( status ) => {
 
 const setSort = () => {
   const el = dragTable.value.$el.querySelectorAll( '.el-table__inner-wrapper .el-table__body-wrapper table > tbody' )[0]
-  const vxeEl = dragVxeTable.value.$el.querySelectorAll( '.vxe-table--main-wrapper .vxe-table--body-wrapper table > tbody' )[0]
+  const vxeEl = dragVxeTable.value.$el.querySelectorAll(
+    '.vxe-table--main-wrapper .vxe-table--body-wrapper table > tbody'
+  )[0]
 
   const options = {
     ghostClass : 'sortable-ghost', // Class name for the drop placeholder,
@@ -199,23 +187,23 @@ defineOptions( {
 </script>
 
 <style>
-  .sortable-ghost{
-    opacity: .8;
-    color: #fff!important;
-    background: #42b983!important;
-  }
+.sortable-ghost {
+  opacity: 0.8;
+  color: #fff !important;
+  background: #42b983 !important;
+}
 </style>
 
 <style scoped>
-  .icon-star{
-    margin-right:2px;
-  }
-  .drag-handler{
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-  }
-  .show-d{
-    margin-top: 15px;
-  }
+.icon-star {
+  margin-right: 2px;
+}
+.drag-handler {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.show-d {
+  margin-top: 15px;
+}
 </style>

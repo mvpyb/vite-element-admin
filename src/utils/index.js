@@ -1,8 +1,9 @@
+import { validPhone } from './validate'
 
 // 单词首字母转大写
 export function toUpperCaseWord( val ) {
   if ( !val ) return ''
-  return val.toLowerCase().replace( /( |^)[a-z]/g, ( L ) => L.toUpperCase() )
+  return val.toLowerCase().replace( /( |^)[a-z]/g, L => L.toUpperCase() )
 }
 
 /**
@@ -20,8 +21,8 @@ export function parseTime( time, cFormat ) {
   if ( typeof time === 'object' ) {
     date = time
   } else {
-    if ( ( typeof time === 'string' ) ) {
-      if ( ( /^[0-9]+$/.test( time ) ) ) {
+    if ( typeof time === 'string' ) {
+      if ( /^[0-9]+$/.test( time ) ) {
         // support "1548221490638"
         time = parseInt( time )
       } else {
@@ -32,7 +33,7 @@ export function parseTime( time, cFormat ) {
       }
     }
 
-    if ( ( typeof time === 'number' ) && ( time.toString().length === 10 ) ) {
+    if ( typeof time === 'number' && time.toString().length === 10 ) {
       time = time * 1000
     }
     date = new Date( time )
@@ -49,7 +50,9 @@ export function parseTime( time, cFormat ) {
   const time_str = format.replace( /{([ymdhisa])+}/g, ( result, key ) => {
     const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if ( key === 'a' ) { return ['日', '一', '二', '三', '四', '五', '六'][value] }
+    if ( key === 'a' ) {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
     return value.toString().padStart( 2, '0' )
   } )
   return time_str
@@ -84,16 +87,19 @@ export function formatTime( time, option ) {
   if ( option ) {
     return parseTime( time, option )
   } else {
-    return (
-      d.getMonth() +
-      1 +
-      '月' +
-      d.getDate() +
-      '日' +
-      d.getHours() +
-      '时' +
-      d.getMinutes() +
-      '分'
-    )
+    return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
   }
+}
+
+/**
+ * @param {number} time
+ * @param {string} option
+ * @returns {string}
+ */
+export function encryptionPhone( val ) {
+  if ( !validPhone( val ) ) {
+    return ''
+  }
+  const reg = /^(\d{3})\d{4}(\d{4})$/
+  return val.replace( reg, '$1****$2' )
 }

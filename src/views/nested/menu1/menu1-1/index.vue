@@ -1,4 +1,3 @@
-
 <template>
   <div>
     nested <br />
@@ -8,7 +7,6 @@
 </template>
 
 <script setup>
-
 defineOptions( {
   name : 'Menu1-1'
 } )

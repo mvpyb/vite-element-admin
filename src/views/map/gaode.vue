@@ -2,10 +2,12 @@
   <yu-layout title="高德地图">
     <template #head>
       <el-link
-          type="primary"
-          href="https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay"
-          target="_blank"
-:underline="false">高德开放平台</el-link>
+        type="primary"
+        href="https://lbs.amap.com/api/jsapi-v2/guide/overlays/vector-overlay"
+        target="_blank"
+        :underline="false"
+        >高德开放平台</el-link
+      >
     </template>
     <template #body>
       <div class="section-container">
@@ -34,7 +36,7 @@ const options = {
     version : '2.0.0'
   }
 }
-const addMark = async( map ) => {
+const addMark = async map => {
   // eslint-disable-next-line no-undef
   const marker = new AMap.Marker( {
     // eslint-disable-next-line no-undef
@@ -45,7 +47,7 @@ const addMark = async( map ) => {
 }
 
 // 添加自定义标记
-const customMark = async( map ) => {
+const customMark = async map => {
   // eslint-disable-next-line no-undef
   const marker = new AMap.Marker( {
     // eslint-disable-next-line no-undef
@@ -60,7 +62,7 @@ const customMark = async( map ) => {
 
 onMounted( () => {
   AMapLoader.load( options )
-    .then( async( AMap ) => {
+    .then( async AMap => {
       const map = new AMap.Map( container.value, {
         zoom : 12,
         center : [116.397428, 39.90923],
@@ -70,7 +72,7 @@ onMounted( () => {
       await addMark( map )
       await customMark( map )
     } )
-    .catch( ( e ) => {
+    .catch( e => {
       console.log( e )
     } )
 } )

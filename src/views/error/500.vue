@@ -1,12 +1,8 @@
-
 <template>
-  <div class="">
-    500
-  </div>
+  <div class="">500</div>
 </template>
 
 <script setup>
-
 defineOptions( {
   name : '500'
 } )
