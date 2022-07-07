@@ -1,4 +1,3 @@
-
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -13,7 +12,8 @@ import './styles/index.scss'
 // 第三方自定义字体文件
 import './assets/fonts/index.css'
 
-import 'tailwindcss/tailwind.css'
+// tailwindcss 按需引入
+// import 'tailwindcss/tailwind.css'
 import 'element-plus/dist/index.css'
 
 // 导入字体图标
