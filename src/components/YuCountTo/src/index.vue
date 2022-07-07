@@ -5,10 +5,7 @@
 <script>
 import { reactive, computed, watch, onMounted, unref, toRefs, ref } from 'vue'
 import { isNumber } from '/@/utils/validate'
-import {
-  requestAnimationFrame,
-  cancelAnimationFrame
-} from './requestAnimationFrame.js'
+import { requestAnimationFrame, cancelAnimationFrame } from './requestAnimationFrame.js'
 
 export default {
   name : 'YuCountTo',
@@ -159,30 +156,15 @@ export default {
       if ( useEasing ) {
         if ( unref( getCountDown ) ) {
           state.printVal =
-            state.localStartVal -
-            easingFn(
-              progress,
-              0,
-              state.localStartVal - endVal,
-              state.localDuration
-            )
+            state.localStartVal - easingFn( progress, 0, state.localStartVal - endVal, state.localDuration )
         } else {
-          state.printVal = easingFn(
-            progress,
-            state.localStartVal,
-            endVal - state.localStartVal,
-            state.localDuration
-          )
+          state.printVal = easingFn( progress, state.localStartVal, endVal - state.localStartVal, state.localDuration )
         }
       } else {
         if ( unref( getCountDown ) ) {
-          state.printVal =
-            state.localStartVal -
-            ( state.localStartVal - endVal ) * ( progress / state.localDuration )
+          state.printVal = state.localStartVal - ( state.localStartVal - endVal ) * ( progress / state.localDuration )
         } else {
-          state.printVal =
-            state.localStartVal +
-            ( endVal - state.localStartVal ) * ( progress / state.localDuration )
+          state.printVal = state.localStartVal + ( endVal - state.localStartVal ) * ( progress / state.localDuration )
         }
       }
       if ( unref( getCountDown ) ) {
