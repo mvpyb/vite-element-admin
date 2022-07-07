@@ -16,12 +16,7 @@ function addWaterMarker( str, parentNode, font, textColor ) {
 
 const waterMarker = {
   beforeMount : function( el, binding ) {
-    addWaterMarker(
-      binding.value.text,
-      el,
-      binding.value.font,
-      binding.value.textColor
-    )
+    addWaterMarker( binding.value.text, el, binding.value.font, binding.value.textColor )
   }
 }
 
