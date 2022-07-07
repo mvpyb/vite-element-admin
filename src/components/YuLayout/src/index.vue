@@ -2,10 +2,7 @@
   <div ref="wrapperRef" class="yu-layout">
     <div class="header">
       <div class="header-tt ellipsis">{{ title }}</div>
-      <div
-        class="header-desc ellipsis-col ellipsis-col2"
-        v-html="subtitle"
-      ></div>
+      <div class="header-desc ellipsis-col ellipsis-col2" v-html="subtitle"></div>
       <slot name="head" />
     </div>
     <div class="body">
@@ -42,7 +39,6 @@ export default defineComponent( {
 </script>
 
 <style lang="scss" scoped>
-
 .yu-layout {
   .header {
     box-sizing: border-box;
