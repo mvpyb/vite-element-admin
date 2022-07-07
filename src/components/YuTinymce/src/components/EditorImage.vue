@@ -49,12 +49,10 @@ export default {
   },
   methods : {
     checkAllSuccess() {
-      return Object.keys( this.listObj ).every(
-        ( item ) => this.listObj[item].hasSuccess
-      )
+      return Object.keys( this.listObj ).every( item => this.listObj[item].hasSuccess )
     },
     handleSubmit() {
-      const arr = Object.keys( this.listObj ).map( ( v ) => this.listObj[v] )
+      const arr = Object.keys( this.listObj ).map( v => this.listObj[v] )
       if ( !this.checkAllSuccess() ) {
         this.$message(
           'Please wait for all images to be uploaded successfully. If there is a network problem, please refresh the page and upload again!'
@@ -113,7 +111,7 @@ export default {
 <style lang="scss" scoped>
 .editor-slide-upload {
   margin-bottom: 20px;
-  :deep( .el-upload--picture-card) {
+  :deep(.el-upload--picture-card) {
     width: 100%;
   }
 }
