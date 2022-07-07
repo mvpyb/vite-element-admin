@@ -89,7 +89,7 @@ const initTinymce = () => {
     default_link_target : '_blank',
     link_title : false,
     nonbreaking_force_tab : true,
-    init_instance_callback : ( editor ) => {
+    init_instance_callback : editor => {
       if ( props.value ) {
         editor.setContent( props.value )
       }
@@ -100,7 +100,7 @@ const initTinymce = () => {
       } )
     },
     setup( editor ) {
-      editor.on( 'FullscreenStateChanged', ( e ) => {
+      editor.on( 'FullscreenStateChanged', e => {
         state.fullscreen = e.state
       } )
     },
@@ -109,7 +109,7 @@ const initTinymce = () => {
   } )
 }
 const init = () => {
-  loadScript( tinymceCDN, ( err ) => {
+  loadScript( tinymceCDN, err => {
     if ( err ) {
       ElMessage.error( err.message )
       return
@@ -117,7 +117,7 @@ const init = () => {
     initTinymce()
   } )
 }
-const setContent = ( value ) => {
+const setContent = value => {
   if ( window.tinymce?.get( state.tinymceId ) ) {
     window.tinymce.get( state.tinymceId ).setContent( value )
   }
@@ -167,28 +167,28 @@ const { tinymceId, fullscreen } = toRefs( state )
 </script>
 
 <style lang="scss" scoped>
-  .tinymce-container {
-    position: relative;
-    line-height: normal;
-  }
+.tinymce-container {
+  position: relative;
+  line-height: normal;
+}
 
-  .tinymce-textarea {
-    visibility: hidden;
-    z-index: -1;
-  }
+.tinymce-textarea {
+  visibility: hidden;
+  z-index: -1;
+}
 
-  .editor-custom-btn-container {
-    position: absolute;
-    right: 4px;
-    top: 4px;
-  }
+.editor-custom-btn-container {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
 
-  .fullscreen .editor-custom-btn-container {
-    z-index: 10000;
-    position: fixed;
-  }
+.fullscreen .editor-custom-btn-container {
+  z-index: 10000;
+  position: fixed;
+}
 
-  .editor-upload-btn {
-    display: inline-block;
-  }
+.editor-upload-btn {
+  display: inline-block;
+}
 </style>
