@@ -6,7 +6,7 @@ const longpress = {
     // 定义变量
     let pressTimer = null
     // 创建计时器（ 2秒后执行函数 ）
-    const start = ( e ) => {
+    const start = e => {
       if ( e.type === 'click' && e.button !== 0 ) {
         return
       }
@@ -17,14 +17,14 @@ const longpress = {
       }
     }
     // 取消计时器
-    const cancel = ( e ) => {
+    const cancel = e => {
       if ( pressTimer !== null ) {
         clearTimeout( pressTimer )
         pressTimer = null
       }
     }
     // 运行函数
-    const handler = ( e ) => {
+    const handler = e => {
       binding.value( e )
     }
     // 添加事件监听器
