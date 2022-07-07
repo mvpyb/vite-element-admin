@@ -1,30 +1,12 @@
-
 <template>
-  <el-dropdown
-    trigger="click"
-    class="international"
-    @command="handleSetLanguage"
-  >
+  <el-dropdown trigger="click" class="international" @command="handleSetLanguage">
     <div>
-      <svg-icon
-        class-name="international-icon"
-        icon-class="language"
-      />
+      <svg-icon class-name="international-icon" icon-class="language" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item
-          :disabled="language === 'zh'"
-          command="zh"
-        >
-          中文
-        </el-dropdown-item>
-        <el-dropdown-item
-          :disabled="language === 'en'"
-          command="en"
-        >
-          English
-        </el-dropdown-item>
+        <el-dropdown-item :disabled="language === 'zh'" command="zh"> 中文 </el-dropdown-item>
+        <el-dropdown-item :disabled="language === 'en'" command="en"> English </el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -45,7 +27,7 @@ const language = computed( () => {
 
 locale.value = language.value
 
-const handleSetLanguage = ( val ) => {
+const handleSetLanguage = val => {
   appStore.SET_LANG( val )
   locale.value = val
 
@@ -59,9 +41,6 @@ const handleSetLanguage = ( val ) => {
 defineOptions( {
   name : 'LangSelect'
 } )
-
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
