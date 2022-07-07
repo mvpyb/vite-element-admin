@@ -6,12 +6,8 @@ let cancelAnimationFrame
 
 const isServer = typeof window === 'undefined'
 if ( isServer ) {
-  requestAnimationFrame = function() {
-
-  }
-  cancelAnimationFrame = function() {
-
-  }
+  requestAnimationFrame = function() {}
+  cancelAnimationFrame = function() {}
 } else {
   requestAnimationFrame = window.requestAnimationFrame
   cancelAnimationFrame = window.cancelAnimationFrame
@@ -22,12 +18,9 @@ if ( isServer ) {
       break
     }
     prefix = prefixes[i]
-    requestAnimationFrame =
-      requestAnimationFrame || window[prefix + 'RequestAnimationFrame']
+    requestAnimationFrame = requestAnimationFrame || window[prefix + 'RequestAnimationFrame']
     cancelAnimationFrame =
-      cancelAnimationFrame ||
-      window[prefix + 'CancelAnimationFrame'] ||
-      window[prefix + 'CancelRequestAnimationFrame']
+      cancelAnimationFrame || window[prefix + 'CancelAnimationFrame'] || window[prefix + 'CancelRequestAnimationFrame']
   }
 
   // 如果当前浏览器不支持requestAnimationFrame和cancelAnimationFrame，则会退到setTimeout
