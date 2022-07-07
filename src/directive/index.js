@@ -16,8 +16,8 @@ const directives = {
   wave
 }
 
-const registerDirective = ( app ) => {
-  Object.keys( directives ).forEach( ( key ) => {
+const registerDirective = app => {
+  Object.keys( directives ).forEach( key => {
     app.directive( key, directives[key] )
   } )
 }
