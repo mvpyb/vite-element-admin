@@ -1,10 +1,6 @@
 <template>
   <div class="screen-full">
-    <svg-icon
-      class-name="icons"
-      :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'"
-      @click="click"
-    />
+    <svg-icon class-name="icons" :icon-class="isFullscreen ? 'exit-fullscreen' : 'fullscreen'" @click="click" />
   </div>
 </template>
 
@@ -49,24 +45,23 @@ const change = () => {
 defineOptions( {
   name : 'Screenfull'
 } )
-
 </script>
 
 <style scoped lang="scss">
-  .screen-full {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    &:hover {
-      cursor: pointer;
-      background: #f0f0f0;
-    }
-    .icons {
-      font-family: iconfont !important;
-      font-size: 16px;
-      font-style: normal;
-      -webkit-font-smoothing: antialiased;
-    }
+.screen-full {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  &:hover {
+    cursor: pointer;
+    background: #f0f0f0;
   }
+  .icons {
+    font-family: iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+}
 </style>
