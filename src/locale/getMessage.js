@@ -1,4 +1,3 @@
-
 let modules = {}
 const modulesFiles = import.meta.globEager( './language/**/*.js' )
 for ( const path in modulesFiles ) {
