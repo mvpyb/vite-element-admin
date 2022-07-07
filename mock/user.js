@@ -1,6 +1,4 @@
 
-
-// https://blog.csdn.net/weixin_42067720/article/details/115579817
 // http://mockjs.com/examples.html#Object
 const loginInfo = () => {
   const result = {
