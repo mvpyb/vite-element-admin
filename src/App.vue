@@ -1,4 +1,3 @@
-
 <template>
   <!--  <p class="test">{{ $t('header.home') }}</p>-->
   <el-config-provider :locale="locale" :size="size">
@@ -7,7 +6,6 @@
 </template>
 
 <script>
-
 import { defineComponent, ref, watch } from 'vue'
 import { ElConfigProvider } from 'element-plus'
 import zh from 'element-plus/lib/locale/lang/zh-cn'
@@ -33,7 +31,7 @@ export default defineComponent( {
 
     watch(
       () => appStore.lang,
-      ( val ) => {
+      val => {
         language.value = langList[val]
       },
       {
@@ -43,7 +41,7 @@ export default defineComponent( {
 
     watch(
       () => appStore.size,
-      ( val ) => {
+      val => {
         size.value = val
       },
       {
