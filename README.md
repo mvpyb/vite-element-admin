@@ -2,6 +2,7 @@
 ## 简介
 
 Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`pinia`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+后期考虑增加ts版本
 
 ## 特性
 
@@ -19,7 +20,6 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 - [码云](https://gitee.com/simmon_page/vite-element-admin) - 完整版码云站点
 
 
-
 测试账号: 随便填
 测试密码: 随便填
 
@@ -27,11 +27,7 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 
 <p align="center">
    <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/b51791f0/2a9ef9f2.jpg">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/da7c3189/256605ef.jpg">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/778fbf17/efcc0e7c.jpg">
    <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/5584bfb8/bb7d2925.jpg">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/1878c51a/19ff81f6.jpg">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/6f78d936/5e12ab9b.jpg">
 </p>
 
 
@@ -40,9 +36,6 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 <p align="center">
    <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/904e4a82/646a9f0c.png">
    <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/396f79db/a7447eae.png">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/6aa197d5/45f8bae5.png">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/796a7772/4596b63f.png">
-   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/01b3a971/e5bd6978.png">
 </p>
 
 ## 准备
@@ -109,3 +102,11 @@ npm run dev
 # 构建生产环境
 npm run build:pro
 ```
+
+## Donate
+
+如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 
+
+| 微信 | 支付宝 |
+| ------ | ------- |
+| [![](http://pic.yupoo.com/454539387/5475a039/f2bd7591.png)](bitcoin:)<br /></center> |[![](http://pic.yupoo.com/454539387/9c2f5db5/9f63742c.png)](bitcoin:)<br /></center> |
