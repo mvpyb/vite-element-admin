@@ -1,4 +1,3 @@
-
 import { usePermissionStore } from '/@/store'
 
 const permission = {
@@ -10,7 +9,7 @@ const permission = {
       if ( value.length > 0 ) {
         const permissionRoles = value
 
-        const hasPermission = roleData.some( ( role ) => {
+        const hasPermission = roleData.some( role => {
           return permissionRoles.includes( role )
         } )
 
