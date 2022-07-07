@@ -1,4 +1,3 @@
-
 import router from './router'
 import cookies from '/@/utils/cookies'
 import { TOKEN } from '/@/config/constant'
@@ -25,7 +24,7 @@ router.beforeEach( async( to, from, next ) => {
         try {
           const { roles } = await userStore.GET_USER_INFO()
           const accessRoutes = await permissionStore.SET_ROUTES( roles )
-          accessRoutes.forEach( ( item ) => {
+          accessRoutes.forEach( item => {
             router.addRoute( item )
           } )
           next( { ...to, replace : true } )
