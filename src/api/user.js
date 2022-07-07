@@ -1,4 +1,3 @@
-
 import http from '/@/utils/request'
 
 // 用户列表
@@ -29,6 +28,13 @@ export function getInfo( data ) {
 export function logout() {
   return http.request( {
     url : '/logout',
+    method : 'get'
+  } )
+}
+
+export function loginHistory() {
+  return http.request( {
+    url : '/login/history',
     method : 'get'
   } )
 }
