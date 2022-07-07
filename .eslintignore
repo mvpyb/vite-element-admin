@@ -3,7 +3,6 @@ src/assets
 node_modules
 public
 dist
-README.test.md
 src/vendor/**/*.js
 src/utils/cropper.js
 src/utils/image-compressor.js
