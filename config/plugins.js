@@ -6,6 +6,7 @@ import legacy from '@vitejs/plugin-legacy'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { viteMockServe } from 'vite-plugin-mock' // https://github.com/anncwb/vite-plugin-mock/blob/HEAD/README.zh_CN.md
 import { svgBuilder } from '../config/svgBuilder.js'
+import vueJsx from "@vitejs/plugin-vue-jsx"
 
 export function composePlugins( command, VITE_LEGACY ) {
   const prodMock = true
@@ -13,6 +14,7 @@ export function composePlugins( command, VITE_LEGACY ) {
   return [
     vue(),
     DefineOptions(),
+    vueJsx(),
     svgBuilder( './src/icons/svg/' ),
     eslintPlugin({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
