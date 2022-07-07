@@ -1,14 +1,9 @@
 <template>
-  <div
-    :class="{'show':show}"
-    class="header-search"
-  >
-    <svg-icon
-      class-name="search-icon"
-      icon-class="search"
-      @click.stop="click"
-    />
-    <span style="display: inline-block;color: red;width: 40px;height: 30px;line-height: 30px;"> {{ options.length }}</span>
+  <div :class="{ show: show }" class="header-search">
+    <svg-icon class-name="search-icon" icon-class="search" @click.stop="click" />
+    <span style="display: inline-block; color: red; width: 40px; height: 30px; line-height: 30px">
+      {{ options.length }}</span
+    >
     <el-select
       ref="headerSearchSelect"
       v-model="search"
@@ -53,7 +48,9 @@ const generateRoutes = ( routerList, basePath = '/', prefixTitle = [] ) => {
 
   for ( const item of routerList ) {
     // skip hidden item
-    if ( item.hidden ) { continue }
+    if ( item.hidden ) {
+      continue
+    }
 
     const data = {
       path : path.resolve( basePath, item.path ),
@@ -80,7 +77,7 @@ const generateRoutes = ( routerList, basePath = '/', prefixTitle = [] ) => {
   }
   return res
 }
-const querySearch = ( query ) => {
+const querySearch = query => {
   if ( query !== '' ) {
     options.value = fuse.value.search( query )
   } else {
@@ -99,7 +96,7 @@ const close = () => {
   options.value = []
   show.value = false
 }
-const change = ( val ) => {
+const change = val => {
   router.push( val.path )
   search.value = ''
   options.value = []
@@ -107,7 +104,7 @@ const change = ( val ) => {
     show.value = false
   } )
 }
-const initFuse = ( list ) => {
+const initFuse = list => {
   fuse.value = new Fuse( list, {
     shouldSort : true,
     threshold : 0.4,
@@ -137,14 +134,14 @@ watch(
 )
 watch(
   searchPool,
-  async( list ) => {
+  async list => {
     initFuse( list )
   }
   // { immediate : true }
 )
 watch(
   show,
-  async( value ) => {
+  async value => {
     if ( value ) {
       document.body.addEventListener( 'click', close )
     } else {
@@ -161,57 +158,56 @@ onMounted( () => {
 defineOptions( {
   name : 'HeaderSearch'
 } )
-
 </script>
 
 <style lang="scss" scoped>
-  .header-search {
-    font-size: 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.header-search {
+  font-size: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background: #f6f6f6;
+  }
+
+  .search-icon {
     cursor: pointer;
+    font-size: 18px;
+    vertical-align: middle;
+  }
 
-    &:hover {
-      background: #f6f6f6;
-    }
+  .header-search-select {
+    font-size: 18px;
+    transition: width 0.2s;
+    width: 0;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 0;
+    display: inline-block;
+    vertical-align: middle;
 
-    .search-icon {
-      cursor: pointer;
-      font-size: 18px;
-      vertical-align: middle;
-    }
-
-    .header-search-select {
-      font-size: 18px;
-      transition: width 0.2s;
-      width: 0;
-      overflow: hidden;
-      background: transparent;
-      border-radius: 0;
-      display: inline-block;
-      vertical-align: middle;
-
-      ::v-deep(.el-input__inner) {
+    ::v-deep(.el-input__inner) {
       /*:deep(.el-input__inner) {*/
-        border-radius: 0;
-        border: 0;
-        padding-left: 0;
-        padding-right: 0;
-        box-shadow: none !important;
-        border-bottom: 1px solid #d9d9d9;
-        vertical-align: middle;
-      }
+      border-radius: 0;
+      border: 0;
+      padding-left: 0;
+      padding-right: 0;
+      box-shadow: none !important;
+      border-bottom: 1px solid #d9d9d9;
+      vertical-align: middle;
+    }
     /*  ::v-slotted(.foo) {}
       ::v-global(.foo) {}*/
-    }
+  }
 
-    &.show {
-      .header-search-select {
-        width: 210px;
-        margin-left: 10px;
-      }
+  &.show {
+    .header-search-select {
+      width: 210px;
+      margin-left: 10px;
     }
   }
+}
 </style>
