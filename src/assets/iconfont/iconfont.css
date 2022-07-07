@@ -1,8 +1,7 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2633233 */
-  src: url('iconfont.woff2?t=1655454146672') format('woff2'),
-       url('iconfont.woff?t=1655454146672') format('woff'),
-       url('iconfont.ttf?t=1655454146672') format('truetype');
+  src: url("iconfont.woff2?t=1655454146672") format("woff2"), url("iconfont.woff?t=1655454146672") format("woff"),
+    url("iconfont.ttf?t=1655454146672") format("truetype");
 }
 
 .iconfont {
@@ -256,4 +255,3 @@
 .yu-icon-guanbi:before {
   content: "\e61a";
 }
-
