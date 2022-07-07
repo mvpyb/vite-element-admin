@@ -3,16 +3,9 @@
     <router-view>
       <template #default="{ Component }">
         <el-scrollbar :height="height">
-          <transition
-            appear
-            name="fade-transform"
-            mode="out-in"
-          >
+          <transition appear name="fade-transform" mode="out-in">
             <keep-alive :include="cachedViews">
-              <component
-                :is="Component"
-                :key=" key "
-              />
+              <component :is="Component" :key="key" />
             </keep-alive>
           </transition>
         </el-scrollbar>
