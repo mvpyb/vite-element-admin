@@ -23,7 +23,19 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 测试账号: 随便填
 测试密码: 随便填
 
-## 效果预览
+## 效果预览(3.x )
+
+<p align="center">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/b51791f0/2a9ef9f2.jpg">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/da7c3189/256605ef.jpg">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/778fbf17/efcc0e7c.jpg">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/5584bfb8/bb7d2925.jpg">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/1878c51a/19ff81f6.jpg">
+   <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/6f78d936/5e12ab9b.jpg">
+</p>
+
+
+## 效果预览(2.x VUEX版本)
 
 <p align="center">
    <img alt="PureAdmin Logo" width="100%" src="http://pic.yupoo.com/454539387/904e4a82/646a9f0c.png">
