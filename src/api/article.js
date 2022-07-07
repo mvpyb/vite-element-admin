@@ -1,4 +1,3 @@
-
 import http from '/@/utils/request'
 
 export function getArticle( data ) {
@@ -40,4 +39,3 @@ export function updateArticle( data ) {
     data
   } )
 }
-
