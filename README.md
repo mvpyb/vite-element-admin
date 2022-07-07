@@ -84,7 +84,7 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 git clone https://github.com/mvpyb/vite-element-admin.git
 
 # 进入项目目录
-cd vite-element-plus-admin
+cd vite-element-admin
 
 # 安装依赖
 npm install
@@ -100,7 +100,7 @@ npm run dev
 
 ```bash
 # 构建生产环境
-npm run build:pro
+npm run build
 ```
 
 ## Donate
