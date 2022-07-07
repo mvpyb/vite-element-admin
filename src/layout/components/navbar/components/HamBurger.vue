@@ -1,8 +1,5 @@
 <template>
-  <div
-    style="padding: 0 15px"
-    @click="toggleClick"
-  >
+  <div style="padding: 0 15px" @click="toggleClick">
     <svg
       :class="{ 'is-active': props.isActive }"
       class="hamburger"
@@ -34,7 +31,6 @@ const toggleClick = () => {
 defineOptions( {
   name : 'HamBurger'
 } )
-
 </script>
 
 <style scoped>
