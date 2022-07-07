@@ -1,19 +1,15 @@
 <template>
-  <div
-    :style="{ zIndex: props.zIndex, height: props.height, width: props.width }"
-    class="pan-item"
-  >
+  <div :style="{ zIndex: props.zIndex, height: props.height, width: props.width }" class="pan-item">
     <div class="pan-info">
       <div class="pan-info-roles-container">
         <slot />
       </div>
     </div>
-    <div :style="{backgroundImage: `url(${props.image})`}" class="pan-thumb"></div>
+    <div :style="{ backgroundImage: `url(${props.image})` }" class="pan-thumb"></div>
   </div>
 </template>
 
 <script setup>
-
 const props = defineProps( {
   image : {
     type : String,
@@ -73,6 +69,11 @@ defineOptions( {
   border-radius: 50%;
   overflow: hidden;
   box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .pan-info h3 {
@@ -113,8 +114,7 @@ defineOptions( {
   margin: 7px auto 0;
   font-family: "Open Sans", Arial, sans-serif;
   opacity: 0;
-  transition: transform 0.3s ease-in-out 0.2s, opacity 0.3s ease-in-out 0.2s,
-    background 0.2s linear 0s;
+  transition: transform 0.3s ease-in-out 0.2s, opacity 0.3s ease-in-out 0.2s, background 0.2s linear 0s;
   transform: translateX(60px) rotate(90deg);
 }
 
