@@ -1,4 +1,3 @@
-
 const defaultSetting = {
   title : 'Vite Element Admin',
   showSettings : true,

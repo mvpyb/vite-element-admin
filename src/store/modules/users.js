@@ -1,4 +1,3 @@
-
 import { defineStore } from 'pinia'
 import cookies from '/@/utils/cookies'
 import { TOKEN, AVATAR } from '/@/config/constant'
@@ -12,8 +11,11 @@ const useUserStore = defineStore( {
     return {
       token : cookies.get( TOKEN ),
       uid : '9527',
-      name : '灰是小灰灰的灰',
       avatar : AVATAR,
+      name : '灰是小灰灰的灰',
+      phone : '15988888888',
+      email : '454539387@qq.com',
+      identity : '',
       roles : []
     }
   },
@@ -26,9 +28,12 @@ const useUserStore = defineStore( {
       try {
         const { code, data } = await getInfo()
         if ( code == 200 ) {
-          const { id, name, avatar, roles } = data
+          const { id, name, avatar, roles, phone, email, identity } = data
           this.uid = id || '9527'
           this.name = name || ''
+          this.phone = phone || ''
+          this.email = email || ''
+          this.identity = identity || ''
           this.avatar = avatar || AVATAR
           this.roles = roles || ['editor']
           return {
@@ -48,6 +53,9 @@ const useUserStore = defineStore( {
           this.token = ''
           this.name = ''
           this.avatar = ''
+          this.phone = ''
+          this.email = ''
+          this.identity = ''
           this.roles = []
           this.RESET_INFO()
         }
@@ -57,7 +65,7 @@ const useUserStore = defineStore( {
     },
     // 清空所有登录信息
     RESET_INFO() {
-      return new Promise( ( resolve ) => {
+      return new Promise( resolve => {
         const tagsViewStore = useTagsViewStore()
         cookies.clearAll()
         resetRouter()

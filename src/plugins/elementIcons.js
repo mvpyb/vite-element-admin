@@ -1,4 +1,3 @@
-
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 export function setupElementIcons( app ) {

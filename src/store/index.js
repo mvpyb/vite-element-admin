@@ -1,4 +1,3 @@
-
 import { createPinia } from 'pinia'
 import useUserStore from './modules/users'
 import useTagsViewStore from './modules/tagsView'
@@ -13,13 +12,6 @@ export function registerStore( app ) {
   app.use( store )
 }
 
-export {
-  useUserStore,
-  useTagsViewStore,
-  useAppStore,
-  useSettingsStore,
-  usePermissionStore,
-  useTestStore
-}
+export { useUserStore, useTagsViewStore, useAppStore, useSettingsStore, usePermissionStore, useTestStore }
 
 export default store

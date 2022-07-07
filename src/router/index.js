@@ -1,4 +1,3 @@
-
 import {
   createRouter,
   // createWebHistory,
@@ -245,6 +244,34 @@ export const asyncRoutes = [
   },
 
   {
+    path : '/user',
+    name : 'User',
+    component : Layout,
+    redirect : '/user/index',
+    meta : { title : '个人中心', icon : 'about', noCache : true },
+    children : [
+      {
+        path : 'index',
+        component : () => import( '/@/views/page/userCenter/index' ),
+        name : 'UserCenter',
+        meta : { title : '我的账号', noCache : true }
+      },
+      {
+        path : 'history',
+        component : () => import( '/@/views/page/userCenter/loginHistory' ),
+        name : 'Personal',
+        meta : { title : '登录历史', noCache : true }
+      },
+      {
+        path : 'attestation',
+        component : () => import( '/@/views/page/userCenter/attestation' ),
+        name : 'Attestation',
+        meta : { title : '实名认证', noCache : true }
+      }
+    ]
+  },
+
+  {
     path : '/animate',
     component : Layout,
     meta : {
@@ -268,7 +295,7 @@ export const asyncRoutes = [
     meta : { title : '外链', icon : 'outside' },
     children : [
       {
-        path : 'https://github.com/mvpyb/vite-element-plus-admin',
+        path : 'https://github.com/mvpyb/vite-element-admin',
         meta : { title : 'github' }
       },
       {
@@ -289,7 +316,7 @@ const router = createRouter( {
 
 export function resetRouter() {
   const WHITE_NAME_LIST = ['Login']
-  router.getRoutes().forEach( ( route ) => {
+  router.getRoutes().forEach( route => {
     const { name } = route
     if ( name && !WHITE_NAME_LIST.includes( name ) ) {
       router.hasRoute( name ) && router.removeRoute( name )
