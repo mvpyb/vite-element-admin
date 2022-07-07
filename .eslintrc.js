@@ -9,8 +9,6 @@ module.exports = {
     node: true,
     // 'vue/setup-compiler-macros': true,
     
-    
-    
     // // 常用
     // browser: true,             // 浏览器全局变量
     // node: true,                // Node.js 全局变量和 Node.js 作用域
@@ -79,20 +77,26 @@ module.exports = {
   },
   extends: [
     'standard',
-    // // 新增这里vue3支持
-    // 'plugin:vue/vue3-recommended',
     "plugin:vue/vue3-essential",
     "eslint:recommended",
-    // "@vue/prettier",
+    "prettier"
   ],
-  "parser": "vue-eslint-parser",
+  parser: "vue-eslint-parser",
   parserOptions: {
     // ecmaVersion: 'latest',
     ecmaVersion: 2020,
     sourceType: 'module',
+    jsxPragma: "React",
     ecmaFeatures: {
       modules: true,
-      jsx: false
+      jsx: true
+    },
+    //  Parsing error: This experimental syntax requires enabling one of the following parser plugin(s): "jsx", "flow", "typescript"
+    //  https://github.com/babel/babel/issues/14546
+    babelOptions : {
+      parserOpts: {
+        plugins: ["jsx"]
+      }
     },
     requireConfigFile: false,
     parser: '@babel/eslint-parser'
