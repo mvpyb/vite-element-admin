@@ -64,7 +64,7 @@
         style="width: 100%"
         @click.prevent="loginHandle"
       >
-        快速登录 {{ token }}
+        快速登录
       </el-button>
 
       <el-link
@@ -119,8 +119,6 @@ const disabledLogin = computed( () => {
   }
 } )
 
-const token = computed( () => userStore.token )
-
 onBeforeMount( () => {
   getQueryParams()
 } )
@@ -131,6 +129,7 @@ function getQueryParams() {
   bindToken.value = query.bindToken || ''
 }
 
+// 图片验证码
 async function updateImage() {
   // try {
   //   const { code, data } = await request.getCaptcha()
