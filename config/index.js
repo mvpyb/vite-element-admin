@@ -1,7 +1,5 @@
 
-// 处理环境变量
 export const getEnv = (envConf) => {
-  // 此处为默认值，无需修改
   const ret = {
     VITE_PORT: 9527,
     VITE_PUBLIC_PATH: '',
@@ -29,7 +27,6 @@ export const getEnv = (envConf) => {
   return ret
 }
 
-// 跨域代理重写
 export const regExps = (value, reg) => {
   return value.replace(new RegExp(`^${reg}`, 'g'), '')
 }
