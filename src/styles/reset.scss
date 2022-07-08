@@ -73,7 +73,7 @@ body {
   zoom: 1;
 }
 .clearFix:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -130,7 +130,7 @@ i {
     visibility: hidden;
     display: block;
     font-size: 0;
-    content: " ";
+    content: ' ';
     clear: both;
     height: 0;
   }
