@@ -17,11 +17,11 @@
                 <svg-icon v-else icon-class="warning_1" class="status-warning" />
               </div>
               <div class="f2">
-                {{ set.phone ? "已绑定手机" : "未绑定，请尽快绑定" }}
+                {{ set.phone ? '已绑定手机' : '未绑定，请尽快绑定' }}
               </div>
             </div>
           </div>
-          <el-button class="btn" type="info" @click="bindHandle(1)">{{ set.phone ? "更换手机" : "去绑定" }}</el-button>
+          <el-button class="btn" type="info" @click="bindHandle(1)">{{ set.phone ? '更换手机' : '去绑定' }}</el-button>
         </div>
         <!--实名认证-->
         <div class="card orange">
@@ -36,7 +36,7 @@
                 <svg-icon v-else icon-class="warning_1" class="status-warning" />
               </div>
               <div class="f2">
-                {{ set.identity ? "已实名认证" : "请尽快完成实名认证" }}
+                {{ set.identity ? '已实名认证' : '请尽快完成实名认证' }}
               </div>
             </div>
           </div>
@@ -55,11 +55,11 @@
                 <svg-icon v-else icon-class="warning_1" class="status-warning" />
               </div>
               <div class="f2">
-                {{ set.email ? "已绑定邮箱" : "未绑定，请尽快绑定" }}
+                {{ set.email ? '已绑定邮箱' : '未绑定，请尽快绑定' }}
               </div>
             </div>
           </div>
-          <el-button class="btn" type="info" @click="bindHandle(3)">{{ set.email ? "更换邮箱" : "去绑定" }}</el-button>
+          <el-button class="btn" type="info" @click="bindHandle(3)">{{ set.email ? '更换邮箱' : '去绑定' }}</el-button>
         </div>
         <!--个人信息-->
         <div class="card blue">
@@ -74,7 +74,7 @@
                 <svg-icon v-else icon-class="warning_1" class="status-warning" />
               </div>
               <div class="f2">
-                {{ set.isPerfect ? "个人信息已完善" : "个人信息未完善" }}
+                {{ set.isPerfect ? '个人信息已完善' : '个人信息未完善' }}
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@
     <!--  -->
     <div class="avatar-box flex-column flex-level-center flex-vertical-center">
       <YuThumb width="150px" height="150px" :image="set.avatar">Vite Element Admin Admin Admin Admin</YuThumb>
-      <span class="user-name ellipsis"> Hi,{{ set.name || "小灰灰" }} </span>
+      <span class="user-name ellipsis"> Hi,{{ set.name || '小灰灰' }} </span>
       <span class="phone">
         <span v-if="set.phone">{{ encryptionPhone(set.phone) }}</span>
         <span v-else> 你还未绑定手机 </span>
@@ -316,7 +316,7 @@ defineOptions( {
         color: rgba(104, 114, 132, 1);
         font-size: 16px;
         text-align: left;
-        font-family: "syRegular";
+        font-family: 'syRegular';
         .status-ok {
           color: #2fdc23;
           width: 20px;
