@@ -80,7 +80,7 @@ defineOptions( {
     -webkit-box-flex: 1;
     flex: 1 1 auto;
     padding: 1.25rem 1.25rem;
-    background-image: url("/@/assets/imgs/bg-1.png");
+    background-image: url('/@/assets/imgs/bg-1.png');
     background-size: cover;
     .card-body-icon i {
       font-size: 30px;
