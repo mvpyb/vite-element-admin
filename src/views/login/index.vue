@@ -30,21 +30,6 @@ import LoginPwd from './loginPwd.vue'
 
 const isShowWX = ref( true )
 
-// const router = useRouter()
-// const route = useRoute()
-//
-// const getQueryParams = ( query ) => {
-//   let str = ''
-//   if ( query ) {
-//     for ( const key in query ) {
-//       if ( query[key] ) {
-//         str = str ? `${str}&${key}=${query[key]}` : `${key}=${query[key]}`
-//       }
-//     }
-//   }
-//   return str
-// }
-
 const resizeCb = debounce( () => {
   isShowWX.value = !isMobile()
 }, 50 )
