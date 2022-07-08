@@ -111,7 +111,7 @@
               </el-button>
 
               <div :key="currentRoleIndex">
-                <el-tag class="permission-sourceCode" type="info"> 当前权限 ：{{ currentRole.join("_") }} </el-tag>
+                <el-tag class="permission-sourceCode" type="info"> 当前权限 ：{{ currentRole.join('_') }} </el-tag>
                 <div class="item">
                   <el-button type="success" size="small" v-permission="['admin']"> 有权限 admin </el-button>
                 </div>
