@@ -120,7 +120,6 @@ const logout = async() => {
 }
 
 const openSettings = () => {
-  console.log( 1 )
   emitter.emit( 'openSettings' )
 }
 
