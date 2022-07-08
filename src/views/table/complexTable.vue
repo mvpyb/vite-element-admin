@@ -490,7 +490,6 @@ const getSortClass = key => {
 
 const sortChange = data => {
   const { prop, order } = data
-  console.log( 'data', data )
   if ( prop === 'id' ) {
     sortByID( order )
   }
