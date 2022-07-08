@@ -8,7 +8,6 @@ import 'echarts-gl'
 import { onMounted, ref, onBeforeUnmount } from 'vue'
 import npmdep from '/@/assets/charts/npmdep.json'
 
-console.log( 'JSON', JSON )
 
 const props = defineProps( {
   className : {
