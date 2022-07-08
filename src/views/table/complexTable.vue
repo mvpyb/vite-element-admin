@@ -78,7 +78,7 @@
           </el-table-column>
           <el-table-column label="Date" width="150px" align="center">
             <template #default="{ row }">
-              <span>{{ parseTime(row.timestamp, "{y}-{m}-{d} {h}:{i}") }}</span>
+              <span>{{ parseTime(row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
             </template>
           </el-table-column>
           <el-table-column label="Title" min-width="150px">
