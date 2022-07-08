@@ -31,7 +31,6 @@ const logo = ref( null )
 let burst
 
 onMounted( () => {
-  console.log( 'burst', burst )
   burst = new MoJs.Burst( {
     // 爆炸范围
     radius : { 0 : 50 },
