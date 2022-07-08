@@ -13,7 +13,7 @@
 
           <el-table-column width="180px" align="center" label="Date">
             <template #default="{ row }">
-              <span>{{ parseTime(row.timestamp, "{y}-{m}-{d} {h}:{i}") }}</span>
+              <span>{{ parseTime(row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
             </template>
           </el-table-column>
 
@@ -80,7 +80,7 @@
 
           <vxe-column align="center" field="timestamp" title="Date" width="180px">
             <template #default="{ row }">
-              <span>{{ parseTime(row.timestamp, "{y}-{m}-{d} {h}:{i}") }}</span>
+              <span>{{ parseTime(row.timestamp, '{y}-{m}-{d} {h}:{i}') }}</span>
             </template>
           </vxe-column>
 
