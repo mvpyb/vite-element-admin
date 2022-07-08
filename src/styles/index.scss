@@ -1,21 +1,21 @@
 //@charset "UTF-8";
 // 引入重置样式
-@import "./reset.scss";
+@import './reset.scss';
 
-@import "./variables.module.scss";
-@import "./mixin.scss";
-@import "./transition.scss";
+@import './variables.module.scss';
+@import './mixin.scss';
+@import './transition.scss';
 //@import './element-ui.scss';
-@import "./sidebar.scss";
+@import './sidebar.scss';
 //@import './btn.scss';
 
 // 对Element Ui 部分样式进行改写
-@import "./element.scss";
+@import './element.scss';
 
 /*ICONFONT*/
-[class*="yu-icon-"],
-[class^="yu-icon-"] {
-  font-family: "iconfont" !important;
+[class*='yu-icon-'],
+[class^='yu-icon-'] {
+  font-family: 'iconfont' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
