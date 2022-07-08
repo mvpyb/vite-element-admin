@@ -217,8 +217,8 @@ defineOptions( {
       background: rgba(0, 0, 0, 0.2);
     }
 
-    [class*="vxe-icon--"],
-    [class^="vxe-icon--"] {
+    [class*='vxe-icon--'],
+    [class^='vxe-icon--'] {
       color: #606266;
       border-color: #606266;
     }
