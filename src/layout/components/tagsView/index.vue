@@ -360,7 +360,7 @@ defineOptions( {
       color: #fff;
       border-color: #42b983;
       &::before {
-        content: "";
+        content: '';
         background: #fff;
         display: inline-block;
         width: 8px;
