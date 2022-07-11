@@ -57,11 +57,5 @@ defineOptions( {
     cursor: pointer;
     background: #f0f0f0;
   }
-  .icons {
-    font-family: iconfont !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-  }
 }
 </style>
