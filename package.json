@@ -94,6 +94,7 @@
     "vite-plugin-mock": "^2.9.6",
     "vue-eslint-parser": "^9.0.2"
   },
+  "homepage": "https://github.com/mvpyb/vite-element-admin",
   "keywords": [
     "vite element admin",
     "vite",
