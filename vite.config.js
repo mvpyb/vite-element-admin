@@ -64,6 +64,7 @@ export default defineConfig( ( { command, mode } ) => {
       //     drop_debugger: true
       //   }
       // },
+      
       rollupOptions: {
         output: {
           manualChunks(id) {
@@ -79,8 +80,7 @@ export default defineConfig( ( { command, mode } ) => {
             const facadeModuleId = chunkInfo.facadeModuleId
               ? chunkInfo.facadeModuleId.split('/')
               : []
-            const fileName =
-              facadeModuleId[facadeModuleId.length - 2] || '[name]'
+            const fileName = facadeModuleId[facadeModuleId.length - 2] || '[name]'
             return `js/${fileName}/[name].[hash].js`
           }
         }
