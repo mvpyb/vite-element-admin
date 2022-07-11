@@ -110,4 +110,4 @@ npm run build
 
 | 微信 | 支付宝 |
 | ------ | ------- |
-| [![](http://pic.yupoo.com/454539387/5475a039/f2bd7591.png)](bitcoin:)<br /></center> |[![](http://pic.yupoo.com/454539387/902588ca/852b41a2.png)](bitcoin:)<br /></center> |
+| [![](http://pic.yupoo.com/454539387/193bac45/70a463c6.png)](bitcoin:)<br /></center> |[![](http://pic.yupoo.com/454539387/42d4b71d/2cb80871.png)](bitcoin:)<br /></center> |
