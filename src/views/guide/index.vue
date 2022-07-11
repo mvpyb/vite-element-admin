@@ -29,6 +29,8 @@ const driver = ref()
 
 onMounted( () => {
   driver.value = new Driver()
+
+  // driver.value.highlight('#test1')
 } )
 
 const guide = () => {
@@ -42,3 +44,11 @@ defineOptions( {
   name : 'Guide'
 } )
 </script>
+
+<style>
+div#driver-highlighted-element-stage,
+div#driver-page-overlay {
+  background: transparent !important;
+  outline: 5000px solid rgba(0, 0, 0, 0.75);
+}
+</style>
