@@ -6,7 +6,6 @@
         class="drawer-bg"
         @click="handleClickOutside(false)"
       />
-
       <SideBar class="sidebar-container vertical" v-if="set.layoutMod === 'vertical'" />
 
       <div class="main-container" :class="{ hasTagsView: set.needTagsView }">
@@ -150,7 +149,7 @@ onBeforeMount( () => {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 9;
+  z-index: 9 !important;
   width: calc(100% - #{$sideBarWidth});
   transition: width 0.28s;
   &.main-container {
