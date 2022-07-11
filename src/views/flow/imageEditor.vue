@@ -40,3 +40,9 @@ defineOptions( {
   name : 'ImageEditor'
 } )
 </script>
+
+<style>
+  .tui-image-editor-container {
+    margin: 50px auto;
+  }
+</style>
