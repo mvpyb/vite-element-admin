@@ -1,0 +1,127 @@
+{
+  "list": [
+    {
+      "label": "滑块",
+      "type": "slider",
+      "options": {
+        "defaultValue": 0,
+        "width": "",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "disabled": false,
+        "range": false,
+        "rules": {
+          "trigger": "blur",
+          "enum": "",
+          "message": "",
+          "pattern": "",
+          "required": false,
+          "type": "any"
+        }
+      },
+      "key": "7f0449290cfa43c7946a640118e4b177",
+      "model": "slider_7f0449290cfa43c7946a640118e4b177",
+      "rules": []
+    },
+    {
+      "label": "栅格布局",
+      "type": "grid",
+      "columns": [
+        {
+          "span": 12,
+          "list": [
+            {
+              "label": "单行文本",
+              "type": "input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "placeholder": "",
+                "maxlength": null,
+                "prefix": "",
+                "suffix": "",
+                "prepend": "",
+                "append": "",
+                "disabled": false,
+                "clearable": false,
+                "readonly": false,
+                "rules": {
+                  "trigger": "blur",
+                  "enum": "",
+                  "message": "",
+                  "pattern": "",
+                  "required": false,
+                  "type": "any"
+                }
+              },
+              "key": "ae8223eb0d7647018eed0dc2e0dda3d3",
+              "model": "input_ae8223eb0d7647018eed0dc2e0dda3d3",
+              "rules": []
+            }
+          ]
+        },
+        {
+          "span": 12,
+          "list": [
+            {
+              "label": "密码框",
+              "type": "password",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "placeholder": "",
+                "maxlength": null,
+                "prefix": "",
+                "suffix": "",
+                "prepend": "",
+                "append": "",
+                "showPassword": true,
+                "disabled": false,
+                "clearable": false,
+                "readonly": false,
+                "rules": {
+                  "trigger": "blur",
+                  "enum": "",
+                  "message": "",
+                  "pattern": "",
+                  "required": false,
+                  "type": "any"
+                }
+              },
+              "key": "3156c76025db4efeb144ac079f528400",
+              "model": "password_3156c76025db4efeb144ac079f528400",
+              "rules": []
+            }
+          ]
+        }
+      ],
+      "options": {
+        "gutter": 0,
+        "justify": "start",
+        "align": "top"
+      },
+      "key": "81bba85e713843d5908a0fc44a958951",
+      "model": "grid_81bba85e713843d5908a0fc44a958951",
+      "rules": []
+    },
+    {
+      "label": "富文本编辑器",
+      "type": "richtext-editor",
+      "options": {
+        "defaultValue": "",
+        "width": "",
+        "disabled": false
+      },
+      "key": "e7def0a3f7be4d96bc183e222e3863da",
+      "model": "richtext-editor_e7def0a3f7be4d96bc183e222e3863da",
+      "rules": []
+    }
+  ],
+  "config": {
+    "size": "default",
+    "hideRequiredAsterisk": false,
+    "labelWidth": 100,
+    "labelPosition": "right"
+  }
+}
