@@ -83,23 +83,23 @@ export const asyncRoutes = [
     ]
   },
 
-  {
-    path : '/guide',
-    name : 'Guide',
-    component : Layout,
-    redirect : '/guide',
-    children : [
-      {
-        path : '',
-        name : 'Guide',
-        component : () => import( '/@/views/guide/index' ),
-        meta : {
-          title : '用户指引',
-          icon : 'guide'
-        }
-      }
-    ]
-  },
+  // {
+  //   path : '/guide',
+  //   name : 'Guide',
+  //   component : Layout,
+  //   redirect : '/guide',
+  //   children : [
+  //     {
+  //       path : '',
+  //       name : 'Guide',
+  //       component : () => import( '/@/views/guide/index' ),
+  //       meta : {
+  //         title : '用户指引',
+  //         icon : 'guide'
+  //       }
+  //     }
+  //   ]
+  // },
 
   {
     path : '/icon',
