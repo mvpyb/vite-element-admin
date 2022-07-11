@@ -5,8 +5,8 @@ import {
 } from 'vue-router'
 
 import Layout from '/@/layout'
-import customComponents from './modules/customComponents'
 import nested from './modules/nested'
+import customComponents from './modules/customComponents'
 
 // 配置路由信息
 export const constantRoutes = [
@@ -61,6 +61,7 @@ export const constantRoutes = [
     hidden : true
   }
 ]
+
 export const asyncRoutes = [
   {
     path : '/',
