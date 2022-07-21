@@ -20,6 +20,10 @@ const props = defineProps( {
     type : String,
     default : 'SampleImage'
   },
+  fileSuffix : {
+    type : String,
+    default : 'png'
+  },
   menu : {
     type : Array,
     required : false,
@@ -96,7 +100,8 @@ const getFile = ( isBase64 = true ) => {
     return ''
   }
   const base64 = instance.value.toDataURL()
-  return isBase64 ? base64 : base64ToFile( base64 )
+  const name = `${props.fileName}.${props.fileSuffix}`
+  return isBase64 ? base64 : base64ToFile( base64, name )
 }
 
 const uploadImg = async() => {
