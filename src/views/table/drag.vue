@@ -115,6 +115,7 @@ import { parseTime } from '/@/utils'
 import { getArticle } from '/@/api/article'
 import Sortable from 'sortablejs'
 import YuLayout from '/@/components/YuLayout'
+import { isNullAndUnDef } from '/@/utils/validate'
 
 const dragTable = ref( null )
 const dragVxeTable = ref( null )
@@ -167,11 +168,15 @@ const setSort = () => {
       dataTransfer.setData( 'Text', '' )
     },
     onEnd : evt => {
-      const targetRow = list.value.splice( evt.oldIndex, 1 )[0]
-      list.value.splice( evt.newIndex, 0, targetRow )
+      const { oldIndex, newIndex } = evt
+      if ( isNullAndUnDef( oldIndex ) || isNullAndUnDef( newIndex ) || oldIndex === newIndex ) {
+        return
+      }
+      const targetRow = list.value.splice( oldIndex, 1 )[0]
+      list.value.splice( newIndex, 0, targetRow )
 
-      const tempIndex = newList.value.splice( evt.oldIndex, 1 )[0]
-      newList.value.splice( evt.newIndex, 0, tempIndex )
+      const tempIndex = newList.value.splice( oldIndex, 1 )[0]
+      newList.value.splice( newIndex, 0, tempIndex )
     }
   }
 
