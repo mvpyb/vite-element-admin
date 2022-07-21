@@ -138,7 +138,7 @@ const destroyTinymce = () => {
   }
 }
 const containerWidth = computed( () => {
-  const width = props.width
+  const width = '' + props.width
   if ( /^[\d]+(\.[\d]+)?$/.test( width ) ) {
     return `${width}px`
   }
@@ -146,9 +146,9 @@ const containerWidth = computed( () => {
 } )
 watch(
   () => props.value,
-  () => {
+  val => {
     if ( !state.hasChange && state.hasInit ) {
-      nextTick( () => window.tinymce.get( state.tinymceId ).setContent( props.val || '' ) )
+      nextTick( () => window.tinymce.get( state.tinymceId ).setContent( val || '' ) )
     }
   },
   { immediate : true }
