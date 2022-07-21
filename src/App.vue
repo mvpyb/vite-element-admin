@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { ElConfigProvider } from 'element-plus'
 import zh from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
@@ -20,37 +20,11 @@ export default defineComponent( {
   },
   setup() {
     // const { t } = useI18n()
-
-    const langList = {
-      zh,
-      en
-    }
     const appStore = useAppStore()
-    const language = ref( langList.zh )
-    const size = ref( 'default' )
-
-    watch(
-      () => appStore.lang,
-      val => {
-        language.value = langList[val]
-      },
-      {
-        immediate : true
-      }
-    )
-
-    watch(
-      () => appStore.size,
-      val => {
-        size.value = val
-      },
-      {
-        immediate : true
-      }
-    )
-
+    const locale = computed( () => ( appStore.lang === 'zh' ? zh : en ) )
+    const size = computed( () => appStore.size )
     return {
-      locale : language,
+      locale,
       size
     }
   }
