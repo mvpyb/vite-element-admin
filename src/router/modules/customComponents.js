@@ -1,4 +1,4 @@
-import Layout from '/@/layout'
+import Layout from '/@/layout/index.vue'
 
 export default {
   path : '/flow',
@@ -12,46 +12,40 @@ export default {
     //   path : 'logicFlow',
     //   component : () => import( '/@/views/flow/logicFlow' ),
     //   name : 'LogicFlow',
-    //   hidden : false,
     //   meta : { title : 'logicFlow', noCache : true }
     // },
 
     // 富文本
     {
       path : 'formEditor',
-      component : () => import( '/@/views/flow/formEditor' ),
+      component : () => import( '/@/views/flow/formEditor.vue' ),
       name : 'FormEditor',
-      hidden : false,
       meta : { title : '表单编辑器', noCache : true }
     },
     {
       path : 'vditor',
-      component : () => import( '/@/views/flow/vditor' ),
+      component : () => import( '/@/views/flow/vditor.vue' ),
       name : 'Vditor',
-      hidden : false,
       meta : { title : 'Vditor', noCache : true }
     },
     {
       path : 'wangeditor',
-      component : () => import( '/@/views/flow/wangeditor' ),
+      component : () => import( '/@/views/flow/wangeditor.vue' ),
       name : 'Wangeditor',
-      hidden : false,
       meta : { title : 'Wangeditor', noCache : true }
     },
     {
       path : 'tinyMCE',
-      component : () => import( '/@/views/flow/tinyMCE' ),
+      component : () => import( '/@/views/flow/tinyMCE.vue' ),
       name : 'TinyMCE',
-      hidden : false,
       meta : { title : 'TinyMCE', noCache : true }
     },
 
     // canvas
     {
       path : 'imageEditor',
-      component : () => import( '/@/views/flow/imageEditor' ),
+      component : () => import( '/@/views/flow/imageEditor.vue' ),
       name : 'ImageEditor',
-      hidden : false,
       meta : { title : '图片编辑器', noCache : true }
     }
   ]

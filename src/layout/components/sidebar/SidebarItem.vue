@@ -1,10 +1,10 @@
 <template>
-  <div v-if="!props.item.hidden">
+  <div v-if="!props.item.meta?.hidden">
     <template
       v-if="
         hasOneShowingChild(props.item.children, props.item) &&
         (!onlyOneChild.children || onlyOneChild.noShowingChildren) &&
-        !props.item.alwaysShow
+        !props.item.meta?.alwaysShow
       "
     >
       <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
@@ -69,7 +69,7 @@ const subMenu = ref( null )
 
 function hasOneShowingChild( children = [], parent ) {
   const showingChildren = children.filter( item => {
-    if ( item.hidden ) {
+    if ( item.meta?.hidden ) {
       return false
     } else {
       onlyOneChild.value = item

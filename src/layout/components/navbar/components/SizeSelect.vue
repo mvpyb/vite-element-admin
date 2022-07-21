@@ -30,7 +30,7 @@ const route = useRoute()
 const router = useRouter()
 const sizeOptions = reactive( [
   { label : 'Default', value : 'default' },
-  { label : 'Large ', value : 'large ' },
+  { label : 'Large', value : 'large' },
   { label : 'Small', value : 'small' }
 ] )
 
@@ -44,12 +44,12 @@ const handleSetSize = val => {
   ElMessage( {
     message : '切换成功',
     type : 'success',
-    duration : '1500'
+    duration : 1000
   } )
 }
 // TODO
 const refreshView = () => {
-  tagsViewStore.DEL_ALL_VISITED_VIEWS( route )
+  tagsViewStore.DEL_ALL_CACHED_VIEWS( route )
   const { fullPath } = route
   nextTick( () => {
     router.replace( {
@@ -62,5 +62,3 @@ defineOptions( {
   name : 'SizeSelect'
 } )
 </script>
-
-<style lang="scss" scoped></style>
