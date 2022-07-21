@@ -114,7 +114,10 @@ class HttpRequest {
           } )
           return Promise.reject( new Error( '请检查您的网络是否正常' ) )
         }
-        config.headers.common.token = cookies.get( TOKEN )
+        const token = cookies.get( TOKEN )
+        if ( token ) {
+          config.headers.Authorization = token
+        }
         config.data = qs.stringify( config.data )
 
         return config

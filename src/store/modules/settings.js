@@ -8,13 +8,16 @@ const { showSettings, tagsView, fixedHeader, sidebarLogo } = defaultSettings
 const useSettingsStore = defineStore( {
   id : 'settings',
   state : () => {
+    const localTagsView = localStorageHandle.getItem( 'tagsView' )
+    const localFixedHeader = localStorageHandle.getItem( 'fixedHeader' )
+    const localSidebarLogo = localStorageHandle.getItem( 'sidebarLogo' )
     return {
       theme : variables.theme,
       showSettings,
-      tagsView : localStorageHandle.get( 'tagsView' ) ? !!+localStorageHandle.get( 'tagsView' ) : tagsView,
-      fixedHeader : localStorageHandle.get( 'fixedHeader' ) ? !!+localStorageHandle.get( 'fixedHeader' ) : fixedHeader,
-      sidebarLogo : localStorageHandle.get( 'sidebarLogo' ) ? !!+localStorageHandle.get( 'sidebarLogo' ) : sidebarLogo,
-      layoutMod : localStorageHandle.get( 'layoutMod' ) == 'horizontal' ? 'horizontal' : 'vertical'
+      tagsView : localTagsView ? !!+localTagsView : tagsView,
+      fixedHeader : localFixedHeader ? !!+localFixedHeader : fixedHeader,
+      sidebarLogo : localSidebarLogo ? !!+localSidebarLogo : sidebarLogo,
+      layoutMod : localStorageHandle.getItem( 'layoutMod' ) == 'horizontal' ? 'horizontal' : 'vertical'
     }
   },
   actions : {
@@ -22,12 +25,12 @@ const useSettingsStore = defineStore( {
       // eslint-disable-next-line no-prototype-builtins
       if ( this.hasOwnProperty( key ) ) {
         this[key] = value
-        localStorageHandle.set( key, +value )
+        localStorageHandle.setItem( key, +value )
       }
     },
     CHANGE_LAYOUT_MOD( val = 'vertical' ) {
       const mod = val == 'vertical' ? 'vertical' : 'horizontal'
-      localStorageHandle.set( 'layoutMod', mod )
+      localStorageHandle.setItem( 'layoutMod', mod )
       this.layoutMod = mod
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <section class="todoapp">
     <header class="header">
-      <input class="new-todo" autocomplete="off" placeholder="Todo List" @keyup.enter="addTodo" />
+      <input class="new-todo" v-model="currentTodo" autocomplete="off" placeholder="Todo List" @keyup.enter="addTodo" />
     </header>
     <section v-show="todos.length" class="main">
       <input
@@ -59,13 +59,14 @@ const defaultTodo = [
 export default {
   components : { Todo },
   setup() {
+    const currentTodo = ref( '' )
     const visibility = ref( 'all' )
     const filters = ref( {
       all : todos => todos,
       active : todos => todos.filter( todo => !todo.done ),
       completed : todos => todos.filter( todo => todo.done )
     } )
-    const todos = ref( localStorageHandle.get( TODO_LIST_KEY ) || defaultTodo )
+    const todos = ref( localStorageHandle.getItem( TODO_LIST_KEY ) || defaultTodo )
 
     const set = reactive( {
       newPluralize : computed( () => {
@@ -94,11 +95,11 @@ export default {
     } )
 
     const setLocalStorage = () => {
-      localStorageHandle.set( TODO_LIST_KEY, todos.value )
+      localStorageHandle.setItem( TODO_LIST_KEY, todos.value )
     }
 
-    const addTodo = e => {
-      const text = e.target.value
+    const addTodo = () => {
+      const text = currentTodo.value
       if ( text.trim() ) {
         todos.value.push( {
           text,
@@ -106,7 +107,7 @@ export default {
         } )
         setLocalStorage()
       }
-      e.target.value = ''
+      currentTodo.value = ''
     }
 
     const toggleTodo = val => {
@@ -136,6 +137,7 @@ export default {
       } )
     }
     return {
+      currentTodo,
       visibility : 'all',
       filters,
       todos,

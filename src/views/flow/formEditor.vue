@@ -62,7 +62,7 @@ defineOptions( {
 </script>
 
 <style scoped lang="scss">
-yu-layout {
+.yu-layout {
   ::v-deep(.body) {
     background: #fff;
   }

@@ -5,7 +5,7 @@
 <script setup>
 import * as echarts from 'echarts'
 import 'echarts-gl'
-import { onMounted, ref, onBeforeUnmount } from 'vue'
+import { onMounted, shallowRef, onBeforeUnmount } from 'vue'
 import npmdep from '/@/assets/charts/npmdep.json'
 
 const props = defineProps( {
@@ -27,7 +27,7 @@ const props = defineProps( {
   }
 } )
 
-const chart = ref( null )
+const chart = shallowRef( null )
 
 onMounted( () => {
   initChart()

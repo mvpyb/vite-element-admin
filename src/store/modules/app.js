@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import store from '/@/store'
 import cookies from '/@/utils/cookies'
 
 const useAppStore = defineStore( {
@@ -43,9 +42,5 @@ const useAppStore = defineStore( {
     }
   }
 } )
-
-export function useAppStoreHook() {
-  return useAppStore( store )
-}
 
 export default useAppStore

@@ -44,18 +44,10 @@
           >
             导出
           </el-button>
-          <el-checkbox
-            v-model="showReviewer"
-            class="filter-item"
-            style="margin-left: 15px"
-            @change="tableKey.value = tableKey.value + 1"
-          >
-            审核人
-          </el-checkbox>
+          <el-checkbox v-model="showReviewer" class="filter-item" style="margin-left: 15px"> 审核人 </el-checkbox>
         </div>
 
         <el-table
-          :key="tableKey"
           v-loading="listLoading"
           :data="list"
           border
@@ -211,7 +203,7 @@
           <template #footer>
             <div class="dialog-footer">
               <el-button @click="hideDialog"> Cancel </el-button>
-              <el-button type="primary" @click="dialogStatus.value === 'create' ? createData() : updateData()">
+              <el-button type="primary" @click="dialogStatus === 'create' ? createData() : updateData()">
                 Confirm
               </el-button>
             </div>
@@ -254,7 +246,6 @@ const calendarTypeKeyValue = calendarTypeOptions.value.reduce( ( acc, cur ) => {
 }, {} )
 
 const dataForm = ref( null )
-const tableKey = ref( 0 )
 const total = ref( 0 )
 const list = ref( null )
 const listLoading = ref( true )
@@ -295,7 +286,8 @@ const set = reactive( {
     timestamp : new Date(),
     title : '',
     type : '',
-    status : 'published'
+    status : 'published',
+    author : 'vite element admin'
   },
   textMap : {
     update : 'Edit',
@@ -369,13 +361,14 @@ const sortByID = order => {
 
 const resetTemp = () => {
   set.temp = {
-    id : undefined,
+    id : 0,
     importance : 1,
     remark : '',
     timestamp : new Date(),
     title : '',
     status : 'published',
-    type : ''
+    type : '',
+    author : 'vite element admin'
   }
 }
 
@@ -393,7 +386,7 @@ const createData = () => {
     dataForm.value.validate( valid => {
       if ( valid ) {
         set.temp.id = parseInt( Math.random() * 100 ) + 1024 // mock a id
-        set.temp.author = 'vue-element-admin'
+        set.temp.author = 'vite element admin'
         createArticle( unref( set.temp ) ).then( () => {
           list.value.unshift( unref( set.temp ) )
           hideDialog()
@@ -419,24 +412,25 @@ const handleUpdate = row => {
 }
 
 const updateData = () => {
-  dataForm.value &&
-    dataForm.value.validate( valid => {
-      if ( valid ) {
-        const tempData = Object.assign( {}, set.temp )
-        tempData.timestamp = +new Date( tempData.timestamp ) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-        updateArticle( tempData ).then( () => {
-          const index = list.value.findIndex( v => v.id === set.temp.id )
-          list.value.splice( index, 1, set.temp )
-          hideDialog()
-          ElNotification( {
-            title : 'Success',
-            message : 'Update Successfully',
-            type : 'success',
-            duration : 2000
-          } )
-        } )
+  dataForm.value?.validate( valid => {
+    if ( valid ) {
+      const tempData = {
+        ...set.temp
+        // timestamp : +new Date( tempData.timestamp )
       }
-    } )
+      updateArticle( tempData ).then( () => {
+        const index = list.value.findIndex( v => v.id === set.temp.id )
+        list.value.splice( index, 1, set.temp )
+        hideDialog()
+        ElNotification( {
+          title : 'Success',
+          message : 'Update Successfully',
+          type : 'success',
+          duration : 2000
+        } )
+      } )
+    }
+  } )
 }
 
 const handleDelete = ( row, index ) => {

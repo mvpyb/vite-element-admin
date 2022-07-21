@@ -1,5 +1,5 @@
 <template>
-  <YuLayout title="LogicFlow">
+  <YuLayout title="Vditor">
     <template #head>
       富文本 Vditor
       <el-link type="primary"

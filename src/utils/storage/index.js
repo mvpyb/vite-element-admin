@@ -3,7 +3,7 @@ class StorageProxy {
     this.storage = storageModel
   }
 
-  set( key, value ) {
+  setItem( key, value ) {
     const storage = this.storage
     if ( key ) {
       const data = JSON.stringify( value )
@@ -11,7 +11,7 @@ class StorageProxy {
     }
   }
 
-  get( key ) {
+  getItem( key ) {
     const storage = this.storage
     if ( key ) {
       let data = storage.getItem( key )
@@ -26,7 +26,7 @@ class StorageProxy {
     }
   }
 
-  remove( key, isAll = false ) {
+  removeItem( key, isAll = false ) {
     const storage = this.storage
     if ( key ) {
       if ( isAll ) {

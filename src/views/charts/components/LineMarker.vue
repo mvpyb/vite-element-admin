@@ -4,7 +4,7 @@
 
 <script setup>
 import * as echarts from 'echarts'
-import { onMounted, ref, onBeforeUnmount } from 'vue'
+import { onMounted, shallowRef, onBeforeUnmount } from 'vue'
 
 const props = defineProps( {
   className : {
@@ -24,7 +24,7 @@ const props = defineProps( {
     default : '200px'
   }
 } )
-const chart = ref( null )
+const chart = shallowRef( null )
 onMounted( () => {
   initChart()
 } )

@@ -2,12 +2,9 @@
   <YuLayout title="Tui-Image-Editor">
     <template #head>
       图片编辑器 ImageEditor
-      <el-link type="primary"
-href="http://nhn.github.io/tui.image-editor/latest/"
-target="_blank"
-:underline="false"
-        >点我查看更多</el-link
-      >
+      <el-link type="primary" href="http://nhn.github.io/tui.image-editor/latest/" target="_blank" :underline="false">
+        点我查看更多
+      </el-link>
     </template>
     <template #body>
       <div class="app-container">
@@ -42,7 +39,7 @@ defineOptions( {
 </script>
 
 <style>
-  .tui-image-editor-container {
-    margin: 50px auto;
-  }
+.tui-image-editor-container {
+  margin: 50px auto;
+}
 </style>
