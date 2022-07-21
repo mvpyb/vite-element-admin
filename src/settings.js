@@ -6,5 +6,4 @@ const defaultSetting = {
   sidebarLogo : true
 }
 
-
 export default defaultSetting
