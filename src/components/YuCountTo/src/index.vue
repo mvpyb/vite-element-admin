@@ -3,11 +3,11 @@
 </template>
 
 <script>
-import { reactive, computed, watch, onMounted, unref, toRefs, ref } from 'vue'
+import { reactive, computed, watch, onMounted, unref, toRefs, ref, defineComponent } from 'vue'
 import { isNumber } from '/@/utils/validate'
 import { requestAnimationFrame, cancelAnimationFrame } from './requestAnimationFrame.js'
 
-export default {
+export default defineComponent( {
   name : 'YuCountTo',
   props : {
     startVal : {
@@ -213,7 +213,7 @@ export default {
       ...toRefs( state )
     }
   }
-}
+} )
 </script>
 
 <style scoped></style>
