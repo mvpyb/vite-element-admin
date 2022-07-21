@@ -100,7 +100,7 @@ function closeMenu() {
 
 function addTags() {
   const { name } = route
-  if ( name ) {
+  if ( name && name.toLowerCase() != 'redirect' ) {
     tagsViewStore.ADD_VIEW( route )
   }
   return false
