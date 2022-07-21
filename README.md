@@ -1,8 +1,7 @@
 
 ## 简介
 
-Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`pinia`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
-后期考虑增加ts版本
+Vite Element Admin 是一个免费开源的中后台模版(Js 版本)。使用了最新的`vue3`,`vite2`,`pinia`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。该模板功能和JS版本保持一致
 
 ## 特性
 
@@ -14,10 +13,33 @@ Vite Element Admin 是一个免费开源的中后台模版。使用了最新的`
 
 ## 预览
 
-- [没有梯子的可移步码云](https://simmon_page.gitee.io/vite-element-admin/dist/) - 完整版预览 （ gitee ）
-- [vite-element-admin](https://mvpyb.github.io/vite-element-admin/dist/) - 完整版预览 ( github )
+- [在线预览 - 码云](https://simmon_page.gitee.io/vite-element-admin/dist/)
+- [在线预览 - GitHub](https://mvpyb.github.io/vite-element-admin/dist/)
+
 - [github](https://github.com/mvpyb/vite-element-admin) - 完整版github站点
 - [码云](https://gitee.com/simmon_page/vite-element-admin) - 完整版码云站点
+
+---
+
+- Typescript 版: [Vite-Element-Admin-ts（Github）](https://github.com/mvpyb/vite-element-admin-ts)
+- Typescript 版: [Vite-Element-Admin-ts（Gitee）](https://github.com/mvpyb/vite-element-admin-ts)
+
+---
+
+- React 版: [React-Ant-Admin（Github）](https://github.com/mvpyb/react-ant-admin)
+- React 版: [React-Ant-Admin（Gitee）](https://gitee.com/simmon_page/react-antd-admin)
+
+---
+
+- Nuxt Template: [Nuxt-Simple-Template（Github）](https://github.com/mvpyb/nuxt-simple-template) - 等3.x稳定了之后会同步增加3.x版本
+- Nuxt Template: [Nuxt-Simple-Template（Gitee）](https://gitee.com/simmon_page/nuxt-simple-template)
+
+---
+
+- Vant Template: [Vite-Vant-Template（Github）](https://github.com/mvpyb/vite-vant-template)
+- Vant Template: [Vite-Vant-Template（Gitee）](https://gitee.com/simmon_page/vite-vant-template)
+
+---
 
 
 测试账号: 随便填
