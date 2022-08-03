@@ -126,6 +126,9 @@ npm run dev
 npm run build
 ```
 
+## qq群讨论
+![](http://pic.yupoo.com/454539387/4a6a5749/dfcf0fa0.png)
+
 ## Donate
 
 如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 
