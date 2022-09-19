@@ -19,7 +19,13 @@
         @contextmenu.prevent="openMenu(tag, $event)"
       >
         {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        <el-icon
+            v-if="!isAffix(tag)"
+            class="el-icon-close"
+            @click.prevent.stop="closeSelectedTag(tag)"
+        >
+          <Close />
+        </el-icon>
       </router-link>
     </el-scrollbar>
 
@@ -47,6 +53,8 @@ import {
 } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useTagsViewStore, usePermissionStore } from '/@/store'
+
+import { Close } from '@element-plus/icons-vue'
 
 const tagsViewStore = useTagsViewStore()
 const permissionStore = usePermissionStore()
