@@ -13,12 +13,22 @@
     <div id="js-pink-bg" class="background pink-background">
       <div id="js-logo" class="pink-background__logo" />
     </div>
+    <el-divider content-position="left"> lottie </el-divider>
+    <span>
+      see More : https://github.com/airbnb/lottie-web?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library
+    </span>
+    <Vue3Lottie
+      :animationData="lottieOptions.animationData"
+      :height="lottieOptions.height"
+      :width="lottieOptions.width"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import MoJs from '@mojs/core'
+import DogJSON from './lottie/dogJson.json'
 
 defineOptions( {
   name : 'Animate'
@@ -408,6 +418,13 @@ const startMo = () => {
   // spinner.play()
 
   // mo1()
+}
+
+const lottieOptions = {
+  animationData : DogJSON,
+  height : 200,
+  width : 200,
+  loop : true
 }
 </script>
 

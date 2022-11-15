@@ -272,6 +272,7 @@ export const asyncRoutes = [
     path : '/animate',
     name : 'Animate',
     component : Layout,
+    redirect : '/animate/index',
     meta : {
       title : '动画'
     },
