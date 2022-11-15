@@ -3,10 +3,11 @@
     <template #head>
       表单编辑器 vue-form-create2。
       <el-link type="primary"
-               href="https://www.npmjs.com/package/vue-form-create2"
-               target="_blank"
-               :underline="false"
-      >点我查看更多</el-link>
+href="https://www.npmjs.com/package/vue-form-create2"
+target="_blank"
+:underline="false"
+        >点我查看更多</el-link
+      >
     </template>
     <template #body>
       <div class="app-container">
