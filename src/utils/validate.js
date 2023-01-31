@@ -220,6 +220,7 @@ export function validEmail( arg ) {
 }
 
 /**
+ * @description 校验身份证号码
  * @param {string} arg
  * @returns {Boolean}
  */
