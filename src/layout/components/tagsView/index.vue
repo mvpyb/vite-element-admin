@@ -273,7 +273,8 @@ function scrollHandle( e ) {
 }
 
 const scrollWrapper = computed( () => {
-  return scrollPaneEl.value.$refs.wrap$
+  // return scrollPaneEl.value.$refs.$wrap
+  return scrollPaneEl.value.$refs.wrapRef
 } )
 
 onMounted( () => {
