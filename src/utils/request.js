@@ -15,8 +15,7 @@ import router from '@/router'
 import { useUserStore } from '@/store'
 
 import { TOKEN, WHITE_CODE_LIST, LOGIN_ERROR_CODE, GLOBAL_DATA } from '@/config/constant'
-import qs from 'qs'
-
+// import qs from 'qs'
 class HttpRequest {
   // #baseUrl
   constructor() {
@@ -118,7 +117,7 @@ class HttpRequest {
         if ( token ) {
           config.headers.Authorization = token
         }
-        config.data = qs.stringify( config.data )
+        // config.data = qs.stringify( config.data )
 
         return config
       },
