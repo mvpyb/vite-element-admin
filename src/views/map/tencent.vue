@@ -20,7 +20,7 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 import { tencentMap } from './utils'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 
 const container = ref()
 const ak = 'VBIBZ-VEA6U-RRXVP-4MSZS-WDNAS-YDFXM'

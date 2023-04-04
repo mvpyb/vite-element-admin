@@ -83,8 +83,8 @@
 
 <script setup>
 import { ref, onBeforeMount, reactive, computed } from 'vue'
-import { login } from '/@/api/user'
-import { useUserStore } from '/@/store'
+import { login } from '@/api/user'
+import { useUserStore } from '@/store'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()

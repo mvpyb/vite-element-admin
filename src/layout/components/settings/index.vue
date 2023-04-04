@@ -76,8 +76,8 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { useSettingsStore } from '/@/store'
-import { emitter } from '/@/utils/mitt'
+import { useSettingsStore } from '@/store'
+import { emitter } from '@/utils/mitt'
 
 const settingStore = useSettingsStore()
 const showSettings = ref( false )

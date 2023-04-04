@@ -4,7 +4,7 @@
 
 <script>
 import { reactive, computed, watch, onMounted, unref, toRefs, ref, defineComponent } from 'vue'
-import { isNumber } from '/@/utils/validate'
+import { isNumber } from '@/utils/validate'
 import { requestAnimationFrame, cancelAnimationFrame } from './requestAnimationFrame.js'
 
 export default defineComponent( {

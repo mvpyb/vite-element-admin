@@ -23,7 +23,7 @@ import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 import steps from './steps'
 import { QuestionFilled } from '@element-plus/icons-vue'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 
 const driver = ref()
 

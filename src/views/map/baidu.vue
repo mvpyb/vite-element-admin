@@ -21,7 +21,7 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 import { baiduMap } from './utils'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 
 const container = ref()
 const ak = 'ov7zC5g8Ac0ScLPp1zG8TZDuiGfty9Hh'

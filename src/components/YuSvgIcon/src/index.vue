@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { isExternal as isExternalLink } from '/@/utils/validate'
+import { isExternal as isExternalLink } from '@/utils/validate'
 import { computed } from 'vue'
 
 const props = defineProps( {

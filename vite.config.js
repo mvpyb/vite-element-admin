@@ -15,10 +15,10 @@ export default defineConfig( ( { command, mode } ) => {
   const { VITE_PORT, VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL, VITE_LEGACY } = env
   return {
     root,
-    base : './', // 
+    base : './', //
     resolve: {
       alias: {
-        '/@': resolve( 'src' )
+        '@': resolve( 'src' )
       },
       extensions: ['.js', '.json', '.ts', '.vue']
     },

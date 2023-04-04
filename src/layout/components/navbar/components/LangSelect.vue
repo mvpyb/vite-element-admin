@@ -15,7 +15,7 @@
 <script setup>
 import { computed } from 'vue'
 import { ElMessage } from 'element-plus'
-import { useAppStore } from '/@/store'
+import { useAppStore } from '@/store'
 import { useI18n } from 'vue-i18n'
 
 const appStore = useAppStore()

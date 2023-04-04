@@ -24,11 +24,11 @@
 import { ref, unref, reactive, computed, watch, watchEffect, onMounted, onBeforeMount } from 'vue'
 
 import { NavBar, AppMain, SideBar, TagsView, Settings } from './components'
-import { toggleClass } from '/@/utils/el'
+import { toggleClass } from '@/utils/el'
 import { useEventListener } from '@vueuse/core'
 
 import { useRoute } from 'vue-router'
-import { useAppStore, useSettingsStore } from '/@/store'
+import { useAppStore, useSettingsStore } from '@/store'
 
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()

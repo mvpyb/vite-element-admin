@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import SvgIcon from '/@/components/YuSvgIcon'
+import SvgIcon from '@/components/YuSvgIcon'
 import { ref, onBeforeMount } from 'vue'
 
 const currentYear = ref( 2021 )

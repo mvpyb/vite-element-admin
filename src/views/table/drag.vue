@@ -111,11 +111,11 @@
 
 <script setup>
 import { ref, reactive, shallowRef, nextTick } from 'vue'
-import { parseTime } from '/@/utils'
-import { getArticle } from '/@/api/article'
+import { parseTime } from '@/utils'
+import { getArticle } from '@/api/article'
 import Sortable from 'sortablejs'
-import YuLayout from '/@/components/YuLayout'
-import { isNullAndUnDef } from '/@/utils/validate'
+import YuLayout from '@/components/YuLayout'
+import { isNullAndUnDef } from '@/utils/validate'
 
 const dragTable = ref( null )
 const dragVxeTable = ref( null )

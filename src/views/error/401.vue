@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import img_err from '/@/assets/imgs/401.gif'
+import img_err from '@/assets/imgs/401.gif'
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()

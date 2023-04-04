@@ -4,7 +4,7 @@ import {
   createWebHashHistory
 } from 'vue-router'
 
-import Layout from '/@/layout/index.vue'
+import Layout from '@/layout/index.vue'
 import nested from './modules/nested'
 import customComponents from './modules/customComponents'
 
@@ -22,7 +22,7 @@ export const constantRoutes = [
       {
         path : '/redirect/:path(.*)',
         name : 'Redirect',
-        component : () => import( '/@/views/redirect/index.vue' ),
+        component : () => import( '@/views/redirect/index.vue' ),
         meta : {
           title : 'Redirect',
           hidden : true
@@ -33,7 +33,7 @@ export const constantRoutes = [
   {
     path : '/login',
     name : 'Login',
-    component : () => import( '/@/views/login/index.vue' ),
+    component : () => import( '@/views/login/index.vue' ),
     meta : {
       hidden : true,
       title : '登录'
@@ -42,7 +42,7 @@ export const constantRoutes = [
   {
     path : '/404',
     name : 'Error404',
-    component : () => import( '/@/views/error/404.vue' ),
+    component : () => import( '@/views/error/404.vue' ),
     meta : {
       hidden : true,
       title : '404'
@@ -51,7 +51,7 @@ export const constantRoutes = [
   {
     path : '/401',
     name : 'Error401',
-    component : () => import( '/@/views/error/401.vue' ),
+    component : () => import( '@/views/error/401.vue' ),
     meta : {
       hidden : true,
       title : '401'
@@ -60,7 +60,7 @@ export const constantRoutes = [
   {
     path : '/500',
     name : 'Error500',
-    component : () => import( '/@/views/error/500.vue' ),
+    component : () => import( '@/views/error/500.vue' ),
     meta : {
       hidden : true,
       title : '500'
@@ -81,7 +81,7 @@ export const asyncRoutes = [
       {
         path : 'dashboard',
         name : 'Dashboard',
-        component : () => import( '/@/views/dashboard/index.vue' ),
+        component : () => import( '@/views/dashboard/index.vue' ),
         meta : {
           title : '主页',
           icon : 'dashboard',
@@ -101,7 +101,7 @@ export const asyncRoutes = [
     children : [
       {
         path : 'index',
-        component : () => import( '/@/views/icons/index.vue' ),
+        component : () => import( '@/views/icons/index.vue' ),
         name : 'Icons',
         meta : { title : '图标', icon : 'image', noCache : true }
       }
@@ -118,7 +118,7 @@ export const asyncRoutes = [
     children : [
       {
         path : 'index',
-        component : () => import( '/@/views/directive/index.vue' ),
+        component : () => import( '@/views/directive/index.vue' ),
         name : 'Index',
         meta : { title : '指令', icon : 'directive', noCache : true }
       }
@@ -136,25 +136,25 @@ export const asyncRoutes = [
     children : [
       {
         path : 'keyboard',
-        component : () => import( '/@/views/charts/keyboard.vue' ),
+        component : () => import( '@/views/charts/keyboard.vue' ),
         name : 'KeyboardChart',
         meta : { title : '键盘图表', noCache : true }
       },
       {
         path : 'line',
-        component : () => import( '/@/views/charts/line.vue' ),
+        component : () => import( '@/views/charts/line.vue' ),
         name : 'LineChart',
         meta : { title : '折线图表', noCache : true }
       },
       {
         path : 'mix-chart',
-        component : () => import( '/@/views/charts/mix-chart.vue' ),
+        component : () => import( '@/views/charts/mix-chart.vue' ),
         name : 'MixChart',
         meta : { title : '混合图表', noCache : true }
       },
       {
         path : 'line3d',
-        component : () => import( '/@/views/charts/line3D.vue' ),
+        component : () => import( '@/views/charts/line3D.vue' ),
         name : 'Line3d',
         meta : { title : '3D图表', noCache : true }
       }
@@ -174,7 +174,7 @@ export const asyncRoutes = [
       {
         path : '/baidu',
         name : 'BaiDu',
-        component : () => import( '/@/views/map/baidu.vue' ),
+        component : () => import( '@/views/map/baidu.vue' ),
         meta : {
           title : '百度地图',
           icon : '',
@@ -184,7 +184,7 @@ export const asyncRoutes = [
       {
         path : '/gaode',
         name : 'GaoDe',
-        component : () => import( '/@/views/map/gaode.vue' ),
+        component : () => import( '@/views/map/gaode.vue' ),
         meta : {
           title : '高德地图',
           icon : '',
@@ -194,7 +194,7 @@ export const asyncRoutes = [
       {
         path : '/tencent',
         name : 'Tencent',
-        component : () => import( '/@/views/map/tencent.vue' ),
+        component : () => import( '@/views/map/tencent.vue' ),
         meta : {
           title : '腾讯地图',
           icon : '',
@@ -215,25 +215,25 @@ export const asyncRoutes = [
     children : [
       {
         path : 'dynamic',
-        component : () => import( '/@/views/table/dynamic-table/index.vue' ),
+        component : () => import( '@/views/table/dynamic-table/index.vue' ),
         name : 'DynamicTable',
         meta : { title : '动态表格', noCache : true }
       },
       {
         path : 'drag',
-        component : () => import( '/@/views/table/drag.vue' ),
+        component : () => import( '@/views/table/drag.vue' ),
         name : 'DragTable',
         meta : { title : '拖拽表格', noCache : true }
       },
       {
         path : 'edit',
-        component : () => import( '/@/views/table/editTable.vue' ),
+        component : () => import( '@/views/table/editTable.vue' ),
         name : 'EditTable',
         meta : { title : '可编辑表格', noCache : true }
       },
       {
         path : 'complex',
-        component : () => import( '/@/views/table/complexTable.vue' ),
+        component : () => import( '@/views/table/complexTable.vue' ),
         name : 'ComplexTable',
         meta : { title : '综合表格', noCache : true }
       }
@@ -249,19 +249,19 @@ export const asyncRoutes = [
     children : [
       {
         path : 'index',
-        component : () => import( '/@/views/page/userCenter/index.vue' ),
+        component : () => import( '@/views/page/userCenter/index.vue' ),
         name : 'UserCenter',
         meta : { title : '我的账号', noCache : true }
       },
       {
         path : 'history',
-        component : () => import( '/@/views/page/userCenter/loginHistory.vue' ),
+        component : () => import( '@/views/page/userCenter/loginHistory.vue' ),
         name : 'Personal',
         meta : { title : '登录历史', noCache : true }
       },
       {
         path : 'attestation',
-        component : () => import( '/@/views/page/userCenter/attestation.vue' ),
+        component : () => import( '@/views/page/userCenter/attestation.vue' ),
         name : 'Attestation',
         meta : { title : '实名认证', noCache : true }
       }
@@ -279,7 +279,7 @@ export const asyncRoutes = [
     children : [
       {
         path : 'index',
-        component : () => import( '/@/views/animate/index.vue' ),
+        component : () => import( '@/views/animate/index.vue' ),
         name : 'Animate',
         meta : { title : '动画', icon : 'animate', noCache : true }
       }

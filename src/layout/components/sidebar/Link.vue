@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { isExternal } from '/@/utils/validate'
+import { isExternal } from '@/utils/validate'
 import { computed, reactive, unref } from 'vue'
 
 const props = defineProps( {

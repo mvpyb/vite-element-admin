@@ -1,4 +1,4 @@
-import { usePermissionStore } from '/@/store'
+import { usePermissionStore } from '@/store'
 
 const permission = {
   mounted : function( el, binding ) {

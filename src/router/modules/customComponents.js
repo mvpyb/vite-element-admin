@@ -1,4 +1,4 @@
-import Layout from '/@/layout/index.vue'
+import Layout from '@/layout/index.vue'
 
 export default {
   path : '/flow',
@@ -10,7 +10,7 @@ export default {
     // 流程图 TODO
     // {
     //   path : 'logicFlow',
-    //   component : () => import( '/@/views/flow/logicFlow' ),
+    //   component : () => import( '@/views/flow/logicFlow' ),
     //   name : 'LogicFlow',
     //   meta : { title : 'logicFlow', noCache : true }
     // },
@@ -18,25 +18,25 @@ export default {
     // 富文本
     {
       path : 'formEditor',
-      component : () => import( '/@/views/flow/formEditor.vue' ),
+      component : () => import( '@/views/flow/formEditor.vue' ),
       name : 'FormEditor',
       meta : { title : '表单编辑器', noCache : true }
     },
     {
       path : 'vditor',
-      component : () => import( '/@/views/flow/vditor.vue' ),
+      component : () => import( '@/views/flow/vditor.vue' ),
       name : 'Vditor',
       meta : { title : 'Vditor', noCache : true }
     },
     {
       path : 'wangeditor',
-      component : () => import( '/@/views/flow/wangeditor.vue' ),
+      component : () => import( '@/views/flow/wangeditor.vue' ),
       name : 'Wangeditor',
       meta : { title : 'Wangeditor', noCache : true }
     },
     {
       path : 'tinyMCE',
-      component : () => import( '/@/views/flow/tinyMCE.vue' ),
+      component : () => import( '@/views/flow/tinyMCE.vue' ),
       name : 'TinyMCE',
       meta : { title : 'TinyMCE', noCache : true }
     },
@@ -44,7 +44,7 @@ export default {
     // canvas
     {
       path : 'imageEditor',
-      component : () => import( '/@/views/flow/imageEditor.vue' ),
+      component : () => import( '@/views/flow/imageEditor.vue' ),
       name : 'ImageEditor',
       meta : { title : '图片编辑器', noCache : true }
     }

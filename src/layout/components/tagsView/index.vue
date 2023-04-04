@@ -48,7 +48,7 @@ import {
   onBeforeUpdate
 } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useTagsViewStore, usePermissionStore } from '/@/store'
+import { useTagsViewStore, usePermissionStore } from '@/store'
 
 import { Close } from '@element-plus/icons-vue'
 

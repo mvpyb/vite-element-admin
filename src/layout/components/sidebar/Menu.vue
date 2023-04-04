@@ -16,11 +16,11 @@
 
 <script setup>
 import { computed, reactive } from 'vue'
-import variables from '/@/styles/variables.module.scss'
+import variables from '@/styles/variables.module.scss'
 import SidebarItem from './SidebarItem'
 
 import { useRoute } from 'vue-router'
-import { useAppStore, useSettingsStore, usePermissionStore } from '/@/store'
+import { useAppStore, useSettingsStore, usePermissionStore } from '@/store'
 
 const route = useRoute()
 const appStore = useAppStore()

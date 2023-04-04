@@ -1,4 +1,4 @@
-import http from '/@/utils/request'
+import http from '@/utils/request'
 
 // 用户列表
 export function UserList( data ) {

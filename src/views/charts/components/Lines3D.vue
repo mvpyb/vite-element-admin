@@ -6,7 +6,7 @@
 import * as echarts from 'echarts'
 import 'echarts-gl'
 import { onMounted, shallowRef, onBeforeUnmount } from 'vue'
-import npmdep from '/@/assets/charts/npmdep.json'
+import npmdep from '@/assets/charts/npmdep.json'
 
 const props = defineProps( {
   className : {

@@ -26,7 +26,7 @@
 
 <script setup lang="jsx">
 import { ref } from 'vue'
-import { loginHistory } from '/@/api/user'
+import { loginHistory } from '@/api/user'
 import LoginHistory from './components/infoLayout'
 
 const loading = ref( false )

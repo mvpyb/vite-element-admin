@@ -23,8 +23,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import YuLayout from '/@/components/YuLayout'
-import ImageEditor from '/@/components/YuImageEditor'
+import YuLayout from '@/components/YuLayout'
+import ImageEditor from '@/components/YuImageEditor'
 
 const editor = ref()
 

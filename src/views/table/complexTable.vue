@@ -228,11 +228,11 @@
 
 <script setup>
 import { ref, reactive, nextTick, unref } from 'vue'
-import { getArticle, getPv, createArticle, updateArticle } from '/@/api/article'
-import { parseTime } from '/@/utils'
+import { getArticle, getPv, createArticle, updateArticle } from '@/api/article'
+import { parseTime } from '@/utils'
 import { ElMessage, ElNotification } from 'element-plus'
 import { Search, EditPen, Download } from '@element-plus/icons-vue'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 
 const calendarTypeOptions = ref( [
   { key : 'CN', display_name : 'China' },
@@ -452,7 +452,7 @@ const handleFetchPv = pv => {
 
 const handleDownload = () => {
   downloadLoading.value = true
-  import( '/@/vendor/Export2Excel' ).then( excel => {
+  import( '@/vendor/Export2Excel' ).then( excel => {
     const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
     const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
     const data = formatJson( filterVal )

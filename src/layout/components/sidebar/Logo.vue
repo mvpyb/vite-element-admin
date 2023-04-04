@@ -15,8 +15,8 @@
 </template>
 
 <script setup>
-import logo from '/@/assets/imgs/logo2.png'
-import defaultSettings from '/@/settings'
+import logo from '@/assets/imgs/logo2.png'
+import defaultSettings from '@/settings'
 const { title } = defaultSettings
 
 const props = defineProps( {

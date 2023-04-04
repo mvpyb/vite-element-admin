@@ -12,7 +12,7 @@
 
 <script setup>
 // import { ref, reactive, nextTick, unref } from 'vue'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 // import LogicFlow from '@logicflow/core'
 // import "@logicflow/core/dist/style/index.css"
 

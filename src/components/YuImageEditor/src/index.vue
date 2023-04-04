@@ -9,7 +9,7 @@ import 'tui-color-picker/dist/tui-color-picker.css'
 import ImageEditor from 'tui-image-editor'
 import locale_zh from './langZh'
 import customTheme from './theme'
-import { base64ToFile } from '/@/utils/files'
+import { base64ToFile } from '@/utils/files'
 
 const props = defineProps( {
   url : {

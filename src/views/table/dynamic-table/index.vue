@@ -15,7 +15,7 @@
 <script setup>
 import FixedThead from './components/FixedThead'
 import UnfixedThead from './components/UnfixedThead'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 defineOptions( {
   name : 'DynamicTable'
 } )

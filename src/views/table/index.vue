@@ -45,7 +45,7 @@ target="_blank"
 
 <script setup>
 import { ref } from 'vue'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 const tableData = ref( [
   { id : 10000, parentId : null, name : 'test abc1', type : 'mp3', size : 1024, date : '2020-08-01' },
   { id : 10050, parentId : null, name : 'Test2', type : 'mp4', size : null, date : '2021-04-01' },

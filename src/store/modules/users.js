@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
-import cookies from '/@/utils/cookies'
-import { TOKEN, AVATAR } from '/@/config/constant'
-import { logout, getInfo } from '/@/api/user'
-import { resetRouter } from '/@/router'
+import cookies from '@/utils/cookies'
+import { TOKEN, AVATAR } from '@/config/constant'
+import { logout, getInfo } from '@/api/user'
+import { resetRouter } from '@/router'
 import useTagsViewStore from './tagsView'
 
 const useUserStore = defineStore( {

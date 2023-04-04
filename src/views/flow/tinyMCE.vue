@@ -10,8 +10,8 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import YuTinymce from '/@/components/YuTinymce'
-import YuLayout from '/@/components/YuLayout'
+import YuTinymce from '@/components/YuTinymce'
+import YuLayout from '@/components/YuLayout'
 
 const form = reactive( {
   contents : '初始内容填充'

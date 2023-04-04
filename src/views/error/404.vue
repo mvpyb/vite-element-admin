@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import img_404 from '/@/assets/imgs/404_left.png'
-import img_404_cloud from '/@/assets/imgs/404_cloud.png'
+import img_404 from '@/assets/imgs/404_left.png'
+import img_404_cloud from '@/assets/imgs/404_cloud.png'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 

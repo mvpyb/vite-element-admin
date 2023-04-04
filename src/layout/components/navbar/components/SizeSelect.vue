@@ -21,7 +21,7 @@
 <script setup>
 import { reactive, computed, nextTick } from 'vue'
 import { ElMessage } from 'element-plus'
-import { useAppStore, useTagsViewStore } from '/@/store'
+import { useAppStore, useTagsViewStore } from '@/store'
 import { useRouter, useRoute } from 'vue-router'
 
 const appStore = useAppStore()

@@ -45,7 +45,7 @@
 <script setup>
 import { ref } from 'vue'
 import path from 'path-browserify'
-import { isExternal } from '/@/utils/validate'
+import { isExternal } from '@/utils/validate'
 import AppLink from './Link.vue'
 
 // eslint-disable-next-line no-undef

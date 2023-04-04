@@ -17,7 +17,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useTagsViewStore } from '/@/store'
+import { useTagsViewStore } from '@/store'
 
 const route = useRoute()
 const tagsViewStore = useTagsViewStore()

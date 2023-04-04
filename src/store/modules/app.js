@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import cookies from '/@/utils/cookies'
+import cookies from '@/utils/cookies'
 
 const useAppStore = defineStore( {
   id : 'app',

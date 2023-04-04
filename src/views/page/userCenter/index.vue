@@ -168,12 +168,12 @@
 
 <script setup lang="jsx">
 import { ref, reactive, computed } from 'vue'
-import { useUserStore } from '/@/store'
-import { loginHistory } from '/@/api/user'
-import { encryptionPhone } from '/@/utils'
+import { useUserStore } from '@/store'
+import { loginHistory } from '@/api/user'
+import { encryptionPhone } from '@/utils'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import YuThumb from '/@/components/YuThumb'
+import YuThumb from '@/components/YuThumb'
 
 const router = useRouter()
 

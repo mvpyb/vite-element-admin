@@ -69,7 +69,7 @@
 
 <script setup>
 import { reactive, computed } from 'vue'
-import { useAppStore, useUserStore, useSettingsStore } from '/@/store'
+import { useAppStore, useUserStore, useSettingsStore } from '@/store'
 import { useRouter } from 'vue-router'
 import HamBurger from './components/HamBurger'
 import BreadCrumb from './components/BreadCrumb'
@@ -77,9 +77,9 @@ import HeaderSearch from './components/HeaderSearch'
 import ScreenFull from './components/Screenfull'
 import SizeSelect from './components/SizeSelect'
 import LangSelect from './components/LangSelect'
-import { emitter } from '/@/utils/mitt'
+import { emitter } from '@/utils/mitt'
 
-import Logo from '/@/layout/components/sidebar/Logo'
+import Logo from '@/layout/components/sidebar/Logo'
 import MenuBar from '../sidebar/Menu'
 
 const router = useRouter()

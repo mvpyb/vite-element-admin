@@ -29,7 +29,7 @@
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import Fuse from 'fuse.js'
 import path from 'path-browserify'
-import { usePermissionStore } from '/@/store'
+import { usePermissionStore } from '@/store'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()

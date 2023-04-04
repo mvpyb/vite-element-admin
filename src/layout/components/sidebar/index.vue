@@ -9,7 +9,7 @@
 
 <script setup>
 import { computed, reactive } from 'vue'
-import { useAppStore, useSettingsStore } from '/@/store'
+import { useAppStore, useSettingsStore } from '@/store'
 import Logo from './Logo'
 import Menu from './Menu'
 

@@ -1,9 +1,9 @@
 import router from './router'
-import cookies from '/@/utils/cookies'
-import { TOKEN } from '/@/config/constant'
-import getPageTitle from '/@/utils/getPageTitle'
-import { useUserStore, usePermissionStore } from '/@/store'
-import NProgress from '/@/utils/progress'
+import cookies from '@/utils/cookies'
+import { TOKEN } from '@/config/constant'
+import getPageTitle from '@/utils/getPageTitle'
+import { useUserStore, usePermissionStore } from '@/store'
+import NProgress from '@/utils/progress'
 
 const whiteList = ['/login']
 router.beforeEach( async( to, from, next ) => {

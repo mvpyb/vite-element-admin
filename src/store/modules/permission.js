@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes, constantRoutes } from '/@/router'
+import { asyncRoutes, constantRoutes } from '@/router'
 
 /**
  * 使用meta.role来确定当前用户是否有权限

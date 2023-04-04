@@ -26,7 +26,7 @@ target="_blank"
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'
 

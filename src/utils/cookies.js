@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { getEnvs } from '/@/utils/envs'
+import { getEnvs } from '@/utils/envs'
 const { hostname } = window.location
 
 class CookieProxy {

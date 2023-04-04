@@ -148,9 +148,9 @@
 
 <script setup>
 import { ref, unref } from 'vue'
-import { usePermissionStore } from '/@/store'
+import { usePermissionStore } from '@/store'
 import { ElMessage } from 'element-plus/lib'
-import YuLayout from '/@/components/YuLayout'
+import YuLayout from '@/components/YuLayout'
 
 const permissionStore = usePermissionStore()
 
