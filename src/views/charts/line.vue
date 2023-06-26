@@ -7,7 +7,7 @@
 <script setup>
 import LineMarker from './components/LineMarker'
 defineOptions( {
-  name : 'Line'
+  name : 'LineCharts'
 } )
 </script>
 

@@ -7,7 +7,7 @@
 <script setup>
 import { reactive, computed, watch, onMounted, onBeforeUnmount, toRefs, nextTick } from 'vue'
 import plugins from './plugins'
-import toolbar from './toolbar'
+import toolbarConfig from './toolbar'
 import loadScript from './dynamicLoadScript'
 import { ElMessage } from 'element-plus'
 
@@ -74,7 +74,7 @@ const initTinymce = () => {
     object_resizing : false,
     readonly : props.readOnly,
     statusbar : !props.readOnly,
-    toolbar : props.readOnly ? false : props.toolbar.length > 0 ? props.toolbar : toolbar,
+    toolbar : props.readOnly ? false : props.toolbar.length > 0 ? props.toolbar : toolbarConfig,
     menubar : props.readOnly ? false : props.menubar,
     plugins : props.readOnly ? false : plugins,
     end_container_on_empty_block : true,

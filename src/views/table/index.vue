@@ -68,7 +68,7 @@ const tableData = ref( [
 ] )
 
 defineOptions( {
-  name : 'Table'
+  name : 'TablePage'
 } )
 </script>
 

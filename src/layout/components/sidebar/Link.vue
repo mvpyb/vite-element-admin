@@ -41,6 +41,6 @@ const linkProps = to => {
 }
 
 defineOptions( {
-  name : 'Link'
+  name : 'AppLink'
 } )
 </script>
